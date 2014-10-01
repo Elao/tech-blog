@@ -57,8 +57,19 @@ If your post is named "mysuperblogpost", you must have these two files in the /p
 ##Post meta file
 The post meta file contains information about the associated blog post.
 
-The required meta are:
-
+The metas are like this:
+<table>
+	<tr><th>Meta</th><th>Description</th></tr>
+	<tr><td>_slug_ \*</td><td>The post's slug (used to identify the post. Must be unique among all posts)</td></tr>
+	<tr><td>_title_ \*</td><td>The post's title</td></tr>
+	<tr><td>_tags_</td><td>List of post's tag (must be reference by name of tags contains in the tags's file)</td></tr>
+	<tr><td>_status_ \*</td><td>The post's status ("published", "draft")</td></tr>
+	<tr><td>_publish_by_ \*</td><td>The publisher of the post (must be the reference of a user contains in the users's file either by email or slug)</td></tr>
+	<tr><td>_publish_at_ \*</td><td>A date (any format supported by Moment.js)</td></tr>	
+	<tr><td>_meta_title_</td><td>The html meta title of the post</td></tr>
+	<tr><td>_meta_description_</td><td>The html meta description of the post</td></tr>
+</table>
+<i><small>* indicate required metas</small></i>
 
 
 _Example of a post meta file:_
