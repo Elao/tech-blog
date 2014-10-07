@@ -1,6 +1,9 @@
 [
-    "Symfony2",
+    "Symfony",
     "HTML/CSS",
     "Webdesign",
-    "Framework"
+    "Framework",
+    "Translation",
+    "Form",
+    "Theming"
 ]
