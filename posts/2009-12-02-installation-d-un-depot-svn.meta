@@ -1,0 +1,10 @@
+{
+    "tags":                 ["Linux", "SVN"],
+    "title":                "Installation d'un dépôt SVN (Subversion)",
+    "slug":                 "installation-d-un-depot-svn",
+    "status":               "published",
+    "meta_title":           "Installation d’un dépôt SVN (Subversion)",
+    "meta_description":     "Installation d'un dépôt SVN pour gérer et versioner le code source d'un projet",
+    "publish_by":           "guewen",
+    "publish_at":           "2009-12-02"
+}
