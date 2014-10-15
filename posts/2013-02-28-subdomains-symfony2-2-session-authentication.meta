@@ -1,0 +1,12 @@
+{
+    "tags":                 ["Symfony"],
+    "title":                "Feedback on a side-effect with Symfony 2.2, subdomains and sessions",
+    "slug":                 "subdomains-symfony2-2-session-authentication",
+    "status":               "published",
+    "meta_title":           "Feedback on a side-effect with Symfony 2.2, subdomains and sessions",
+    "meta_description":     "Les bonnes pratiques symfony2 / symfony",
+    "meta_keywords":        ["Symfony 2"],
+    "thumbnail":			"/blog/medias/thumbnails/mic.gif",
+    "publish_by":           "tristan",
+    "publish_at":           "2013-02-28"
+}
