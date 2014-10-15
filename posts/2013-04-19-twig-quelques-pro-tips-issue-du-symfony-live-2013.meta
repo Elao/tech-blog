@@ -5,7 +5,7 @@
     "status":               "published",
     "meta_title":           "Twig : Quelques pro-tips issue du Symfony Live 2013",
     "meta_description":     "Twig : Quelques pro-tips issue du Symfony Live 2013",
-    "meta_keywords":        ["Twig, "Symfony live 2013", "Symfony", "Tips"],
+    "meta_keywords":        ["Twig", "Symfony live 2013", "Symfony", "Tips"],
     "publish_by":           "tom32i",
     "publish_at":           "2013-04-19",
     "thumbnail":			""
