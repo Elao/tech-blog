@@ -5,6 +5,8 @@
     "status":               "published",
     "meta_title":           "Plusieurs mailer dans une application Symfony 2",
     "meta_description":     "Plusieurs mailer dans une application Symfony 2",
+    "meta_keywords":        [],
+    "thumbnail":            "",
     "publish_by":           "johan",
     "publish_at":           "2013-10-11"
 }

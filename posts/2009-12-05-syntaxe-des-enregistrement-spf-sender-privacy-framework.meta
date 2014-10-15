@@ -5,6 +5,8 @@
     "status":               "draft",
     "meta_title":           "Syntaxe des enregistrement SPF (Sender Privacy Framework)",
     "meta_description":     "Syntaxe des enregistrement SPF (Sender Privacy Framework)",
+    "meta_keywords":        [],
+    "thumbnail":            "",
     "publish_by":           "guewen",
     "publish_at":           "2009-12-05"
 }
