@@ -1,0 +1,12 @@
+{
+    "tags":                 ["D\u00e9veloppement","PHP","Symfony 2"],
+    "title":                "Symfony2 – Illustration de la mise en oeuvre de l’Injection de dépendance",
+    "slug":                 "symfony2-illustration-de-la-mise-en-oeuvre-de-linjection-de-dependance",
+    "status":               "published",
+    "meta_title":           "Symfony2 – Illustration de la mise en oeuvre de l’Injection de dépendance",
+    "meta_description":     "Symfony2 – Illustration de la mise en oeuvre de l’Injection de dépendance",
+    "meta_keywords":        ["Dependency Injection","Injection de d\u00e9pendance","PHP","Symfony2"],
+    "thumbnail":            "/blog/medias/thumbnails/mic.gif",
+    "publish_by":           "xavier-roldo",
+    "publish_at":           "2010-12-22"
+}

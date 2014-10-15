@@ -1,0 +1,12 @@
+{
+    "tags":                 ["bdd","behat","mink","PHP"],
+    "title":                "Présentation Behat / Mink : les tests fonctionnels sous PHP.",
+    "slug":                 "presentation-behat-mink-les-tests-fonctionnels-sous-php",
+    "status":               "published",
+    "meta_title":           "Présentation Behat / Mink : les tests fonctionnels sous PHP.",
+    "meta_description":     "Présentation Behat / Mink : les tests fonctionnels sous PHP.",
+    "meta_keywords":        ["behat","mink","PHP","sahi"],
+    "thumbnail":            "/blog/medias/thumbnails/mic.gif",
+    "publish_by":           "tristan-bessoussa",
+    "publish_at":           "2011-11-17"
+}

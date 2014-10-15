@@ -1,0 +1,12 @@
+{
+    "tags":                 ["D\u00e9veloppement","Doctrine","Symfony"],
+    "title":                "Installation et premiers pas avec le plugin Symfony sfImageTransformExtraPlugin",
+    "slug":                 "installation-et-premiers-pas-avec-le-plugin-symfony-sfimagetransformextraplugin",
+    "status":               "published",
+    "meta_title":           "Installation et premiers pas avec le plugin Symfony sfImageTransformExtraPlugin",
+    "meta_description":     "Installation et premiers pas avec le plugin Symfony sfImageTransformExtraPlugin",
+    "meta_keywords":        ["PHP","sfImageTransformExtraPlugin","Symfony"],
+    "thumbnail":            "/blog/medias/thumbnails/mic.gif",
+    "publish_by":           "xavier-roldo",
+    "publish_at":           "2010-07-12"
+}

@@ -1,0 +1,12 @@
+{
+    "tags":                 ["Linux","Monitoring","Symfony 2"],
+    "title":                "Install Stats.d / Graphite on a debian server in order to monitor a Symfony2 application (1/2)",
+    "slug":                 "install-stats-d-graphite-on-a-debian-server-to-monitor-a-symfony2-application-12",
+    "status":               "published",
+    "meta_title":           "Install Stats.d / Graphite on a debian server in order to monitor a Symfony2 application (1/2)",
+    "meta_description":     "Install Stats.d / Graphite on a debian server in order to monitor a Symfony2 application (1/2)",
+    "meta_keywords":        ["Debian","graphite","stats.d","Symfony2"],
+    "thumbnail":            "/blog/medias/thumbnails/mic.gif",
+    "publish_by":           "tristan-bessoussa",
+    "publish_at":           "2012-11-09"
+}

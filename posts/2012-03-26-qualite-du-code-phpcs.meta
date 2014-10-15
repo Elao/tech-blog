@@ -1,0 +1,12 @@
+{
+    "tags":                 ["PHP"],
+    "title":                "Qualité du Code : PHPCS",
+    "slug":                 "qualite-du-code-phpcs",
+    "status":               "published",
+    "meta_title":           "Qualité du Code : PHPCS",
+    "meta_description":     "Qualité du Code : PHPCS",
+    "meta_keywords":        "",
+    "thumbnail":            "/blog/medias/thumbnails/mic.gif",
+    "publish_by":           "benjamin-leveque",
+    "publish_at":           "2012-03-26"
+}

@@ -1,0 +1,12 @@
+{
+    "tags":                 ["S\u00e9curit\u00e9 des donn\u00e9es"],
+    "title":                "Installation de FUSE et s3fs sur une Debian Lenny",
+    "slug":                 "installation-de-fuse-et-s3fs-sur-une-debian-lenny",
+    "status":               "published",
+    "meta_title":           "Installation de FUSE et s3fs sur une Debian Lenny",
+    "meta_description":     "Installation de FUSE et s3fs sur une Debian Lenny",
+    "meta_keywords":        ["Amazon","Amazon S3","S3"],
+    "thumbnail":            "/blog/medias/thumbnails/mic.gif",
+    "publish_by":           "guewen-faivre",
+    "publish_at":           "2010-01-12"
+}

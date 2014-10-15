@@ -1,0 +1,12 @@
+{
+    "tags":                 ["Django","Python"],
+    "title":                "Django (2nde partie) : le Modèle et l’Admin",
+    "slug":                 "django-2nde-partie-le-modele-et-ladmin",
+    "status":               "published",
+    "meta_title":           "Django (2nde partie) : le Modèle et l’Admin",
+    "meta_description":     "Django (2nde partie) : le Modèle et l’Admin",
+    "meta_keywords":        ["Django","Framework","MVC","Python"],
+    "thumbnail":            "/blog/medias/thumbnails/mic.gif",
+    "publish_by":           "xavier-roldo",
+    "publish_at":           "2010-10-06"
+}

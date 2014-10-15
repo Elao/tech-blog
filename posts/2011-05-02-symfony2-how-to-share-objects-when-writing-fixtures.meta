@@ -1,0 +1,12 @@
+{
+    "tags":                 ["Doctrine 2","PHP","Symfony","Symfony 2"],
+    "title":                "Symfony2: How to share objects when writing fixtures",
+    "slug":                 "symfony2-how-to-share-objects-when-writing-fixtures",
+    "status":               "published",
+    "meta_title":           "Symfony2: How to share objects when writing fixtures",
+    "meta_description":     "Symfony2: How to share objects when writing fixtures",
+    "meta_keywords":        ["Doctrine 2","Fixture","Fixtures","relations","sharing object","Symfony2"],
+    "thumbnail":            "/blog/medias/thumbnails/mic.gif",
+    "publish_by":           "tristan-bessoussa",
+    "publish_at":           "2011-05-02"
+}
