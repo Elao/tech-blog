@@ -7,5 +7,5 @@
     "meta_description":     "Feedback : Monitor your Symfony2 application via Stats.d and Graphite",
     "publish_by":           "tristan",
     "publish_at":           "2013-07-18",
-    "picture":              "/public/images/test1.jpg"
+    "thumbnail":			""
 }
