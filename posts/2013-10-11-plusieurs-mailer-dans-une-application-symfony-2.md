@@ -1,13 +1,13 @@
-Voici une petite astuce que j&#8217;ai découvert hier et que j&#8217;ai pensé utile de partager !
+Voici une petite astuce que j'ai découvert hier et que j'ai pensé utile de partager !
 
 # Problématique
 
 **Contexte :**
 
 *   Votre application Symfony2 utilise un service tiers pour envoyer vos e-mails (comme [Mailjet][1] par exemple)
-*   Votre application a besoin d&#8217;envoyer des e-mails de notifications aux administrateurs lorsque des erreurs se produisent (Erreurs 500 par exemple)
+*   Votre application a besoin d'envoyer des e-mails de notifications aux administrateurs lorsque des erreurs se produisent (Erreurs 500 par exemple)
 
-Imaginez qu&#8217;une erreur se produise sur l&#8217;une de vos pages et que vous ayez des centaines d&#8217;utilisateurs en train de visualiser cette même page. Pour chaque affichage de cette dernière, vous allez recevoir un e-mail de notification. Si ces e-mails passent par Mailjet par exemple, votre quota fondra à vue d’œil&#8230; Au mieux vous atteindrez une limite de quota et les mails suivants seront bloqués, au pire vous ferez un énorme hors forfait qui pourra vous couter très cher&#8230; <img src="http://old-blog.elao.dev/wp-includes/images/smilies/icon_wink.gif" alt="icon wink Plusieurs mailer dans une application Symfony 2" class="wp-smiley" title="Plusieurs mailer dans une application Symfony 2" /> 
+Imaginez qu'une erreur se produise sur l'une de vos pages et que vous ayez des centaines d'utilisateurs en train de visualiser cette même page. Pour chaque affichage de cette dernière, vous allez recevoir un e-mail de notification. Si ces e-mails passent par Mailjet par exemple, votre quota fondra à vue d’œil&#8230; Au mieux vous atteindrez une limite de quota et les mails suivants seront bloqués, au pire vous ferez un énorme hors forfait qui pourra vous couter très cher&#8230; <img src="http://old-blog.elao.dev/wp-includes/images/smilies/icon_wink.gif" alt="icon wink Plusieurs mailer dans une application Symfony 2" class="wp-smiley" title="Plusieurs mailer dans une application Symfony 2" /> 
 
 # Solution proposée
 
@@ -49,7 +49,7 @@ swiftmailer.mailer.notifier.transport             container Swift_Transport_Mail
 ...
 ````
 
-Cette astuce reste très simple mais je n&#8217;ai rien trouvé dans la documentation officielle de Symfony qui l&#8217;expliquait clairement. Elle peut se révéler très utile lorsque vous utilisez le bundle **[ErrorNotifierBundle][2]**
+Cette astuce reste très simple mais je n'ai rien trouvé dans la documentation officielle de Symfony qui l'expliquait clairement. Elle peut se révéler très utile lorsque vous utilisez le bundle **[ErrorNotifierBundle][2]**
 
 Merci et à bientôt !
 

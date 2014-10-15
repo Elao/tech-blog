@@ -1,0 +1,13 @@
+{
+    "tags":                 ["Symfony"],
+    "keywords":             ["event dispatcher", "kernel.terminate", "symfony", "php"],
+    "title":                "Utilisation de l'évènement kernel.terminate sous Symfony2",
+    "slug":                 "utilisation-de-levenement-kernel-terminate-sous-symfony2",
+    "status":               "published",
+    "meta_title":           "Utilisation de l'évènement kernel.terminate sous Symfony2",
+    "meta_description":     "Utilisation de l'évènement kernel.terminate sous Symfony2",
+    "meta_keywords":        [],
+    "thumbnail":            "/blog/medias/test1.jpg",
+    "publish_by":           "tristan",
+    "publish_at":           "2013-07-18"
+}
