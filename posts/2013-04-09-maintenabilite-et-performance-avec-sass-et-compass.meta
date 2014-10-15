@@ -1,0 +1,12 @@
+{
+    "tags":                 ["CSS"],
+    "title":                "Maintenabilité et performance avec Sass et Compass",
+    "slug":                 "maintenabilite-et-performance-avec-sass-et-compass",
+    "status":               "published",
+    "meta_title":           "Maintenabilité et performance avec Sass et Compass",
+    "meta_description":     "Maintenabilité et performance avec Sass et Compass",
+    "meta_keywords":        ["Compass", "CSS", "Pré-processeur", "Sass"],
+    "thumbnail":			"/blog/medias/thumbnails/mic.gif",
+    "publish_by":           "faustine",
+    "publish_at":           "2013-04-09"
+}

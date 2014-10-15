@@ -1,33 +1,37 @@
 [{
-    "name":  "Vincent",
+    "name":  "Vincent BOUZERAN",
     "slug":  "vincent",
     "email": "vincent.bouzeran@elao.com"
 },{
-    "name":  "Guewen",
+    "name":  "Guewen FAIVRE",
     "slug":  "guewen",
     "email": "guewen.faivre@elao.com"
 },{
-    "name":  "Jeremy",
+    "name":  "Jeremy JAMES",
     "slug":  "jeremy",
     "email": "jeremy.james@elao.com"
 },{
-    "name":  "Xavier",
+    "name":  "Xavier GORSE",
     "slug":  "xavier",
     "email": "xavier.gorse@elao.com"
 },{
-    "name":  "Benjamin",
+    "name":  "Benjamin LEVEQUE",
     "slug":  "benjamin",
     "email": "benjamin.leveque@elao.com"
 },{
-    "name":  "Thomas Jarrand",
+    "name":  "Thomas JARRAND",
     "slug":  "tom32i",
     "email": "thomas.jarrand@elao.com"
 },{
-    "name":  "Tristan Bessoussa",
+    "name":  "Tristan BESSOUSSA",
     "slug":  "tristan",
     "email": "tristan.bessoussa@elao.com"
 },{
-    "name":  "Johan",
+    "name":  "Johan LOPES",
     "slug":  "johan",
     "email": "johan.lopes@elao.com"
+},{
+    "name":  "Faustine ZANNETTACCI",
+    "slug":  "faustine",
+    "email": "faustine.zannettacci@elao.com"
 }]
