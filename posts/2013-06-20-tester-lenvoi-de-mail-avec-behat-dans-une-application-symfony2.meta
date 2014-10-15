@@ -1,0 +1,13 @@
+{
+    "tags":                 ["Bahat", "Symfony2"],
+    "title":                "Tester l'envoi de mail avec Behat dans une application Symfony2",
+    "slug":                 "tester-lenvoi-de-mail-avec-behat-dans-une-application-symfony2",
+    "status":               "published",
+    "meta_title":           "Tester l'envoi de mail avec Behat dans une application Symfony2",
+    "meta_description":     "Comment tester l'envoi de mail avec Behat dans une application Symfony2",
+    "meta_keywords":        ["Behat", "Symfony2", "Test"],
+    "publish_by":           "benjamin",
+    "publish_at":           "2013-06-20",
+    "picture":              "/public/images/test1.jpg",
+    "thumbnail":			""
+}

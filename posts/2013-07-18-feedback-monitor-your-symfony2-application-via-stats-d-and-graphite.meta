@@ -1,0 +1,11 @@
+{
+    "tags":                 ["Carbon", "Graphite", "Monitoring", "Stats.d", "Symfony", "Symfony2", "Webperf"],
+    "title":                "Feedback : Monitor your Symfony2 application via Stats.d and Graphite",
+    "slug":                 "feedback-monitor-your-symfony2-application-via-stats-d-and-graphite",
+    "status":               "published",
+    "meta_title":           "Feedback : Monitor your Symfony2 application via Stats.d and Graphite",
+    "meta_description":     "Feedback : Monitor your Symfony2 application via Stats.d and Graphite",
+    "publish_by":           "tristan",
+    "publish_at":           "2013-07-18",
+    "picture":              "/public/images/test1.jpg"
+}
