@@ -1,9 +1,6 @@
-
 Ça peut être pratique d'être informé quand votre application crash sur un mobile. Mais le mieux ça serait d'avoir la pile d'appels non ? Pour le débug y a pas mieux.
 
 Mais comment le savoir et avoir ces infos ?
-
-<!--more-->
 
 Des erreurs tout le monde en fait, des bugs il y en a toujours, mais c'est notre devoir de les éradiquer. L'idée est de se pointer au carrefour où tous les bugs passent et de les attraper au vol.
 
@@ -11,86 +8,76 @@ Du coup, on va donc se déclarer apte à recevoir des exceptions, la passer dans
 
 Je vous passe les détails sur le script de traitement de comment il marche en interne, pour me focaliser sur "Comment mettre ça en place ?".
 
-# On se déclare apte à prendre les bugs
+### On se déclare apte à prendre les bugs
 
-<pre id="line1"><div class="codecolorer-container objc vibrant" style="overflow:auto;white-space:nowrap;width:100%;">
-  <div class="objc codecolorer">
-    <span class="sy0">-</span> <span class="br0">&#40;</span><span class="kw4">BOOL</span><span class="br0">&#41;</span>application<span class="sy0">:</span><span class="br0">&#40;</span>UIApplication <span class="sy0">*</span><span class="br0">&#41;</span>application didFinishLaunchingWithOptions<span class="sy0">:</span><span class="br0">&#40;</span><a href="http://developer.apple.com/documentation/Cocoa/Reference/Foundation/Classes/NSDictionary_Class/"><span class="kw5">NSDictionary</span></a> <span class="sy0">*</span><span class="br0">&#41;</span>launchOptions<br />
-    <span class="br0">&#123;</span><br />
-        <span class="co2">// Je prends les bugs, et je les passe à une méthode du script</span><br />
-        NSSetUncaughtExceptionHandler<span class="br0">&#40;</span><span class="sy0">&</span>amp;UncaughtExceptionHandler<span class="br0">&#41;</span>;<br />
-        <span class="co2">// Je dis au script, attrape ce que tu peux (SIGABRT, SIGQUIT etc)</span><br />
-        SetupUncaughtSignals<span class="br0">&#40;</span><span class="br0">&#41;</span>;<br />
-        <span class="co2">// Là c'est notre code pour envoyer les erreurs !</span><br />
-        <span class="br0">&#91;</span>self sendBugsIfPresent<span class="br0">&#93;</span>;<br />
-    <br />
-        self.window <span class="sy0">=</span> <span class="br0">&#91;</span><span class="br0">&#91;</span>UIWindow alloc<span class="br0">&#93;</span> initWithFrame<span class="sy0">:</span><span class="br0">&#91;</span><span class="br0">&#91;</span>UIScreen mainScreen<span class="br0">&#93;</span> bounds<span class="br0">&#93;</span><span class="br0">&#93;</span>;<br />
-        <span class="co2">// Override point for customization after application launch.</span><br />
-        UIViewController <span class="sy0">*</span>viewController1 <span class="sy0">=</span> <span class="br0">&#91;</span><span class="br0">&#91;</span>FirstViewController alloc<span class="br0">&#93;</span> initWithNibName<span class="sy0">:</span><span class="co3">@</span><span class="st0">"FirstViewController"</span> bundle<span class="sy0">:</span><span class="kw2">nil</span><span class="br0">&#93;</span>;<br />
-        UIViewController <span class="sy0">*</span>viewController2 <span class="sy0">=</span> <span class="br0">&#91;</span><span class="br0">&#91;</span>SecondViewController alloc<span class="br0">&#93;</span> initWithNibName<span class="sy0">:</span><span class="co3">@</span><span class="st0">"SecondViewController"</span> bundle<span class="sy0">:</span><span class="kw2">nil</span><span class="br0">&#93;</span>;<br />
-        self.tabBarController <span class="sy0">=</span> <span class="br0">&#91;</span><span class="br0">&#91;</span>UITabBarController alloc<span class="br0">&#93;</span> init<span class="br0">&#93;</span>;<br />
-        self.tabBarController.viewControllers <span class="sy0">=</span> <span class="br0">&#91;</span><a href="http://developer.apple.com/documentation/Cocoa/Reference/Foundation/Classes/NSArray_Class/"><span class="kw5">NSArray</span></a> arrayWithObjects<span class="sy0">:</span>viewController1, viewController2, <span class="kw2">nil</span><span class="br0">&#93;</span>;<br />
-        self.window.rootViewController <span class="sy0">=</span> self.tabBarController;<br />
-        <span class="br0">&#91;</span>self.window makeKeyAndVisible<span class="br0">&#93;</span>;<br />
-    <br />
-        <span class="kw1">return</span> <span class="kw2">YES</span>;<br />
-    <span class="br0">&#125;</span>
-  </div>
-</div>
+```
+- (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
+{
+    // Je prends les bugs, et je les passe à une méthode du script
+    NSSetUncaughtExceptionHandler(&amp;UncaughtExceptionHandler);
+    // Je dis au script, attrape ce que tu peux (SIGABRT, SIGQUIT etc)
+    SetupUncaughtSignals();
+    // Là c'est notre code pour envoyer les erreurs !
+    [self sendBugsIfPresent];
 
-</pre>
+    self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
+    // Override point for customization after application launch.
+    UIViewController *viewController1 = [[FirstViewController alloc] initWithNibName:@"FirstViewController" bundle:nil];
+    UIViewController *viewController2 = [[SecondViewController alloc] initWithNibName:@"SecondViewController" bundle:nil];
+    self.tabBarController = [[UITabBarController alloc] init];
+    self.tabBarController.viewControllers = [NSArray arrayWithObjects:viewController1, viewController2, nil];
+    self.window.rootViewController = self.tabBarController;
+    [self.window makeKeyAndVisible];
 
-#  On regarde si un rapport d'erreur est dispo, on envoie
+    return YES;
+}
+```
 
-Ici, on a fait le choix de proposer à l'utilisateur de l'envoyer par mail, du coup dans un premier temps, on lui affiche une UIAlertView, puis en fonction de son choix, on prépare un mail.
+### On regarde si un rapport d'erreur est dispo, on envoie
 
-Veuillez noter l'utilisation d'une variable "globale" GBug qui contiendra dans une chaine toute le rapport d'erreur. C'est le script de traitement qui déclare cette variable.
+Ici, on a fait le choix de proposer à l'utilisateur de l'envoyer par mail, du coup dans un premier temps, on lui affiche une `UIAlertView`, puis en fonction de son choix, on prépare un mail.
 
-<pre id="line1"><div class="codecolorer-container objc vibrant" style="overflow:auto;white-space:nowrap;width:100%;">
-  <div class="objc codecolorer">
-    <span class="sy0">-</span> <span class="br0">&#40;</span><span class="kw4">void</span><span class="br0">&#41;</span>sendBugsIfPresent<br />
-    <span class="br0">&#123;</span><br />
-        <a href="http://developer.apple.com/documentation/Cocoa/Reference/Foundation/Classes/NSError_Class/"><span class="kw5">NSError</span></a> <span class="sy0">*</span>err;<br />
-        <a href="http://developer.apple.com/documentation/Cocoa/Reference/Foundation/Classes/NSString_Class/"><span class="kw5">NSString</span></a> <span class="sy0">*</span>path <span class="sy0">=</span> GetBugReport<span class="br0">&#40;</span><span class="br0">&#41;</span>;<br />
-    <br />
-        GBug <span class="sy0">=</span> <span class="br0">&#91;</span><a href="http://developer.apple.com/documentation/Cocoa/Reference/Foundation/Classes/NSString_Class/"><span class="kw5">NSString</span></a> stringWithContentsOfFile<span class="sy0">:</span>path encoding<span class="sy0">:</span>NSUTF8StringEncoding error<span class="sy0">:&</span>amp;err<span class="br0">&#93;</span>;<br />
-        <span class="kw1">if</span> <span class="br0">&#40;</span>GBug <span class="sy0">==</span> <span class="kw2">nil</span><span class="br0">&#41;</span> <span class="kw1">return</span>;<br />
-        <span class="br0">&#91;</span><span class="br0">&#91;</span><a href="http://developer.apple.com/documentation/Cocoa/Reference/Foundation/Classes/NSFileManager_Class/"><span class="kw5">NSFileManager</span></a> defaultManager<span class="br0">&#93;</span> removeItemAtPath<span class="sy0">:</span>path error<span class="sy0">:&</span>amp;err<span class="br0">&#93;</span>;<br />
-    <br />
-        UIAlertView <span class="sy0">*</span>alert <span class="sy0">=</span> <span class="br0">&#91;</span><span class="br0">&#91;</span>UIAlertView alloc<span class="br0">&#93;</span> initWithTitle<span class="sy0">:</span><span class="co3">@</span><span class="st0">"Unexpected exception"</span><br />
-                                                        message<span class="sy0">:</span><span class="co3">@</span><span class="st0">"An unexpected exception was caught the last time this program ran. Send the developer a bug report by e-mail?"</span><br />
-                                                       delegate<span class="sy0">:</span>self<br />
-                                              cancelButtonTitle<span class="sy0">:</span><span class="co3">@</span><span class="st0">"Cancel"</span><br />
-                                              otherButtonTitles<span class="sy0">:</span><span class="co3">@</span><span class="st0">"Send Report"</span>,<span class="kw2">nil</span><span class="br0">&#93;</span>;<br />
-        <span class="br0">&#91;</span>alert show<span class="br0">&#93;</span>;<br />
-    <span class="br0">&#125;</span><br />
-    <br />
-    <span class="sy0">-</span> <span class="br0">&#40;</span><span class="kw4">void</span><span class="br0">&#41;</span>alertView<span class="sy0">:</span><span class="br0">&#40;</span>UIAlertView <span class="sy0">*</span><span class="br0">&#41;</span>alertView didDismissWithButtonIndex<span class="sy0">:</span><span class="br0">&#40;</span>NSInteger<span class="br0">&#41;</span>buttonIndex<br />
-    <span class="br0">&#123;</span><br />
-        <span class="kw1">if</span> <span class="br0">&#40;</span>buttonIndex <span class="sy0">==</span> <span class="nu0">1</span><span class="br0">&#41;</span> <span class="br0">&#123;</span><br />
-            <span class="coMULTI">/*<br />
-             *  Send an e-mail with the specified title.<br />
-             */</span><br />
-    <br />
-            <a href="http://developer.apple.com/documentation/Cocoa/Reference/Foundation/Classes/NSMutableString_Class/"><span class="kw5">NSMutableString</span></a> <span class="sy0">*</span>url <span class="sy0">=</span> <span class="br0">&#91;</span><a href="http://developer.apple.com/documentation/Cocoa/Reference/Foundation/Classes/NSMutableString_Class/"><span class="kw5">NSMutableString</span></a> stringWithCapacity<span class="sy0">:</span><span class="nu0">4096</span><span class="br0">&#93;</span>;<br />
-            <span class="br0">&#91;</span>url appendString<span class="sy0">:</span><span class="co3">@</span><span class="st0">"mailto:bugs@yourdomain.com?subject=Bug%20Report&amp;body="</span><span class="br0">&#93;</span>;<br />
-            <span class="br0">&#91;</span>url appendString<span class="sy0">:</span><span class="br0">&#91;</span>GBug stringByAddingPercentEscapesUsingEncoding<span class="sy0">:</span>NSUTF8StringEncoding<span class="br0">&#93;</span><span class="br0">&#93;</span>;<br />
-            <span class="br0">&#91;</span><span class="br0">&#91;</span>UIApplication sharedApplication<span class="br0">&#93;</span> openURL<span class="sy0">:</span><span class="br0">&#91;</span><a href="http://developer.apple.com/documentation/Cocoa/Reference/Foundation/Classes/NSURL_Class/"><span class="kw5">NSURL</span></a> URLWithString<span class="sy0">:</span>url<span class="br0">&#93;</span><span class="br0">&#93;</span>;<br />
-        <span class="br0">&#125;</span><br />
-    <br />
-    <span class="br0">&#125;</span>
-  </div>
-</div>
+Veuillez noter l'utilisation d'une variable "globale" `GBug` qui contiendra dans une chaine toute le rapport d'erreur. C'est le script de traitement qui déclare cette variable.
 
-</pre>
+```
+- (void)sendBugsIfPresent
+{
+    NSError *err;
+    NSString *path = GetBugReport();
 
-# Le script de traitement
+    GBug = [NSString stringWithContentsOfFile:path encoding:NSUTF8StringEncoding error:&amp;err];
+    if (GBug == nil) return;
+    [[NSFileManager defaultManager] removeItemAtPath:path error:&amp;err];
 
-Bien sûr tout le code suivant est à mettre dans un fichier "notif.c" ou autre, puis il faut l'inclure dans AppDelegate.m. C'est lui s'occupe de tout.
+    UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Unexpected exception"
+                                                    message:@"An unexpected exception was caught the last time this program ran. Send the developer a bug report by e-mail?"
+                                                   delegate:self
+                                          cancelButtonTitle:@"Cancel"
+                                          otherButtonTitles:@"Send Report",nil];
+    [alert show];
+}
 
-<noscript>
-  <pre><code class="language- ">
+- (void)alertView:(UIAlertView *)alertView didDismissWithButtonIndex:(NSInteger)buttonIndex
+{
+    if (buttonIndex == 1) {
+        /*
+         *  Send an e-mail with the specified title.
+         */
 
+        NSMutableString *url = [NSMutableString stringWithCapacity:4096];
+        [url appendString:@"mailto:bugs@yourdomain.com?subject=Bug%20Report&amp;body="];
+        [url appendString:[GBug stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding]];
+        [[UIApplication sharedApplication] openURL:[NSURL URLWithString:url]];
+    }
+
+}
+```
+
+### Le script de traitement
+
+Bien sûr tout le code suivant est à mettre dans un fichier `notif.c` ou autre, puis il faut l'inclure dans `AppDelegate.m`. C'est lui s'occupe de tout.
+
+```
 #include <execinfo.h>
 
 /************************************************************************/
@@ -260,9 +247,7 @@ void TerminateHandler(void)
 	NSLog(@"Error %@",buffer);
 	exit(0);
 }
+```
 
-</code></pre>
-</noscript>
-
-Notez que le script va mettre dans un fichier de l'application "bug.txt" le dernier rapport. Il y a donc un risque d'écrasement si plusieurs rapports non générés, mais non envoyés tout de suite.Il y a donc un petit chantier de développement pour rendre ce système moins couillon.
+Notez que le script va mettre dans un fichier de l'application `bug.txt` le dernier rapport. Il y a donc un risque d'écrasement si plusieurs rapports non générés, mais non envoyés tout de suite.Il y a donc un petit chantier de développement pour rendre ce système moins couillon.
 Sauvegarde en bdd local ? Fichier indexé par la date ? C'est à vous de voir !
