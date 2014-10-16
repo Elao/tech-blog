@@ -1,0 +1,12 @@
+{
+    "tags":                 ["Symfony","Symfony 2","Symfony Live"],
+    "title":                "Symfony Live 2012 - Les Conférences",
+    "slug":                 "symfony-live-2012-conferences",
+    "status":               "published",
+    "meta_title":           "Symfony Live 2012 - Les Conférences",
+    "meta_description":     "Symfony Live 2012 - Les Conférences",
+    "meta_keywords":        ["Symfony","Symfony 2","Symfony Live","Symfony2"],
+    "thumbnail":            "/blog/medias/thumbnails/mic.gif",
+    "publish_by":           "guewen-faivre",
+    "publish_at":           "2012-06-10"
+}

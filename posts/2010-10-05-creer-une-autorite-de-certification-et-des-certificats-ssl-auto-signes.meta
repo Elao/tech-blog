@@ -1,0 +1,12 @@
+{
+    "tags":                 ["Linux","S\u00e9curit\u00e9"],
+    "title":                "Créer une autorité de certification et des certificats SSL auto-signés",
+    "slug":                 "creer-une-autorite-de-certification-et-des-certificats-ssl-auto-signes",
+    "status":               "published",
+    "meta_title":           "Créer une autorité de certification et des certificats SSL auto-signés",
+    "meta_description":     "Créer une autorité de certification et des certificats SSL auto-signés",
+    "meta_keywords":        ["Apache","auto-sign\u00e9","certificat","Debian","lenny","SSL"],
+    "thumbnail":            "/blog/medias/thumbnails/mic.gif",
+    "publish_by":           "guewen-faivre",
+    "publish_at":           "2010-10-05"
+}

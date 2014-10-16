@@ -7,6 +7,6 @@
     "meta_description":     "Utilisation de l'évènement kernel.terminate sous Symfony2",
     "meta_keywords":        ["event dispatcher", "kernel.terminate", "symfony", "php"],
     "thumbnail":            "/blog/medias/thumbnails/mic.gif",
-    "publish_by":           "tristan",
+    "publish_by":           "tristan-bessoussa",
     "publish_at":           "2013-07-18"
 }

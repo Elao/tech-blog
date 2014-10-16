@@ -1,0 +1,12 @@
+{
+    "tags":                 ["Proxmox","Virtualisation"],
+    "title":                "Error inserting dm_snapshot",
+    "slug":                 "error-inserting-dm_snapshot",
+    "status":               "published",
+    "meta_title":           "Error inserting dm_snapshot",
+    "meta_description":     "Error inserting dm_snapshot",
+    "meta_keywords":        ["proxmox","snapshot","virtualisation"],
+    "thumbnail":            "/blog/medias/thumbnails/mic.gif",
+    "publish_by":           "guewen-faivre",
+    "publish_at":           "2012-12-14"
+}

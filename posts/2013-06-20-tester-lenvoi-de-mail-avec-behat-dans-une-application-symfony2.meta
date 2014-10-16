@@ -7,6 +7,6 @@
     "meta_description":     "Comment tester l'envoi de mail avec Behat dans une application Symfony2",
     "meta_keywords":        ["Behat", "Symfony2", "Test"],
     "thumbnail":			"/blog/medias/thumbnails/mic.gif",
-    "publish_by":           "benjamin",
+    "publish_by":           "benjamin-leveque",
     "publish_at":           "2013-06-20"
 }

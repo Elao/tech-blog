@@ -1,37 +1,69 @@
 [{
     "name":  "Vincent BOUZERAN",
-    "slug":  "vincent",
+    "slug":  "vincent-bouzeran",
     "email": "vincent.bouzeran@elao.com"
 },{
     "name":  "Guewen FAIVRE",
-    "slug":  "guewen",
+    "slug":  "guewen-faivre",
     "email": "guewen.faivre@elao.com"
 },{
+    "name":  "Julien BARRON",
+    "slug":  "julien-barron",
+    "email": "julien.barron@elao.com"
+},{
     "name":  "Jeremy JAMES",
-    "slug":  "jeremy",
+    "slug":  "jeremy-james",
     "email": "jeremy.james@elao.com"
 },{
+    "name":  "Camille NOWAK",
+    "slug":  "camille-nowak",
+    "email": "camille.nowak@elao.com"
+},{
+    "name":  "Jérémy FAGIS",
+    "slug":  "jeremy-fagis",
+    "email": "jeremy.fagis@elao.com"
+},{
     "name":  "Xavier GORSE",
-    "slug":  "xavier",
+    "slug":  "xavier-gorse",
     "email": "xavier.gorse@elao.com"
 },{
     "name":  "Benjamin LEVEQUE",
-    "slug":  "benjamin",
+    "slug":  "benjamin-leveque",
     "email": "benjamin.leveque@elao.com"
 },{
     "name":  "Thomas JARRAND",
-    "slug":  "tom32i",
+    "slug":  "thomas-jarrand",
     "email": "thomas.jarrand@elao.com"
 },{
     "name":  "Tristan BESSOUSSA",
-    "slug":  "tristan",
+    "slug":  "tristan-bessoussa",
     "email": "tristan.bessoussa@elao.com"
 },{
     "name":  "Johan LOPES",
-    "slug":  "johan",
+    "slug":  "johan-lopes",
     "email": "johan.lopes@elao.com"
 },{
+    "name":  "Emeric KASBARIAN",
+    "slug":  "emeric-kasbarian",
+    "email": "emeric.kasbarian@elao.com"
+},{
+    "name":  "Florian REY",
+    "slug":  "florian-rey",
+    "email": "florian.rey@elao.com"
+},{
+    "name":  "Johan GAULUPEAU",
+    "slug":  "johan-gaulupeau",
+    "email": "johan.gaulupeau@elao.com"
+},{
+    "name":  "Guillaume CHAVE",
+    "slug":  "guillaume-chave",
+    "email": "guillaume.chave@elao.com"
+},{
+    "name":  "Xavier ROLDO",
+    "slug":  "xavier-roldo",
+    "email": "xavier.roldo@elao.com"
+},{
     "name":  "Faustine ZANNETTACCI",
-    "slug":  "faustine",
+    "slug":  "faustine-zannettacci",
     "email": "faustine.zannettacci@elao.com"
 }]

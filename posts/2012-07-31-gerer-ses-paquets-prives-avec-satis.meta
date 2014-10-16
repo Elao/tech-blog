@@ -1,0 +1,12 @@
+{
+    "tags":                 ["GIT","PHP","Symfony 2"],
+    "title":                "Gérer ses dépôts privés avec Satis",
+    "slug":                 "gerer-ses-paquets-prives-avec-satis",
+    "status":               "published",
+    "meta_title":           "Gérer ses dépôts privés avec Satis",
+    "meta_description":     "Gérer ses dépôts privés avec Satis",
+    "meta_keywords":        ["GIT","PHP","Satis","Symfony2"],
+    "thumbnail":            "/blog/medias/thumbnails/mic.gif",
+    "publish_by":           "benjamin-leveque",
+    "publish_at":           "2012-07-31"
+}

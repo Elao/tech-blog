@@ -1,0 +1,12 @@
+{
+    "tags":                 ["Monitoring","Symfony 2"],
+    "title":                "Monitor your Symfony2 application via Stats.d and Graphite (2/2)",
+    "slug":                 "monitor-your-symfony2-application-via-stats-d-and-graphite-22",
+    "status":               "published",
+    "meta_title":           "Monitor your Symfony2 application via Stats.d and Graphite (2/2)",
+    "meta_description":     "Monitor your Symfony2 application via Stats.d and Graphite (2/2)",
+    "meta_keywords":        ["monitoring","Symfony2"],
+    "thumbnail":            "/blog/medias/thumbnails/mic.gif",
+    "publish_by":           "tristan-bessoussa",
+    "publish_at":           "2012-11-23"
+}

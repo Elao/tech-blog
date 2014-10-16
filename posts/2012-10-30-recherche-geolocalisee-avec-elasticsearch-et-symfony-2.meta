@@ -1,0 +1,12 @@
+{
+    "tags":                 ["Bundle","D\u00e9veloppement","Doctrine 2","PHP","Symfony 2"],
+    "title":                "Recherche géolocalisée avec Elasticsearch et Symfony 2",
+    "slug":                 "recherche-geolocalisee-avec-elasticsearch-et-symfony-2",
+    "status":               "published",
+    "meta_title":           "Recherche géolocalisée avec Elasticsearch et Symfony 2",
+    "meta_description":     "Recherche géolocalisée avec Elasticsearch et Symfony 2",
+    "meta_keywords":        ["ElasticSearch","FOQElasticaBundle","G\u00e9olocalisation","Lucene","Symfony 2"],
+    "thumbnail":            "/blog/medias/thumbnails/mic.gif",
+    "publish_by":           "johan-lopes",
+    "publish_at":           "2012-10-30"
+}

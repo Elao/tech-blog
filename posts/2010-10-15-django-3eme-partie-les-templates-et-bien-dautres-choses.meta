@@ -1,0 +1,12 @@
+{
+    "tags":                 ["Django","Python"],
+    "title":                "Django (3ème partie) : les templates, et bien d'autres choses ...",
+    "slug":                 "django-3eme-partie-les-templates-et-bien-dautres-choses",
+    "status":               "published",
+    "meta_title":           "Django (3ème partie) : les templates, et bien d'autres choses ...",
+    "meta_description":     "Django (3ème partie) : les templates, et bien d'autres choses ...",
+    "meta_keywords":        ["Django","Framework","MVC","Python"],
+    "thumbnail":            "/blog/medias/thumbnails/mic.gif",
+    "publish_by":           "xavier-roldo",
+    "publish_at":           "2010-10-15"
+}

@@ -1,0 +1,12 @@
+{
+    "tags":                 ["Symfony 2"],
+    "title":                "Désactivation locale du JMSI18nRoutingBundle",
+    "slug":                 "desactivation-locale-du-jmsi18nroutingbundle",
+    "status":               "published",
+    "meta_title":           "Désactivation locale du JMSI18nRoutingBundle",
+    "meta_description":     "Désactivation locale du JMSI18nRoutingBundle",
+    "meta_keywords":        ["PHP","Symfony","Symfony 2","Symfony2"],
+    "thumbnail":            "/blog/medias/thumbnails/mic.gif",
+    "publish_by":           "benjamin-leveque",
+    "publish_at":           "2012-07-03"
+}

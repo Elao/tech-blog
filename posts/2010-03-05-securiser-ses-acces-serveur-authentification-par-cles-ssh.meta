@@ -1,0 +1,12 @@
+{
+    "tags":                 ["S\u00e9curit\u00e9"],
+    "title":                "Sécuriser ses accès serveur: Authentification par clés SSH",
+    "slug":                 "securiser-ses-acces-serveur-authentification-par-cles-ssh",
+    "status":               "published",
+    "meta_title":           "Sécuriser ses accès serveur: Authentification par clés SSH",
+    "meta_description":     "Sécuriser ses accès serveur: Authentification par clés SSH",
+    "meta_keywords":        ["authentification","cl\u00e9","S\u00e9curit\u00e9","ssh"],
+    "thumbnail":            "/blog/medias/thumbnails/mic.gif",
+    "publish_by":           "guewen-faivre",
+    "publish_at":           "2010-03-05"
+}

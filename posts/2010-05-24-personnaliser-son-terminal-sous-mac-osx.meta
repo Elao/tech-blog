@@ -1,0 +1,12 @@
+{
+    "tags":                 ["Mac OSX","Terminal"],
+    "title":                "Personnaliser son terminal sous mac OSX",
+    "slug":                 "personnaliser-son-terminal-sous-mac-osx",
+    "status":               "published",
+    "meta_title":           "Personnaliser son terminal sous mac OSX",
+    "meta_description":     "Personnaliser son terminal sous mac OSX",
+    "meta_keywords":        [".bashrc","mac osx","Terminal"],
+    "thumbnail":            "/blog/medias/thumbnails/mic.gif",
+    "publish_by":           "guewen-faivre",
+    "publish_at":           "2010-05-24"
+}

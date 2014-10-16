@@ -1,0 +1,12 @@
+{
+    "tags":                 ["D\u00e9veloppement","Doctrine 2","PHPUnit","Symfony 2"],
+    "title":                "A la découverte de Symfony 2 : tests unitaires sur le modèle (PHPUnit et Doctrine 2)",
+    "slug":                 "a-la-decouverte-de-symfony-2-tests-unitaires-sur-le-modele-phpunit-et-doctrine-2",
+    "status":               "published",
+    "meta_title":           "A la découverte de Symfony 2 : tests unitaires sur le modèle (PHPUnit et Doctrine 2)",
+    "meta_description":     "A la découverte de Symfony 2 : tests unitaires sur le modèle (PHPUnit et Doctrine 2)",
+    "meta_keywords":        ["Doctrine 2","PHP","PHPUnit","Symfony2"],
+    "thumbnail":            "/blog/medias/thumbnails/mic.gif",
+    "publish_by":           "xavier-roldo",
+    "publish_at":           "2010-11-29"
+}

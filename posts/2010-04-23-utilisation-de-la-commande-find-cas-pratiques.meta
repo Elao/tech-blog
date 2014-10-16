@@ -1,0 +1,12 @@
+{
+    "tags":                 ["Linux","Trucs et astuces"],
+    "title":                "Utilisation de la commande find - cas pratiques",
+    "slug":                 "utilisation-de-la-commande-find-cas-pratiques",
+    "status":               "published",
+    "meta_title":           "Utilisation de la commande find - cas pratiques",
+    "meta_description":     "Utilisation de la commande find - cas pratiques",
+    "meta_keywords":        ["commande","find","Linux"],
+    "thumbnail":            "/blog/medias/thumbnails/mic.gif",
+    "publish_by":           "guewen-faivre",
+    "publish_at":           "2010-04-23"
+}
