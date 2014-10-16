@@ -1,4 +1,4 @@
-L'augmentation croissante du nombre de règles et de fichiers, le souci de la compatibilité des navigateurs, l'utilisation de CSS3, le travail en équipe, &#8230; sont autant de facteurs qui complexifient le code CSS et peuvent le rendre hors de contrôle. L’objectif de cet article est de vous présenter les différentes fonctionnalités du préprocesseur Sass et son utilisation avec Compass qui vous aideront à gagner du temps sur vos intégrations.
+L'augmentation croissante du nombre de règles et de fichiers, le souci de la compatibilité des navigateurs, l'utilisation de CSS3, le travail en équipe, ... sont autant de facteurs qui complexifient le code CSS et peuvent le rendre hors de contrôle. L’objectif de cet article est de vous présenter les différentes fonctionnalités du préprocesseur Sass et son utilisation avec Compass qui vous aideront à gagner du temps sur vos intégrations.
 
 ### 1. Sass
 
@@ -126,7 +126,7 @@ Sass possède deux syntaxes :
  }
 ```
 
-*   Le SASS s'écrit sans élément de ponctuation. L’indentation marque l’imbrication des propriétés, des classes, etc &#8230;; et le saut de ligne remplace le point-virgule.
+*   Le SASS s'écrit sans élément de ponctuation. L’indentation marque l’imbrication des propriétés, des classes, etc ...; et le saut de ligne remplace le point-virgule.
 
 ```
 /* SASS */
@@ -201,7 +201,7 @@ Si les nouveautés apportées par CSS3 sont assez fantastiques et prometteuses, 
 
 Et pour le bonheur de tout intégrateur, Compass est capable de générer et d’optimiser la création de sprites.
 
-Dans un premier temps, il suffit de regrouper toutes les images dans un dossier. Par exemple, nous plaçons, quatre icones dans le dossier &#8220;icons&#8221; : home.png, about.png, contact.png, logout.png.
+Dans un premier temps, il suffit de regrouper toutes les images dans un dossier. Par exemple, nous plaçons, quatre icones dans le dossier "icons" : home.png, about.png, contact.png, logout.png.
 
 Dans un second temps, dans votre fichier scss, il faut importer les images puis générer le sprite.
 
@@ -211,7 +211,7 @@ Dans un second temps, dans votre fichier scss, il faut importer les images puis 
 $arrow-sprite-dimensions: true; /*Calculer automatiquement les dimensions */
 ```
 
-Le sprite généré va inclure autant de classes qu'il y a d'images. Chaque élément aura comme classe &#8220;nomdudossierparent-nomdufichier&#8221;. Dans l'exemple, la première icone aura ainsi comme classe &#8220;icons-home&#8221;
+Le sprite généré va inclure autant de classes qu'il y a d'images. Chaque élément aura comme classe "nomdudossierparent-nomdufichier". Dans l'exemple, la première icone aura ainsi comme classe "icons-home"
 
 CSS généré :
 

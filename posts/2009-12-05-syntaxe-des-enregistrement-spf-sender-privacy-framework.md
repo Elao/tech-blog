@@ -1,208 +1,208 @@
-Dans cet article je vais tent&eacute; d&#8217;expliquer comment fonctionne actuellement le SPF pour nos emails, mais &eacute;galement de d&eacute;tailler au maximum les diff&eacute;rentes options que fournit le framework afin de cr&eacute;er nos propres enregistrements. L&#8217;ensemble de ces options peuvent &ecirc;tre retrouv&eacute;es sur le site officiel (anglais): <a href="http://www.openspf.org/SPF_Record_Syntax" title="OpenSPF">OpenSPF.org</a>
+Dans cet article je vais tenté d'expliquer comment fonctionne actuellement le SPF pour nos emails, mais également de détailler au maximum les différentes options que fournit le framework afin de créer nos propres enregistrements. L'ensemble de ces options peuvent être retrouvées sur le site officiel (anglais): <a href="http://www.openspf.org/SPF_Record_Syntax" title="OpenSPF">OpenSPF.org</a>
 
-Le SPF est une sp&eacute;cification publi&eacute;e le 28 Avril 2006, pour la RFC c&#8217;est <a href="http://www.openspf.org/RFC_4408" title="RFC_4408">ici</a>
+Le SPF est une spécification publiée le 28 Avril 2006, pour la RFC c'est <a href="http://www.openspf.org/RFC_4408" title="RFC_4408">ici</a>
 
-Ce qui suit est une traduction du manuel officiel que l&#8217;on peut trouver sur le site ci-dessus: Les noms de domaines d&eacute;finissent 0 ou plusieurs m&eacute;canismes. Ces m&eacute;canismes peuvent &ecirc;tre utilis&eacute;s pour d&eacute;crire le param&eacute;trage des h&ocirc;tes d&eacute;sign&eacute;s comme serveurs de mail sortant, c&#8217;est &agrave; dire autoris&eacute;s &agrave; envoyer des emails pour le domaine concern&eacute;.
+Ce qui suit est une traduction du manuel officiel que l'on peut trouver sur le site ci-dessus: Les noms de domaines définissent 0 ou plusieurs mécanismes. Ces mécanismes peuvent être utilisés pour décrire le paramétrage des hôtes désignés comme serveurs de mail sortant, c'est à dire autorisés à envoyer des emails pour le domaine concerné.
 
 
 <tt><a href="http://www.openspf.org/SPF_Record_Syntax#all" class="link-wiki link-intrapage">all</a></tt> | <tt><a href="http://www.openspf.org/SPF_Record_Syntax#ip4" class="link-wiki link-intrapage">ip4</a></tt> | <tt><a href="http://www.openspf.org/SPF_Record_Syntax#ip6" class="link-wiki link-intrapage">ip6</a></tt> | <tt><a href="http://www.openspf.org/SPF_Record_Syntax#a" class="link-wiki link-intrapage">a</a></tt> | <tt><a href="http://www.openspf.org/SPF_Record_Syntax#mx" class="link-wiki link-intrapage">mx</a></tt> | <tt><a href="http://www.openspf.org/SPF_Record_Syntax#ptr" class="link-wiki link-intrapage">ptr</a></tt> | <tt><a href="http://www.openspf.org/SPF_Record_Syntax#exists" class="link-wiki link-intrapage">exists</a></tt> | <tt><a href="http://www.openspf.org/SPF_Record_Syntax#include" class="link-wiki link-intrapage">include</a></tt>
 
-  
-Chaque domaine peut &eacute;galement d&eacute;finir des &#8220;modificateurs&#8221;. Chacun d&#8217;entre eux ne peut apparaitre <strong>qu&#8217;une seule fois</strong> !
-  
+
+Chaque domaine peut également définir des "modificateurs". Chacun d'entre eux ne peut apparaitre <strong>qu'une seule fois</strong> !
+
 <tt><a href="http://www.openspf.org/SPF_Record_Syntax#redirect" class="link-wiki link-intrapage">redirect</a></tt> | <tt><a href="http://www.openspf.org/SPF_Record_Syntax#exp" class="link-wiki link-intrapage">exp</a></tt>
 
-## Les m&eacute;canismes
+## Les mécanismes
 
-#### Les m&eacute;canismes peuvent &ecirc;tre pr&eacute;fixer par l&#8217;un de ces quatres &#8220;qualificateurs&#8221;:
-  
-> &#8220;+&#8221; Pass (A pass&eacute; la v&eacute;rification)
+#### Les mécanismes peuvent être préfixer par l'un de ces quatres "qualificateurs":
 
-> &#8220;-&#8221; Fail (Echec)
+> "+" Pass (A passé la vérification)
 
-> &#8220;~&#8221; SoftFail (Echec non fatal)
+> "-" Fail (Echec)
 
-> &#8220;?&#8221; Neutral (Neutre)
+> "~" SoftFail (Echec non fatal)
 
-* Si un m&eacute;canisme abouti, la valeur de son qualificateur est utilis&eacute;e. Le qualificateur par d&eacute;faut est &#8220;+&#8221; (Pass).
+> "?" Neutral (Neutre)
+
+* Si un mécanisme abouti, la valeur de son qualificateur est utilisée. Le qualificateur par défaut est "+" (Pass).
 
 ```
 Par exemple: "v=spf1 -all" "v=spf1 a -all" "v=spf1 a mx -all" "v=spf1 +a +mx -all"
 ```
 
-Les m&eacute;canismes sont &eacute;valu&eacute;s dans l&#8217;ordre.
+Les mécanismes sont évalués dans l'ordre.
 
 
-* Si aucun m&eacute;canisme ou modificateur ne correspond, la r&eacute;ponse par d&eacute;faut est &#8220;Neutral&#8221; (Neutre). <br /> Si un domaine n&#8217;a pas d&#8217;enregistrement SPF, le r&eacute;sultat est &#8220;None&#8221; (Aucun).
- 
-* Si un domaine renvoi une erreur temporaire pendant la lecture DNS, vous aurez la r&eacute;ponse &#8220;TempError&#8221; (Erreur temporaire), elle est aussi appell&eacute;e &#8220;error&#8221; dans les anciennes documentations. 
-* Si une erreur de syntaxe ou d&#8217;&eacute;valuation apparait (par exemple le domaine renvoi un m&eacute;canisme non reconnu) le r&eacute;sultat est &#8220;PermError&#8221; (Erreur permanente, autrefois appell&eacute;e &#8220;Unknow&#8221; (inconnue)).
-  
-####    L&#8217;&eacute;valuation d&#8217;un enregistrement SPF peut retourner l&#8217;un de ces r&eacute;sultats:
+* Si aucun mécanisme ou modificateur ne correspond, la réponse par défaut est "Neutral" (Neutre). <br /> Si un domaine n'a pas d'enregistrement SPF, le résultat est "None" (Aucun).
+
+* Si un domaine renvoi une erreur temporaire pendant la lecture DNS, vous aurez la réponse "TempError" (Erreur temporaire), elle est aussi appellée "error" dans les anciennes documentations.
+* Si une erreur de syntaxe ou d'évaluation apparait (par exemple le domaine renvoi un mécanisme non reconnu) le résultat est "PermError" (Erreur permanente, autrefois appellée "Unknow" (inconnue)).
+
+####    L'évaluation d'un enregistrement SPF peut retourner l'un de ces résultats:
 
   <div class="wookee-box-gray">
     <table width="505" height="239" border="1" align="center" style="">
       <tr valign="middle" align="center">
         <td style="text-align: justify;">
-          <strong>R&eacute;sultat</strong>
+          <strong>Résultat</strong>
         </td>
-        
+
         <td style="text-align: justify;">
           <strong>Explication</strong>
         </td>
-        
+
         <td style="text-align: justify;">
-          <strong>Action r&eacute;sultante</strong>
+          <strong>Action résultante</strong>
         </td>
       </tr>
-      
+
       <tr valign="middle" align="center">
         <td style="text-align: justify;">
           Pass
         </td>
-        
+
         <td style="text-align: justify;">
-          L&#8217;enregistrement SPF a d&eacute;sign&eacute; l&#8217;h&ocirc;te comme <strong>autoris&eacute;</strong> &agrave; envoyer
+          L'enregistrement SPF a désigné l'hôte comme <strong>autorisé</strong> à envoyer
         </td>
-        
+
         <td style="text-align: justify;">
-          Accept&eacute;
+          Accepté
         </td>
       </tr>
-      
+
       <tr valign="middle" align="center">
         <td style="text-align: justify;">
           Fail
         </td>
-        
+
         <td style="text-align: justify;">
-          L&#8217;enregistrement SPF a d&eacute;sign&eacute; l&#8217;h&ocirc;te comme <strong>non autoris&eacute;</strong> &agrave; envoyer
+          L'enregistrement SPF a désigné l'hôte comme <strong>non autorisé</strong> à envoyer
         </td>
-        
+
         <td style="text-align: justify;">
-          Rejet&eacute;
+          Rejeté
         </td>
       </tr>
-      
+
       <tr valign="middle" align="center">
         <td style="text-align: justify;">
           SoftFail
         </td>
-        
+
         <td style="text-align: justify;">
-          L&#8217;enregistrement SPF a d&eacute;sign&eacute; l&#8217;h&ocirc;te comme <strong>non autoris&eacute;</strong> &agrave; envoyer mais est en cours de transition
+          L'enregistrement SPF a désigné l'hôte comme <strong>non autorisé</strong> à envoyer mais est en cours de transition
         </td>
-        
+
         <td style="text-align: justify;">
-          Accept&eacute; mais relev&eacute;
+          Accepté mais relevé
         </td>
       </tr>
-      
+
       <tr valign="middle" align="center">
         <td style="text-align: justify;">
           Neutral
         </td>
-        
+
         <td style="text-align: justify;">
-          L&#8217;enregistrement SPF a explicitement renvoy&eacute; que rien ne pouvait &ecirc;tre dit &agrave; propos de la validit&eacute; de la requ&ecirc;te
+          L'enregistrement SPF a explicitement renvoyé que rien ne pouvait être dit à propos de la validité de la requête
         </td>
-        
+
         <td style="text-align: justify;">
-          Accept&eacute;
+          Accepté
         </td>
       </tr>
-      
+
       <tr valign="middle" align="center">
         <td style="text-align: justify;">
           None
         </td>
-        
+
         <td style="text-align: justify;">
-          Le domaine n&#8217;a pas d&#8217;enregistrement SPF ou alors l&#8217;enregistrement SPF n&#8217;&eacute;value pas un r&eacute;sultat
+          Le domaine n'a pas d'enregistrement SPF ou alors l'enregistrement SPF n'évalue pas un résultat
         </td>
-        
+
         <td style="text-align: justify;">
-          Accept&eacute;
+          Accepté
         </td>
       </tr>
-      
+
       <tr valign="middle" align="center">
         <td style="text-align: justify;">
           PermError
         </td>
-        
+
         <td style="text-align: justify;">
-          Une erreur permanente a &eacute;t&eacute; renvoy&eacute;e (badly formatted SPF record). (Enregistrement SPF mal format&eacute;)
+          Une erreur permanente a été renvoyée (badly formatted SPF record). (Enregistrement SPF mal formaté)
         </td>
-        
+
         <td style="text-align: justify;">
-          Non sp&eacute;cifi&eacute;
+          Non spécifié
         </td>
       </tr>
-      
+
       <tr valign="middle" align="center">
         <td style="text-align: justify;">
           TempError
         </td>
-        
+
         <td style="text-align: justify;">
-          Une erreur passag&egrave;re (temporaire) est arriv&eacute;e
+          Une erreur passag&egrave;re (temporaire) est arrivée
         </td>
-        
+
         <td style="text-align: justify;">
-          Accept&eacute; ou rejet&eacute;
+          Accepté ou rejeté
         </td>
       </tr>
     </table>
   </div>
-  
-### Le m&eacute;canisme &#8220;all&#8221;
 
-Ce m&eacute;canisme correspond toujours, on le retrouve habituellement &agrave; la fin de l&#8217;enregistrement.
-  
+### Le mécanisme "all"
+
+Ce mécanisme correspond toujours, on le retrouve habituellement à la fin de l'enregistrement.
+
 <strong>Exemples:</strong>
 
 ```
 "v=spf1 mx -all"
 ```
-<i>Autorise les noms de domaine de type MX &agrave; envoyer des mail pour le domaine, interdit tous les autres.</i>
+<i>Autorise les noms de domaine de type MX à envoyer des mail pour le domaine, interdit tous les autres.</i>
 
 ```
 "v=spf1 -all"
 ```
 
-<i>Le domaine n&#8217;envoie pas du tout d&#8217;email.</i>
+<i>Le domaine n'envoie pas du tout d'email.</i>
 
 ```
 "v=spf1 +all"
 ```
 
-<i>Le propri&eacute;taire du domaine consid&egrave;re que le SPF est inutile ou alors ne s&#8217;en pr&eacute;occupe pas.</i>
+<i>Le propriétaire du domaine consid&egrave;re que le SPF est inutile ou alors ne s'en préoccupe pas.</i>
 
-### Le m&eacute;canisme &#8220;ip4&#8243;
+### Le mécanisme "ip4&#8243;
 
 ```
 ip4:
 ip4:/
 ```
 
-L&#8217;argument correspondant au m&eacute;canisme &#8220;ip4&#8243; est une d&#8217;adresse de r&eacute;seau IPv4. S&#8217;il n&#8217;y a pas de &#8220;prefix-length&#8221; fourni, /32 est consid&eacute;r&eacute; par d&eacute;faut.
-  
+L'argument correspondant au mécanisme "ip4&#8243; est une d'adresse de réseau IPv4. S'il n'y a pas de "prefix-length" fourni, /32 est considéré par défaut.
+
 <strong>Exemple:</strong>:
- 
+
 ```
 "v=spf1 ip4:192.168.0.1/16 -all"
 ```
 <i>Autorise toutes les adresses IP comprisent entre 192.168.0.1 et 192.168.255.255.</i>
 
-### Le m&eacute;canisme &#8220;ip6&#8243;
+### Le mécanisme "ip6&#8243;
 
 ```
 ip6:
 ip6:/
 ```
 
-L&#8217;argument correspondant au m&eacute;canisme &#8220;ip6&#8243; est une d&#8217;adresse de r&eacute;seau IPv6. S&#8217;il n&#8217;y a pas de &#8220;prefix-length&#8221; fourni, /128 est consid&eacute;r&eacute; par d&eacute;faut.
+L'argument correspondant au mécanisme "ip6&#8243; est une d'adresse de réseau IPv6. S'il n'y a pas de "prefix-length" fourni, /128 est considéré par défaut.
 
 <strong>Exemple:</strong>
 
@@ -217,7 +217,7 @@ L&#8217;argument correspondant au m&eacute;canisme &#8220;ip6&#8243; est une d&#
 ```
 <i>Autorise toutes les adresse IPv6 comprise entre 1080::8:800:0000:0000 et 1080::8:800:FFFF:FFFF.</i>
 
-### Le m&eacute;canisme &#8220;a&#8221;
+### Le mécanisme "a"
 
 ```
 a
@@ -226,13 +226,13 @@ a:
 a:/
 ```
 
-Tous les enregistrement de type A pour le domaine sont test&eacute;s. Si l&#8217;IP du client est trouv&eacute;e parmis elles, le m&eacute;canisme correspond. Si le domaine n&#8217;est pas sp&eacute;cifi&eacute;, le domaine courant est utilis&eacute;. L&#8217;enregistrement A doit correspondre exactement &agrave; l&#8217;adresse IP du client, sans quoi le <em class="em1">prefix-length</em> est fourni, auquel cas chaque IP retourn&eacute;e par la recherche A sera &eacute;tendue &agrave; son pr&eacute;fix <a href="http://en.wikipedia.org/wiki/Classless_Inter-Domain_Routing" title="CIDR">CIDR</a> correspondant, et l&#8217;IP du client sera demand&eacute;e &agrave; l&#8217;int&eacute;rieur de ce sous-r&eacute;seau.
+Tous les enregistrement de type A pour le domaine sont testés. Si l'IP du client est trouvée parmis elles, le mécanisme correspond. Si le domaine n'est pas spécifié, le domaine courant est utilisé. L'enregistrement A doit correspondre exactement à l'adresse IP du client, sans quoi le <em class="em1">prefix-length</em> est fourni, auquel cas chaque IP retournée par la recherche A sera étendue à son préfix <a href="http://en.wikipedia.org/wiki/Classless_Inter-Domain_Routing" title="CIDR">CIDR</a> correspondant, et l'IP du client sera demandée à l'intérieur de ce sous-réseau.
 
 <strong>Exemple:</strong>
 ```
 "v=spf1 a -all"
 ```
-Le domaine courant est utilis&eacute;.
+Le domaine courant est utilisé.
 ```
 "v=spf1 a:example.com -all"
 ```
@@ -241,15 +241,15 @@ Equivalent si le domaine courant est example.com.
 "v=spf1 a:mailers.example.com -all"
 ```
 
-Peut-&ecirc;tre que example.com a choisi de lister explicitement tous les serveurs de courrier sortant dans un enregistrement A special sous mailers.example.com.
+Peut-être que example.com a choisi de lister explicitement tous les serveurs de courrier sortant dans un enregistrement A special sous mailers.example.com.
 
 ```
 "v=spf1 a/24 a:offsite.example.com/24 -all"
 ```
 
-Si example.com est r&eacute;solu vers 192.0.2.1, la classe C enti&egrave;re de 192.0.2.0/24 sera recherch&eacute;e pour l&#8217;IP du client. De m&ecirc;me pour offsite.example.com. Si plus d&#8217;un enregistrement de type A a &eacute;t&eacute; retourn&eacute;, chacun d&#8217;entre eux sera &eacute;tendu au sous r&eacute;seau <a href="http://en.wikipedia.org/wiki/Classless_Inter-Domain_Routing" title="CIDR">CIDR</a>.
+Si example.com est résolu vers 192.0.2.1, la classe C enti&egrave;re de 192.0.2.0/24 sera recherchée pour l'IP du client. De même pour offsite.example.com. Si plus d'un enregistrement de type A a été retourné, chacun d'entre eux sera étendu au sous réseau <a href="http://en.wikipedia.org/wiki/Classless_Inter-Domain_Routing" title="CIDR">CIDR</a>.
 
-### Le m&eacute;canisme &#8220;mx&#8221;
+### Le mécanisme "mx"
 
 ```
 mx
@@ -258,7 +258,7 @@ mx:
 mx:/
 ```
 
-L&#8217;ensemble des enregistrements A pour tous les enregistrements MX pour le domaine sont test&eacute;s dans l&#8217;ordre de leur priorit&eacute;. Si l&#8217;IP du client est trouv&eacute;e parmis eux, ce m&eacute;canisme correspond. Si le domaine n&#8217;est pas sp&eacute;cifi&eacute; alors le domaine courant est utilis&eacute;. L&#8217;enregistrement A doit correspondre exactement &agrave; l&#8217;adresse IP cliente, sans quoi le <em class="em1">prefix-length</em> est fourni, auquel cas chaque IP retourn&eacute;e par la recherche A sera &eacute;tendue &agrave; son pr&eacute;fix <a href="http://en.wikipedia.org/wiki/Classless_Inter-Domain_Routing" title="CIDR">CIDR</a> correspondant, et l&#8217;IP du client sera demand&eacute;e &agrave; l&#8217;int&eacute;rieur de ce sous-r&eacute;seau. 
+L'ensemble des enregistrements A pour tous les enregistrements MX pour le domaine sont testés dans l'ordre de leur priorité. Si l'IP du client est trouvée parmis eux, ce mécanisme correspond. Si le domaine n'est pas spécifié alors le domaine courant est utilisé. L'enregistrement A doit correspondre exactement à l'adresse IP cliente, sans quoi le <em class="em1">prefix-length</em> est fourni, auquel cas chaque IP retournée par la recherche A sera étendue à son préfix <a href="http://en.wikipedia.org/wiki/Classless_Inter-Domain_Routing" title="CIDR">CIDR</a> correspondant, et l'IP du client sera demandée à l'intérieur de ce sous-réseau.
 
 <strong>Exemples:</strong>
 
@@ -266,10 +266,10 @@ L&#8217;ensemble des enregistrements A pour tous les enregistrements MX pour le 
 "v=spf1 mx mx:deferrals.domain.com -all"
 ```
 
-Peut &ecirc;tre qu&#8217;un domaine a envoy&eacute; un mail via ce serveur MX ainsi qu&#8217;avec un autre ensemble de serveur dont le r&ocirc;le est de retenter l&#8217;envoi pour les domaines dont la distribution a &eacute;t&eacute; diff&eacute;r&eacute;e.
+Peut être qu'un domaine a envoyé un mail via ce serveur MX ainsi qu'avec un autre ensemble de serveur dont le rôle est de retenter l'envoi pour les domaines dont la distribution a été différée.
 
 ```
 "v=spf1 mx/24 mx:offsite.domain.com/24 -all"
 ```
 
-Peut &ecirc;tre qu&#8217;un serveur MX de domaine &agrave; re&ccedil;u un mail sur une adresse IP, mais a envoy&eacute; le mail sur une adresse IP diff&eacute;rente mais proche.
+Peut être qu'un serveur MX de domaine à re&ccedil;u un mail sur une adresse IP, mais a envoyé le mail sur une adresse IP différente mais proche.

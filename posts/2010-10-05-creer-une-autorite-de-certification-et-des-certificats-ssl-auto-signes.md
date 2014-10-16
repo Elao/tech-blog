@@ -1,10 +1,10 @@
 
 Bonjour à tous !
 
-Petit memo aujourd&#8217;hui pour les admin sys <img src="http://old-blog.elao.dev/wp-includes/images/smilies/icon_smile.gif" alt="icon smile Créer une autorité de certification et des certificats SSL auto signés" class="wp-smiley" title="Créer une autorité de certification et des certificats SSL auto signés" /> 
+Petit memo aujourd'hui pour les admin sys <img src="http://old-blog.elao.dev/wp-includes/images/smilies/icon_smile.gif" alt="icon smile Créer une autorité de certification et des certificats SSL auto signés" class="wp-smiley" title="Créer une autorité de certification et des certificats SSL auto signés" />
 
-Nous allons voir comment créer sa propre autorité de certification et créer ses propres certificats SSL auto-signés, toujours très utiles lorsque l&#8217;on a des problématiques de connexion sécurisée.  
-L&#8217;ensemble de ces manipulations ont été réalisées sur des serveurs Linux / Debian Lenny.
+Nous allons voir comment créer sa propre autorité de certification et créer ses propres certificats SSL auto-signés, toujours très utiles lorsque l'on a des problématiques de connexion sécurisée.
+L'ensemble de ces manipulations ont été réalisées sur des serveurs Linux / Debian Lenny.
 
 ## Créer son propre CA (Certificate Authority)
 
@@ -16,11 +16,11 @@ Nous allons commencer par créer une clé privée
   </div>
 </div>
 
-La protection par une &#8220;pass phrase&#8221; de votre clé est essentielle ici, en effet cette clé nous servira à signer **tous** les certificats de notre organisation, sa confidentialité doit donc être **primordiale**. Il va sans dire que le stockage de cette clé, dans l&#8217;idéal, doit être fait sur un support amovible  (type clé USB), et ne doit pas être conservée sur une machine accessible &#8220;publiquement&#8221; (j&#8217;entend ici directement connectée à internet).
+La protection par une "pass phrase" de votre clé est essentielle ici, en effet cette clé nous servira à signer **tous** les certificats de notre organisation, sa confidentialité doit donc être **primordiale**. Il va sans dire que le stockage de cette clé, dans l'idéal, doit être fait sur un support amovible  (type clé USB), et ne doit pas être conservée sur une machine accessible "publiquement" (j'entend ici directement connectée à internet).
 
 <span style="text-decoration: underline;"><strong>Note:</strong></span>
 
-Il est possible d&#8217;améliorer la qualité de la clé en fournissant comme source de données aléatoires un ou plusieurs fichiers avec l&#8217;option -rand, par exemple:
+Il est possible d'améliorer la qualité de la clé en fournissant comme source de données aléatoires un ou plusieurs fichiers avec l'option -rand, par exemple:
 
 <div class="codecolorer-container bash vibrant" style="overflow:auto;white-space:nowrap;width:100%;">
   <div class="bash codecolorer">
@@ -28,9 +28,9 @@ Il est possible d&#8217;améliorer la qualité de la clé en fournissant comme s
   </div>
 </div>
 
-Par défaut openssl utilisera /dev/urandom s&#8217;il existe, dans le cas contraire /dev/random, la source de données aléatoire est très importante pour la qualité du cryptage, si votre système ne dispose d&#8217;aucun de ces deux fichiers vous pouvez installer un générateur de nombre aléatoire comme [egd][1].
+Par défaut openssl utilisera /dev/urandom s'il existe, dans le cas contraire /dev/random, la source de données aléatoire est très importante pour la qualité du cryptage, si votre système ne dispose d'aucun de ces deux fichiers vous pouvez installer un générateur de nombre aléatoire comme [egd][1].
 
-Maintenant que nous disposons d&#8217;une clé nous allons procéder à la création de notre certificat CA privé
+Maintenant que nous disposons d'une clé nous allons procéder à la création de notre certificat CA privé
 
 <div class="codecolorer-container bash vibrant" style="overflow:auto;white-space:nowrap;width:100%;">
   <div class="bash codecolorer">
@@ -56,9 +56,9 @@ Maintenant que nous disposons de notre autorité de certification nous allons po
   </div>
 </div>
 
-Comme vous le constatez nous restons sur un cryptage à 1024 bits, en effet il est risqué d&#8217;aller au delà car certains navigateurs ne supportent pas les cryptages supérieurs.
+Comme vous le constatez nous restons sur un cryptage à 1024 bits, en effet il est risqué d'aller au delà car certains navigateurs ne supportent pas les cryptages supérieurs.
 
-La prochaine étape consiste à générer une requête de signature de certificat, appelée comme ceci car elle est normalement transmise à une autorité de certification (Certificate Authority ou CA) pour signature.  
+La prochaine étape consiste à générer une requête de signature de certificat, appelée comme ceci car elle est normalement transmise à une autorité de certification (Certificate Authority ou CA) pour signature.
 Un certificat n’est ni plus, ni moins qu’une clé qui a été signée par une autorité autorisée garantissant ainsi que celle-ci est valide est correspond bien à la bonne entité.
 
 **Note:**
@@ -77,7 +77,7 @@ Au cours de cette étape plusieurs questions vous serons posées et se présente
   </div>
 </div>
 
-&#8230; qui devrait aboutir sur:
+... qui devrait aboutir sur:
 
 <div class="codecolorer-container bash vibrant" style="overflow:auto;white-space:nowrap;width:100%;">
   <div class="bash codecolorer">

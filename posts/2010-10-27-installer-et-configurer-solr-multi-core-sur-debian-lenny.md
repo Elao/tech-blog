@@ -1,15 +1,15 @@
 
 </a>Bonjour à tous !
 
-Confrontés depuis quelques temps à la problématique d&#8217;avoir plusieurs moteurs de recherche de type solR sur un même serveur nous avons décidé de mettre en application la gestion multi-core de solR (à partir de la version 1.4) permettant de gérer plusieurs &#8220;core&#8221; et donc des indexes différents en fonction des applications via une seule et même instance solR.
+Confrontés depuis quelques temps à la problématique d'avoir plusieurs moteurs de recherche de type solR sur un même serveur nous avons décidé de mettre en application la gestion multi-core de solR (à partir de la version 1.4) permettant de gérer plusieurs "core" et donc des indexes différents en fonction des applications via une seule et même instance solR.
 
-Il existe des paquets Debian (apache-solr, tomcat 5.5) qui permettent d&#8217;avoir une instance fonctionnelle en peu de temps, mais j&#8217;ai pu lire chez nos amis anglophones que cela ne semble pas fonctionner du feu de dieu.
+Il existe des paquets Debian (apache-solr, tomcat 5.5) qui permettent d'avoir une instance fonctionnelle en peu de temps, mais j'ai pu lire chez nos amis anglophones que cela ne semble pas fonctionner du feu de dieu.
 
-Nous allons donc partir sur une installation &#8220;hors gestionnaire de paquets&#8221; de Tomcat / apache-solR &#8230;
+Nous allons donc partir sur une installation "hors gestionnaire de paquets" de Tomcat / apache-solR ...
 
 ## Installation de Tomcat:
 
-La première étape pour cette installation est d&#8217;avoir un environnement Java fonctionnel, nous disposons donc de plusieurs solutions, à savoir, utiliser les paquets openJDK de Debian ou utiliser les paquets de Sun (disponibles en activant les dépôts non-free) sun-java6-jre.
+La première étape pour cette installation est d'avoir un environnement Java fonctionnel, nous disposons donc de plusieurs solutions, à savoir, utiliser les paquets openJDK de Debian ou utiliser les paquets de Sun (disponibles en activant les dépôts non-free) sun-java6-jre.
 
 <div class="codecolorer-container bash vibrant" style="overflow:auto;white-space:nowrap;width:100%;">
   <div class="bash codecolorer">
@@ -17,7 +17,7 @@ La première étape pour cette installation est d&#8217;avoir un environnement J
   </div>
 </div>
 
-Nous pouvons à présent récupérer **Tomcat 6.0** (pour l&#8217;instant la version 7 est en bêta et comme le java c&#8217;est pas mon dada, je préfère partir sur des versions stables &#8230;)
+Nous pouvons à présent récupérer **Tomcat 6.0** (pour l'instant la version 7 est en bêta et comme le java c'est pas mon dada, je préfère partir sur des versions stables ...)
 
 <div class="codecolorer-container bash vibrant" style="overflow:auto;white-space:nowrap;width:100%;">
   <div class="bash codecolorer">
@@ -25,14 +25,14 @@ Nous pouvons à présent récupérer **Tomcat 6.0** (pour l&#8217;instant la ver
   </div>
 </div>
 
-J&#8217;ai choisi d&#8217;installer Tomcat dans **/usr/share/tomcat** correspondant à l&#8217;organisation Debian, pour ceux qui utilisent de moins bonnes distrib&#8217; (troll inside), libre à vous de le déployer ailleurs (**/opt/local** par exemple qui sera peut-être plus familier pour des utilisateurs de Red Hat, Fedora &#8230; )
+J'ai choisi d'installer Tomcat dans **/usr/share/tomcat** correspondant à l'organisation Debian, pour ceux qui utilisent de moins bonnes distrib' (troll inside), libre à vous de le déployer ailleurs (**/opt/local** par exemple qui sera peut-être plus familier pour des utilisateurs de Red Hat, Fedora ... )
 
-Une fois l&#8217;archive décompressée dans **/usr/share/tomcat** nous pouvons ajouter un script de démarrage dans **/etc/init.d**.  
-Script simpliste qui ne demande qu&#8217;à être amélioré (à vos commentaires):
+Une fois l'archive décompressée dans **/usr/share/tomcat** nous pouvons ajouter un script de démarrage dans **/etc/init.d**.
+Script simpliste qui ne demande qu'à être amélioré (à vos commentaires):
 
 <div class="codecolorer-container bash vibrant" style="overflow:auto;white-space:nowrap;width:100%;">
   <div class="bash codecolorer">
-    <span class="co0">#!/bin/sh</span><br /> <span class="co0"># Tomcat Init-Script</span><br /> <br /> <span class="kw3">export</span> <span class="re2">JAVA_OPTS</span>=<span class="st0">"<span class="es2">$JAVA_OPTS</span> -Dsolr.solr.home=/usr/share/tomcat/solr"</span><br /> <br /> <span class="kw1">case</span> <span class="re4">$1</span> <span class="kw1">in</span><br /> &nbsp;start<span class="br0">&#41;</span><br /> &nbsp;<span class="kw2">sh</span> <span class="sy0">/</span>usr<span class="sy0">/</span>share<span class="sy0">/</span>tomcat<span class="sy0">/</span>bin<span class="sy0">/</span>startup.sh<br /> &nbsp;<span class="sy0">;;</span><br /> <br /> &nbsp;stop<span class="br0">&#41;</span><br /> &nbsp;<span class="kw2">sh</span> <span class="sy0">/</span>usr<span class="sy0">/</span>share<span class="sy0">/</span>tomcat<span class="sy0">/</span>bin<span class="sy0">/</span>shutdown.sh<br /> &nbsp;<span class="sy0">;;</span><br /> <br /> &nbsp;restart<span class="br0">&#41;</span><br /> &nbsp;<span class="kw2">sh</span> <span class="sy0">/</span>usr<span class="sy0">/</span>share<span class="sy0">/</span>tomcat<span class="sy0">/</span>bin<span class="sy0">/</span>shutdown.sh<br /> &nbsp;<span class="kw2">sh</span> <span class="sy0">/</span>usr<span class="sy0">/</span>share<span class="sy0">/</span>tomcat<span class="sy0">/</span>bin<span class="sy0">/</span>startup.sh<br /> &nbsp;<span class="sy0">;;</span><br /> <br /> <span class="kw1">esac</span><br /> <span class="kw3">exit</span> <span class="nu0"></span>
+    <span class="co0">#!/bin/sh</span><br /> <span class="co0"># Tomcat Init-Script</span><br /> <br /> <span class="kw3">export</span> <span class="re2">JAVA_OPTS</span>=<span class="st0">"<span class="es2">$JAVA_OPTS</span> -Dsolr.solr.home=/usr/share/tomcat/solr"</span><br /> <br /> <span class="kw1">case</span> <span class="re4">$1</span> <span class="kw1">in</span><br />  start<span class="br0">&#41;</span><br />  <span class="kw2">sh</span> <span class="sy0">/</span>usr<span class="sy0">/</span>share<span class="sy0">/</span>tomcat<span class="sy0">/</span>bin<span class="sy0">/</span>startup.sh<br />  <span class="sy0">;;</span><br /> <br />  stop<span class="br0">&#41;</span><br />  <span class="kw2">sh</span> <span class="sy0">/</span>usr<span class="sy0">/</span>share<span class="sy0">/</span>tomcat<span class="sy0">/</span>bin<span class="sy0">/</span>shutdown.sh<br />  <span class="sy0">;;</span><br /> <br />  restart<span class="br0">&#41;</span><br />  <span class="kw2">sh</span> <span class="sy0">/</span>usr<span class="sy0">/</span>share<span class="sy0">/</span>tomcat<span class="sy0">/</span>bin<span class="sy0">/</span>shutdown.sh<br />  <span class="kw2">sh</span> <span class="sy0">/</span>usr<span class="sy0">/</span>share<span class="sy0">/</span>tomcat<span class="sy0">/</span>bin<span class="sy0">/</span>startup.sh<br />  <span class="sy0">;;</span><br /> <br /> <span class="kw1">esac</span><br /> <span class="kw3">exit</span> <span class="nu0"></span>
   </div>
 </div>
 
@@ -45,18 +45,18 @@ Nous pouvons à présent démarrer notre serveur Tomcat via la commande
 </div>
 
 <div class="aparte">
-  Si vous avez droit à ce message d&#8217;erreur &#8230;</p> <div class="codecolorer-container bash vibrant" style="overflow:auto;white-space:nowrap;width:100%;">
+  Si vous avez droit à ce message d'erreur ...</p> <div class="codecolorer-container bash vibrant" style="overflow:auto;white-space:nowrap;width:100%;">
     <div class="bash codecolorer">
       Cannot <span class="kw2">find</span> <span class="sy0">/</span>usr<span class="sy0">/</span>share<span class="sy0">/</span>tomcat<span class="sy0">/</span>bin<span class="sy0">/</span>catalina.sh<br /> <span class="sy0"><</span>This <span class="kw2">file</span> is needed to run this program<span class="sy0">></span>
     </div>
   </div>
-  
+
   <p>
-    &#8230; pas de panique, il suffit de rajouter les droits d&#8217;exécution au(x) script(s) correspondant(s)
+    ... pas de panique, il suffit de rajouter les droits d'exécution au(x) script(s) correspondant(s)
   </p>
 </div>
 
-Si tout fonctionne correctement, en accédant à votre serveur sur le port 8080 vous devriez avoir cette page qui s&#8217;affiche, signe que tomcat fonctionne correctement:
+Si tout fonctionne correctement, en accédant à votre serveur sur le port 8080 vous devriez avoir cette page qui s'affiche, signe que tomcat fonctionne correctement:
 
 <div class="ngg-gallery-singlepic-image ngg-center" style="max-width: 640px">
   <a href="http://old-blog.elao.dev/wp-content/gallery/tomcat-solr/screen-shot-2010-10-22-at-11-34-50.png"
@@ -74,11 +74,11 @@ Si tout fonctionne correctement, en accédant à votre serveur sur le port 8080 
               width="640" /> </a>
 </div>
 
-<span></span> 
+<span></span>
 
-Nous allons à présent devoir accéder à l&#8217;administration du serveur Tomcat via l&#8217;URL: <span style="font-family: Arial, Helvetica, sans-serif; color: #333333;"><span style="line-height: 18px;"><strong>http://my_server:8080/</strong></span></span><span style="font-family: Arial, Helvetica, sans-serif; line-height: 18px; color: #333333;"><strong>manager/html</strong></span>
+Nous allons à présent devoir accéder à l'administration du serveur Tomcat via l'URL: <span style="font-family: Arial, Helvetica, sans-serif; color: #333333;"><span style="line-height: 18px;"><strong>http://my_server:8080/</strong></span></span><span style="font-family: Arial, Helvetica, sans-serif; line-height: 18px; color: #333333;"><strong>manager/html</strong></span>
 
-Cette page est normalement protégée, il nous faut donc configurer un accès administrateur pour pouvoir y accéder.  
+Cette page est normalement protégée, il nous faut donc configurer un accès administrateur pour pouvoir y accéder.
 Nous allons pour se faire modifier le fichier ** /usr/share/tomcat/conf/tomcat-users.xml**
 
 <div class="codecolorer-container xml vibrant" style="overflow:auto;white-space:nowrap;width:100%;">
@@ -87,7 +87,7 @@ Nous allons pour se faire modifier le fichier ** /usr/share/tomcat/conf/tomcat-u
   </div>
 </div>
 
-On redémarre à présent tomcat &#8230; et on s&#8217;authentifie pour arriver sur cette page:
+On redémarre à présent tomcat ... et on s'authentifie pour arriver sur cette page:
 
 <div class="ngg-gallery-singlepic-image ngg-center" style="max-width: 640px">
   <a href="http://old-blog.elao.dev/wp-content/gallery/tomcat-solr/screen-shot-2010-10-22-at-12-22-39.png"
@@ -105,11 +105,11 @@ On redémarre à présent tomcat &#8230; et on s&#8217;authentifie pour arriver 
               width="640" /> </a>
 </div>
 
-<span></span> 
+<span></span>
 
 ## Installation de SolR
 
-Premièrement commençons par télécharger solR &#8230;
+Premièrement commençons par télécharger solR ...
 
 <div class="codecolorer-container bash vibrant" style="overflow:auto;white-space:nowrap;width:100%;">
   <div class="bash codecolorer">
@@ -135,7 +135,7 @@ Nous copions ensuite le schema de la config solR donnée en exemple:
 
 ### Configuration du multi-core
 
-Nous allons pour commencer copier le fichier **solr.xml** de l&#8217;exemple &#8220;multi-core&#8221; fournit avec le paquet solR
+Nous allons pour commencer copier le fichier **solr.xml** de l'exemple "multi-core" fournit avec le paquet solR
 
 <div class="codecolorer-container bash vibrant" style="overflow:auto;white-space:nowrap;width:100%;">
   <div class="bash codecolorer">
@@ -143,8 +143,8 @@ Nous allons pour commencer copier le fichier **solr.xml** de l&#8217;exemple &#8
   </div>
 </div>
 
-A présent, il nous faut créer un répertoire à l&#8217;intérieur de **/usr/share/tomcat/solr** pour chacune des applications (sites) pour lesquelles nous souhaitons utiliser solR.  
-Par exemple dans le cas ou nous avons 2 sites distincts, **&#8220;mon-super-site.com&#8221;** et **&#8220;best-site-online.com&#8221;** et que solR doit être utilisé par les deux nous allons avoir deux répertoires:
+A présent, il nous faut créer un répertoire à l'intérieur de **/usr/share/tomcat/solr** pour chacune des applications (sites) pour lesquelles nous souhaitons utiliser solR.
+Par exemple dans le cas ou nous avons 2 sites distincts, **"mon-super-site.com"** et **"best-site-online.com"** et que solR doit être utilisé par les deux nous allons avoir deux répertoires:
 
 <div class="codecolorer-container bash vibrant" style="overflow:auto;white-space:nowrap;width:100%;">
   <div class="bash codecolorer">
@@ -160,17 +160,17 @@ Nous copions pour finir **/usr/share/tomcat/solr/conf** dans chacun des réperto
   </div>
 </div>
 
-Attention à bien conserver le répertoire conf initial car même si chacun de nos sites aura sa propre configuration le core de solR s&#8217;en sert toujours.  
+Attention à bien conserver le répertoire conf initial car même si chacun de nos sites aura sa propre configuration le core de solR s'en sert toujours.
 Nous pouvons maintenant modifier le fichier **solr.xml** (**/usr/share/tomcat/solr/solr.xml**):
 
 <div class="codecolorer-container xml vibrant" style="overflow:auto;white-space:nowrap;width:100%;">
   <div class="xml codecolorer">
-    <span class="sc3"><span class="re1"><?xml</span> <span class="re0">version</span>=<span class="st0">"1.0"</span> <span class="re0">encoding</span>=<span class="st0">"UTF-8"</span> <span class="re2">?></span></span><br /> <span class="sc-1"><!--</span><br /> <span class="sc-1"> All (relative) paths are relative to the installation path</span><br /> <br /> <span class="sc-1"> &nbsp;persistent: Save changes made via the API to this file</span><br /> <span class="sc-1"> &nbsp;sharedLib: path to a lib directory that will be shared across all cores</span><br /> <span class="sc-1">--></span><br /> <span class="sc3"><span class="re1"><solr</span> <span class="re0">persistent</span>=<span class="st0">"false"</span><span class="re2">></span></span><br /> &nbsp; <span class="sc-1"><!--</span><br /> <span class="sc-1"> &nbsp;adminPath: RequestHandler path to manage cores.</span><br /> <span class="sc-1"> &nbsp; &nbsp;If 'null' (or absent), cores will not be manageable via request handler</span><br /> <span class="sc-1"> &nbsp;--></span><br /> &nbsp; <span class="sc3"><span class="re1"><cores</span> <span class="re0">adminPath</span>=<span class="st0">"/admin/cores"</span><span class="re2">></span></span><br /> &nbsp; &nbsp; <span class="sc3"><span class="re1"><core</span> <span class="re0">name</span>=<span class="st0">"mon-super-site"</span> <span class="re0">instanceDir</span>=<span class="st0">"monsupersite"</span><span class="re2">></span></span><br /> &nbsp; &nbsp; &nbsp; &nbsp;<span class="sc3"><span class="re1"><property</span> <span class="re0">name</span>=<span class="st0">"dataDir"</span> <span class="re0">value</span>=<span class="st0">"/usr/share/tomcat/solr/monsupersite/data"</span> <span class="re2">/></span></span><br /> &nbsp; &nbsp; <span class="sc3"><span class="re1"></core<span class="re2">></span></span></span><br /> &nbsp; &nbsp; <span class="sc3"><span class="re1"><core</span> <span class="re0">name</span>=<span class="st0">"best-site-online"</span> <span class="re0">instanceDir</span>=<span class="st0">"bestsiteonline"</span><span class="re2">></span></span><br /> &nbsp; &nbsp; &nbsp; &nbsp;<span class="sc3"><span class="re1"><property</span> <span class="re0">name</span>=<span class="st0">"dataDir"</span> <span class="re0">value</span>=<span class="st0">"/usr/share/tomcat/solr/bestsiteonline/data"</span> <span class="re2">/></span></span><br /> &nbsp; &nbsp; &nbsp;<span class="sc3"><span class="re1"></core<span class="re2">></span></span></span><br /> &nbsp; <span class="sc3"><span class="re1"></cores<span class="re2">></span></span></span><br /> <span class="sc3"><span class="re1"></solr<span class="re2">></span></span></span>
+    <span class="sc3"><span class="re1"><?xml</span> <span class="re0">version</span>=<span class="st0">"1.0"</span> <span class="re0">encoding</span>=<span class="st0">"UTF-8"</span> <span class="re2">?></span></span><br /> <span class="sc-1"><!--</span><br /> <span class="sc-1"> All (relative) paths are relative to the installation path</span><br /> <br /> <span class="sc-1">  persistent: Save changes made via the API to this file</span><br /> <span class="sc-1">  sharedLib: path to a lib directory that will be shared across all cores</span><br /> <span class="sc-1">--></span><br /> <span class="sc3"><span class="re1"><solr</span> <span class="re0">persistent</span>=<span class="st0">"false"</span><span class="re2">></span></span><br />   <span class="sc-1"><!--</span><br /> <span class="sc-1">  adminPath: RequestHandler path to manage cores.</span><br /> <span class="sc-1">    If 'null' (or absent), cores will not be manageable via request handler</span><br /> <span class="sc-1">  --></span><br />   <span class="sc3"><span class="re1"><cores</span> <span class="re0">adminPath</span>=<span class="st0">"/admin/cores"</span><span class="re2">></span></span><br />     <span class="sc3"><span class="re1"><core</span> <span class="re0">name</span>=<span class="st0">"mon-super-site"</span> <span class="re0">instanceDir</span>=<span class="st0">"monsupersite"</span><span class="re2">></span></span><br />        <span class="sc3"><span class="re1"><property</span> <span class="re0">name</span>=<span class="st0">"dataDir"</span> <span class="re0">value</span>=<span class="st0">"/usr/share/tomcat/solr/monsupersite/data"</span> <span class="re2">/></span></span><br />     <span class="sc3"><span class="re1"></core<span class="re2">></span></span></span><br />     <span class="sc3"><span class="re1"><core</span> <span class="re0">name</span>=<span class="st0">"best-site-online"</span> <span class="re0">instanceDir</span>=<span class="st0">"bestsiteonline"</span><span class="re2">></span></span><br />        <span class="sc3"><span class="re1"><property</span> <span class="re0">name</span>=<span class="st0">"dataDir"</span> <span class="re0">value</span>=<span class="st0">"/usr/share/tomcat/solr/bestsiteonline/data"</span> <span class="re2">/></span></span><br />      <span class="sc3"><span class="re1"></core<span class="re2">></span></span></span><br />   <span class="sc3"><span class="re1"></cores<span class="re2">></span></span></span><br /> <span class="sc3"><span class="re1"></solr<span class="re2">></span></span></span>
   </div>
 </div>
 
-Nous devons également spécifier l&#8217;emplacement de nos indexes (stockés par solR dans **solr/data** relativement au répertoire courant).  
-Nous avons pris la décisions de stocker les indexes de solR dans le répertoire correspondant à l&#8217;application concernée, par exemple **&#8220;monsupersite&#8221;**.
+Nous devons également spécifier l'emplacement de nos indexes (stockés par solR dans **solr/data** relativement au répertoire courant).
+Nous avons pris la décisions de stocker les indexes de solR dans le répertoire correspondant à l'application concernée, par exemple **"monsupersite"**.
 
 Pour ce cas nous modifierons donc la proprité dataDir du fichier **solrconfig.xml** situé dans **/usr/share/tomcat/solr/monsupersite/conf** de cette façon:
 
@@ -182,6 +182,6 @@ Pour ce cas nous modifierons donc la proprité dataDir du fichier **solrconfig.x
 
 Nous pouvons redémarrer notre serveur tomcat !
 
-Si tout s&#8217;est bien déroulé vous devriez pouvoir accéder à la page **http://my-server:8080/solr/** qui devrait vous répondre par un poli et gratifiant &#8220;Welcome to Solr!&#8221;
+Si tout s'est bien déroulé vous devriez pouvoir accéder à la page **http://my-server:8080/solr/** qui devrait vous répondre par un poli et gratifiant "Welcome to Solr!"
 
-Commentaires, critiques et remarques sont, comme d&#8217;habitude, les bienvenues !
+Commentaires, critiques et remarques sont, comme d'habitude, les bienvenues !

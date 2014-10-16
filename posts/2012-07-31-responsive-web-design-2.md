@@ -1,15 +1,15 @@
 
-Le web design responsive est né d&#8217;un constat simple, le web sort de nos bureaux pour prendre possession de nos mobiles, tablettes et télévisions. Notre conception web est ainsi contrainte à suivre cette multiplication des supports et dans certains cas, l’idée de créer différentes versions selon chaque appareil, serait simplement une perte de temps et d’énergie.
+Le web design responsive est né d'un constat simple, le web sort de nos bureaux pour prendre possession de nos mobiles, tablettes et télévisions. Notre conception web est ainsi contrainte à suivre cette multiplication des supports et dans certains cas, l’idée de créer différentes versions selon chaque appareil, serait simplement une perte de temps et d’énergie.
 
 <!--more-->
 
-# Qu&#8217;est ce que le responsive webdesign ?
+# Qu'est ce que le responsive webdesign ?
 
-Le web design responsive amène une solution pratique et économique à cette situation. En effet, il permet de créer une seule et unique interface qui affiche le site sous sa meilleure forme, et ce, peu importe la taille de l’écran. La structure de la page, la taille des images et polices peuvent s’ajuster, se déplacer, s’effacer&#8230; Vous serez amener à réfléchir aux différents changements de votre charte graphique sur les différents types de supports. Le responsive illustré : <http://www.thismanslife.co.uk/projects/lab/responsiveillustration/>
+Le web design responsive amène une solution pratique et économique à cette situation. En effet, il permet de créer une seule et unique interface qui affiche le site sous sa meilleure forme, et ce, peu importe la taille de l’écran. La structure de la page, la taille des images et polices peuvent s’ajuster, se déplacer, s’effacer... Vous serez amener à réfléchir aux différents changements de votre charte graphique sur les différents types de supports. Le responsive illustré : <http://www.thismanslife.co.uk/projects/lab/responsiveillustration/>
 
 # Utilisation
 
-*   **Préparer l&#8217;entête du modèle XHTML  
+*   **Préparer l'entête du modèle XHTML
     **Pour commencer, il faut fixer le viewport en insérant la balise meta suivante :</p> <div class="codecolorer-container html4strict vibrant" style="overflow:auto;white-space:nowrap;width:100%;">
       <div class="html4strict codecolorer">
         meta name="viewport" content="width=device-width, initial-scale=1.0;"
@@ -48,8 +48,8 @@ En ce qui concerne les background-images :
   </div>
 </div>
 
-**Et parce que des fois ce n’est pas si simple &#8230;**  
-Parfois, la gestion des images sur un site en responsive design peut s&#8217;avérer plus complexe : mauvais redimensionnement, poids trop lourd, &#8230; Autant de contraintes et de questions qui trouveront sûrement solutions avec ces deux outils :
+**Et parce que des fois ce n’est pas si simple ...**
+Parfois, la gestion des images sur un site en responsive design peut s'avérer plus complexe : mauvais redimensionnement, poids trop lourd, ... Autant de contraintes et de questions qui trouveront sûrement solutions avec ces deux outils :
 
 *   <a title="Adaptive Images" href="http://adaptive-images.com/" target="_blank"><strong>Adaptative Images</strong> </a>Basé sur PHP et Javascript, Adaptative Images détecte automatiquement la résolution du visiteur et va générer l’image à la taille optimale et recalcule son poids.
 *   <a href="http://www.sencha.com/products/io/" target="_blank"><strong>Sencha</strong></a> Egalement utile pour le redimensionnement d’images à la bonne taille et au bon format.
@@ -68,7 +68,7 @@ Elles n’ont pas d’impact sur le code HTML. Ainsi, on reste dépendant de l�
   </div>
 </div>
 
-**Pour notre ami IE  : **  
+**Pour notre ami IE  : **
 [Respond.js][1] permet d’utiliser les media queries même sur IE 6 à 8.
 
 # Outils et sources

@@ -1,7 +1,7 @@
 
 Hi guys !
 
-I just figured out how to handle system path customization in an &#8220;OSX way&#8221;.  
+I just figured out how to handle system path customization in an "OSX way".
 From here to now I used to add my path customization into system profile (**/etc/profile**) or my local profile (**~/.bash_profile**) and my **.bashrc** file (wich is a common meaning on a UNIX system).
 
 **<span style="text-decoration: underline;">For example:</span>**
@@ -14,7 +14,7 @@ From here to now I used to add my path customization into system profile (**/etc
 
 But, I came across some postings whereby file **/etc/paths** and directory **/etc/paths.d** are described as the places where search path action takes place now on OSX.
 
-Fact is in Leopard, Apple has introduced a new mechanism for managing your system path, and we no longer have to modify those files.  
+Fact is in Leopard, Apple has introduced a new mechanism for managing your system path, and we no longer have to modify those files.
 Instead, we just have to put a simple text file containing a path entry (or entries) into **/etc/paths.d/**.
 
 <div class="codecolorer-container bash vibrant" style="overflow:auto;white-space:nowrap;width:100%;">
@@ -25,7 +25,7 @@ Instead, we just have to put a simple text file containing a path entry (or entr
 
 **<span style="text-decoration: underline;">For example:</span>**
 
-We can create a file named &#8220;git&#8221; wich contain path to git binaries:
+We can create a file named "git" wich contain path to git binaries:
 
 *Content of /etc/paths.d/git*
 

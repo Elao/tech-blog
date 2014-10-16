@@ -1,6 +1,6 @@
 
-[<img class="alignleft size-full wp-image-128" title="amazon" src="/blog/wp-content/uploads/2010/01/amazon.png" alt="amazon Installation de FUSE et s3fs sur une Debian Lenny" width="48" height="48" />][1]Aujourd&#8217;hui nous allons installer s3fs sur nos serveurs.  
-Ce paquet permet de monter des systèmes de fichiers distant de type Amazon S3. Les applications peuvent êtres multiples, le but avoué étant d&#8217;avoir la possibilité d&#8217;avoir notre &#8220;bucket&#8221; Amazon S3 disponible localement.
+[<img class="alignleft size-full wp-image-128" title="amazon" src="/blog/wp-content/uploads/2010/01/amazon.png" alt="amazon Installation de FUSE et s3fs sur une Debian Lenny" width="48" height="48" />][1]Aujourd'hui nous allons installer s3fs sur nos serveurs.
+Ce paquet permet de monter des systèmes de fichiers distant de type Amazon S3. Les applications peuvent êtres multiples, le but avoué étant d'avoir la possibilité d'avoir notre "bucket" Amazon S3 disponible localement.
 
 <span style="text-decoration: underline;"><strong>Pour se faire:</strong></span>
 
@@ -12,7 +12,7 @@ Ce paquet permet de monter des systèmes de fichiers distant de type Amazon S3. 
   </div>
 </div>
 
-Récupérer la dernière version des sources s3fs sur le <a title="s3fs: Downloads" onclick="javascript:pageTracker._trackPageview('/outgoing/code.google.com/p/s3fs/downloads/list');" href="http://code.google.com/p/s3fs/downloads/list">Google Code project</a> (version 118 au moment où j&#8217;écris ce billet):
+Récupérer la dernière version des sources s3fs sur le <a title="s3fs: Downloads" onclick="javascript:pageTracker._trackPageview('/outgoing/code.google.com/p/s3fs/downloads/list');" href="http://code.google.com/p/s3fs/downloads/list">Google Code project</a> (version 118 au moment où j'écris ce billet):
 
 <div class="codecolorer-container bash vibrant" style="overflow:auto;white-space:nowrap;width:100%;">
   <div class="bash codecolorer">
@@ -30,7 +30,7 @@ Récupérer la dernière version des sources s3fs sur le <a title="s3fs: Downloa
 
 Une fois ces 3 étapes accomplies le système est prêt nous allons pouvoir monter notre système de fichier.
 
-Commençons par modifier la configuration de FUSE en dé-commentant la ligne <tt>user_allow_other</tt>, et c&#8217;est parti pour le montage du notre S3 bucket:
+Commençons par modifier la configuration de FUSE en dé-commentant la ligne <tt>user_allow_other</tt>, et c'est parti pour le montage du notre S3 bucket:
 
 <div class="codecolorer-container bash vibrant" style="overflow:auto;white-space:nowrap;width:100%;">
   <div class="bash codecolorer">
@@ -38,15 +38,15 @@ Commençons par modifier la configuration de FUSE en dé-commentant la ligne <tt
   </div>
 </div>
 
-<span style="text-decoration: underline;">accessKeyId:</span> Votre &#8220;Amazon Access Key&#8221;  
-<span style="text-decoration: underline;">secretAccessKey: </span>Votre &#8220;Secret Key&#8221;
+<span style="text-decoration: underline;">accessKeyId:</span> Votre "Amazon Access Key"
+<span style="text-decoration: underline;">secretAccessKey: </span>Votre "Secret Key"
 
-L&#8217;option **<tt>use_cache</tt>** permet d&#8217;indiquer à s3fs de cacher les fichiers du *bucket* Amazon localement (dans /tmp en l&#8217;occurrence), l&#8217;option allow_other permet quant à elle d&#8217;autoriser des utilisateurs non root à manipuler les fichiers du montage.  
-N&#8217;hésitez pas à jeter un oeil au wiki du projet en cas de problème: [wiki][2].
+L'option **<tt>use_cache</tt>** permet d'indiquer à s3fs de cacher les fichiers du *bucket* Amazon localement (dans /tmp en l'occurrence), l'option allow_other permet quant à elle d'autoriser des utilisateurs non root à manipuler les fichiers du montage.
+N'hésitez pas à jeter un oeil au wiki du projet en cas de problème: [wiki][2].
 
 A présent tous les fichiers écrits dans /mnt/s3 seront en fait écris dans votre espace Amazon S3.
 
-Si vous êtes comme moi et que vous n&#8217;aimez pas laisser trainer des mots de passe, clés et autre dans les lignes de commande vous pouvez conserver votre couple **</p> <div class="codecolorer-container text vibrant" style="overflow:auto;white-space:nowrap;width:100%;">
+Si vous êtes comme moi et que vous n'aimez pas laisser trainer des mots de passe, clés et autre dans les lignes de commande vous pouvez conserver votre couple **</p> <div class="codecolorer-container text vibrant" style="overflow:auto;white-space:nowrap;width:100%;">
   <div class="text codecolorer">
     accessKeyId /
   </div>
@@ -62,11 +62,11 @@ Si vous êtes comme moi et que vous n&#8217;aimez pas laisser trainer des mots d
 
 <div class="codecolorer-container text vibrant" style="overflow:auto;white-space:nowrap;width:100%;">
   <div class="text codecolorer">
-    &nbsp;/etc/passwd-s3fs
+     /etc/passwd-s3fs
   </div>
 </div>
 
-sous la forme d&#8217;une seule ligne formatée comme ceci:
+sous la forme d'une seule ligne formatée comme ceci:
 
 <div class="codecolorer-container text vibrant" style="overflow:auto;white-space:nowrap;width:100%;">
   <div class="text codecolorer">

@@ -1,9 +1,9 @@
 
 *   A quoi ressemble un **test fonctionnel** ?
 *   Comment les mettre en place ?
-*   Qu&#8217;est ce que **Behat** ? Comment l&#8217;utiliser ? Qu&#8217;est ce qu&#8217;une **.feature** ?
+*   Qu'est ce que **Behat** ? Comment l'utiliser ? Qu'est ce qu'une **.feature** ?
 *   A quoi sert **Mink** ?
-*   le **Behaviour Driven Development (BDD)  
+*   le **Behaviour Driven Development (BDD)
     **
 
 Si jamais un de ces points vous intéresse et que vous souhaitez avoir une première approche de **Behat / Mink**, alors cette présentation est faite pour vous.

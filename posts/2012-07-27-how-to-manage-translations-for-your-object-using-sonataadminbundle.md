@@ -3,9 +3,9 @@
   Many of us asked themselves <strong>how to add dynamically translations to I18n fields  - object using <em>SonataAdminBundle and DoctrineExtensions</em></strong>.
 </p>
 
-Thanks to <a href="http://gediminasm.org/" target="_blank">Gedmo</a> and his wonderful <a href="https://github.com/l3pp4rd/DoctrineExtensions" target="_blank">DoctrineExtensions</a> on which he added a feature called &#8220;Personal Translations&#8221; that simplifies the whole translation management process.
+Thanks to <a href="http://gediminasm.org/" target="_blank">Gedmo</a> and his wonderful <a href="https://github.com/l3pp4rd/DoctrineExtensions" target="_blank">DoctrineExtensions</a> on which he added a feature called "Personal Translations" that simplifies the whole translation management process.
 
-Before starting here&#8217;s what i am using :
+Before starting here's what i am using :
 
 *   <a href="https://github.com/symfony/symfony" target="_blank">Symfony 2.1-DEV</a>
 *   Doctrine & Doctrine deps (master branch)
@@ -13,12 +13,12 @@ Before starting here&#8217;s what i am using :
 *   <a href="https://github.com/stof/StofDoctrineExtensionsBundle" target="_blank">StofDoctrineExtensionsBundle</a> (master branch)
 *   [TranslationFormBundle][1]
 
-We will not configure the *DoctrineExtensions* & the *StofDoctrineExtensionsBundle* together, so please, check that it&#8217;s all configured (read the readme on github repos) and working.
+We will not configure the *DoctrineExtensions* & the *StofDoctrineExtensionsBundle* together, so please, check that it's all configured (read the readme on github repos) and working.
 
-Before starting, let&#8217;s configure the Bundle :
+Before starting, let's configure the Bundle :
 
 <noscript>
-  <pre><code class="language- "># Add the bundle to your composer 
+  <pre><code class="language- "># Add the bundle to your composer
 
     "a2lix/translation-form-bundle" : "dev-master"
 
@@ -31,20 +31,20 @@ Before starting, let&#8217;s configure the Bundle :
 
     a2lix_translation_form:
         default_locale: en                  # [Optionnal] Default to 'en'
-        locales: [fr, es, de]               # [Optionnal] Array of translations locales. Can be specified in the form. 
+        locales: [fr, es, de]               # [Optionnal] Array of translations locales. Can be specified in the form.
         default_required: false             # [Optionnal] Default to false. In this case, translation fields are not mark as required with html5
 
-# Template        
+# Template
     twig:
         form:
             resources:
                 - 'A2lixTranslationFormBundle::form.html.twig'</code></pre>
 </noscript>
 
-Let&#8217;s begin with our *Category* entity :
+Let's begin with our *Category* entity :
 
 <noscript>
-  <pre><code class="language-php php">&lt;?php
+  <pre><code class="language-php php"><?php
 
 namespace AwesomeNamespace\AwesomeBundle\Entity;
 
@@ -94,7 +94,7 @@ class Profile
 
     public function __construct()
     {
-        $this-&gt;translations = new ArrayCollection;
+        $this->translations = new ArrayCollection;
     }
 
     /**
@@ -104,63 +104,63 @@ class Profile
      */
     public function getId()
     {
-        return $this-&gt;id;
+        return $this->id;
     }
 
     public function getLocale()
     {
-        return $this-&gt;locale;
+        return $this->locale;
     }
 
     public function setLocale($locale)
     {
-        $this-&gt;locale = $locale;
+        $this->locale = $locale;
     }
 
     public function setName($name)
     {
-        $this-&gt;name = $name;
+        $this->name = $name;
     }
 
     public function getName()
     {
-        return $this-&gt;name;
+        return $this->name;
     }
 
     public function setDescription($description)
     {
-        $this-&gt;description = $description;
+        $this->description = $description;
     }
 
     public function getDescription()
     {
-        return $this-&gt;description;
+        return $this->description;
     }
 
     public function getTranslations()
     {
-        return $this-&gt;translations;
+        return $this->translations;
     }
 
     public function addTranslation(ProfileTranslation $t)
     {
-        $this-&gt;translations-&gt;add($t);
-        $t-&gt;setObject($this);
+        $this->translations->add($t);
+        $t->setObject($this);
     }
 
     public function removeTranslation(ProfileTranslation $t)
     {
-        $this-&gt;translations-&gt;removeElement($t);
+        $this->translations->removeElement($t);
     }
 
     public function setTranslations($translations)
     {
-        $this-&gt;translations = $translations;
+        $this->translations = $translations;
     }
 
     public function __toString()
     {
-        return $this-&gt;getName();
+        return $this->getName();
     }
 
 }
@@ -170,7 +170,7 @@ class Profile
 And our *CategoryTranslation* entity (to store translations)
 
 <noscript>
-  <pre><code class="language-php php">&lt;?php
+  <pre><code class="language-php php"><?php
 
 namespace AwesomeNamespace\AwesomeBundle\Entity;
 
@@ -196,9 +196,9 @@ class ProfileTranslation extends AbstractPersonalTranslation
      */
     public function __construct($locale = null, $field = null, $content = null)
     {
-        $this-&gt;setLocale($locale);
-        $this-&gt;setField($field);
-        $this-&gt;setContent($content);
+        $this->setLocale($locale);
+        $this->setField($field);
+        $this->setContent($content);
     }
 
     /**
@@ -213,7 +213,7 @@ class ProfileTranslation extends AbstractPersonalTranslation
 Finally, the *CategoryAdmin* class
 
 <noscript>
-  <pre><code class="language-php php">&lt;?php
+  <pre><code class="language-php php"><?php
 
 namespace AwesomeNamespace\AwesomeBundle\Admin;
 
@@ -235,8 +235,8 @@ class ProfileAdmin extends Admin
     protected function configureListFields(ListMapper $list)
     {
         $list
-            -&gt;addIdentifier('name', null, array('label' =&gt; 'Name'))
-            -&gt;add('description', null, array('label' =&gt; 'Description'));
+            ->addIdentifier('name', null, array('label' => 'Name'))
+            ->add('description', null, array('label' => 'Description'));
     }
 
     /**
@@ -247,9 +247,9 @@ class ProfileAdmin extends Admin
     public function configureFormFields(FormMapper $formMapper)
     {
         $formMapper
-            -&gt;add('translations', 'a2lix_translations', array(
-                'by_reference' =&gt; false,
-                'locales' =&gt; array('fr', 'en'))
+            ->add('translations', 'a2lix_translations', array(
+                'by_reference' => false,
+                'locales' => array('fr', 'en'))
         );
     }
 
@@ -257,7 +257,7 @@ class ProfileAdmin extends Admin
 </code></pre>
 </noscript>
 
-You wanna see the result ? Well, you are free to propose a gist in the comment section of this article if you want to add code to render more nicely the translations in SonataAdminBundle (display the locale of the field, split the fields in tab&#8230;.)
+You wanna see the result ? Well, you are free to propose a gist in the comment section of this article if you want to add code to render more nicely the translations in SonataAdminBundle (display the locale of the field, split the fields in tab....)
 
 **EDIT **The Bundle has been updated and now has a splitted view and tabbed view per locale.
 
@@ -265,7 +265,7 @@ You wanna see the result ? Well, you are free to propose a gist in the comment s
 
 **So what does the bundle <a href="https://github.com/a2lix/TranslationFormBundle" target="_blank">TranslationFormBundle</a> ?**
 
-It&#8217;ll grab all the fields tagged with the *Translatable via its listener*, then it&#8217;ll read the properties annotations in order to add in your form all the fields with the right type (string / text). You have to specify an array of locales
+It'll grab all the fields tagged with the *Translatable via its listener*, then it'll read the properties annotations in order to add in your form all the fields with the right type (string / text). You have to specify an array of locales
 
 So Have Fun translating your objects into the AdminBundle, and we can say thank you to <a href="https://github.com/a2lix" target="_blank">a2lix</a> who made this usefull, yet uknown Bundle.
 

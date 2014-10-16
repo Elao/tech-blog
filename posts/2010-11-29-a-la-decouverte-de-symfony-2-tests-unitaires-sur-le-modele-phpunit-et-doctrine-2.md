@@ -7,10 +7,10 @@
 </p>
 
 <p class="standard">
-  A l&#8217;heure où nous rédigeons ces lignes, la sortie officielle de <a href="http://symfony-reloaded.org/" target="_blank">Symfony2</a> est prévue pour mars 2011. Cette version de notre framework préféré fait actuellement l&#8217;objet d&#8217;une veille attentive de la part de la commmunauté des utilisateurs, et ELAO ne déroge pas à la règle. Nous avons donc commencé à manipuler la <em>bête</em>, et cet article, qui en appelle sans doute d&#8217;autres, n&#8217;a pas d&#8217;autre ambition que de consigner par écrit notre propre expérimentation du framework. Les voies que nous empruntons sont probablement discutables, car elles constituent davantage un parcours initiatique à la découverte du framework nouvelle mouture, qu&#8217;un mode d&#8217;emploi exempt de toute critique.
+  A l'heure où nous rédigeons ces lignes, la sortie officielle de <a href="http://symfony-reloaded.org/" target="_blank">Symfony2</a> est prévue pour mars 2011. Cette version de notre framework préféré fait actuellement l'objet d'une veille attentive de la part de la commmunauté des utilisateurs, et ELAO ne déroge pas à la règle. Nous avons donc commencé à manipuler la <em>bête</em>, et cet article, qui en appelle sans doute d'autres, n'a pas d'autre ambition que de consigner par écrit notre propre expérimentation du framework. Les voies que nous empruntons sont probablement discutables, car elles constituent davantage un parcours initiatique à la découverte du framework nouvelle mouture, qu'un mode d'emploi exempt de toute critique.
 </p>
 
-Pour débuter, nous avons concentré nos efforts sur la nouvelle philosophie de Doctrine 2 et sur la mise en oeuvre de tests unitaires du modèle à l&#8217;aide de PHPUnit.
+Pour débuter, nous avons concentré nos efforts sur la nouvelle philosophie de Doctrine 2 et sur la mise en oeuvre de tests unitaires du modèle à l'aide de PHPUnit.
 
 > <div class="aparte">
 >   <strong><span style="text-decoration: underline;">Prérequis</span> :</strong><br /> Pour réaliser les étapes décrites dans cet article, les bibliothèques et outils suivants sont supposés déjà installés et fonctionnels :</p> <ul>
@@ -24,11 +24,11 @@ Pour débuter, nous avons concentré nos efforts sur la nouvelle philosophie de 
 >       Une <a href="http://symfony-reloaded.org/code" target="_blank">Sandbox</a> de la Preview de Symfony2, configurée par vos soins pour accéder à une base de données (version 2_0_PR3)
 >     </li>
 >   </ul>
->   
+>
 >   <p>
 >     La description de la mise en place et de la configuration de ces outils sort du cadre de cet article.<br /> <strong><span style="text-decoration: underline;">Ressources documentaires</span> :</strong>
 >   </p>
->   
+>
 >   <ul>
 >     <li>
 >       <a href="http://docs.symfony-reloaded.org/?page=learn" target="_blank">Symfony 2 (Preview Release)</a>
@@ -43,7 +43,7 @@ Pour débuter, nous avons concentré nos efforts sur la nouvelle philosophie de 
 > </div>
 
 <p class="standard">
-  Pour les besoins de cet article, nous allons mettre en oeuvre un seul <em>Entity</em> afin de nous focaliser sur l&#8217;essentiel, à savoir, la manipulation des objets à l&#8217;aide de Doctrine 2. Noter que celui-ci permet de définir le modèle de plusieurs manières : à l&#8217;aide d&#8217;annotations saisies dans des classes PHP, ou bien au moyen de fichiers de configuration au format XML ou YML. Nous avons opté ici pour les annotations.
+  Pour les besoins de cet article, nous allons mettre en oeuvre un seul <em>Entity</em> afin de nous focaliser sur l'essentiel, à savoir, la manipulation des objets à l'aide de Doctrine 2. Noter que celui-ci permet de définir le modèle de plusieurs manières : à l'aide d'annotations saisies dans des classes PHP, ou bien au moyen de fichiers de configuration au format XML ou YML. Nous avons opté ici pour les annotations.
 </p>
 
 <p class="standard">
@@ -59,17 +59,17 @@ Pour débuter, nous avons concentré nos efforts sur la nouvelle philosophie de 
 <div class="aparte">
   Pour connaître la liste des commandes disponibles :</p> <div class="codecolorer-container php vibrant" style="overflow:auto;white-space:nowrap;width:100%;">
     <div class="php codecolorer">
-      &nbsp;hello<span class="sy0">/</span>console
+       hello<span class="sy0">/</span>console
     </div>
   </div>
-  
+
   <p>
-    Pour obtenir de l&#8217;aide sur une commande :
+    Pour obtenir de l'aide sur une commande :
   </p>
-  
+
   <div class="codecolorer-container php vibrant" style="overflow:auto;white-space:nowrap;width:100%;">
     <div class="php codecolorer">
-      &nbsp;hello<span class="sy0">/</span>console help init<span class="sy0">:</span>bundle
+       hello<span class="sy0">/</span>console help init<span class="sy0">:</span>bundle
     </div>
   </div>
 </div>
@@ -90,12 +90,12 @@ Pour débuter, nous avons concentré nos efforts sur la nouvelle philosophie de 
 
 <div class="codecolorer-container php vibrant" style="overflow:auto;white-space:nowrap;width:100%;">
   <div class="php codecolorer">
-    &nbsp;<a href="http://www.php.net/mkdir"><span class="kw3">mkdir</span></a> src<span class="sy0">/</span>Bundle<span class="sy0">/</span>ElaoBundle<span class="sy0">/</span>Entity
+     <a href="http://www.php.net/mkdir"><span class="kw3">mkdir</span></a> src<span class="sy0">/</span>Bundle<span class="sy0">/</span>ElaoBundle<span class="sy0">/</span>Entity
   </div>
 </div>
 
 <p class="standard">
-  Nous allons enregistrer notre premier Entity dans ce nouveau répertoire, et l&#8217;enrichir à l&#8217;aide d&#8217;annotations :
+  Nous allons enregistrer notre premier Entity dans ce nouveau répertoire, et l'enrichir à l'aide d'annotations :
 </p>
 
 <div class="codecolorer-container php vibrant" style="overflow:auto;white-space:nowrap;width:100%;">
@@ -110,7 +110,7 @@ Pour débuter, nous avons concentré nos efforts sur la nouvelle philosophie de 
 
 <div class="codecolorer-container php vibrant" style="overflow:auto;white-space:nowrap;width:100%;">
   <div class="php codecolorer">
-    &nbsp;hello<span class="sy0">/</span>console doctrine<span class="sy0">:</span>generate<span class="sy0">:</span>entities
+     hello<span class="sy0">/</span>console doctrine<span class="sy0">:</span>generate<span class="sy0">:</span>entities
   </div>
 </div>
 
@@ -120,16 +120,16 @@ Pour débuter, nous avons concentré nos efforts sur la nouvelle philosophie de 
 
 <div class="codecolorer-container php vibrant" style="overflow:auto;white-space:nowrap;width:100%;">
   <div class="php codecolorer">
-    &nbsp;hello<span class="sy0">/</span>console doctrine<span class="sy0">:</span>schema<span class="sy0">:</span>create
+     hello<span class="sy0">/</span>console doctrine<span class="sy0">:</span>schema<span class="sy0">:</span>create
   </div>
 </div>
 
 <p class="standard">
-  A présent, nous disposons d&#8217;un Entity et d&#8217;une base de données correctement configurée, nous allons donc essayer d&#8217;enregistrer des données en base à l&#8217;aide de l&#8217;ORM. Comme nous découvrons le framework et que nous souhaitons également mettre en oeuvre PHPUnit, nous allons faire des manipulations d&#8217;entités au moyen de tests unitaires. Or, pour communiquer avec la base de données, la nouvelle version de Doctrine 2 nous oblige à passer par des <em>Entity Managers</em>. Toute la difficulté pour nous est d&#8217;obtenir un <em>Entity Manager</em> dans une application de type &#8220;console&#8221; (depuis les contrôleurs de Symfony 2, il est aisé d&#8217;obtenir un <em>Entity Manager</em> puisque les contrôleurs disposent d&#8217;une instance d&#8217;<em>Entity Manager</em> obtenue par injection de dépendances par le biais du <em>$container</em> (instance de Symfony\Component\DependencyInjection\Container), ce dernier faisant en quelque sorte office de &#8220;registre des instances obtenues par injection de dépendance&#8221; : <strong><em>$em = $this['doctrine.orm.entity_manager']</em></strong>).
+  A présent, nous disposons d'un Entity et d'une base de données correctement configurée, nous allons donc essayer d'enregistrer des données en base à l'aide de l'ORM. Comme nous découvrons le framework et que nous souhaitons également mettre en oeuvre PHPUnit, nous allons faire des manipulations d'entités au moyen de tests unitaires. Or, pour communiquer avec la base de données, la nouvelle version de Doctrine 2 nous oblige à passer par des <em>Entity Managers</em>. Toute la difficulté pour nous est d'obtenir un <em>Entity Manager</em> dans une application de type "console" (depuis les contrôleurs de Symfony 2, il est aisé d'obtenir un <em>Entity Manager</em> puisque les contrôleurs disposent d'une instance d'<em>Entity Manager</em> obtenue par injection de dépendances par le biais du <em>$container</em> (instance de Symfony\Component\DependencyInjection\Container), ce dernier faisant en quelque sorte office de "registre des instances obtenues par injection de dépendance" : <strong><em>$em = $this['doctrine.orm.entity_manager']</em></strong>).
 </p>
 
 <p class="standard">
-  Dans le cadre des tests unitaires, nous allons passer par une instance de <em>HelloKernel</em> pour obtenir un <em>Entity Manager</em> (également au moyen de sa propriété <em>$container</em>). C&#8217;est parti, voici le contenu d&#8217;un exemple de fichier de tests (qui nécessite de créer un sous-répertoire <em>Tests</em> dans notre Bundle <em>ElaoBundle</em>) :
+  Dans le cadre des tests unitaires, nous allons passer par une instance de <em>HelloKernel</em> pour obtenir un <em>Entity Manager</em> (également au moyen de sa propriété <em>$container</em>). C'est parti, voici le contenu d'un exemple de fichier de tests (qui nécessite de créer un sous-répertoire <em>Tests</em> dans notre Bundle <em>ElaoBundle</em>) :
 </p>
 
 <div class="codecolorer-container php vibrant" style="overflow:auto;white-space:nowrap;width:100%;">
@@ -139,27 +139,27 @@ Pour débuter, nous avons concentré nos efforts sur la nouvelle philosophie de 
 </div>
 
 <p class="standard">
-  Lançons le test pour vérifier que tout s&#8217;est correctement déroulé :
+  Lançons le test pour vérifier que tout s'est correctement déroulé :
 </p>
 
 <div class="codecolorer-container php vibrant" style="overflow:auto;white-space:nowrap;width:100%;">
   <div class="php codecolorer">
-    &nbsp;phpunit src<span class="sy0">/</span>Bundle<span class="sy0">/</span>ElaoBundle<span class="sy0">/</span>Tests<span class="sy0">/</span>ActorEntityTest<span class="sy0">.</span>php
+     phpunit src<span class="sy0">/</span>Bundle<span class="sy0">/</span>ElaoBundle<span class="sy0">/</span>Tests<span class="sy0">/</span>ActorEntityTest<span class="sy0">.</span>php
   </div>
 </div>
 
 <p class="standard">
-  Le test passe avec succès. Vérifions également à l&#8217;aide d&#8217;une commande DQL Doctrine que le contenu en base de données est conforme à nos attentes :
+  Le test passe avec succès. Vérifions également à l'aide d'une commande DQL Doctrine que le contenu en base de données est conforme à nos attentes :
 </p>
 
 <div class="codecolorer-container php vibrant" style="overflow:auto;white-space:nowrap;width:100%;">
   <div class="php codecolorer">
-    &nbsp;hello<span class="sy0">/</span>console doctrine<span class="sy0">:</span>query<span class="sy0">:</span>dql <span class="st0">"select act.firstname, act.lastname from \Bundle\ElaoBundle\Entity\Actor act"</span>
+     hello<span class="sy0">/</span>console doctrine<span class="sy0">:</span>query<span class="sy0">:</span>dql <span class="st0">"select act.firstname, act.lastname from \Bundle\ElaoBundle\Entity\Actor act"</span>
   </div>
 </div>
 
 <p class="standard">
-  Nous venons donc d&#8217;écrire notre premier test unitaire sur Doctrine2 au sein d&#8217;une application Symfony 2. Cela étant, un problème subsiste : si nous lançons le test une seconde fois, nous serons confrontés à un échec puisque le nombre d&#8217;enregistrement en base de données augmente avec chaque test. Il nous faut trouver un moyen d&#8217;isoler nos données de tests ; nous pourrions soit nettoyer la base de données à l&#8217;issue du test, soit repartir d&#8217;une base &#8220;<em>blanche</em>&#8221; au début des tests. Nous allons opter pour la seconde solution (car elle nous permet de constater l&#8217;état de notre base de données à l&#8217;issue du test). Nous allons tout simplement invoquer les commandes <em>doctrine:schema:drop</em> et <em>doctrine:schema:create</em> dans la méthode <em>setUp</em> de notre test. Pour cela, nous devons obtenir une instance de \Symfony\Bundle\FrameworkBundle\Console\Application. Commençons donc par instancier cette classe dans le constructeur :
+  Nous venons donc d'écrire notre premier test unitaire sur Doctrine2 au sein d'une application Symfony 2. Cela étant, un problème subsiste : si nous lançons le test une seconde fois, nous serons confrontés à un échec puisque le nombre d'enregistrement en base de données augmente avec chaque test. Il nous faut trouver un moyen d'isoler nos données de tests ; nous pourrions soit nettoyer la base de données à l'issue du test, soit repartir d'une base "<em>blanche</em>" au début des tests. Nous allons opter pour la seconde solution (car elle nous permet de constater l'état de notre base de données à l'issue du test). Nous allons tout simplement invoquer les commandes <em>doctrine:schema:drop</em> et <em>doctrine:schema:create</em> dans la méthode <em>setUp</em> de notre test. Pour cela, nous devons obtenir une instance de \Symfony\Bundle\FrameworkBundle\Console\Application. Commençons donc par instancier cette classe dans le constructeur :
 </p>
 
 <div class="codecolorer-container php vibrant" style="overflow:auto;white-space:nowrap;width:100%;">
@@ -169,7 +169,7 @@ Pour débuter, nous avons concentré nos efforts sur la nouvelle philosophie de 
 </div>
 
 <p class="standard">
-  Nous ajoutons ensuite une méthode protégée nous permettant de lancer des commandes (comme nous envisageons de lancer deux commandes distinctes, une pour supprimer la base, l&#8217;autre pour la récréer, autant factoriser le code dans une méthode propre) ; cette méthode utilise l&#8217;instance de Console\Application que nous avons instanciée dans le constructeur :
+  Nous ajoutons ensuite une méthode protégée nous permettant de lancer des commandes (comme nous envisageons de lancer deux commandes distinctes, une pour supprimer la base, l'autre pour la récréer, autant factoriser le code dans une méthode propre) ; cette méthode utilise l'instance de Console\Application que nous avons instanciée dans le constructeur :
 </p>
 
 <div class="codecolorer-container php vibrant" style="overflow:auto;white-space:nowrap;width:100%;">
@@ -179,7 +179,7 @@ Pour débuter, nous avons concentré nos efforts sur la nouvelle philosophie de 
 </div>
 
 <p class="standard">
-  Enfin, nous allons compléter la méthode <em>setUp</em> de notre classe de test afin d&#8217;invoquer les commandes de suppression et de regénération de la base de données avant le lancement des tests :
+  Enfin, nous allons compléter la méthode <em>setUp</em> de notre classe de test afin d'invoquer les commandes de suppression et de regénération de la base de données avant le lancement des tests :
 </p>
 
 <div class="codecolorer-container php vibrant" style="overflow:auto;white-space:nowrap;width:100%;">
@@ -201,5 +201,5 @@ Pour débuter, nous avons concentré nos efforts sur la nouvelle philosophie de 
 ## Conclusion
 
 <p class="standard">
-  Nous avons vu comment rédiger un test unitaire &#8220;attaquant&#8221; la base de données sous Symfony2. En l&#8217;état actuel du framework, Doctrine 2 semble avoir un peu d&#8217;avance sur Symfony2 en termes de fonctionnalités et de documentation. C&#8217;est la raison pour laquelle nous avons axé nos premiers efforts sur le modèle, et eu recours aux tests unitaires pour &#8220;faire tourner&#8221; Doctrine 2, et nous affranchir ainsi des couches <em>Contrôleurs</em> et <em>Vues</em>. Il reste toutefois de nombreux points qui n&#8217;ont pas été abordés dans cet article, s&#8217;agissant du modèle et des tests unitaires. En particulier, les prochains articles aborderont sans doute les <em>Repositories</em> de Doctrine 2 destinés notamment à l&#8217;écriture de code permettant d&#8217;interroger la base de données, les relations dans le modèle, et la configuration de PHPUnit pour lancer une série de tests. <em>Stay tuned !</em>
+  Nous avons vu comment rédiger un test unitaire "attaquant" la base de données sous Symfony2. En l'état actuel du framework, Doctrine 2 semble avoir un peu d'avance sur Symfony2 en termes de fonctionnalités et de documentation. C'est la raison pour laquelle nous avons axé nos premiers efforts sur le modèle, et eu recours aux tests unitaires pour "faire tourner" Doctrine 2, et nous affranchir ainsi des couches <em>Contrôleurs</em> et <em>Vues</em>. Il reste toutefois de nombreux points qui n'ont pas été abordés dans cet article, s'agissant du modèle et des tests unitaires. En particulier, les prochains articles aborderont sans doute les <em>Repositories</em> de Doctrine 2 destinés notamment à l'écriture de code permettant d'interroger la base de données, les relations dans le modèle, et la configuration de PHPUnit pour lancer une série de tests. <em>Stay tuned !</em>
 </p>

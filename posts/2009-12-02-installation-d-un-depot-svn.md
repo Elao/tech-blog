@@ -1,8 +1,8 @@
 # **[EDIT]** Il est bien évidemment conseillé aujourd'hui d'utiliser GIT comme SCM ! Cet article est à considérer comme une archive et/ou comme support à ceux qui ont la malchance d' être coincé avec SVN.
 
-<p>**Subversion** (en abr&eacute;g&eacute; **svn**) est un <a class="mw-redirect" title="Syst&egrave;me de gestion de versions" target="_blank" href="http://fr.wikipedia.org/wiki/Syst%C3%A8me_de_gestion_de_versions">syst&egrave;me de gestion de versions</a>, il agit sur une arborescence de fichiers afin de conserver toutes les versions des fichiers, ainsi que les diff&eacute;rences entre les fichiers. De ce fait, et pour r&eacute;sumer, il permet non seulement de pouvoir revenir &agrave; un &eacute;tat T d&#8217;une application dans le temps mais &eacute;galement de travailler &agrave; plusieurs sur un seul et m&ecirc;me projet, les conflits pouvant &ecirc;tre engendr&eacute;s entre deux utilisateurs manipulant un m&ecirc;me fichier &eacute;tant g&eacute;r&eacute;s par le serveur subversion.</p>
+<p>**Subversion** (en abrégé **svn**) est un <a class="mw-redirect" title="Syst&egrave;me de gestion de versions" target="_blank" href="http://fr.wikipedia.org/wiki/Syst%C3%A8me_de_gestion_de_versions">syst&egrave;me de gestion de versions</a>, il agit sur une arborescence de fichiers afin de conserver toutes les versions des fichiers, ainsi que les différences entre les fichiers. De ce fait, et pour résumer, il permet non seulement de pouvoir revenir à un état T d'une application dans le temps mais également de travailler à plusieurs sur un seul et même projet, les conflits pouvant être engendrés entre deux utilisateurs manipulant un même fichier étant gérés par le serveur subversion.</p>
 
-## Les paquets &agrave; installer:
+## Les paquets à installer:
 
 ```shell
 apt-get install subversion libapache2-svn

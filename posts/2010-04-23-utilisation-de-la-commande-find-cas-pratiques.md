@@ -1,7 +1,7 @@
 
-La commande find, outils ô combien indispensable des administrateurs systèmes, permet d&#8217;effectuer et d&#8217;automatiser tout un tas de tâches de maintenance courantes.
+La commande find, outils ô combien indispensable des administrateurs systèmes, permet d'effectuer et d'automatiser tout un tas de tâches de maintenance courantes.
 
-Ce petit memo se veut être un post de centralisation des lignes de commande pratiques, pouvant dépanner l&#8217;admin en détresse !
+Ce petit memo se veut être un post de centralisation des lignes de commande pratiques, pouvant dépanner l'admin en détresse !
 
 ## Rechercher un fichier
 
@@ -11,7 +11,7 @@ Ce petit memo se veut être un post de centralisation des lignes de commande pra
   </div>
 </div>
 
-Cette commande renverra tous les fichier du répertoire courant **ET** de ses sous répertoires dont le nom correspond au masque suivant l&#8217;option **-name**.
+Cette commande renverra tous les fichier du répertoire courant **ET** de ses sous répertoires dont le nom correspond au masque suivant l'option **-name**.
 
 ## Rechercher tous les fichiers de type répertoire
 
@@ -37,9 +37,9 @@ Cette commande renverra tous les fichier du répertoire courant **ET** de ses so
   </div>
 </div>
 
-Commande très utile pour donner les droits d&#8217;exécution aux seuls répertoires par exemple.
+Commande très utile pour donner les droits d'exécution aux seuls répertoires par exemple.
 
-## Recherche à l&#8217;aide d&#8217;opérateurs logiques
+## Recherche à l'aide d'opérateurs logiques
 
 <div class="codecolorer-container bash vibrant" style="overflow:auto;white-space:nowrap;width:100%;">
   <div class="bash codecolorer">
@@ -47,7 +47,7 @@ Commande très utile pour donner les droits d&#8217;exécution aux seuls répert
   </div>
 </div>
 
-Cette commande renverra tous les fichier de /tmp n&#8217;appartenant pas à l&#8217;utilisateur webmaster
+Cette commande renverra tous les fichier de /tmp n'appartenant pas à l'utilisateur webmaster
 
 <div class="codecolorer-container bash vibrant" style="overflow:auto;white-space:nowrap;width:100%;">
   <div class="bash codecolorer">

@@ -22,25 +22,25 @@ Sommaire:
               width="320" /> </a>
 </div>
 
-<span></span> 
+<span></span>
 
 <p style="text-align: justify;">
-  Si vous êtes comme moi et qu&#8217;à la fin de la journée vous avez 50 terminaux d&#8217;ouverts sur plusieurs bureaux virtuels, et qu&#8217;il n&#8217;est plus possible de remettre la main sur LE terminal dont vous avez besoin &#8230; ceci pourrait bien vous intéresser ;)
+  Si vous êtes comme moi et qu'à la fin de la journée vous avez 50 terminaux d'ouverts sur plusieurs bureaux virtuels, et qu'il n'est plus possible de remettre la main sur LE terminal dont vous avez besoin ... ceci pourrait bien vous intéresser ;)
 </p>
 
 <p style="text-align: justify;">
-  Il est en effet possible &#8220;d&#8217;attacher&#8221; les terminaux à la barre de menu mac OS X via un petit plugin SIMBL et de les afficher / cacher avec un simple raccourci clavier.
+  Il est en effet possible "d'attacher" les terminaux à la barre de menu mac OS X via un petit plugin SIMBL et de les afficher / cacher avec un simple raccourci clavier.
 </p>
 
 <p style="text-align: justify;">
-  Ceux-ci peuvent être attachés à la menubar d&#8217;un space en particulier ou alors être liés à tous les spaces.
+  Ceux-ci peuvent être attachés à la menubar d'un space en particulier ou alors être liés à tous les spaces.
 </p>
 
 <p style="text-align: justify;">
-  Ceci est possible grâce au plugin Visor, celui-ci nécessite l&#8217;installation de SIMBL (Un outils permettant de développer des plugins Cocoa)
+  Ceci est possible grâce au plugin Visor, celui-ci nécessite l'installation de SIMBL (Un outils permettant de développer des plugins Cocoa)
 </p>
 
-<span style="text-decoration: underline;">Dans l&#8217;ordre il faut donc:</span>
+<span style="text-decoration: underline;">Dans l'ordre il faut donc:</span>
 
 *   Télécharger et installer <a title="SIMBL" href="http://www.culater.net/software/SIMBL/SIMBL.php" target="_blank">SIMBL</a>
 *   Télécharger le plugin <a title="Visor" href="http://visor.binaryage.com/" target="_blank">Visor</a>
@@ -55,7 +55,7 @@ Décompresser et copier le plugin Visor dans
 
 *   Fermer tous vos terminaux ouverts
 
-Lorsque vous relancez votre application terminal celle-ci ne s&#8217;ouvre pas mais vous devriez voir apparaitre dans le menubar en haut à droite une petite icone la représentant.
+Lorsque vous relancez votre application terminal celle-ci ne s'ouvre pas mais vous devriez voir apparaitre dans le menubar en haut à droite une petite icone la représentant.
 
 <div class="ngg-gallery-singlepic-image ngg-center" style="max-width: 600px">
   <a href="http://old-blog.elao.dev/wp-content/gallery/macosx/screen_menubar.png"
@@ -73,9 +73,9 @@ Lorsque vous relancez votre application terminal celle-ci ne s&#8217;ouvre pas m
               width="600" /> </a>
 </div>
 
-<span></span> 
+<span></span>
 
-Nous pouvons à présent accéder à notre terminal par un raccourci de notre choix (par défaut ^<), configurable en allant dans les préférences de Visor (clic droit sur l&#8217;icône -> Préférences)
+Nous pouvons à présent accéder à notre terminal par un raccourci de notre choix (par défaut ^<), configurable en allant dans les préférences de Visor (clic droit sur l'icône -> Préférences)
 
  [1]: /blog/mac-os/terminal/les-fichiers-bash-utilisateur.html "Les fichiers bash utilisateur"
  [2]: /blog/mac-os/personnaliser-son-terminal-sous-mac-osx.html "Personnaliser son terminal sous mac OSX"

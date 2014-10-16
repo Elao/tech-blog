@@ -15,18 +15,18 @@
               width="216" /> </a>
 </div>
 
-<span></span> En raison d&#8217;un petit contretemps de Johannes S. qui, semble t&#8217;il, a eu du mal à se lever, c&#8217;est John Cleveley qui a ouvert les hostilités de ce Symfony Live 2012 avec un retour d&#8217;expérience sur la mise en place du responsive design pour le site d&#8217;actualités de la BBC.  
-Conférence très intéressante présentant les différentes contraintes liées à l&#8217;hétérogénéité du parc des périphériques &#8220;mobiles&#8221;.  
-Une légère déception toutefois de voir que la majorité de cette intervention fût consacrée au &#8220;pourquoi&#8221; ils ont décidés de mettre en place cette stratégie plutôt que le &#8220;comment&#8221;.
+<span></span> En raison d'un petit contretemps de Johannes S. qui, semble t'il, a eu du mal à se lever, c'est John Cleveley qui a ouvert les hostilités de ce Symfony Live 2012 avec un retour d'expérience sur la mise en place du responsive design pour le site d'actualités de la BBC.
+Conférence très intéressante présentant les différentes contraintes liées à l'hétérogénéité du parc des périphériques "mobiles".
+Une légère déception toutefois de voir que la majorité de cette intervention fût consacrée au "pourquoi" ils ont décidés de mettre en place cette stratégie plutôt que le "comment".
 
 **<u>A retenir:</u>**
 
-- Même Google ne saurait se donner les moyens de produire une application par périphérique mobile différent.  
-- Gardez à l&#8217;esprit que c&#8217;est le contenu qui est important, pas tout ce que l&#8217;on mets &#8220;autour&#8221;.  
-- Toujours veiller à avoir des temps de réponse correct et des pages &#8220;légères&#8221;.  
-- Appliquer les bonnes pratiques en terme d&#8217;optimisation des temps de réponse, comme la compression des pages (gzip) et la concatenation des assets (CSS / JS).
+- Même Google ne saurait se donner les moyens de produire une application par périphérique mobile différent.
+- Gardez à l'esprit que c'est le contenu qui est important, pas tout ce que l'on mets "autour".
+- Toujours veiller à avoir des temps de réponse correct et des pages "légères".
+- Appliquer les bonnes pratiques en terme d'optimisation des temps de réponse, comme la compression des pages (gzip) et la concatenation des assets (CSS / JS).
 
-Leur approche a été globalement, de partir sur le principe de dégradation des contenus, les navigateurs étant capables de gérer des contenus recevant une version &#8220;complète&#8221;, les navigateurs moins performants devant se contenter d&#8217;un contenu &#8220;brut&#8221; des contenus.
+Leur approche a été globalement, de partir sur le principe de dégradation des contenus, les navigateurs étant capables de gérer des contenus recevant une version "complète", les navigateurs moins performants devant se contenter d'un contenu "brut" des contenus.
 
 
 

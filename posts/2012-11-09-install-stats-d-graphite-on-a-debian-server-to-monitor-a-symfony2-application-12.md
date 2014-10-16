@@ -1,7 +1,7 @@
 
 Hello,
 
-During this tutorial, we will install Stats.d and Graphite on the same server our application is running on. Don&#8217;t forget that it&#8217;s best if you monitor your application with graphite & stats.d using another server because that will not be the case in this tutorial.
+During this tutorial, we will install Stats.d and Graphite on the same server our application is running on. Don't forget that it's best if you monitor your application with graphite & stats.d using another server because that will not be the case in this tutorial.
 
 Requirements :
 
@@ -10,7 +10,7 @@ Requirements :
 *   [StatsDClientBundle][1]
 
 <div>
-  Here&#8217;s the result we&#8217;ll have at the end (screenshot from a personal web application) :
+  Here's the result we'll have at the end (screenshot from a personal web application) :
 </div>
 
 <div>
@@ -20,19 +20,19 @@ Requirements :
         <a href='http://old-blog.elao.dev/wp-content/uploads/2012/11/memory_usage.png'><img width="150" height="150" src="http://old-blog.elao.dev/wp-content/uploads/2012/11/memory_usage-150x150.png" class="attachment-thumbnail" alt="memory usage 150x150 Install Stats.d / Graphite on a debian server in order to monitor a Symfony2 application (1/2)"  title="Install Stats.d / Graphite on a debian server in order to monitor a Symfony2 application (1/2)" /></a>
       </dt>
     </dl>
-    
+
     <dl class='gallery-item'>
       <dt class='gallery-icon landscape'>
         <a href='http://old-blog.elao.dev/wp-content/uploads/2012/11/users.png'><img width="150" height="150" src="http://old-blog.elao.dev/wp-content/uploads/2012/11/users-150x150.png" class="attachment-thumbnail" alt="users 150x150 Install Stats.d / Graphite on a debian server in order to monitor a Symfony2 application (1/2)"  title="Install Stats.d / Graphite on a debian server in order to monitor a Symfony2 application (1/2)" /></a>
       </dt>
     </dl>
-    
+
     <dl class='gallery-item'>
       <dt class='gallery-icon landscape'>
         <a href='http://old-blog.elao.dev/wp-content/uploads/2012/11/matched_route.png'><img width="150" height="150" src="http://old-blog.elao.dev/wp-content/uploads/2012/11/matched_route-150x150.png" class="attachment-thumbnail" alt="matched route 150x150 Install Stats.d / Graphite on a debian server in order to monitor a Symfony2 application (1/2)"  title="Install Stats.d / Graphite on a debian server in order to monitor a Symfony2 application (1/2)" /></a>
       </dt>
     </dl>
-    
+
     <br style="clear: both" />
   </div>
 </div>
@@ -45,7 +45,7 @@ Requirements :
 <noscript>
   <pre><code class="language-shell shell"># Installing graphite dependencies
 apt-get install -y python2.6 python-pip python-cairo python-django python-django-tagging
-apt-get install -y libapache2-mod-wsgi python-twisted python-memcache python-pysqlite2 python-simplejson 
+apt-get install -y libapache2-mod-wsgi python-twisted python-memcache python-pysqlite2 python-simplejson
 pip install whisper
 pip install carbon
 pip install graphite-web
@@ -76,7 +76,7 @@ retentions = 60:90d
 pattern = .*
 retentions = 60s:1d
 
-# Create a vi storage-aggregation.conf 
+# Create a vi storage-aggregation.conf
 vi storage-aggregation.conf
 
 # Then copy paste in it the following parameters
@@ -156,19 +156,19 @@ If you want the full detail, check out the [source][4].
 
 You can access it with the URL you provided in your vhost
 
-Now, let&#8217;s install the [StatsDClientBundle][5] in order to monitor our Symfony2 application
+Now, let's install the [StatsDClientBundle][5] in order to monitor our Symfony2 application
 
 <noscript>
   <pre><code class="language-php php">// composer.json
 
 "require": {
     # ..
-    "liuggio/statsd-client-bundle": "&gt;=1.2",
+    "liuggio/statsd-client-bundle": ">=1.2",
     # ..
 }
 
 // After running php composer.phar update liuggio/statsd-client-bundle
-// Enable the Bundle in AppKernel.php 
+// Enable the Bundle in AppKernel.php
 
 class AppKernel extends Kernel
  {
@@ -197,7 +197,7 @@ liuggio_stats_d_client:
 
 Note that we added the full configuration for the bundle which allow us to collect these usefull information such as logged users vs anonymous, memory usage.
 
-# In the 2nd part, we&#8217;ll see how to monitor custom events in your Symfony2 app.
+# In the 2nd part, we'll see how to monitor custom events in your Symfony2 app.
 
  [1]: https://github.com/liuggio/StatsDClientBundle
  [2]: http://linuxracker.com/2012/03/31/setting-up-graphite-server-on-debian-squeeze/

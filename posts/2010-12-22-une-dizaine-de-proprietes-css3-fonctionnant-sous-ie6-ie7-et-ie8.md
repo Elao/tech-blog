@@ -1,7 +1,7 @@
 
-Cet article a pour but de vous proposer une solution qui vous permettra d&#8217;utiliser quelques propriétés de CSS3 sous IE6 , 7 et 8. Comme vous le savez, ces navigateurs ne gèrent pas les nouvelles règles introduites par CSS3.
+Cet article a pour but de vous proposer une solution qui vous permettra d'utiliser quelques propriétés de CSS3 sous IE6 , 7 et 8. Comme vous le savez, ces navigateurs ne gèrent pas les nouvelles règles introduites par CSS3.
 
-Différentes solutions existent déjà pour permettre l&#8217;émulation de border-radius qui permet d&#8217;obtenir des coins arrondis. <a href="http://css3pie.com/" target="_blank">CSS3pie</a> permet en effet d&#8217;utiliser les propriétés 
+Différentes solutions existent déjà pour permettre l'émulation de border-radius qui permet d'obtenir des coins arrondis. <a href="http://css3pie.com/" target="_blank">CSS3pie</a> permet en effet d'utiliser les propriétés 
 
 <div class="codecolorer-container text vibrant" style="overflow:auto;white-space:nowrap;width:100%;">
   <div class="text codecolorer">

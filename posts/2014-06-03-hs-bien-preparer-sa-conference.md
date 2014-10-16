@@ -2,7 +2,7 @@ Aujourd’hui c’est un article un peu spécial dont je vous fais part sur le b
 
 Le but de cet article est d’aider les speakers à préparer leurs conférences et à avoir un peu plus d’aisance à l’oral.
 
-Vous avez du mal à <strong>accrocher l’attention de votre auditoire</strong> ? Vous ne savez pas comment <strong>gérer le stress devant une foule d’une cinquantaine de personnes</strong> ? Ne vous inquiétez pas, cet article est là pour vous aider. Quel que soit votre profil (timide, extraverti), peu importe votre confort à l’oral et votre aisance technique, j’ai rassemblé quelques petites astuces qui pourront vous servir lors de vos prochains discours. Et, je l&#8217;espère, faire de vous un speaker talentueux et convainquant.
+Vous avez du mal à <strong>accrocher l’attention de votre auditoire</strong> ? Vous ne savez pas comment <strong>gérer le stress devant une foule d’une cinquantaine de personnes</strong> ? Ne vous inquiétez pas, cet article est là pour vous aider. Quel que soit votre profil (timide, extraverti), peu importe votre confort à l’oral et votre aisance technique, j’ai rassemblé quelques petites astuces qui pourront vous servir lors de vos prochains discours. Et, je l'espère, faire de vous un speaker talentueux et convainquant.
 
 ## Ce qu’il ne faut pas faire
 
@@ -16,7 +16,7 @@ Attention aux tics de comportement. Certaines personnes mal à l’aise à l’o
 
 On ne néglige pas sa voix. Un <strong>volume de parole trop faible</strong>, des <strong>bégaiements</strong> voire même un ton trop <strong>monotone</strong> peuvent vous faire perdre votre crédibilité sur scène. Vos spectateurs peuvent avoir l’impression que vous ne maîtrisez pas le sujet, ou pire, qu’il ne vous intéresse pas !
 
-Si possible, <strong>éteignez votre téléphone</strong>. Au pire, vous avez le droit au mode avion. Faites aussi attention à <strong>couper les notifications</strong> qui pourraient apparaître sur la machine de présentation : chat, alertes email, et tout ce qui est susceptible de popper ! Avec un Mac, utilisez le mode “Ne pas déranger” (mode qui désactive les notifications). On se met ainsi à l&#8217;abri de toute perturbation externe qui pourrait vous faire perdre le fil.
+Si possible, <strong>éteignez votre téléphone</strong>. Au pire, vous avez le droit au mode avion. Faites aussi attention à <strong>couper les notifications</strong> qui pourraient apparaître sur la machine de présentation : chat, alertes email, et tout ce qui est susceptible de popper ! Avec un Mac, utilisez le mode “Ne pas déranger” (mode qui désactive les notifications). On se met ainsi à l'abri de toute perturbation externe qui pourrait vous faire perdre le fil.
 
 ## Ce que je vous conseille de faire
 

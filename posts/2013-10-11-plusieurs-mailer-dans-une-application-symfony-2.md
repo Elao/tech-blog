@@ -7,7 +7,7 @@ Voici une petite astuce que j'ai découvert hier et que j'ai pensé utile de par
 *   Votre application Symfony2 utilise un service tiers pour envoyer vos e-mails (comme [Mailjet][1] par exemple)
 *   Votre application a besoin d'envoyer des e-mails de notifications aux administrateurs lorsque des erreurs se produisent (Erreurs 500 par exemple)
 
-Imaginez qu'une erreur se produise sur l'une de vos pages et que vous ayez des centaines d'utilisateurs en train de visualiser cette même page. Pour chaque affichage de cette dernière, vous allez recevoir un e-mail de notification. Si ces e-mails passent par Mailjet par exemple, votre quota fondra à vue d’œil&#8230; Au mieux vous atteindrez une limite de quota et les mails suivants seront bloqués, au pire vous ferez un énorme hors forfait qui pourra vous couter très cher&#8230; <img src="http://old-blog.elao.dev/wp-includes/images/smilies/icon_wink.gif" alt="icon wink Plusieurs mailer dans une application Symfony 2" class="wp-smiley" title="Plusieurs mailer dans une application Symfony 2" /> 
+Imaginez qu'une erreur se produise sur l'une de vos pages et que vous ayez des centaines d'utilisateurs en train de visualiser cette même page. Pour chaque affichage de cette dernière, vous allez recevoir un e-mail de notification. Si ces e-mails passent par Mailjet par exemple, votre quota fondra à vue d’œil... Au mieux vous atteindrez une limite de quota et les mails suivants seront bloqués, au pire vous ferez un énorme hors forfait qui pourra vous couter très cher... <img src="http://old-blog.elao.dev/wp-includes/images/smilies/icon_wink.gif" alt="icon wink Plusieurs mailer dans une application Symfony 2" class="wp-smiley" title="Plusieurs mailer dans une application Symfony 2" />
 
 # Solution proposée
 

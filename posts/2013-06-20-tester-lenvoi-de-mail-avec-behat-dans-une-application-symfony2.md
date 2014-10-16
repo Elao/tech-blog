@@ -21,7 +21,7 @@ Then the "registration" mail should be sent to "admin@example.com"
 **Cette étape pose plusieurs problèmes :**
 
 *   on doit d'abord être capable de récupérer l'ensemble des mails envoyés lors d'un scénario à un utilisateur
-*   on doit identifier les types de mails (registration, confirmation&#8230;)
+*   on doit identifier les types de mails (registration, confirmation...)
 
 ### Récupérer l'ensemble des mails
 

@@ -1,11 +1,11 @@
 
-L&#8217;un des principaux problèmes rencontrés au cours de projets nécessitants l&#8217;intervention de plusieurs développeurs est l&#8217;uniformité du code et le respect des conventions de codage, qui ont (normalement) dû être mise en place.  
-Avec l&#8217;avènement de PHP depuis quelques années dans le milieu professionel, de plus en plus d&#8217;outils facilitent la vérification de ces normes de codage, leur but étant d&#8217;assurer la normalisation du code et leur respect.
+L'un des principaux problèmes rencontrés au cours de projets nécessitants l'intervention de plusieurs développeurs est l'uniformité du code et le respect des conventions de codage, qui ont (normalement) dû être mise en place.
+Avec l'avènement de PHP depuis quelques années dans le milieu professionel, de plus en plus d'outils facilitent la vérification de ces normes de codage, leur but étant d'assurer la normalisation du code et leur respect.
 
-Nous pouvons citer, pour PHP [PHP_CodeSniffer][1].  
-En complément de cet outil, il sera nécessaire de définir un ensemble de règles de configuration, nous utilisons aujourd&#8217;hui celles définies pour Symfony2 par [OpenSky][2].
+Nous pouvons citer, pour PHP [PHP_CodeSniffer][1].
+En complément de cet outil, il sera nécessaire de définir un ensemble de règles de configuration, nous utilisons aujourd'hui celles définies pour Symfony2 par [OpenSky][2].
 
-## Installation et Configuration de &#8220;PHPCS&#8221;
+## Installation et Configuration de "PHPCS"
 
 [PHP_CodeSniffer][1] est disponible via PEAR, et est donc relativement facile à installer.
 
@@ -23,7 +23,7 @@ On doit ensuite ajouter les règles pour Symfony2.
   </div>
 </div>
 
-Pour l&#8217;utiliser il suffit à présent de se rendre dans un de nos projets Symfony2 et de taper la commande suivante :
+Pour l'utiliser il suffit à présent de se rendre dans un de nos projets Symfony2 et de taper la commande suivante :
 
 <div class="codecolorer-container bash vibrant" style="overflow:auto;white-space:nowrap;width:100%;">
   <div class="bash codecolorer">

@@ -44,14 +44,14 @@ And we configure the bundle so that we support Internet Explorer from IE 8 but o
 elao_browser_detector:
     browsers:
         partially_compatible:
-            "IE": "&lt;9"
+            "IE": "<9"
         incompatible:
-            "IE": "&lt;8"
+            "IE": "<8"
 ```
 
 ### Detecting incompatible browser:
 
-Now what we want to do on every request is to check that the browser has been identified as compatible and if it wasn&#8217;t, display an error page.
+Now what we want to do on every request is to check that the browser has been identified as compatible and if it wasn't, display an error page.
 
 So let’s create our custom kernel listener named BrowserListener and register it:
 
@@ -64,12 +64,12 @@ Now we want to know if the client is using an incompatible browser, and if so, p
 We could also choose to return a RedirectResponse, just like that:
 
 ```
-$event-&gt;setResponse(
-        new RedirectResponse($this-&gt;router-&gt;generate('incompatible_browser'))
+$event->setResponse(
+        new RedirectResponse($this->router->generate('incompatible_browser'))
     );
 ```
 
-**Note:** We&#8217;re using the &#8220;router&#8221; service here to generate the url from a route name. We would need to add this service to our service declaration before we can use it.
+**Note:** We're using the "router" service here to generate the url from a route name. We would need to add this service to our service declaration before we can use it.
 
 ### What about partially supported browsers?
 
@@ -89,13 +89,13 @@ We update our service declaration:
     </service>
 ```
 
-**Note:** We just added the Twig &#8220;templating&#8221; service to our service declaration because we&#8217;ll need it to render the notice&#8217;s html code.
+**Note:** We just added the Twig "templating" service to our service declaration because we'll need it to render the notice's html code.
 
-Then we&#8217;ll work on the onKernelResponse method to add the notice before the body closing tag and update the response:
+Then we'll work on the onKernelResponse method to add the notice before the body closing tag and update the response:
 
-**Note:** We added the html code of the notice just before the body closing tag, we&#8217;ll probably rely on CSS to make it a top-fixed box.
+**Note:** We added the html code of the notice just before the body closing tag, we'll probably rely on CSS to make it a top-fixed box.
 
-Since we modify the content of the response for a given request depending on a the *User-Agent* header of the request, we provide two different version of the resource for the same URL. Well, that&#8217;s not very cool: some reverse proxy could cache the version including the compatibility notice and provide everyone with this version!
+Since we modify the content of the response for a given request depending on a the *User-Agent* header of the request, we provide two different version of the resource for the same URL. Well, that's not very cool: some reverse proxy could cache the version including the compatibility notice and provide everyone with this version!
 
 We might want to take care of that issue by using the Vary HTTP Cache Headers:
 
@@ -104,11 +104,11 @@ if ($this->browserDetector->isPartiallyCompatible()) {/* ... */}
     $response->headers->add(array('Vary' => 'User-Agent'));
 ```
 
-**Note:** We need to add the header to every Response, not only the ones that we modified: so we do that outside of the &#8220;if&#8221; <img src="/wp-includes/images/smilies/icon_wink.gif" alt="icon wink The BrowserDetectorBundle: working with the Kernel events" class="wp-smiley" title="The BrowserDetectorBundle: working with the Kernel events" /> 
+**Note:** We need to add the header to every Response, not only the ones that we modified: so we do that outside of the "if" <img src="/wp-includes/images/smilies/icon_wink.gif" alt="icon wink The BrowserDetectorBundle: working with the Kernel events" class="wp-smiley" title="The BrowserDetectorBundle: working with the Kernel events" />
 
 ### Conclusion:
 
-And, Voila! We have a listener that intercepts or modifies the response according to our needs. It&#8217;s clean: We didn&#8217;t wrote a single line of this logic in our controllers, it&#8217;s totally separate from other parts of our app. And it can be enabled or disabled easily.
+And, Voila! We have a listener that intercepts or modifies the response according to our needs. It's clean: We didn't wrote a single line of this logic in our controllers, it's totally separate from other parts of our app. And it can be enabled or disabled easily.
 
 ## More about the Elao BrowserDetector Bundle
 

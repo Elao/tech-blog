@@ -1,5 +1,5 @@
 
-Je n&#8217;ai pu assister à cette conférence mais vous trouverez ci-dessous les slides correspondant.
+Je n'ai pu assister à cette conférence mais vous trouverez ci-dessous les slides correspondant.
 
 
 
