@@ -6,7 +6,7 @@
     "meta_title":           "Recherche géolocalisée avec Elasticsearch et Symfony 2",
     "meta_description":     "Recherche géolocalisée avec Elasticsearch et Symfony 2",
     "meta_keywords":        ["ElasticSearch","FOQElasticaBundle","G\u00e9olocalisation","Lucene","Symfony 2"],
-    "thumbnail":            "/blog/medias/thumbnails/mic.gif",
+    "thumbnail":            "/blog/medias/2012-10-30-recherche-geolocalisee-avec-elasticsearch-et-symfony-2/elasticsearch-logo-icon.png",
     "publish_by":           "johan-lopes",
     "publish_at":           "2012-10-30"
 }

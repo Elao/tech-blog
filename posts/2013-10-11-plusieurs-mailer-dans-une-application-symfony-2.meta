@@ -6,7 +6,7 @@
     "meta_title":           "Plusieurs mailer dans une application Symfony 2",
     "meta_description":     "Plusieurs mailer dans une application Symfony 2",
     "meta_keywords":        ["Mailer", "PHP", "Symfony", "ErrorNotifierBundle", "SwiftMailer", "Mailer transport"],
-    "thumbnail":			"/blog/medias/thumbnails/mic.gif",
+    "thumbnail":			"/blog/medias/thumbnails/symfony.jpg",
     "publish_by":           "johan-lopes",
     "publish_at":           "2013-10-11"
 }
