@@ -17,7 +17,7 @@ Le web design responsive amène une solution pratique et économique à cette si
 
 Adieu grille fixe en pixels, bonjour grille flexible ou fluide en pourcentage. Chaque élément de notre maquette doit ainsi s’exprimer en terme relatifs et proportionnels à son contenant d’où la formule :  `cible / contexte = résultat`.
 
-<a href="http://www.elao.com/blog/non-classe/responsive-web-design.html/attachment/contruire-grid" rel="attachment wp-att-2236"><img class="alignnone size-full wp-image-2236" title="Responsible Web Design - Elao " src="http://www.elao.com/blog/wp-content/uploads/2012/07/contruire-grid.jpg" alt="contruire grid Responsive Web Design " width="949" height="657" /></a>
+<img title="Responsible Web Design - Elao " src="/blog/medias/2012-07-31-responsive-web-design-2/contruire-grid.jpg" alt="contruire grid Responsive Web Design " width="949" height="657" />
 
 **Gagnez du temps**
 

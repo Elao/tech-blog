@@ -12,13 +12,13 @@ During this tutorial, we will install Stats.d and Graphite on the same server ou
 
 <div class="row">
     <div class="col-sm-4">
-        <img width="150" height="150" src="http://old-blog.elao.dev/wp-content/uploads/2012/11/memory_usage-150x150.png" alt="memory usage 150x150 Install Stats.d / Graphite on a debian server in order to monitor a Symfony2 application (1/2)" title="Install Stats.d / Graphite on a debian server in order to monitor a Symfony2 application (1/2)" />
+        <img width="150" height="150" src="/blog/medias/2012-11-09-install-stats-d-graphite-on-a-debian-server-to-monitor-a-symfony2-application-12/memory_usage" alt="memory usage 150x150 Install Stats.d / Graphite on a debian server in order to monitor a Symfony2 application (1/2)" title="Install Stats.d / Graphite on a debian server in order to monitor a Symfony2 application (1/2)" />
     </div>
     <div class="col-sm-4">
-        <img width="150" height="150" src="http://old-blog.elao.dev/wp-content/uploads/2012/11/users-150x150.png" alt="users 150x150 Install Stats.d / Graphite on a debian server in order to monitor a Symfony2 application (1/2)" title="Install Stats.d / Graphite on a debian server in order to monitor a Symfony2 application (1/2)" />
+        <img width="150" height="150" src="/blog/medias/2012-11-09-install-stats-d-graphite-on-a-debian-server-to-monitor-a-symfony2-application-12/users" alt="users 150x150 Install Stats.d / Graphite on a debian server in order to monitor a Symfony2 application (1/2)" title="Install Stats.d / Graphite on a debian server in order to monitor a Symfony2 application (1/2)" />
     </div>
     <div class="col-sm-4">
-        <img width="150" height="150" src="http://old-blog.elao.dev/wp-content/uploads/2012/11/matched_route-150x150.png" alt="matched route 150x150 Install Stats.d / Graphite on a debian server in order to monitor a Symfony2 application (1/2)" title="Install Stats.d / Graphite on a debian server in order to monitor a Symfony2 application (1/2)" />
+        <img width="150" height="150" src="/blog/medias/2012-11-09-install-stats-d-graphite-on-a-debian-server-to-monitor-a-symfony2-application-12/matched_route" alt="matched route 150x150 Install Stats.d / Graphite on a debian server in order to monitor a Symfony2 application (1/2)" title="Install Stats.d / Graphite on a debian server in order to monitor a Symfony2 application (1/2)" />
     </div>
 </div>
 
