@@ -1,5 +1,5 @@
-
 Je n’ai pu assister à cette conférence mais vous trouverez ci-dessous les slides correspondant.
 
 <div style="text-align: center">
+	<iframe src="//www.slideshare.net/slideshow/embed_code/13237527" width="425" height="355" frameborder="0" marginwidth="0" marginheight="0" scrolling="no" style="border:1px solid #CCC; border-width:1px; margin-bottom:5px; max-width: 100%;" allowfullscreen> </iframe> <div style="margin-bottom:5px"> <strong> <a href="//www.slideshare.net/denderello/what-mom-never-told-you-about-bundle-configurations-symfony-live-paris-2012" title="What mom never told you about bundle configurations - Symfony Live Paris 2012" target="_blank">What mom never told you about bundle configurations - Symfony Live Paris 2012</a> </strong> from <strong><a href="//www.slideshare.net/denderello" target="_blank">Dennis Benkert</a></strong> </div>
 </div>

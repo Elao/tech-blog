@@ -1,6 +1,4 @@
 
 Je n'ai pu assister à cette conférence mais vous trouverez ci-dessous les slides correspondant.
 
-
-
-A télécharger en <a href="http://www.elao.com/blog/wp-content/uploads/sflive2012/framework.pdf" title="Symfony Live 2012 - What do I get from the full stack framework? " target="_blank">PDF</a>
+<script async class="speakerdeck-embed" data-id="4fd5eee3e84a1800220208e6" data-ratio="1.33333333333333" src="//speakerdeck.com/assets/embed.js"></script>

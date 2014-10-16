@@ -1,46 +1,17 @@
 
-<p style="text-align: justify;">
+
   Bonjour à tous !
-</p>
 
-<p style="text-align: justify;">
   En fin de semaine dernière avait lieu à Paris, à la cité universitaire, le Symfony Live 2012, occasion pour la communauté de se retrouver autour de différentes conférences ayant trait à son framework préféré.
-</p>
 
-<p style="text-align: justify;">
   ELAO et une partie de son équipe y était, histoire de se tenir informé, de revoir les confrères, partenaires, amis et développeurs.<br /> Outre quelques goodies nous en avons ramené quelques bonnes idées et un petit compte rendu de ce qu'il s'est passé sur place.
-</p>
 
-<div class="ngg-gallery-singlepic-image ngg-center" style="max-width: 640px">
-  <a href="http://old-blog.elao.dev/wp-content/gallery/sflive2012/img_4292.jpg"
-		     title=""
-             data-src="http://old-blog.elao.dev/wp-content/gallery/sflive2012/img_4292.jpg"
-             data-thumbnail="http://old-blog.elao.dev/wp-content/gallery/sflive2012/thumbs/thumbs_img_4292.jpg"
-             data-image-id="12"
-             data-title="Cité universitaire"
-             data-description=""
-             target='_self'
-             class="shutterset_62235bd430443547becf5f64e3fea415"> <img class="ngg-singlepic"
-             src="http://www.elao.com/blog/nextgen-image/12/640x480x100/c43c3424e478ee26457591d82eb29fcd"
-             alt="Cité universitaire"
-             title="Cité universitaire"
-              width="640" /> </a>
-</div>
-
-<span></span>
-
-
-
-<p style="text-align: justify;">
   La keynote d'ouverture a vue, entre autre, Fabien mettre en avant l'importance de la communauté et annoncer la mise en place <a title="Certification développeur symfony" href="http://trainings.sensiolabs.com/en/training/symfony-certification" target="_blank">des certifications pour les développeurs Symfony</a>.<br /> De notre point de vue c'est plutôt une bonne chose, cela permettra aux développeurs de justifier leur expérience du Framework et aux clients d'avoir une certaine garantie des compétences de son prestataire.
-</p>
 
-<p style="text-align: justify;">
   Sensio assurera le passage de ces certifications, à Paris pour l'instant, celle-ci coutera 200 € et proposera de couvrir différents aspects du Framework.<br /> Elle ne devrait être abordable qu'à des développeurs expérimentés connaissants bien le Framework.
-</p>
 
-<p style="text-align: justify;">
   Nous tâcherons d'ajouter au fur et à mesure de leur disponibilité les différentes conférences du Symfony Live 2012 ci-dessous.
+
 </p>
 
 <table>

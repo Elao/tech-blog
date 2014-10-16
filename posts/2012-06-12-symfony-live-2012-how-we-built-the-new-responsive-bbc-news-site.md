@@ -1,21 +1,4 @@
-
-<div class="ngg-gallery-singlepic-image ngg-left" style="max-width: 216px">
-  <a href="http://old-blog.elao.dev/wp-content/gallery/sflive2012/img_4281.jpg"
-		     title=""
-             data-src="http://old-blog.elao.dev/wp-content/gallery/sflive2012/img_4281.jpg"
-             data-thumbnail="http://old-blog.elao.dev/wp-content/gallery/sflive2012/thumbs/thumbs_img_4281.jpg"
-             data-image-id="13"
-             data-title="John Cleveley - How we built the new responsive BBC News site"
-             data-description=""
-             target='_self'
-             class="shutterset_f6a244bc502410d329fa0ef897e748dd"> <img class="ngg-singlepic"
-             src="http://www.elao.com/blog/nextgen-image/13/320x240x100/39687ea38206d5834b2c987b0a337cd5"
-             alt="John Cleveley - How we built the new responsive BBC News site"
-             title="John Cleveley - How we built the new responsive BBC News site"
-              width="216" /> </a>
-</div>
-
-<span></span> En raison d'un petit contretemps de Johannes S. qui, semble t'il, a eu du mal à se lever, c'est John Cleveley qui a ouvert les hostilités de ce Symfony Live 2012 avec un retour d'expérience sur la mise en place du responsive design pour le site d'actualités de la BBC.
+En raison d'un petit contretemps de Johannes S. qui, semble t'il, a eu du mal à se lever, c'est John Cleveley qui a ouvert les hostilités de ce Symfony Live 2012 avec un retour d'expérience sur la mise en place du responsive design pour le site d'actualités de la BBC.
 Conférence très intéressante présentant les différentes contraintes liées à l'hétérogénéité du parc des périphériques "mobiles".
 Une légère déception toutefois de voir que la majorité de cette intervention fût consacrée au "pourquoi" ils ont décidés de mettre en place cette stratégie plutôt que le "comment".
 
@@ -28,8 +11,4 @@ Une légère déception toutefois de voir que la majorité de cette intervention
 
 Leur approche a été globalement, de partir sur le principe de dégradation des contenus, les navigateurs étant capables de gérer des contenus recevant une version "complète", les navigateurs moins performants devant se contenter d'un contenu "brut" des contenus.
 
-
-
-Vous pouvez également [télécharger][1] cette présentation au format PDF.
-
- [1]: http://www.elao.com/blog/wp-content/uploads/sflive2012/bbcnews.pdf
+<script async class="speakerdeck-embed" data-id="4fd4f33f234e0f00220246cf" data-ratio="1.2994923857868" src="//speakerdeck.com/assets/embed.js"></script>
