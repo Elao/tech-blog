@@ -20,7 +20,7 @@ Si possible, <strong>éteignez votre téléphone</strong>. Au pire, vous avez le
 
 ## Ce que je vous conseille de faire
 
-<img class="pull-left" alt="photo 300x300 Hors sujet n°1   Comment bien préparer sa conférence ?" src="http://www.elao.com/blog/wp-content/uploads/2014/06/photo-300x300.jpg" width="300" height="300" title="Hors sujet n°1 Comment bien préparer sa conférence ?" />
+<img class="pull-left" alt="Tom 300x300 Hors sujet n°1   Comment bien préparer sa conférence ?" src="/blog/medias/2014-06-03-hs-bien-preparer-sa-conference/tom-300x300.jpg" width="300" height="300" title="Hors sujet n°1 Comment bien préparer sa conférence ?" />
 
 <strong>Travaillez votre voix</strong>. Ça peut paraître anodin, mais c’est l’un des axes les plus importants. Les principaux points à regarder concernant votre voix sont les suivants :
 
