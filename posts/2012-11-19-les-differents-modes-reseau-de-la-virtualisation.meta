@@ -6,7 +6,7 @@
     "meta_title":           "Les différents modes réseau de la virtualisation",
     "meta_description":     "Les différents modes réseau de la virtualisation",
     "meta_keywords":        ["bridge","host only","nat","parallels","r\u00e9seau","virtualbox","virtualisation","vmware"],
-    "thumbnail":            "/blog/medias/thumbnails/mic.gif",
+    "thumbnail":            "/blog/medias/2012-11-19-les-differents-modes-reseau-de-la-virtualisation/vm-bridge-200x300.png",
     "publish_by":           "guewen-faivre",
     "publish_at":           "2012-11-19"
 }
