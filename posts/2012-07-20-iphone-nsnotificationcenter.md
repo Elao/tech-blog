@@ -24,7 +24,7 @@ Ceux qui sont attentifs recevront le message, les autres non. Et s’il n’y a 
 
 Concrètement, ça peut servir pour prévenir à toute l'application qu'un évènement "important" s'est déroulé comme une requête http qui finit, une erreur à remonter à l'utilisateur, ou autres.
 
-=> L'idée derrière est que le système de notification permet de faire de l'évènementiel comme en Flash ou autre. On peut envoyer des messages &#8211; event, certains objets sont "écouteurs", ils peuvent aussi décider de ne plus écouter certains types de messages.
+=> L'idée derrière est que le système de notification permet de faire de l'évènementiel comme en Flash ou autre. On peut envoyer des messages - event, certains objets sont "écouteurs", ils peuvent aussi décider de ne plus écouter certains types de messages.
 
 # Let's code
 

@@ -39,7 +39,7 @@
 </p>
 
 <p style="text-align: justify;">
-  Historiquement SVN utilise des bases Berkeley DB pour stocker ses informations, il est cependant possible de choisir une méthode de stockage différente via l'argument<span style="font-family: terminal, monaco;">&#8211;fs-type.</span>
+  Historiquement SVN utilise des bases Berkeley DB pour stocker ses informations, il est cependant possible de choisir une méthode de stockage différente via l'argument<span style="font-family: terminal, monaco;">-fs-type.</span>
 </p>
 
 <div class="codecolorer-container bash vibrant" style="overflow:auto;white-space:nowrap;width:100%;">

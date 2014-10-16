@@ -2,7 +2,7 @@
 Dans cet article, nous allons détailler pas à pas comment configurer le serveur Bind intégré à Mac Os X.
 Les développeurs web sont souvent confrontés à des problématiques DNS (wildcards, etc...) pour lesquelles le fichier **/etc/hosts** s'avère insuffisant.
 
-Cet article est traduit de <a href="http://www.macshadows.com/kb/index.php?title=How_To:_Enable_BIND_-_Mac_OS_X's_Built-in_DNS_Server" target="_blank">"How To: Enable BIND &#8211; Mac OS X's Built-in DNS Server"</a>
+Cet article est traduit de <a href="http://www.macshadows.com/kb/index.php?title=How_To:_Enable_BIND_-_Mac_OS_X's_Built-in_DNS_Server" target="_blank">"How To: Enable BIND - Mac OS X's Built-in DNS Server"</a>
 
 <span style="font-size: x-large;">Etape 1: Configuration de rndc</span>
 
