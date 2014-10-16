@@ -23,9 +23,9 @@ Pour éviter ça, vous pouvez isoler le template enfant en passant le paramètre
 {# La variable username n'existe pas.  #}
 ```
 
-### Embed : un include plus malléable
+### Embed : un include plus malléable
 
-Le cas se présente souvent : vous avez un template qui est inclus dans plusieurs autres, mais vous avez besoin de changer légèrement une partie du code HTML pour certains cas.
+Le cas se présente souvent : vous avez un template qui est inclus dans plusieurs autres, mais vous avez besoin de changer légèrement une partie du code HTML pour certains cas.
 
 Plutôt que de passer une variable dans l'include puis modifier le comportement du template en fonction de cette valeur, vous pouvez utiliser le tag `Embed` (et c'est beaucoup mieux !).
 
@@ -43,9 +43,11 @@ Plutôt que de passer une variable dans l'include puis modifier le comportement 
         {{ parent () }}
         <a href="#" title="Mon autre lien">Mon autre lien</a>
     {% endblock %}
-{% endembed %}</code></pre>
+{% endembed %}
+```
 
-  <pre><code class="language-twig twig">{# user.html.twig #}
+```
+{# user.html.twig #}
 
 <div class="user">
     {% block titre %}
@@ -70,7 +72,7 @@ Plus de details dans [la documentation officielle][1].
 
 ### One line block
 
-Vous pouvez déclarer un block en une ligne ! Utile notamment pour un bloc vide amené à être redéfini par un autre template lors d'un extend :
+Vous pouvez déclarer un block en une ligne ! Utile notamment pour un bloc vide amené à être redéfini par un autre template lors d'un extend :
 
 ```
 {% block content "" %}
