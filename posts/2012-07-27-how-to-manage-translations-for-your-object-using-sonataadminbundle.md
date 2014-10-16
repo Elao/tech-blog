@@ -1,11 +1,10 @@
 
-<p style="text-align: left;">
-  Many of us asked themselves <strong>how to add dynamically translations to I18n fields  - object using <em>SonataAdminBundle and DoctrineExtensions</em></strong>.
+Many of us asked themselves **how to add dynamically translations to I18n fields  - object using `SonataAdminBundle` and `DoctrineExtensions`**.
 </p>
 
 Thanks to <a href="http://gediminasm.org/" target="_blank">Gedmo</a> and his wonderful <a href="https://github.com/l3pp4rd/DoctrineExtensions" target="_blank">DoctrineExtensions</a> on which he added a feature called "Personal Translations" that simplifies the whole translation management process.
 
-Before starting here's what i am using :
+**Before starting here's what i am using :**
 
 *   <a href="https://github.com/symfony/symfony" target="_blank">Symfony 2.1-DEV</a>
 *   Doctrine & Doctrine deps (master branch)
@@ -15,10 +14,10 @@ Before starting here's what i am using :
 
 We will not configure the *DoctrineExtensions* & the *StofDoctrineExtensionsBundle* together, so please, check that it's all configured (read the readme on github repos) and working.
 
-Before starting, let's configure the Bundle :
+**Before starting, let's configure the Bundle :**
 
-<noscript>
-  <pre><code class="language- "># Add the bundle to your composer
+```
+# Add the bundle to your composer
 
     "a2lix/translation-form-bundle" : "dev-master"
 
@@ -38,13 +37,13 @@ Before starting, let's configure the Bundle :
     twig:
         form:
             resources:
-                - 'A2lixTranslationFormBundle::form.html.twig'</code></pre>
-</noscript>
+                - 'A2lixTranslationFormBundle::form.html.twig'
+```
 
-Let's begin with our *Category* entity :
+**Let's begin with our `Category` entity :**
 
-<noscript>
-  <pre><code class="language-php php"><?php
+```
+<?php
 
 namespace AwesomeNamespace\AwesomeBundle\Entity;
 
@@ -164,13 +163,12 @@ class Profile
     }
 
 }
-</code></pre>
-</noscript>
+```
 
-And our *CategoryTranslation* entity (to store translations)
+**And our `CategoryTranslation` entity (to store translations)**
 
-<noscript>
-  <pre><code class="language-php php"><?php
+```
+<?php
 
 namespace AwesomeNamespace\AwesomeBundle\Entity;
 
@@ -207,13 +205,12 @@ class ProfileTranslation extends AbstractPersonalTranslation
      */
     protected $object;
 }
-</code></pre>
-</noscript>
+```
 
-Finally, the *CategoryAdmin* class
+**Finally, the `CategoryAdmin` class**
 
-<noscript>
-  <pre><code class="language-php php"><?php
+```
+<?php
 
 namespace AwesomeNamespace\AwesomeBundle\Admin;
 
@@ -254,14 +251,13 @@ class ProfileAdmin extends Admin
     }
 
 }
-</code></pre>
-</noscript>
+```
 
-You wanna see the result ? Well, you are free to propose a gist in the comment section of this article if you want to add code to render more nicely the translations in SonataAdminBundle (display the locale of the field, split the fields in tab....)
+You wanna see the result ? Well, you are free to propose a gist in the comment section of this article if you want to add code to render more nicely the translations in `SonataAdminBundle` (display the locale of the field, split the fields in tab....)
 
 **EDIT **The Bundle has been updated and now has a splitted view and tabbed view per locale.
 
-<a href="http://www.elao.com/blog/symfony-2/doctrine-2/how-to-manage-translations-for-your-object-using-sonataadminbundle.html/attachment/translations" rel="attachment wp-att-2319"><img class="alignnone size-medium wp-image-2319" title="translations" src="http://www.elao.com/blog/wp-content/uploads/2012/07/translations-285x300.png" alt="translations 285x300 How to manage translations for your object using SonataAdminBundle" width="285" height="300" /></a>
+<img class="alignnone size-medium wp-image-2319" title="translations" src="/blog/medias/2012-07-27-how-to-manage-translations-for-your-object-using-sonataadminbundle/translations.png" alt="translations 285x300 How to manage translations for your object using SonataAdminBundle" width="285" height="300" />
 
 **So what does the bundle <a href="https://github.com/a2lix/TranslationFormBundle" target="_blank">TranslationFormBundle</a> ?**
 
