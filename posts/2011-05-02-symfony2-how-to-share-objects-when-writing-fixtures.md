@@ -3,28 +3,98 @@ This is a small post to explain to you how to simply share objects when you writ
 
 Let's assume you have 2 class,
 
-<div class="codecolorer-container text vibrant" style="overflow:auto;white-space:nowrap;width:100%;">
-  <div class="text codecolorer">
+```
     Game
-  </div>
-</div>
+```
 
 and
 
-<div class="codecolorer-container text vibrant" style="overflow:auto;white-space:nowrap;width:100%;">
-  <div class="text codecolorer">
-    Platform
-  </div>
-</div>
+```
+Platform
+```
 
 linked together as a One to Many relation (one game may have One or Many Platforms).
 How to tell Doctrine2 to link Platform Y to this Game X ?
 
-<div class="codecolorer-container php vibrant" style="overflow:auto;white-space:nowrap;width:100%;">
-  <div class="php codecolorer">
-    <span class="kw2">namespace</span> Application\SeekTeam2Bundle\DataFixtures\ORM<span class="sy0">;</span><br /> <br /> <span class="kw2">use</span> Application\SeekTeam2Bundle\Entity\Platform<span class="sy0">;</span><br /> <span class="kw2">use</span> Doctrine\Common\DataFixtures\FixtureInterface<span class="sy0">;</span><br /> <span class="kw2">use</span> Application\\SeekTeam2Bundle\Entity\Game<span class="sy0">;</span><br /> <span class="kw2">use</span> Doctrine\Common\DataFixtures\AbstractFixture<span class="sy0">;</span> <span class="co1">// you must add this to be able to use the setReference() /</span><br /> <span class="co1">// getReference() functions we need to share objects</span><br /> <br /> <span class="co1">// Be sure to extend AbstractFixture</span><br /> <span class="kw2">class</span> GameFixtures <span class="kw2">extends</span> AbstractFixture<br /> <span class="br0">&#123;</span><br />   <span class="kw2">public</span> <span class="kw2">function</span> load<span class="br0">&#40;</span><span class="re0">$em</span><span class="br0">&#41;</span><br />   <span class="br0">&#123;</span><br />     <span class="re0">$this</span><span class="sy0">-></span><span class="me1">loadPlatforms</span><span class="br0">&#40;</span><span class="re0">$em</span><span class="br0">&#41;</span><span class="sy0">;</span><br />     <span class="re0">$this</span><span class="sy0">-></span><span class="me1">loadGames</span><span class="br0">&#40;</span><span class="re0">$em</span><span class="br0">&#41;</span><span class="sy0">;</span><br />   <span class="br0">&#125;</span><br /> <br />   <span class="kw2">public</span> <span class="kw2">function</span> loadPlatforms<span class="br0">&#40;</span><span class="re0">$em</span><span class="br0">&#41;</span><br />   <span class="br0">&#123;</span><br /> <br />     <span class="re0">$platform</span> <span class="sy0">=</span> <span class="kw2">new</span> Platform<span class="br0">&#40;</span><span class="br0">&#41;</span><span class="sy0">;</span><br />     <span class="re0">$platform</span><span class="sy0">-></span><span class="me1">setName</span><span class="br0">&#40;</span><span class="st_h">'PC'</span><span class="br0">&#41;</span><span class="sy0">;</span><br />     <span class="re0">$platform</span><span class="sy0">-></span><span class="me1">setSmallImage</span><span class="br0">&#40;</span><span class="st_h">'pc-min.png'</span><span class="br0">&#41;</span><span class="sy0">;</span><br />     <span class="re0">$platform</span><span class="sy0">-></span><span class="me1">setImage</span><span class="br0">&#40;</span><span class="st_h">'pc.png'</span><span class="br0">&#41;</span><span class="sy0">;</span><br />     <span class="re0">$em</span><span class="sy0">-></span><span class="me1">persist</span><span class="br0">&#40;</span><span class="re0">$platform</span><span class="br0">&#41;</span><span class="sy0">;</span><br /> <br />     <span class="co1">// by using setRerence, you'll be able to use it later when you want to associate this object to</span><br />     <span class="co1">// another one without a single one DB query.</span><br />     <span class="re0">$this</span><span class="sy0">-></span><span class="me1">setReference</span><span class="br0">&#40;</span><span class="st_h">'pc'</span><span class="sy0">,</span> <span class="re0">$platform</span><span class="br0">&#41;</span><span class="sy0">;</span><br /> <br />     <span class="re0">$platform</span> <span class="sy0">=</span> <span class="kw2">new</span> Platform<span class="br0">&#40;</span><span class="br0">&#41;</span><span class="sy0">;</span><br />     <span class="re0">$platform</span><span class="sy0">-></span><span class="me1">setName</span><span class="br0">&#40;</span><span class="st_h">'Xbox 360'</span><span class="br0">&#41;</span><span class="sy0">;</span><br />     <span class="re0">$platform</span><span class="sy0">-></span><span class="me1">setSmallImage</span><span class="br0">&#40;</span><span class="st_h">'xbox360-min.png'</span><span class="br0">&#41;</span><span class="sy0">;</span><br />     <span class="re0">$platform</span><span class="sy0">-></span><span class="me1">setImage</span><span class="br0">&#40;</span><span class="st_h">'xbox360.png'</span><span class="br0">&#41;</span><span class="sy0">;</span><br />     <span class="re0">$em</span><span class="sy0">-></span><span class="me1">persist</span><span class="br0">&#40;</span><span class="re0">$platform</span><span class="br0">&#41;</span><span class="sy0">;</span><br />     <span class="re0">$this</span><span class="sy0">-></span><span class="me1">setReference</span><span class="br0">&#40;</span><span class="st_h">'xbox360'</span><span class="sy0">,</span> <span class="re0">$platform</span><span class="br0">&#41;</span><span class="sy0">;</span><br /> <br />     <span class="re0">$platform</span> <span class="sy0">=</span> <span class="kw2">new</span> Platform<span class="br0">&#40;</span><span class="br0">&#41;</span><span class="sy0">;</span><br />     <span class="re0">$platform</span><span class="sy0">-></span><span class="me1">setName</span><span class="br0">&#40;</span><span class="st_h">'PS3'</span><span class="br0">&#41;</span><span class="sy0">;</span><br />     <span class="re0">$platform</span><span class="sy0">-></span><span class="me1">setSmallImage</span><span class="br0">&#40;</span><span class="st_h">'ps3-min.png'</span><span class="br0">&#41;</span><span class="sy0">;</span><br />     <span class="re0">$platform</span><span class="sy0">-></span><span class="me1">setImage</span><span class="br0">&#40;</span><span class="st_h">'ps3.png'</span><span class="br0">&#41;</span><span class="sy0">;</span><br />     <span class="re0">$em</span><span class="sy0">-></span><span class="me1">persist</span><span class="br0">&#40;</span><span class="re0">$platform</span><span class="br0">&#41;</span><span class="sy0">;</span><br />     <span class="re0">$this</span><span class="sy0">-></span><span class="me1">setReference</span><span class="br0">&#40;</span><span class="st_h">'ps3'</span><span class="sy0">,</span> <span class="re0">$platform</span><span class="br0">&#41;</span><span class="sy0">;</span><br /> <br />     <span class="re0">$em</span><span class="sy0">-></span><a href="http://www.php.net/flush"><span class="kw3">flush</span></a><span class="br0">&#40;</span><span class="br0">&#41;</span><span class="sy0">;</span><br /> <br /> <span class="br0">&#125;</span><br /> <br />   <span class="kw2">public</span> <span class="kw2">function</span> loadGames<span class="br0">&#40;</span><span class="re0">$em</span><span class="br0">&#41;</span><br />   <span class="br0">&#123;</span><br />     <span class="re0">$game</span> <span class="sy0">=</span> <span class="kw2">new</span> Game<span class="br0">&#40;</span><span class="br0">&#41;</span><span class="sy0">;</span><br />     <span class="re0">$game</span><span class="sy0">-></span><span class="me1">setName</span><span class="br0">&#40;</span><span class="st_h">'Counter Strike : Source'</span><span class="br0">&#41;</span><span class="sy0">;</span><br />     <span class="re0">$game</span><span class="sy0">-></span><span class="me1">setDescription</span><span class="br0">&#40;</span><span class="st0">"Counter-Strike: Source blends Counter-Strike's award..."</span><span class="br0">&#41;</span><span class="sy0">;</span><br /> <br />     <span class="co1">// Here we can add the relation by getting the reference you previously set on the platform object</span><br />     <span class="re0">$game</span><span class="sy0">-></span><span class="me1">addPlatforms</span><span class="br0">&#40;</span><span class="re0">$this</span><span class="sy0">-></span><span class="me1">getReference</span><span class="br0">&#40;</span><span class="st_h">'pc'</span><span class="br0">&#41;</span><span class="br0">&#41;</span><span class="sy0">;</span><br /> <br />     <span class="re0">$em</span><span class="sy0">-></span><span class="me1">persist</span><span class="br0">&#40;</span><span class="re0">$game</span><span class="br0">&#41;</span><span class="sy0">;</span><br />     <span class="re0">$this</span><span class="sy0">-></span><span class="me1">setReference</span><span class="br0">&#40;</span><span class="st_h">'css'</span><span class="sy0">,</span> <span class="re0">$game</span><span class="br0">&#41;</span><span class="sy0">;</span><br /> <br />     <span class="re0">$em</span><span class="sy0">-></span><span class="me1">persist</span><span class="br0">&#40;</span><span class="re0">$game</span><span class="br0">&#41;</span><span class="sy0">;</span><br /> <br />     <span class="re0">$game</span> <span class="sy0">=</span> <span class="kw2">new</span> Game<span class="br0">&#40;</span><span class="br0">&#41;</span><span class="sy0">;</span><br />     <span class="re0">$game</span><span class="sy0">-></span><span class="me1">setName</span><span class="br0">&#40;</span><span class="st_h">'Crysis 2'</span><span class="br0">&#41;</span><span class="sy0">;</span><br />     <span class="re0">$game</span><span class="sy0">-></span><span class="me1">setDescription</span><span class="br0">&#40;</span><span class="st0">"It’s 2023, terrifying alien invaders stalk the New York City streets..."</span><span class="br0">&#41;</span><span class="sy0">;</span><br />     <span class="re0">$game</span><span class="sy0">-></span><span class="me1">addPlatforms</span><span class="br0">&#40;</span><span class="re0">$this</span><span class="sy0">-></span><span class="me1">getReference</span><span class="br0">&#40;</span><span class="st_h">'pc'</span><span class="br0">&#41;</span><span class="br0">&#41;</span><span class="sy0">;</span><br />     <span class="re0">$game</span><span class="sy0">-></span><span class="me1">addPlatforms</span><span class="br0">&#40;</span><span class="re0">$this</span><span class="sy0">-></span><span class="me1">getReference</span><span class="br0">&#40;</span><span class="st_h">'xbox360'</span><span class="br0">&#41;</span><span class="br0">&#41;</span><span class="sy0">;</span><br />     <span class="re0">$game</span><span class="sy0">-></span><span class="me1">addPlatforms</span><span class="br0">&#40;</span><span class="re0">$this</span><span class="sy0">-></span><span class="me1">getReference</span><span class="br0">&#40;</span><span class="st_h">'ps3'</span><span class="br0">&#41;</span><span class="br0">&#41;</span><span class="sy0">;</span><br /> <br />     <span class="re0">$em</span><span class="sy0">-></span><span class="me1">persist</span><span class="br0">&#40;</span><span class="re0">$game</span><span class="br0">&#41;</span><span class="sy0">;</span><br />     <span class="re0">$this</span><span class="sy0">-></span><span class="me1">setReference</span><span class="br0">&#40;</span><span class="st_h">'crysis2'</span><span class="sy0">,</span> <span class="re0">$game</span><span class="br0">&#41;</span><span class="sy0">;</span><br /> <br />     <span class="re0">$em</span><span class="sy0">-></span><span class="me1">persist</span><span class="br0">&#40;</span><span class="re0">$game</span><span class="br0">&#41;</span><span class="sy0">;</span><br />     <span class="re0">$em</span><span class="sy0">-></span><a href="http://www.php.net/flush"><span class="kw3">flush</span></a><span class="br0">&#40;</span><span class="br0">&#41;</span><span class="sy0">;</span><br /> <br />   <span class="br0">&#125;</span><br /> <span class="br0">&#125;</span>
-  </div>
-</div>
+```
+namespace Application\SeekTeam2Bundle\DataFixtures\ORM;
+
+use Application\SeekTeam2Bundle\Entity\Platform;
+use Doctrine\Common\DataFixtures\FixtureInterface;
+use Application\\SeekTeam2Bundle\Entity\Game;
+use Doctrine\Common\DataFixtures\AbstractFixture; // you must add this to be able to use the setReference() /
+// getReference() functions we need to share objects
+
+// Be sure to extend AbstractFixture
+class GameFixtures extends AbstractFixture
+{
+  public function load($em)
+  {
+    $this->loadPlatforms($em);
+    $this->loadGames($em);
+  }
+
+  public function loadPlatforms($em)
+  {
+
+    $platform = new Platform();
+    $platform->setName('PC');
+    $platform->setSmallImage('pc-min.png');
+    $platform->setImage('pc.png');
+    $em->persist($platform);
+
+    // by using setRerence, you'll be able to use it later when you want to associate this object to
+    // another one without a single one DB query.
+    $this->setReference('pc', $platform);
+
+    $platform = new Platform();
+    $platform->setName('Xbox 360');
+    $platform->setSmallImage('xbox360-min.png');
+    $platform->setImage('xbox360.png');
+    $em->persist($platform);
+    $this->setReference('xbox360', $platform);
+
+    $platform = new Platform();
+    $platform->setName('PS3');
+    $platform->setSmallImage('ps3-min.png');
+    $platform->setImage('ps3.png');
+    $em->persist($platform);
+    $this->setReference('ps3', $platform);
+
+    $em->flush();
+
+}
+
+  public function loadGames($em)
+  {
+    $game = new Game();
+    $game->setName('Counter Strike : Source');
+    $game->setDescription("Counter-Strike: Source blends Counter-Strike's award...");
+
+    // Here we can add the relation by getting the reference you previously set on the platform object
+    $game->addPlatforms($this->getReference('pc'));
+
+    $em->persist($game);
+    $this->setReference('css', $game);
+
+    $em->persist($game);
+
+    $game = new Game();
+    $game->setName('Crysis 2');
+    $game->setDescription("It’s 2023, terrifying alien invaders stalk the New York City streets...");
+    $game->addPlatforms($this->getReference('pc'));
+    $game->addPlatforms($this->getReference('xbox360'));
+    $game->addPlatforms($this->getReference('ps3'));
+
+    $em->persist($game);
+    $this->setReference('crysis2', $game);
+
+    $em->persist($game);
+    $em->flush();
+
+  }
+}
+```
 
 There is a whole chapter dedicated to Fixtures in the [cookbook][1] where advanced usage is being developped (like Ordered fixtures...). I strongly advise you to read it, especially if you are a newcomer to Symfony2.
 
