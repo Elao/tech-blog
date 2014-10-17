@@ -5,114 +5,170 @@ Je vais vous parler aujourd'hui d'une utilisation de **Dropbox** un peu différe
 
 Pour ceux qui ne connaîtraient pas ce très bon outil qu'est Dropbox, je vous invite à aller jeter un petit coup d'oeil à <a href="http://fr.wikipedia.org/wiki/Dropbox" target="_blank">Wikipedia</a> et à leur <a href="http://www.dropbox.com" target="_blank">site officiel</a>.
 
-> <div class="aparte">
->   En tout premier lieu et avant de commencer voici les pré-requis à l'installation du démon:</p> <ul>
->     <li>
->       GCC 2.4 mini
->     </li>
->     <li>
->       wget
->     </li>
->     <li>
->       Python 2.5 ou plus
->     </li>
->     <li>
->       Un navigateur internet (On notera que je ne cite volontairement pas de nom;))
->     </li>
->   </ul>
-> </div>
+**En tout premier lieu et avant de commencer voici les pré-requis à l'installation du démon :**
+- GCC 2.4 mini
+- wget
+- Python 2.5 ou plus
+- Un navigateur internet (On notera que je ne cite volontairement pas de nom;))
 
-## Installation
+### Installation
 
 Nous allons commencer par créer un utilisateur dédié au service ayant pour groupe dropbox :
 
-<div class="codecolorer-container bash vibrant" style="overflow:auto;white-space:nowrap;width:100%;">
-  <div class="bash codecolorer">
-    groupadd dropbox<br /> useradd <span class="re5">-r</span> <span class="re5">-d</span> <span class="sy0">/</span>etc<span class="sy0">/</span>dropbox <span class="re5">-g</span> dropbox <span class="re5">-s</span> <span class="sy0">/</span>bin<span class="sy0">/</span><span class="kw2">false</span> dropbox
-  </div>
-</div>
+```
+groupadd dropbox
+useradd -r -d /etc/dropbox -g dropbox -s /bin/false dropbox
+```
 
 Nous pouvons récupérer la dernière version de Dropbox.
 Il existe deux versions disponibles : 32bits / 64 bits ; à vous de choisir la bonne !
 
 **32 bits:**
 
-<div class="codecolorer-container bash vibrant" style="overflow:auto;white-space:nowrap;width:100%;">
-  <div class="bash codecolorer">
-    <span class="kw2">wget</span> <span class="re5">-O</span> <span class="sy0">/</span>tmp<span class="sy0">/</span>dropbox.tar.gz <span class="sy0">&</span>quot;http:<span class="sy0">//</span>www.dropbox.com<span class="sy0">/</span>download<span class="sy0">/</span>?<span class="re2">plat</span>=lnx.x86<span class="sy0">&</span>quot;
-  </div>
-</div>
+```
+wget -O /tmp/dropbox.tar.gz 'http://www.dropbox.com/download/?plat=lnx.x86'
+```
 
 **64 bits:**
 
-<div class="codecolorer-container bash vibrant" style="overflow:auto;white-space:nowrap;width:100%;">
-  <div class="bash codecolorer">
-    <span class="kw2">wget</span> <span class="re5">-O</span> <span class="sy0">/</span>tmp<span class="sy0">/</span>dropbox.tar.gz <span class="sy0">&</span>quot;http:<span class="sy0">//</span>www.dropbox.com<span class="sy0">/</span>download<span class="sy0">/</span>?<span class="re2">plat</span>=lnx.x86_64<span class="sy0">&</span>quot;
-  </div>
-</div>
+```
+wget -O /tmp/dropbox.tar.gz 'http://www.dropbox.com/download/?plat=lnx.x86_64'
+```
 
-Nous créons les deux répertoires que nous allons utiliser, à savoir /etc/dropbox pour la config et /usr/local/dropbox pour l'applicatif.
+**Nous créons les deux répertoires que nous allons utiliser, à savoir `/etc/dropbox` pour la config et `/usr/local/dropbox` pour l'applicatif.**
 
-<div class="codecolorer-container bash vibrant" style="overflow:auto;white-space:nowrap;width:100%;">
-  <div class="bash codecolorer">
-    <span class="kw2">mkdir</span> <span class="re5">-p</span> <span class="sy0">/</span>usr<span class="sy0">/</span>local<span class="sy0">/</span>dropbox <span class="sy0">/</span>etc<span class="sy0">/</span>dropbox<br /> <span class="kw2">chown</span> dropbox.dropbox <span class="sy0">/</span>etc<span class="sy0">/</span>dropbox<br /> <span class="kw2">chmod</span> <span class="nu0">700</span> <span class="sy0">/</span>etc<span class="sy0">/</span>dropbox
-  </div>
-</div>
+```
+mkdir -p /usr/local/dropbox /etc/dropbox
+chown dropbox.dropbox /etc/dropbox
+chmod 700 /etc/dropbox
+```
 
-Nous décompressons ensuite l'archive :
+**Nous décompressons ensuite l'archive :**
 
-<div class="codecolorer-container bash vibrant" style="overflow:auto;white-space:nowrap;width:100%;">
-  <div class="bash codecolorer">
-    <span class="kw2">tar</span> xvzf <span class="sy0">/</span>tmp<span class="sy0">/</span>dropbox.tar.gz <span class="re5">-C</span> <span class="sy0">/</span>usr<span class="sy0">/</span>local<span class="sy0">/</span>dropbox <span class="re5">--strip</span> <span class="nu0">1</span><br /> <span class="kw2">rm</span> <span class="sy0">/</span>tmp<span class="sy0">/</span>dropbox.tar.gz
-  </div>
-</div>
+```
+tar xvzf /tmp/dropbox.tar.gz -C /usr/local/dropbox --strip 1
+rm /tmp/dropbox.tar.gz
+```
 
-Nous allons à présent mettre en place un script init, permettant d'administrer le service :
+**Nous allons à présent mettre en place un script init, permettant d'administrer le service :**
 
-<div class="codecolorer-container bash vibrant" style="overflow:auto;white-space:nowrap;width:100%;">
-  <div class="bash codecolorer">
-    <span class="co0">### BEGIN INIT INFO</span><br /> <span class="co0"># Provides:          dropbox</span><br /> <span class="co0"># Required-Start:</span><br /> <span class="co0"># Required-Stop:</span><br /> <span class="co0"># Default-Start:     2 3 4 5</span><br /> <span class="co0"># Default-Stop:      0 1 6</span><br /> <span class="co0"># Short-Description: starts the dropbox service</span><br /> <span class="co0"># Description:       starts dropbox using start-stop-daemon</span><br /> <span class="co0">### END INIT INFO</span><br /> <br /> <span class="re2">DROPBOX_USERS</span>=<span class="st0">"dropbox"</span><br /> <span class="re2">DAEMON</span>=<span class="sy0">/</span>usr<span class="sy0">/</span>local<span class="sy0">/</span>dropbox<span class="sy0">/</span>dropbox<br /> <span class="kw3">unset</span> DISPLAY<br /> <br /> start<span class="br0">&#40;</span><span class="br0">&#41;</span> <span class="br0">&#123;</span><br />     <span class="kw3">echo</span> <span class="st0">"Starting dropbox..."</span><br />     <span class="kw1">for</span> dbuser <span class="kw1">in</span> <span class="re1">$DROPBOX_USERS</span>; <span class="kw1">do</span><br />         <span class="re2">HOMEDIR</span>=$<span class="br0">&#40;</span><span class="kw2">getent</span> <span class="kw2">passwd</span> <span class="re1">$dbuser</span> <span class="sy0">|</span> <span class="kw2">cut</span> -d: -f6<span class="br0">&#41;</span><br />         <span class="kw1">if</span> <span class="br0">&#91;</span> <span class="re5">-x</span> <span class="re1">$DAEMON</span> <span class="br0">&#93;</span>; <span class="kw1">then</span><br />             <span class="re2">HOME</span>=<span class="st0">"<span class="es2">$HOMEDIR</span>"</span> start-stop-daemon <span class="re5">-b</span> <span class="re5">-o</span> <span class="re5">-c</span> <span class="re1">$dbuser</span> <span class="re5">-S</span> <span class="re5">-u</span> <span class="re1">$dbuser</span> <span class="re5">-x</span> <span class="re1">$DAEMON</span><br />         <span class="kw1">fi</span><br />     <span class="kw1">done</span><br /> <span class="br0">&#125;</span><br /> <br /> stop<span class="br0">&#40;</span><span class="br0">&#41;</span> <span class="br0">&#123;</span><br />     <span class="kw3">echo</span> <span class="st0">"Stopping dropbox..."</span><br />     <span class="kw1">for</span> dbuser <span class="kw1">in</span> <span class="re1">$DROPBOX_USERS</span>; <span class="kw1">do</span><br />         <span class="re2">HOMEDIR</span>=$<span class="br0">&#40;</span><span class="kw2">getent</span> <span class="kw2">passwd</span> <span class="re1">$dbuser</span> <span class="sy0">|</span> <span class="kw2">cut</span> -d: -f6<span class="br0">&#41;</span><br />         <span class="kw1">if</span> <span class="br0">&#91;</span> <span class="re5">-x</span> <span class="re1">$DAEMON</span> <span class="br0">&#93;</span>; <span class="kw1">then</span><br />             start-stop-daemon <span class="re5">-o</span> <span class="re5">-c</span> <span class="re1">$dbuser</span> <span class="re5">-K</span> <span class="re5">-u</span> <span class="re1">$dbuser</span> <span class="re5">-x</span> <span class="re1">$DAEMON</span><br />         <span class="kw1">fi</span><br />     <span class="kw1">done</span><br /> <span class="br0">&#125;</span><br /> <br /> status<span class="br0">&#40;</span><span class="br0">&#41;</span> <span class="br0">&#123;</span><br />     <span class="kw1">for</span> dbuser <span class="kw1">in</span> <span class="re1">$DROPBOX_USERS</span>; <span class="kw1">do</span><br />         <span class="re2">dbpid</span>=$<span class="br0">&#40;</span>pgrep <span class="re5">-u</span> <span class="re1">$dbuser</span> dropbox<span class="br0">&#41;</span><br />         <span class="kw1">if</span> <span class="br0">&#91;</span> <span class="re5">-z</span> <span class="re1">$dbpid</span> <span class="br0">&#93;</span> ; <span class="kw1">then</span><br />             <span class="kw3">echo</span> <span class="st0">"dropboxd for USER <span class="es2">$dbuser</span>: not running."</span><br />         <span class="kw1">else</span><br />             <span class="kw3">echo</span> <span class="st0">"dropboxd for USER <span class="es2">$dbuser</span>: running (pid <span class="es2">$dbpid</span>)"</span><br />         <span class="kw1">fi</span><br />     <span class="kw1">done</span><br /> <span class="br0">&#125;</span><br /> <br /> <span class="kw1">case</span> <span class="st0">"$1"</span> <span class="kw1">in</span><br />   start<span class="br0">&#41;</span><br />     start<br />     <span class="kw2">sleep</span> <span class="nu0">1</span><br />     status<br />     <span class="sy0">;;</span><br /> <br />   stop<span class="br0">&#41;</span><br />     stop<br />     <span class="kw2">sleep</span> <span class="nu0">1</span><br />     status<br />     <span class="sy0">;;</span><br /> <br />   restart<span class="sy0">|</span>reload<span class="sy0">|</span>force-reload<span class="br0">&#41;</span><br />     stop<br />     start<br />     <span class="kw2">sleep</span> <span class="nu0">1</span><br />     status<br />     <span class="sy0">;;</span><br /> <br />   status<span class="br0">&#41;</span><br />     status<br />     <span class="sy0">;;</span><br /> <br />   <span class="sy0">*</span><span class="br0">&#41;</span><br />     <span class="kw3">echo</span> <span class="st0">"Usage: /etc/init.d/dropbox {start|stop|reload|force-reload|restart|status}"</span><br />     <span class="kw3">exit</span> <span class="nu0">1</span><br /> <br /> <span class="kw1">esac</span><br /> <br /> <span class="kw3">exit</span> <span class="nu0"></span>
-  </div>
-</div>
+```
+### BEGIN INIT INFO
+# Provides:          dropbox
+# Required-Start:
+# Required-Stop:
+# Default-Start:     2 3 4 5
+# Default-Stop:      0 1 6
+# Short-Description: starts the dropbox service
+# Description:       starts dropbox using start-stop-daemon
+### END INIT INFO
 
-Ajoutons ce script au démarrage de la machine :
+DROPBOX_USERS="dropbox"
+DAEMON=/usr/local/dropbox/dropbox
+unset DISPLAY
 
-<div class="codecolorer-container bash vibrant" style="overflow:auto;white-space:nowrap;width:100%;">
-  <div class="bash codecolorer">
-    <span class="kw2">chmod</span> a+x <span class="sy0">/</span>etc<span class="sy0">/</span>init.d<span class="sy0">/</span>dropbox<br /> update-rc.d dropbox defaults
-  </div>
-</div>
+start() {
+    echo "Starting dropbox..."
+    for dbuser in $DROPBOX_USERS; do
+        HOMEDIR=$(getent passwd $dbuser | cut -d: -f6)
+        if [ -x $DAEMON ]; then
+            HOME="$HOMEDIR" start-stop-daemon -b -o -c $dbuser -S -u $dbuser -x $DAEMON
+        fi
+    done
+}
 
-## Changer le répertoire par défaut de Dropbox
+stop() {
+    echo "Stopping dropbox..."
+    for dbuser in $DROPBOX_USERS; do
+        HOMEDIR=$(getent passwd $dbuser | cut -d: -f6)
+        if [ -x $DAEMON ]; then
+            start-stop-daemon -o -c $dbuser -K -u $dbuser -x $DAEMON
+        fi
+    done
+}
+
+status() {
+    for dbuser in $DROPBOX_USERS; do
+        dbpid=$(pgrep -u $dbuser dropbox)
+        if [ -z $dbpid ] ; then
+            echo "dropboxd for USER $dbuser: not running."
+        else
+            echo "dropboxd for USER $dbuser: running (pid $dbpid)"
+        fi
+    done
+}
+
+case "$1" in
+  start)
+    start
+    sleep 1
+    status
+    ;;
+
+  stop)
+    stop
+    sleep 1
+    status
+    ;;
+
+  restart|reload|force-reload)
+    stop
+    start
+    sleep 1
+    status
+    ;;
+
+  status)
+    status
+    ;;
+
+  *)
+    echo "Usage: /etc/init.d/dropbox {start|stop|reload|force-reload|restart|status}"
+    exit 1
+
+esac
+
+exit 0
+```
+
+**Ajoutons ce script au démarrage de la machine :**
+
+```
+chmod a+x /etc/init.d/dropbox
+update-rc.d dropbox defaults
+```
+
+### Changer le répertoire par défaut de Dropbox
 
 Par défaut le répertoire utilisé pour les fichiers est créé dans le compte de l'utilisateur exécutant le démon, nous allons voir ci-dessous comment modifier ce répertoire. Certains me feront remarquer qu'un bon vieux symlink ferait parfaitement l'affaire, mais j'aurais tendance à privilégier une méthode un peu plus "académique".
 
 Dropbox utilise une base sqlite pour stocker ses données et notamment sa configuration.
 
-Pour ceux qui maîtrisent sqlite et qui souhaitent aller modifier cette configuration en base, il faut éditer le champ "**dropbox_path**" de la table config, mais attention, la valeur du "path" doit être encodé en base 64 ! Pour les autres, vous pouvez utiliser le script Python fourni ici, pour appliquer cette modification en exécutant la commande suivante :
+Pour ceux qui maîtrisent sqlite et qui souhaitent aller modifier cette configuration en base, il faut éditer le champ `dropbox_path` de la table config, mais attention, la valeur du `path` doit être encodé en base 64 ! Pour les autres, vous pouvez utiliser le script Python fourni ici, pour appliquer cette modification en exécutant la commande suivante :
 
-<div class="codecolorer-container bash vibrant" style="overflow:auto;white-space:nowrap;width:100%;">
-  <div class="bash codecolorer">
-    $ <span class="kw2">cp</span> <span class="sy0">/</span>etc<span class="sy0">/</span>dropbox<span class="sy0">/</span>.dropbox<span class="sy0">/</span>dropbox.db dropbox.db.backup<br /> $ <span class="kw2">wget</span> http:<span class="sy0">//</span>dl.dropbox.com<span class="sy0">/</span>u<span class="sy0">/</span><span class="nu0">119154</span><span class="sy0">/</span>permalink<span class="sy0">/</span>dropboxdir.py<br /> $ <span class="kw2">chmod</span> +x dropboxdir.py<br /> $ <span class="kw2">mv</span> ~<span class="sy0">/</span>Dropbox <span class="sy0">/</span>path<span class="sy0">/</span>to<span class="sy0">/</span>my<span class="sy0">/</span>new<span class="sy0">/</span><span class="kw2">dir</span><br /> $ .<span class="sy0">/</span>dropboxdir <span class="re5">--setfolder</span>=<span class="sy0">/</span>path<span class="sy0">/</span>to<span class="sy0">/</span>my<span class="sy0">/</span>new<span class="sy0">/</span><span class="kw2">dir</span>
-  </div>
-</div>
+```
+$ cp /etc/dropbox/.dropbox/dropbox.db dropbox.db.backup
+$ wget http://dl.dropbox.com/u/119154/permalink/dropboxdir.py
+$ chmod +x dropboxdir.py
+$ mv ~/Dropbox /path/to/my/new/dir
+$ ./dropboxdir --setfolder=/path/to/my/new/dir
+```
 
 **Attention !** Si le démon Dropbox a été lié à un compte **AVANT** la relocalisation du répertoire, et si le nouveau répertoire est vide, Dropbox va considérer que les fichiers ont été supprimés localement et effectuer la modification sur le répertoire distant, ce qui entrainera la suppression de **TOUS** vos fichiers distants (et de facto la suppression des fichiers sur tous les postes clients associés au compte Dropbox).
 
 Nous pouvons à présent démarrer le service Dropbox et "attacher" notre machine à notre compte.
 
-<div class="codecolorer-container bash vibrant" style="overflow:auto;white-space:nowrap;width:100%;">
-  <div class="bash codecolorer">
-    $ <span class="sy0">/</span>usr<span class="sy0">/</span>local<span class="sy0">/</span>dropbox<span class="sy0">/</span>dropbox start<br /> <br /> This client is not linked to any account...<br /> Please visit https:<span class="sy0">//</span>www.dropbox.com<span class="sy0">/</span>cli_link?<span class="re2">host_id</span>=7d44a557aa58f285f2da0x67334d02c1 to <span class="kw2">link</span> this machine.
-  </div>
-</div>
+```
+$ /usr/local/dropbox/dropbox start
+
+This client is not linked to any account...
+Please visit https://www.dropbox.com/cli_link?host_id=7d44a557aa58f285f2da0x67334d02c1 to link this machine.
+```
 
 Il ne reste à présent qu'à copier / coller cette url dans notre navigateur, ce qui devrait ajouter notre machine aux machines autorisées à synchroniser le contenu de notre Dropbox.
 
-Vous pouvez à présent arrêter Dropbox coté serveur et le relancer "proprement" en tant que service avec un:
+**Vous pouvez à présent arrêter Dropbox coté serveur et le relancer "proprement" en tant que service avec un :**
 
-<div class="codecolorer-container bash vibrant" style="overflow:auto;white-space:nowrap;width:100%;">
-  <div class="bash codecolorer">
-    <span class="sy0">/</span>etc<span class="sy0">/</span>init.d<span class="sy0">/</span>dropbox start
-  </div>
-</div>
+```
+/etc/init.d/dropbox start
+```

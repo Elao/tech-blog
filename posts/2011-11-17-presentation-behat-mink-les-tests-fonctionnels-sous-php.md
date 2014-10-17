@@ -3,8 +3,7 @@
 *   Comment les mettre en place ?
 *   Qu'est ce que **Behat** ? Comment l'utiliser ? Qu'est ce qu'une **.feature** ?
 *   A quoi sert **Mink** ?
-*   le **Behaviour Driven Development (BDD)
-    **
+*   le **Behaviour Driven Development (BDD)**
 
 Si jamais un de ces points vous intéresse et que vous souhaitez avoir une première approche de **Behat / Mink**, alors cette présentation est faite pour vous.
 
