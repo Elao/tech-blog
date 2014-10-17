@@ -6,7 +6,7 @@
     "meta_title":           "Symfony 2 - Loading session from query param",
     "meta_description":     "Symfony 2 - Loading session from query param",
     "meta_keywords":        ["Flash","Parameters","Session Id","Session Storage","Symfony2"],
-    "thumbnail":            "/blog/medias/thumbnails/mic.gif",
+    "thumbnail":            "/blog/medias/thumbnails/doctrine.jpg",
     "publish_by":           "vincent-bouzeran",
     "publish_at":           "2012-01-02"
 }

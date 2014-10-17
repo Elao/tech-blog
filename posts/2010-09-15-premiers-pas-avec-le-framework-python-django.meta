@@ -6,7 +6,7 @@
     "meta_title":           "Premiers pas avec le framework Python \"Django\"",
     "meta_description":     "Premiers pas avec le framework Python \"Django\"",
     "meta_keywords":        ["Django","Framework","MVC","Python"],
-    "thumbnail":            "/blog/medias/thumbnails/mic.gif",
+    "thumbnail":            "/blog/medias/thumbnails/django.jpg",
     "publish_by":           "xavier-roldo",
     "publish_at":           "2010-09-15"
 }

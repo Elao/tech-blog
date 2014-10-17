@@ -6,7 +6,7 @@
     "meta_title":           "A la découverte de Symfony 2 : tests unitaires sur le modèle (PHPUnit et Doctrine 2)",
     "meta_description":     "A la découverte de Symfony 2 : tests unitaires sur le modèle (PHPUnit et Doctrine 2)",
     "meta_keywords":        ["Doctrine 2","PHP","PHPUnit","Symfony2"],
-    "thumbnail":            "/blog/medias/thumbnails/mic.gif",
+    "thumbnail":            "/blog/medias/thumbnails/phpunit.jpg",
     "publish_by":           "xavier-roldo",
     "publish_at":           "2010-11-29"
 }
