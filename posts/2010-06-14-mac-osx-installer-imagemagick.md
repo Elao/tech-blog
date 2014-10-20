@@ -1,11 +1,9 @@
 
 Bonjour !
 
-<p style="text-align: justify;">
-  Petit memo aujourd'hui sur l'installation d'ImageMagick sur un Mac OSX (Leopard 10.6)<br /> Pour ceux qui ne connaissent pas imageMagick fournit des outils de traitements d'image, translation, flip, miroir, rotation, scale, shear et bien sur transformation, ajustement des couleurs, sans oublier l'application "d'effects", l'écriture de texte, lignes, polygones, ellipses et courbes de Bézier.
-</p>
+Petit memo aujourd'hui sur l'installation d'ImageMagick sur un Mac OSX (Leopard 10.6)<br /> Pour ceux qui ne connaissent pas imageMagick fournit des outils de traitements d'image, translation, flip, miroir, rotation, scale, shear et bien sur transformation, ajustement des couleurs, sans oublier l'application "d'effects", l'écriture de texte, lignes, polygones, ellipses et courbes de Bézier.
 
-**Prérequis:**
+### Prérequis
 
 XCode 3.0 (Téléchargez le si nécessaire <a href="http://developer.apple.com/programs/mac/" target="_blank">ici</a>)
 
@@ -17,7 +15,7 @@ Les sources ImageMagick
   </div>
 </div>
 
-**Compilation:**
+### Compilation
 
 <div class="codecolorer-container bash vibrant" style="overflow:auto;white-space:nowrap;width:100%;">
   <div class="bash codecolorer">
@@ -33,7 +31,7 @@ Si tout s'est bien passé vous devriez avoir quelque chose de ce style:
   </div>
 </div>
 
-**Installation:**
+### Installation
 
 La commande ci dessous doit vous créer le logo image magick !
 
@@ -43,7 +41,7 @@ La commande ci dessous doit vous créer le logo image magick !
   </div>
 </div>
 
-**Vérification:**
+### Vérification
 
 <div class="codecolorer-container bash vibrant" style="overflow:auto;white-space:nowrap;width:100%;">
   <div class="bash codecolorer">

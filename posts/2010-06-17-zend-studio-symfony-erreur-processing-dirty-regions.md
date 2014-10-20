@@ -1,4 +1,3 @@
-
 Cela fait quelques temps que j'ai l'erreur "**Processing Dirty Regions**" en éditant mes classes de formulaires **Symfony** sous **Zend Studio**.
 Le problème a été localisé par Krav3n sur le forum de Zend (un grand merci à lui). Ci-joint, son post traduit :
 
