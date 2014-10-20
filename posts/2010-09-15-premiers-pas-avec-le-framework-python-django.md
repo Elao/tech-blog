@@ -1,418 +1,313 @@
+Bonjour à toutes et à tous,
 
-<p class="standard">
-  Bonjour à toutes et à tous,
-</p>
+Aujourd'hui, nous allons faire la connaissance de <a href="http://www.djangoproject.com/">Django</a>, le framework Web à l'usage des perfectionnistes soumis à des délais (ce n'est pas moi qui le dis, ce sont les pères fondateurs du Framework eux-mêmes !).
 
-<p class="standard">
-  Aujourd'hui, nous allons faire la connaissance de <a href="http://www.djangoproject.com/">Django</a>, le framework Web à l'usage des perfectionnistes soumis à des délais (ce n'est pas moi qui le dis, ce sont les pères fondateurs du Framework eux-mêmes !).
-</p>
+Il s'agira d'une simple initiation au framework, destinée essentiellement aux développeurs qui souhaitent, comme moi, découvrir l'outil à travers un cas concret d'une affligeante banalité, puisque nous allons nous limiter pour l'heure à un très modeste "Hello, World". Mais rassurez-vous, au-delà de cet exemple simple, pour ne pas dire simplet, ce sera surtout l'occasion d'aborder par la pratique quelques concepts-clés du Framework. A mesure que nous avancerons dans ce projet (d'une ambition démesurée), nous nous attarderons sur certains aspects du framework, parfois pour les comparer aux autres frameworks Web. Enfin, je n'exclus pas de rédiger d'autres articles sur Django s'il s'avère que ce billet reçoit quelques échos favorables.
 
-<p class="standard">
-  Il s'agira d'une simple initiation au framework, destinée essentiellement aux développeurs qui souhaitent, comme moi, découvrir l'outil à travers un cas concret d'une affligeante banalité, puisque nous allons nous limiter pour l'heure à un très modeste "Hello, World". Mais rassurez-vous, au-delà de cet exemple simple, pour ne pas dire simplet, ce sera surtout l'occasion d'aborder par la pratique quelques concepts-clés du Framework. A mesure que nous avancerons dans ce projet (d'une ambition démesurée), nous nous attarderons sur certains aspects du framework, parfois pour les comparer aux autres frameworks Web. Enfin, je n'exclus pas de rédiger d'autres articles sur Django s'il s'avère que ce billet reçoit quelques échos favorables.
-</p>
+**A qui s'adresse ce tutoriel ? Quels sont les pré-requis pour suivre ce tutoriel ? Je n'y connais rien en Python, est-ce que ça vaut la peine que je poursuive la lecture de cet article ? Et puis qu'ai-je à gagner à découvrir un nouveau framework, le mien me convient parfaitement, merci ! Je ne connais pas non plus les autres frameworks, ai-je intérêt à lire ce billet ?**
 
-<p class="standard" style="font-weight: bold;">
-  <em>A qui s'adresse ce tutoriel ? Quels sont les pré-requis pour suivre ce tutoriel ? Je n'y connais rien en Python, est-ce que ça vaut la peine que je poursuive la lecture de cet article ? Et puis qu'ai-je à gagner à découvrir un nouveau framework, le mien me convient parfaitement, merci ! Je ne connais pas non plus les autres frameworks, ai-je intérêt à lire ce billet ?</em>
-</p>
+Houlala, nous ne sommes pas encore entrés dans le vif du sujet que déjà les questions fusent de toute part ! Votre enthousiasme fait plaisir à voir.
 
-<p class="standard">
-  Houlala, nous ne sommes pas encore entrés dans le vif du sujet que déjà les questions fusent de toute part ! Votre enthousiasme fait plaisir à voir.
-</p>
+Bon, vu la manière dont j'ai introduit le sujet, vous vous doutez bien que ce tutoriel s'adresse avant tout à des développeurs qui ne connaissent absolument pas Django ou qui, comme moi, en ont vaguement entendu parler mais souhaitent creuser la question. Si vous vous targuez de maîtriser l'outil, vous risquez fort de vous ennuyer à la lecture de cet article. Pour tirer pleinement profit de ce tutoriel, il est préférable de posséder quelques notions de développement, telles que le modèle MVC (Modèle-Vue-Contrôleur) ou la programmation objet. En revanche, si vous ne connaissez pas d'autre framework, ni le langage Python, cela ne devrait pas être un frein à la compréhension du tutoriel. Je mentionnerai sans doute d'autres frameworks tout au long de cet article mais uniquement dans le but d'apporter un éclairage supplémentaire. Quant au langage Python, je l'ai moi-même découvert en même temps que Django, la méconnaissance de ce langage ne semble donc pas constituer un obstacle insurmontable pour découvrir Django.
 
-<p class="standard">
-  Bon, vu la manière dont j'ai introduit le sujet, vous vous doutez bien que ce tutoriel s'adresse avant tout à des développeurs qui ne connaissent absolument pas Django ou qui, comme moi, en ont vaguement entendu parler mais souhaitent creuser la question. Si vous vous targuez de maîtriser l'outil, vous risquez fort de vous ennuyer à la lecture de cet article. Pour tirer pleinement profit de ce tutoriel, il est préférable de posséder quelques notions de développement, telles que le modèle MVC (Modèle-Vue-Contrôleur) ou la programmation objet. En revanche, si vous ne connaissez pas d'autre framework, ni le langage Python, cela ne devrait pas être un frein à la compréhension du tutoriel. Je mentionnerai sans doute d'autres frameworks tout au long de cet article mais uniquement dans le but d'apporter un éclairage supplémentaire. Quant au langage Python, je l'ai moi-même découvert en même temps que Django, la méconnaissance de ce langage ne semble donc pas constituer un obstacle insurmontable pour découvrir Django.
-</p>
+Enfin, pour suivre ce tutoriel, il vous faudra, et c'est sans doute le principal pré-requis, disposer d'un ordinateur sur lequel sont installés Python et Django ! Si ce n'est pas votre cas, pas de panique, l'installation des outils nécessaires fait justement l'objet du prochain chapitre.
 
-<p class="standard">
-  Enfin, pour suivre ce tutoriel, il vous faudra, et c'est sans doute le principal pré-requis, disposer d'un ordinateur sur lequel sont installés Python et Django ! Si ce n'est pas votre cas, pas de panique, l'installation des outils nécessaires fait justement l'objet du prochain chapitre.
-</p>
+### Installation de Python et Django
 
-## Installation de Python et Django
+L'installation de Python et de Django ne pose pas de problème particulier, aussi vais-je aborder cet aspect de manière très succincte.
 
-<p class="standard">
-  L'installation de Python et de Django ne pose pas de problème particulier, aussi vais-je aborder cet aspect de manière très succincte.
-</p>
+Tout d'abord, il faut savoir que la version actuelle de Django (1.2) requiert Python dans ses versions 2.4 à 2.7. Bonne nouvelle pour les utilisateurs d'une distribution Linux ou de MacOS, il est fort probable que Python soit déjà installé sur votre machine. Pour vous en assurer, ouvrez une console et saisissez simplement la commande suivante :
 
-<p class="standard">
-  Tout d'abord, il faut savoir que la version actuelle de Django (1.2) requiert Python dans ses versions 2.4 à 2.7. Bonne nouvelle pour les utilisateurs d'une distribution Linux ou de MacOS, il est fort probable que Python soit déjà installé sur votre machine. Pour vous en assurer, ouvrez une console et saisissez simplement la commande suivante :
-</p>
+```
+python
+```
 
-<div class="codecolorer-container python vibrant" style="overflow:auto;white-space:nowrap;width:100%;">
-  <div class="python codecolorer">
-     python
-  </div>
-</div>
+Vous devriez alors voir apparaître une invitation de commande Python assez semblable à celle-ci :
 
-<p class="standard">
-  Vous devriez alors voir apparaître une invitation de commande Python assez semblable à celle-ci :
-</p>
+```
+Python 2.5.2 (r252:60911, Jan 20 2010, 23:16:55)
+[GCC 4.3.2] on linux2
+Type 'help', 'copyright', 'credits' or 'license' for more information.
+>>>
+```
 
-<div class="codecolorer-container bash vibrant" style="overflow:auto;white-space:nowrap;width:100%;">
-  <div class="bash codecolorer">
-      Python 2.5.2 <span class="br0">&#40;</span>r252:<span class="nu0">60911</span>, Jan <span class="nu0">20</span> <span class="nu0">2010</span>, <span class="nu0">23</span>:<span class="nu0">16</span>:<span class="nu0">55</span><span class="br0">&#41;</span><br />   <span class="br0">&#91;</span>GCC 4.3.2<span class="br0">&#93;</span> on linux2<br />   Type <span class="st_h">'help'</span>, <span class="st_h">'copyright'</span>, <span class="st_h">'credits'</span> or <span class="st_h">'license'</span> <span class="kw1">for</span> <span class="kw2">more</span> information.<br />   <span class="sy0">>>></span>
-  </div>
-</div>
+Si ce n'est pas le cas, ou si vous utilisez l'OS Windows, il vous suffira de télécharger Python et l'installer :
 
-<p class="standard">
-  Si ce n'est pas le cas, ou si vous utilisez l'OS Windows, il vous suffira de télécharger Python et l'installer :
-</p>
-
-> <div class="aparte">
->   Télécharger Python : <a href="http://www.python.org/download/">http://www.python.org/download/</a></p> <p>
->     <strong><span style="text-decoration: underline;">Rappel</span></strong> : prenez soin d'installer une version 2.x de Python. En effet, à l'heure où j'écris ces lignes, la dernière version de Python est la 3.1.2 mais <strong>Django est pour l'heure incompatible avec les versions 3.x de Python</strong>.
->   </p>
+> Télécharger Python : <a href="http://www.python.org/download/">http://www.python.org/download/</a>
+> **Rappel** : prenez soin d'installer une version 2.x de Python. En effet, à l'heure où j'écris ces lignes, la dernière version de Python est la 3.1.2 mais **Django est pour l'heure incompatible avec les versions 3.x de Python**.
 >
->   <p>
->     <span style="text-decoration: underline;">Nota</span> : A partir de la version 2.5, Python inclut Sqlite dans sa distribution. Privilégiez donc une version supérieure ou égale à 2.5.
->   </p>
-> </div>
+> Nota : A partir de la version 2.5, Python inclut Sqlite dans sa distribution. Privilégiez donc une version supérieure ou égale à 2.5.
 
-<p class="standard">
-  A présent, il est temps de télécharger et installer Django :
-</p>
+A présent, il est temps de télécharger et installer Django :
 
-> <div class="aparte">
->   Télécharger Django : <a href="http://www.djangoproject.com/download/">http://www.djangoproject.com/download/</a></p> <p>
->     Documentation d'installation : <a href="http://docs.djangoproject.com/en/1.2/topics/install/#installing-official-release">http://docs.djangoproject.com/en/1.2/topics/install/#installing-official-release</a>
->   </p>
+> Télécharger Django : <a href="http://www.djangoproject.com/download/">http://www.djangoproject.com/download/</a>
+> Documentation d'installation : <a href="http://docs.djangoproject.com/en/1.2/topics/install/#installing-official-release">http://docs.djangoproject.com/en/1.2/topics/install/#installing-official-release</a>
 >
->   <p>
->     <span style="text-decoration: underline;">Nota</span> : Pour les utilisateurs de distributions Linux, il est probable que votre gestionnaire de paquetages vous permette d'installer Django. Assurez-vous néanmoins de bien installer la version 1.2, sur laquelle se base ce tutoriel.
->   </p>
-> </div>
+> Nota : Pour les utilisateurs de distributions Linux, il est probable que votre gestionnaire de paquetages vous permette d'installer Django. Assurez-vous néanmoins de bien installer la version 1.2, sur laquelle se base ce tutoriel.
 
-<p class="standard">
-  Si vous avez opté pour le téléchargement de l'archive de la distribution Django, l'installation consiste principalement à décompresser le contenu de l'archive dans un répertoire temporaire et à lancer le script d'installation. Voici un exemple en partant du principe que votre archive se trouve dans le répertoire ~/Temp :
-</p>
+Si vous avez opté pour le téléchargement de l'archive de la distribution Django, l'installation consiste principalement à décompresser le contenu de l'archive dans un répertoire temporaire et à lancer le script d'installation. Voici un exemple en partant du principe que votre archive se trouve dans le répertoire ~/Temp :
 
-<div class="codecolorer-container text vibrant" style="overflow:auto;white-space:nowrap;width:100%;">
-  <div class="text codecolorer">
-        cd ~/Temp<br />     tar -zxvf Django-1.2.1.tar.gz<br />     cd Django-1.2.1<br />     sudo python setup.py install
-  </div>
-</div>
+```
+cd ~/Temp
+tar -zxvf Django-1.2.1.tar.gz
+cd Django-1.2.1
+sudo python setup.py install
+```
 
-<p class="standard">
-  L'installation devrait se dérouler normalement.
-</p>
+L'installation devrait se dérouler normalement.
 
-<p class="standard">
-  Le script Django permettant d'initialiser un projet s'appelle <em>django-admin.py</em>. Il se trouve dans votre distribution Django fraîchement installée. Normalement, lors de l'installation, Python a dû mettre à jour le PATH pour rendre ce script disponible depuis n'importe quel emplacement. Pour nous en assurer, lançons les commandes suivantes :
-</p>
+Le script Django permettant d'initialiser un projet s'appelle **django-admin.py**. Il se trouve dans votre distribution Django fraîchement installée. Normalement, lors de l'installation, Python a dû mettre à jour le PATH pour rendre ce script disponible depuis n'importe quel emplacement. Pour nous en assurer, lançons les commandes suivantes :
 
-<div class="codecolorer-container text vibrant" style="overflow:auto;white-space:nowrap;width:100%;">
-  <div class="text codecolorer">
-      cd ~<br />   django-admin.py
-  </div>
-</div>
+```
+cd ~
+django-admin.py
+```
 
-<p class="standard">
-  Si tout s'est déroulé correctement, vous devriez obtenir le résultat suivant (et notamment la liste des sous-commandes Django disponibles) :
-</p>
+Si tout s'est déroulé correctement, vous devriez obtenir le résultat suivant (et notamment la liste des sous-commandes Django disponibles) :
 
-<div class="codecolorer-container text vibrant" style="overflow:auto;white-space:nowrap;width:100%;">
-  <div class="text codecolorer">
-      Usage: django-admin.py subcommand [options] [args]<br />         .....<br />   Type 'django-admin.py help <subcommand>' for help on a specific subcommand.<br /> <br />   Available subcommands:<br />     cleanup<br />     compilemessages<br />     createcachetable<br />     dbshell<br />     diffsettings<br />     ...
-  </div>
-</div>
+```
+Usage: django-admin.py subcommand [options] [args]
+      .....
+Type 'django-admin.py help <subcommand>' for help on a specific subcommand.
 
-<p class="standard">
-  Si vous n'obtenez pas le résultat escompté, il va falloir rendre le script disponible. Pour les utilisateurs de Linux, cela consistera par exemple à créer un lien symbolique pointant sur ce fichier pour y accéder depuis n'importe quel emplacement. Quant aux utilisateurs de Windows, il leur suffira de copier ce fichier dans un répertoire inclus dans la variable d'environnement PATH, ou bien encore modifier la variable PATH en y ajoutant le chemin du répertoire parent du fichier <em>django-admin.py</em>
-</p>
+Available subcommands:
+  cleanup
+  compilemessages
+  createcachetable
+  dbshell
+  diffsettings
+  ...
+```
 
-<p class="standard" style="font-weight: bold;">
-  <em>Il est bien gentil, lui, mais elle se trouve où cette fichue distribution ? Comment je fais pour le retrouver ce fameux fichier?</em>
-</p>
+Si vous n'obtenez pas le résultat escompté, il va falloir rendre le script disponible. Pour les utilisateurs de Linux, cela consistera par exemple à créer un lien symbolique pointant sur ce fichier pour y accéder depuis n'importe quel emplacement. Quant aux utilisateurs de Windows, il leur suffira de copier ce fichier dans un répertoire inclus dans la variable d'environnement PATH, ou bien encore modifier la variable PATH en y ajoutant le chemin du répertoire parent du fichier **django-admin.py**
 
-> <div class="aparte">
->   Pour connaître l'emplacement de vos paquetages Python sur votre disque dur, ouvrez une console (Linux, MacOS) ou une fenêtre DOS et saisissez l'instruction suivante : [php]python -c &#8216;from distutils.sysconfig import get_python_lib; print get_python_lib()' [/php]</p> <p>
->     C'est dans le répertoire qui s'affiche que se trouvent tous les paquets Python, parmi lesquels votre distribution Django. Exemple d'emplacement du fichier django-admin.py dans une distribution Linux :
->   </p>
+**Il est bien gentil, lui, mais elle se trouve où cette fichue distribution ? Comment je fais pour le retrouver ce fameux fichier?**
+
+> Pour connaître l'emplacement de vos paquetages Python sur votre disque dur, ouvrez une console (Linux, MacOS) ou une fenêtre DOS et saisissez l'instruction suivante : [php]python -c &#8216;from distutils.sysconfig import get_python_lib; print get_python_lib()' [/php]
+> C'est dans le répertoire qui s'affiche que se trouvent tous les paquets Python, parmi lesquels votre distribution Django. Exemple d'emplacement du fichier django-admin.py dans une distribution Linux :
 >
->   <div class="codecolorer-container bash vibrant" style="overflow:auto;white-space:nowrap;width:100%;">
->     <div class="bash codecolorer">
->         <span class="sy0">/</span>usr<span class="sy0">/</span>lib<span class="sy0">/</span>python2.7<span class="sy0">/</span>site-packages<span class="sy0">/</span>django<span class="sy0">/</span>bin<span class="sy0">/</span>django-admin.py
->     </div>
->   </div>
-> </div>
+> ```/usr/lib/python2.7/site-packages/django/bin/django-admin.py```
 
-<p class="standard">
-  Création d'un lien symbolique sous Linux ou MacOS :
-</p>
+Création d'un lien symbolique sous Linux ou MacOS :
 
-<div class="codecolorer-container bash vibrant" style="overflow:auto;white-space:nowrap;width:100%;">
-  <div class="bash codecolorer">
-      <span class="kw2">ln</span> <span class="re5">-s</span> <span class="sy0">/</span>usr<span class="sy0">/</span>lib<span class="sy0">/</span>python2.7<span class="sy0">/</span>site-packages<span class="sy0">/</span>django<span class="sy0">/</span>bin<span class="sy0">/</span>django-admin.py <span class="sy0">/</span>usr<span class="sy0">/</span>local<span class="sy0">/</span>bin
-  </div>
-</div>
+```
+ln -s /usr/lib/python2.7/site-packages/django/bin/django-admin.py /usr/local/bin
+```
 
-<p class="standard">
-  Maintenant que tout le monde est là, nous pouvons aborder la phase la plus intéressante : la création de notre premier projet Django !
-</p>
+Maintenant que tout le monde est là, nous pouvons aborder la phase la plus intéressante : la création de notre premier projet Django !
 
-## Création d'un projet Django
+### Création d'un projet Django
 
-<p class="standard">
-  A présent, nous disposons d'un environnement de développement qui nous permet de créer notre premier projet Django. Pour cela, nous allons lancer le script Django de création d'un projet, le fameux <em>django-admin.py</em>.
-</p>
+A présent, nous disposons d'un environnement de développement qui nous permet de créer notre premier projet Django. Pour cela, nous allons lancer le script Django de création d'un projet, le fameux **django-admin.py**.
 
-> <div class="aparte">
->   La question que l'on se pose constamment lorsque l'on utilise un framework permettant notamment de générer l'arborescence d'un nouveau projet (Ruby on Rails, Symfony, Grails, Zend_Tool ...) est : "<em>Dois-je créer le répertoire qui va contenir mon projet avant de lancer la commande ou est-ce le script du framework qui s'en charge ?</em>".</p> <p>
->     Dans le cas de Django, lorsque l'on exécute la sous-commande de création d'un nouveau projet, <strong>un nouveau répertoire portant le nom du projet est créé</strong> et les fichiers générés sont placés à la racine de ce nouveau répertoire.
->   </p>
-> </div>
+> La question que l'on se pose constamment lorsque l'on utilise un framework permettant notamment de générer l'arborescence d'un nouveau projet (Ruby on Rails, Symfony, Grails, Zend_Tool ...) est : "**Dois-je créer le répertoire qui va contenir mon projet avant de lancer la commande ou est-ce le script du framework qui s'en charge ?**" <p>
+> Dans le cas de Django, lorsque l'on exécute la sous-commande de création d'un nouveau projet, **un nouveau répertoire portant le nom du projet est créé** et les fichiers générés sont placés à la racine de ce nouveau répertoire.
 
-<p class="standard">
-  Nous allons donc ouvrir (si ce n'est pas déjà fait) un terminal, nous placer dans le répertoire contenant nos projets Django (dans mon cas, ce répertoire s'appelle "<em>workspace-django</em>", il est situé dans ma "home") et exécuter le script de création du projet :
-</p>
+Nous allons donc ouvrir (si ce n'est pas déjà fait) un terminal, nous placer dans le répertoire contenant nos projets Django (dans mon cas, ce répertoire s'appelle "**workspace-django**", il est situé dans ma "home") et exécuter le script de création du projet :
 
-<div class="codecolorer-container bash vibrant" style="overflow:auto;white-space:nowrap;width:100%;">
-  <div class="bash codecolorer">
-      <span class="kw3">cd</span> ~<span class="sy0">/</span>workspace-django<br />   django-admin.py startproject monprojet<br />   <span class="co0"># Ca y est, le projet est initialisé, allons voir ce qu'il contient :</span><br />   <span class="kw3">cd</span> monprojet<br />   <span class="kw2">ls</span> <span class="re5">-l</span>
-  </div>
-</div>
+```
+cd ~/workspace-django
+django-admin.py startproject monprojet
+# Ca y est, le projet est initialisé, allons voir ce qu'il contient :
+cd monprojet
+ls -l
+```
 
-> <div class="aparte">
->   Voici le contenu du projet immédiatement après sa création :</p> <p>
->     (1) __init.py__<br /> (2) manage.py<br /> (3) settings.py<br /> (4) urls.py
->   </p>
+> Voici le contenu du projet immédiatement après sa création  <p>
+> (1) __init.py__
+> (2) manage.py
+> (3) settings.py
+> (4) urls.py
 >
->   <p>
->     <strong>(1)</strong> Ce fichier sert à indiquer à Python que le répertoire courant est un <strong>package</strong> Python. Nous reviendrons brièvement sur la notion de package et de module en Python. Sachez juste pour l'heure que nous ne modifierons pas ce fichier.<br /> <strong>(2)</strong> Pour schématiser, c'est un <em>wrapper</em>, un raccourci en quelque sorte, vers le script original <em>django-admin.py</em>, placé ici pour des raisons pratiques. Désormais, c'est ce script que nous invoquerons pour exécuter des commandes Django. Nous ne modifierons pas ce fichier.<br /> <strong>(3)</strong> C'est dans ce fichier que nous définirons la configuration de notre projet. Nous aurons l'occasion d'y revenir.<br /> <strong>(4)</strong> C'est dans ce fichier que l'on définit le <strong>routing</strong> de nos applications. Il contient essentiellement les URLs utilisables dans notre projet. Nous aurons également l'occasion d'y revenir.
->   </p>
-> </div>
+> **(1)** Ce fichier sert à indiquer à Python que le répertoire courant est un **package** Python. Nous reviendrons brièvement sur la notion de package et de module en Python. Sachez juste pour l'heure que nous ne modifierons pas ce fichier.
+> **(2)** Pour schématiser, c'est un **wrapper**, un raccourci en quelque sorte, vers le script original **django-admin.py**, placé ici pour des raisons pratiques. Désormais, c'est ce script que nous invoquerons pour exécuter des commandes Django. Nous ne modifierons pas ce fichier.
+> **(3)** C'est dans ce fichier que nous définirons la configuration de notre projet. Nous aurons l'occasion d'y revenir.
+> **(4)** C'est dans ce fichier que l'on définit le **routing** de nos applications. Il contient essentiellement les URLs utilisables dans notre projet. Nous aurons également l'occasion d'y revenir.
 
-<p class="standard">
-  Maintenant que notre projet est initialisé, nous allons l'exécuter. Pour cela, nous allons démarrer le serveur de développement intégré nativement à Django : ouvrez un nouveau terminal (ou un nouvel onglet) et saisissez les commandes suivantes :
-</p>
+Maintenant que notre projet est initialisé, nous allons l'exécuter. Pour cela, nous allons démarrer le serveur de développement intégré nativement à Django : ouvrez un nouveau terminal (ou un nouvel onglet) et saisissez les commandes suivantes :
 
-<div class="codecolorer-container bash vibrant" style="overflow:auto;white-space:nowrap;width:100%;">
-  <div class="bash codecolorer">
-      <span class="kw3">cd</span> ~<span class="sy0">/</span>workspace-django<span class="sy0">/</span>monprojet<br />   python manage.py runserver
-  </div>
-</div>
+```
+cd ~/workspace-django/monprojet
+python manage.py runserver
+```
 
-<p class="standard">
-  Le serveur démarre et nous pouvons aller voir notre projet en consultant cette url : <a href="http://localhost:8000" target="_blank">http://localhost:8000</a>. Par défaut, le serveur de Django utilise le port 8000. Si par hasard, ce port était déjà utilisé, vous pouvez démarrer le serveur en passant un port différent :
-</p>
+Le serveur démarre et nous pouvons aller voir notre projet en consultant cette url : <a href="http://localhost:8000" target="_blank">http://localhost:8000</a>. Par défaut, le serveur de Django utilise le port 8000. Si par hasard, ce port était déjà utilisé, vous pouvez démarrer le serveur en passant un port différent :
 
-<div class="codecolorer-container text vibrant" style="overflow:auto;white-space:nowrap;width:100%;">
-  <div class="text codecolorer">
-      python manage.py runserver 8090
-  </div>
-</div>
+```
+python manage.py runserver 8090
+```
 
-> <div class="aparte">
->   <strong><span style="text-decoration: underline;">Nota bene</span> : </strong>Le serveur HTTP utilisé par défaut est un <strong>serveur de développement</strong>, comparable au serveur Webrick de Rails. <strong>Vous ne devez en aucun cas utiliser ce serveur en production !!!</strong>.<br /> Pour les plus pressés d'entre vous qui souhaitent en savoir plus sur le déploiement d'un projet Django en production, je vous invite à visiter la page de la documentation officielle qui traite de ce sujet : <a href="http://djangobook.com/en/2.0/chapter12/" target="_blank">Deploying Django</a>.
-> </div>
+> **Nota bene :** Le serveur HTTP utilisé par défaut est un **serveur de développement**, comparable au serveur Webrick de Rails. **Vous ne devez en aucun cas utiliser ce serveur en production !!!**.
+> Pour les plus pressés d'entre vous qui souhaitent en savoir plus sur le déploiement d'un projet Django en production, je vous invite à visiter la page de la documentation officielle qui traite de ce sujet : <a href="http://djangobook.com/en/2.0/chapter12/" target="_blank">Deploying Django</a>.
 
-<p class="standard">
-  Vous avez pu consulter la page par défaut de votre projet ; Django vous y souhaite la bienvenue et vous confirme par la même occasion que votre projet a été correctement initialisé. Bon le design de la page n'a vraiment pas de quoi faire rêver, mais l'on s'en contentera ... Par ailleurs, nous y apprenons que nous sommes en mode DEBUG, que l'on peut définir les paramètres de connexion à une base de données dans le fichier <em>settings.py</em> ou bien encore que, si nous le souhaitons, nous avons la possibilité de créer une application à l'aide de la commande <em>python manage.py startapp [myapp]</em>. Comme nous ne sommes pas contrariants, nous allons nous exécuter et créer notamment une application destinée à contenir notre très attendu "Hello World" ! Revenons donc à notre terminal et créons cette application que nous appellerons "hello", avec toute l'originalité qui sied aux développeurs dans de tels cas ...
-</p>
+Vous avez pu consulter la page par défaut de votre projet ; Django vous y souhaite la bienvenue et vous confirme par la même occasion que votre projet a été correctement initialisé. Bon le design de la page n'a vraiment pas de quoi faire rêver, mais l'on s'en contentera ... Par ailleurs, nous y apprenons que nous sommes en mode DEBUG, que l'on peut définir les paramètres de connexion à une base de données dans le fichier **settings.py** ou bien encore que, si nous le souhaitons, nous avons la possibilité de créer une application à l'aide de la commande **python manage.py startapp [myapp]**. Comme nous ne sommes pas contrariants, nous allons nous exécuter et créer notamment une application destinée à contenir notre très attendu "Hello World" ! Revenons donc à notre terminal et créons cette application que nous appellerons "hello", avec toute l'originalité qui sied aux développeurs dans de tels cas ...
 
-<div class="codecolorer-container text vibrant" style="overflow:auto;white-space:nowrap;width:100%;">
-  <div class="text codecolorer">
-      python manage.py startapp hello
-  </div>
-</div>
+```
+python manage.py startapp hello
+```
 
-<p class="standard">
-  Cette commande a ajouté à la racine de notre projet un répertoire nommé <em>hello</em>, qui correspond à une "application" dans le jargon de Django.
-</p>
+Cette commande a ajouté à la racine de notre projet un répertoire nommé **hello**, qui correspond à une "application" dans le jargon de Django.
 
-<p class="standard" style="font-weight: bold; font-style: italic;">
-  C'est quoi une application au juste ? Quelle est la différence entre "projet" et "application" ?
-</p>
+C'est quoi une application au juste ? Quelle est la différence entre "projet" et "application" ?
 
-<p class="standard">
-  Bon, je vous avoue que je redoutais un peu cette question, car je manque moi-même du recul nécessaire pour décrire avec exactitude les contours d'une application selon la terminologie employée par Django. Mais je vais m'efforcer tout de même d'y répondre de manière relativement claire en me basant sur un exemple concret et je vous prie de m'excuser par avance si ma réponse reste approximative et/ou trop schématique. Admettons que vous souhaitiez développer un site Internet consacré à votre sport préféré, le curling ou le crachat de pépins acrobatique. Votre site se déclinera sans doute en plusieurs grandes fonctionnalités : vous souhaiterez sans doute développer un module principal dans lequel vous afficherez les actualités liées à votre sport favori, un module de vente d'articles et vêtements nécessaires à la pratique de votre sport préféré, une gallerie de photographies ou de vidéos, un forum dans lequel pourront s'exprimer tous ceux qui souhaitent partager leur passion immodérée du curling, et j'en passe. Dans cet exemple, je serais tenté de dire que le site internet constituerait le projet au sens de Django, tandis que le forum, la gallerie photos, le module de news, etc. en constitueraient des applications. Mais une des notions qui m'apparaît fondamentale pour définir une application, c'est la possibilité de réutiliser une application dans un autre projet (exemple avec le forum). Noter que chaque application peut contenir ses propres classes du Modèle (au sens MVC du terme). Quant au projet, je serais tenté de le définir comme un ensemble d'applications partageant des paramètrages communs (base de données, définitions de constantes, layout commun, nom de domaine ...). Dans notre exemple, compte tenu de la modestie et de la pauvreté fonctionnelle du projet que nous développons, celui-ci ne comportera qu'une seule application.
-</p>
+Bon, je vous avoue que je redoutais un peu cette question, car je manque moi-même du recul nécessaire pour décrire avec exactitude les contours d'une application selon la terminologie employée par Django. Mais je vais m'efforcer tout de même d'y répondre de manière relativement claire en me basant sur un exemple concret et je vous prie de m'excuser par avance si ma réponse reste approximative et/ou trop schématique. Admettons que vous souhaitiez développer un site Internet consacré à votre sport préféré, le curling ou le crachat de pépins acrobatique. Votre site se déclinera sans doute en plusieurs grandes fonctionnalités : vous souhaiterez sans doute développer un module principal dans lequel vous afficherez les actualités liées à votre sport favori, un module de vente d'articles et vêtements nécessaires à la pratique de votre sport préféré, une gallerie de photographies ou de vidéos, un forum dans lequel pourront s'exprimer tous ceux qui souhaitent partager leur passion immodérée du curling, et j'en passe. Dans cet exemple, je serais tenté de dire que le site internet constituerait le projet au sens de Django, tandis que le forum, la gallerie photos, le module de news, etc. en constitueraient des applications. Mais une des notions qui m'apparaît fondamentale pour définir une application, c'est la possibilité de réutiliser une application dans un autre projet (exemple avec le forum). Noter que chaque application peut contenir ses propres classes du Modèle (au sens MVC du terme). Quant au projet, je serais tenté de le définir comme un ensemble d'applications partageant des paramètrages communs (base de données, définitions de constantes, layout commun, nom de domaine ...). Dans notre exemple, compte tenu de la modestie et de la pauvreté fonctionnelle du projet que nous développons, celui-ci ne comportera qu'une seule application.
 
-<p class="standard">
-  Quoi qu'il en soit, observons la structure de notre projet après que nous avons créé notre première application :
-</p>
+Quoi qu'il en soit, observons la structure de notre projet après que nous avons créé notre première application :
 
-<div class="codecolorer-container bash vibrant" style="overflow:auto;white-space:nowrap;width:100%;">
-  <div class="bash codecolorer">
-    + hello<br />   __init.py__<br />   models.py<br />   test.py<br />   views.py<br /> <br /> __init.py__<br /> manage.py<br /> ........
-  </div>
-</div>
+```
++ hello
+  __init.py__
+  models.py
+  test.py
+  views.py
 
-<p class="standard">
-  Maintenant que nous disposons d'une structure enrichie, nous avons l'occasion d'aborder les concepts de <em>packages</em> et <em>modules</em> du langage Python. Il n'est pas question ici d'entrer dans le détail, mais simplement de bien s'entendre sur la terminologie du langage Python, car cela nous sera utile lorsque Django nous signalera en mode DEBUG des exceptions survenues dans tel ou tel module. Pour ceux qui souhaitent approfondir la question de l'organisation du code des applications Python, je les invite à consulter la documentation officielle de Python : <a href="http://docs.python.org/tutorial/modules.html">Modules in Python</a>.
-</p>
+__init.py__
+manage.py
+........
+```
 
-> <div class="aparte">
->   <strong><span style="text-decoration: underline;">Packages et modules Python</span> :</strong></p> <p>
->     Les packages et modules Python permettent un découpage et une structuration du code constituant un projet Python.
->   </p>
+Maintenant que nous disposons d'une structure enrichie, nous avons l'occasion d'aborder les concepts de **packages** et **modules** du langage Python. Il n'est pas question ici d'entrer dans le détail, mais simplement de bien s'entendre sur la terminologie du langage Python, car cela nous sera utile lorsque Django nous signalera en mode DEBUG des exceptions survenues dans tel ou tel module. Pour ceux qui souhaitent approfondir la question de l'organisation du code des applications Python, je les invite à consulter la documentation officielle de Python : <a href="http://docs.python.org/tutorial/modules.html">Modules in Python</a>.
+
+> **Packages et modules Python :**
+> Les packages et modules Python permettent un découpage et une structuration du code constituant un projet Python.
 >
->   <p>
->     En règle générale, les packages Python correspondent à une organisation des fichiers selon une arborescence sur le disque dur, et l'on reconnaît les packages Python à la présence du fichier __init.py__ à la racine des répertoires. Ainsi, dans notre exemple, notre projet est lui-même un package nommé <em>monprojet</em>, il contient un sous-paquetage nommé <em>monprojet.hello</em>. Les packages permettent notamment de regrouper des modules.
->   </p>
+> En règle générale, les packages Python correspondent à une organisation des fichiers selon une arborescence sur le disque dur, et l'on reconnaît les packages Python à la présence du fichier __init.py__ à la racine des répertoires. Ainsi, dans notre exemple, notre projet est lui-même un package nommé **monprojet**, il contient un sous-paquetage nommé **monprojet.hello**. Les packages permettent notamment de regrouper des modules.
 >
->   <p>
->     Les modules Python correspondent eux à des fichiers d'extension *.py qui peuvent contenir plusieurs définitions de classes. Par exemple, dans un projet Django, nous enregistrerons les classes de notre modèle dans le fichier models.py des différentes applications. Ainsi, <em>models</em> est un module qui peut contenir par exemple le code des classe Client, Product, Order, ou bien encore celui des classes Blog, Post ...
->   </p>
+> Les modules Python correspondent eux à des fichiers d'extension *.py qui peuvent contenir plusieurs définitions de classes. Par exemple, dans un projet Django, nous enregistrerons les classes de notre modèle dans le fichier models.py des différentes applications. Ainsi, **models** est un module qui peut contenir par exemple le code des classe Client, Product, Order, ou bien encore celui des classes Blog, Post ...
 >
->   <p>
->     <strong><span style="text-decoration: underline;">Packages et modules vs projets et applications</span> :</strong>
->   </p>
+> **Packages et modules vs projets et applications :**
 >
->   <p>
->     Pour résumer, lorsque l'on parle de <em>packages</em> et de <em>modules</em>, on envisage le code du point de vue de Python. Tandis que les termes <em>applications</em> et <em>projet</em> décrivent une organisation du code du point de vue de Django. Bien entendu, si l'on superpose ces différents concepts de Python et Django en alignant leurs contours, il est fort probable que rien ne dépasse ... Ce sont simplement deux manières complémentaires d'envisager l'organisation du code.
->   </p>
-> </div>
+> Pour résumer, lorsque l'on parle de **packages** et de **modules**, on envisage le code du point de vue de Python. Tandis que les termes **applications** et **projet** décrivent une organisation du code du point de vue de Django. Bien entendu, si l'on superpose ces différents concepts de Python et Django en alignant leurs contours, il est fort probable que rien ne dépasse ... Ce sont simplement deux manières complémentaires d'envisager l'organisation du code.
 
-<p class="standard">
-  Nous avons donc créé le squelette de notre application, mais dans un projet Django, toute application doit être déclarée dans le fichier <em>settings.py</em> pour être rendue disponible. Nous allons donc modifier ce fichier et ajouter une simple ligne (en toute fin de code) :
-</p>
+Nous avons donc créé le squelette de notre application, mais dans un projet Django, toute application doit être déclarée dans le fichier **settings.py** pour être rendue disponible. Nous allons donc modifier ce fichier et ajouter une simple ligne (en toute fin de code) :
 
-<div class="codecolorer-container python vibrant" style="overflow:auto;white-space:nowrap;width:100%;">
-  <div class="python codecolorer">
-      <span class="co1"># monprojet/settings.py</span><br />   ...<br />   <span class="me1">INSTALLED_APPS</span> <span class="sy0">=</span> <span class="br0">&#40;</span><br />       <span class="st0">'django.contrib.auth'</span><span class="sy0">,</span><br />       <span class="st0">'django.contrib.contenttypes'</span><span class="sy0">,</span><br />       <span class="st0">'django.contrib.sessions'</span><span class="sy0">,</span><br />       <span class="st0">'django.contrib.sites'</span><span class="sy0">,</span><br />       <span class="st0">'django.contrib.messages'</span><span class="sy0">,</span><br />       <span class="co1"># Uncomment the next line to enable the admin:</span><br />       <span class="co1"># 'django.contrib.admin',</span><br />       <span class="co1"># Ici, nous ajoutons notre application :</span><br />       <span class="st0">'hello'</span><span class="sy0">,</span><br />   <span class="br0">&#41;</span>
-  </div>
-</div>
+```
+# monprojet/settings.py
+...
+INSTALLED_APPS = (
+    'django.contrib.auth',
+    'django.contrib.contenttypes',
+    'django.contrib.sessions',
+    'django.contrib.sites',
+    'django.contrib.messages',
+    # Uncomment the next line to enable the admin:
+    # 'django.contrib.admin',
+    # Ici, nous ajoutons notre application :
+    'hello',
+)
+```
 
-<p class="standard">
-  Profitez de cette modification pour consulter le contenu de ce fichier. C'est notamment dans ce fichier que l'on définit le mode debug (<em>DEBUG = True</em>), les paramètres de connexion à la base de données, l'emplacement où nous enregistrerons les templates, le répertoire "<em>media</em>" destiné à accueillir les fichiers statiques (feuilles de style, images, fichiers javascript ...) et bien d'autre choses. Pour connaître les principaux paramètres enregistrés dans ce fichier, je vous encourage à consulter la page de la documentation de Django traitant de la configuration d'un projet : <a href="http://docs.djangoproject.com/en/1.2/topics/settings/" target="_blank">Django Settings</a>.
-</p>
+Profitez de cette modification pour consulter le contenu de ce fichier. C'est notamment dans ce fichier que l'on définit le mode debug (**DEBUG = True**), les paramètres de connexion à la base de données, l'emplacement où nous enregistrerons les templates, le répertoire "**media**" destiné à accueillir les fichiers statiques (feuilles de style, images, fichiers javascript ...) et bien d'autre choses. Pour connaître les principaux paramètres enregistrés dans ce fichier, je vous encourage à consulter la page de la documentation de Django traitant de la configuration d'un projet : <a href="http://docs.djangoproject.com/en/1.2/topics/settings/" target="_blank">Django Settings</a>.
 
-<p class="standard">
-  A présent, nous pouvons nous atteler à la rédaction du code qui va nous permettre d'afficher le tant attendu "Hello World" dans notre navigateur préféré. Cela va consister à :
-</p>
+A présent, nous pouvons nous atteler à la rédaction du code qui va nous permettre d'afficher le tant attendu "Hello World" dans notre navigateur préféré. Cela va consister à :
 
 1.  Ajouter une URL dans le fichier *monprojet/urls.py*
 2.  Ajouter une fonction dans le fichier *monprojet/hello/views.py*
 3.  Ecrire la template
 
-> <div class="aparte">
->   Noter le nom du fichier dans lequel nous rédigerons le code de notre fonction : <strong>views.py</strong>. En fait, Django est un Framework Web mettant en oeuvre le principe <strong>MVC</strong>, tel que vous avez l'habitude de le rencontrer dans d'autres frameworks. Pour être plus précis, dans le cas de Django, les créateurs du framework préfèrent parler de MTV : <strong>Model-Template-View</strong>. Il s'agit d'une nuance dans l'interprétation du MVC. En fait, sous Django, les fonctions qui s'apparenteraient dans d'autres frameworks à des actions ou des contrôleurs sont enregistrées dans le fichier views.py. Cela peut être déroutant pour un développeur familier avec les principes MVC. Sachez simplement que c'est avant tout affaire de terminologie. Pour l'heure, acceptez le fait que le code de ce que vous considérez comme vos actions ou contrôleurs se trouve dans le fichier views.py et que c'est donc dans ce fichier que l'on trouve la logique correspondant au "C" de MVC ... Quant aux vues (dans le sens MVC du terme), elles sont représentées par les templates. Mais fondamentalement, cela ne change en rien les habitudes acquises sur d'autres frameworks MVC, à partir du moment où vous avez digéré cette subtilité sémantique, quelque peu déroutante, il faut l'admettre, lorsque l'on débute sous Django.
-> </div>
+>   Noter le nom du fichier dans lequel nous rédigerons le code de notre fonction : **views.py**. En fait, Django est un Framework Web mettant en oeuvre le principe **MVC**, tel que vous avez l'habitude de le rencontrer dans d'autres frameworks. Pour être plus précis, dans le cas de Django, les créateurs du framework préfèrent parler de MTV : **Model-Template-View**. Il s'agit d'une nuance dans l'interprétation du MVC. En fait, sous Django, les fonctions qui s'apparenteraient dans d'autres frameworks à des actions ou des contrôleurs sont enregistrées dans le fichier views.py. Cela peut être déroutant pour un développeur familier avec les principes MVC. Sachez simplement que c'est avant tout affaire de terminologie. Pour l'heure, acceptez le fait que le code de ce que vous considérez comme vos actions ou contrôleurs se trouve dans le fichier views.py et que c'est donc dans ce fichier que l'on trouve la logique correspondant au "C" de MVC ... Quant aux vues (dans le sens MVC du terme), elles sont représentées par les templates. Mais fondamentalement, cela ne change en rien les habitudes acquises sur d'autres frameworks MVC, à partir du moment où vous avez digéré cette subtilité sémantique, quelque peu déroutante, il faut l'admettre, lorsque l'on débute sous Django.
 
-<p class="standard">
-  1. <span style="text-decoration: underline;">Créer une URL (fichier urls.py</span>)
-</p>
+1. Créer une URL (fichier urls.py)
 
-<p class="standard">
-  Pour ajouter l'URL pointant sur notre méthode, nous allons ajouter une ligne à la fin du fichier <em>urls.py</em> :
-</p>
+Pour ajouter l'URL pointant sur notre méthode, nous allons ajouter une ligne à la fin du fichier **urls.py** :
 
-<div class="codecolorer-container python vibrant" style="overflow:auto;white-space:nowrap;width:100%;">
-  <div class="python codecolorer">
-      urlpatterns <span class="sy0">=</span> patterns<span class="br0">&#40;</span><span class="st0">''</span><span class="sy0">,</span><br />       <span class="co1"># Example:</span><br />       <span class="co1"># (r'^monprojet/', include('monprojet.foo.urls')),</span><br /> <br />       <span class="co1"># Uncomment the next line to enable the admin:</span><br />       <span class="co1"># (r'^admin/', include(admin.site.urls)),</span><br />       <span class="br0">&#40;</span>r<span class="st0">'^hello/$'</span><span class="sy0">,</span> <span class="st0">'hello.views.hello'</span><span class="br0">&#41;</span><span class="sy0">,</span><br />   <span class="br0">&#41;</span>
-  </div>
-</div>
+```
+urlpatterns = patterns('',
+    # Example:
+    # (r'^monprojet/', include('monprojet.foo.urls')),
 
-<p class="standard">
-  Nous venons simplement de préciser que c'est la fonction "hello" du module "views" de l'application "hello" qui doit être appelée lorsque l'URL invoquée correspond exactement au pattern "hello/". Pour créer des URLS sous Django, vous noterez qu'il faut connaître un peu les expressions régulières. Ca, je me suis bien gardé de le préciser en introduction de peur de faire fuir le lecteur. J'avoue que le procédé est assez malhonnête, j'ai quelques scrupules, mais sincèrement, combien d'entre vous seraient parvenus jusqu'ici si j'avais mentionné les expressions régulières dès le début de cet article ? Et puis, sachez que moi-même je ne suis pas très rompu à la syntaxe des REGEXP, alors voici quelques exemples qui vont vous permettre de gérer 90 % des cas que vous serez amenés à rencontrer dans le cadre de l'ajout d'URLs sous Django :
-</p>
+    # Uncomment the next line to enable the admin:
+    # (r'^admin/', include(admin.site.urls)),
+    (r'^hello/$', 'hello.views.hello'),
+)
+```
 
-> <div class="aparte">
->   <strong><span style="text-decoration: underline;">Quelques expressions régulières utiles</span> :</strong></p> <p>
->     - <strong>^videos/</strong> : toute URL commençant par "videos/"<br /> - <strong>extract/$</strong> : toute URL se terminant par "extract/"<br /> - <strong>^gallery/$</strong> : toute URL correspondant exactement à l'expression "gallery/"<br /> - <strong>^photo/show/(?P<id>\\d+)/$</strong> : toute URL commençant par "photo/show/" suivi d'un nombre (correspondant au paramètre "id")<br /> - <strong>^photo/show/(?P<slug>[a-z0-9\\-]+)/$</strong> : la même chose mais avec un paramètre "slug" (ne contenant donc que des chiffres, des tirets et des lettres minuscules).
->   </p>
-> </div>
+Nous venons simplement de préciser que c'est la fonction "hello" du module "views" de l'application "hello" qui doit être appelée lorsque l'URL invoquée correspond exactement au pattern "hello/". Pour créer des URLS sous Django, vous noterez qu'il faut connaître un peu les expressions régulières. Ca, je me suis bien gardé de le préciser en introduction de peur de faire fuir le lecteur. J'avoue que le procédé est assez malhonnête, j'ai quelques scrupules, mais sincèrement, combien d'entre vous seraient parvenus jusqu'ici si j'avais mentionné les expressions régulières dès le début de cet article ? Et puis, sachez que moi-même je ne suis pas très rompu à la syntaxe des REGEXP, alors voici quelques exemples qui vont vous permettre de gérer 90 % des cas que vous serez amenés à rencontrer dans le cadre de l'ajout d'URLs sous Django :
 
-<p class="standard">
-  A présent, si nous nous rendons sur la page <a href="http://localhost:8000/hello/">http://localhost:8000/hello/</a>, nous recevons une exception de type "ViewDoesNotExist" qui indique que nous sommes sur la bonne voie. En effet, cette erreur implique que notre route a bien été prise en compte et qu'il nous faut donc rédiger la fonction "hello.views.hello".
-</p>
+> **<span style="text-decoration: underline;">Quelques expressions régulières utiles</span> :</strong <p>
+> - **^videos/** : toute URL commençant par "videos/"
+> - **extract/$** : toute URL se terminant par "extract/"
+> - **^gallery/$** : toute URL correspondant exactement à l'expression "gallery/"
+> - **^photo/show/(?P<id>\\d+)/$** : toute URL commençant par "photo/show/" suivi d'un nombre (correspondant au paramètre "id")
+> - **^photo/show/(?P<slug>[a-z0-9\\-]+)/$** : la même chose mais avec un paramètre "slug" (ne contenant donc que des chiffres, des tirets et des lettres minuscules).
 
-<p class="standard">
-  2. <span style="text-decoration: underline;">Rédiger la fonction <em>hello</em> (fichier hello/views.py</span>)
-</p>
+A présent, si nous nous rendons sur la page <a href="http://localhost:8000/hello/">http://localhost:8000/hello/</a>, nous recevons une exception de type "ViewDoesNotExist" qui indique que nous sommes sur la bonne voie. En effet, cette erreur implique que notre route a bien été prise en compte et qu'il nous faut donc rédiger la fonction "hello.views.hello".
 
-<p class="standard">
-  Voici le code complet du fichier views.py contenant notre fonction "hello" :
-</p>
+2. Rédiger la fonction **hello** (fichier hello/views.py)
 
-<div class="codecolorer-container python vibrant" style="overflow:auto;white-space:nowrap;width:100%;">
-  <div class="python codecolorer">
-      <span class="co1"># monprojet/hello/views.py</span><br />   <span class="kw1">from</span> django.<span class="me1">shortcuts</span> <span class="kw1">import</span> render_to_response<br /> <br />   <span class="kw1">def</span> hello<span class="br0">&#40;</span>request<span class="br0">&#41;</span>:<br />     <span class="kw1">return</span> render_to_response<span class="br0">&#40;</span><span class="st0">'hello.html'</span><span class="br0">&#41;</span>
-  </div>
-</div>
+Voici le code complet du fichier views.py contenant notre fonction "hello" :
 
-<p class="standard">
-  Si vous découvrez le langage Python, il n'y a rien de très compliqué. Noter qu'en Python, les délimitations des blocs de code (comme la définition du corps d'une méthode par exemple) sont marquées au moyen de l'indentation (là où les langages avec une syntaxe héritée du C utilisent les accolades). Nous utilisons également une méthode raccourcie de Django très utile, <em>render_to_response</em>, qui permet de retourner une réponse HTTP en lui passant en paramètre le nom de la template à afficher. Cette méthode appartenant au package django.shortcuts, il est nécessaire d'importer ce paquetage au début du code source.
-</p>
+```
+# monprojet/hello/views.py
+from django.shortcuts import render_to_response
 
-<p class="standard">
-  Si nous rechargeons la page <a href="http://localhost:8000/hello/">http://localhost:8000/hello/</a>, nous recevons cette fois une exception de type "TemplateDoesNotExist". Notre fonction a bien été appelée mais il nous reste à créer la template.
-</p>
+def hello(request):
+  return render_to_response('hello.html')
+```
 
-<p class="standard">
-  3. <span style="text-decoration: underline;">Rédiger la template</span>
-</p>
+Si vous découvrez le langage Python, il n'y a rien de très compliqué. Noter qu'en Python, les délimitations des blocs de code (comme la définition du corps d'une méthode par exemple) sont marquées au moyen de l'indentation (là où les langages avec une syntaxe héritée du C utilisent les accolades). Nous utilisons également une méthode raccourcie de Django très utile, **render_to_response**, qui permet de retourner une réponse HTTP en lui passant en paramètre le nom de la template à afficher. Cette méthode appartenant au package django.shortcuts, il est nécessaire d'importer ce paquetage au début du code source.
 
-<p class="standard">
-  Avec Django, il est nécessaire de mettre à jour le fichier settings.py pour indiquer au framework dans quel répertoire du disque dur il doit rechercher les fichiers de templating. Nous allons donc créer à la racine de notre projet un répertoire "templates" destiné à recevoir nos templates et modifier le fichier de configuration pour y mentionner ce répertoire (rechercher dans le fichier settings.py la ligne contenant <em>TEMPLATE_DIRS</em>) :
-</p>
+Si nous rechargeons la page <a href="http://localhost:8000/hello/">http://localhost:8000/hello/</a>, nous recevons cette fois une exception de type "TemplateDoesNotExist". Notre fonction a bien été appelée mais il nous reste à créer la template.
 
-<div class="codecolorer-container bash vibrant" style="overflow:auto;white-space:nowrap;width:100%;">
-  <div class="bash codecolorer">
-      <span class="kw2">mkdir</span> templates
-  </div>
-</div>
+3. Rédiger la template
 
-<div class="codecolorer-container python vibrant" style="overflow:auto;white-space:nowrap;width:100%;">
-  <div class="python codecolorer">
-    <span class="co1"># monprojet/settings.py</span><br /> <br /> ....<br /> <span class="me1">TEMPLATE_DIRS</span> <span class="sy0">=</span> <span class="br0">&#40;</span><br />     <span class="co1"># Put strings here, like &quot;/home/html/django_templates&quot; or &quot;C:/www/django/templates&quot;.</span><br />     <span class="co1"># Always use forward slashes, even on Windows.</span><br />     <span class="co1"># Don't forget to use absolute paths, not relative paths.</span><br />     <span class="st0">'/home/roldo/workspace-django/monprojet/templates/'</span><span class="sy0">,</span><br /> <span class="br0">&#41;</span><br /> ...
-  </div>
-</div>
+Avec Django, il est nécessaire de mettre à jour le fichier settings.py pour indiquer au framework dans quel répertoire du disque dur il doit rechercher les fichiers de templating. Nous allons donc créer à la racine de notre projet un répertoire "templates" destiné à recevoir nos templates et modifier le fichier de configuration pour y mentionner ce répertoire (rechercher dans le fichier settings.py la ligne contenant **TEMPLATE_DIRS**) :
 
-<p class="standard">
-  Et enfin, créer la template et y ajouter le contenu suivant :
-</p>
+```
+mkdir templates
+```
 
-<div class="codecolorer-container html4strict vibrant" style="overflow:auto;white-space:nowrap;width:100%;">
-  <div class="html4strict codecolorer">
-      <span class="sc-1"><!-- monprojet/templates/hello.html --></span><br />   <span class="sc2"><<a href="http://december.com/html/4/element/h1.html"><span class="kw2">h1</span></a>></span>Hello World ! <span class="sc2"><<span class="sy0">/</span><a href="http://december.com/html/4/element/h1.html"><span class="kw2">h1</span></a>></span>
-  </div>
-</div>
+```
+# monprojet/settings.py
 
-<p class="standard">
-  Voilà, si vous rechargez la page dans votre navigateur, vous devriez voir apparaître la célèbre phrase connue de tous les développeurs de la planète. Pour finir, je vous propose quelques aménagements afin de permettre de passer un paramètre prénom à notre fonction, et afficher ensuite la valeur de cette variable dans la template.
-</p>
+....
+TEMPLATE_DIRS = (
+    # Put strings here, like &amp;quot;/home/html/django_templates&amp;quot; or &amp;quot;C:/www/django/templates&amp;quot;.
+    # Always use forward slashes, even on Windows.
+    # Don't forget to use absolute paths, not relative paths.
+    '/home/roldo/workspace-django/monprojet/templates/',
+)
+...
+```
 
-<p class="standard">
-  Commençons par modifier le pattern de la route ...
-</p>
+Et enfin, créer la template et y ajouter le contenu suivant :
 
-<div class="codecolorer-container python vibrant" style="overflow:auto;white-space:nowrap;width:100%;">
-  <div class="python codecolorer">
-      <span class="co1"># monprojet/urls.py</span><br />   ...<br />   <span class="br0">&#40;</span>r<span class="st0">'^hello/(?P<firstname>[a-zA-Z]+)$'</span><span class="sy0">,</span> <span class="st0">'hello.views.hello'</span><span class="br0">&#41;</span><span class="sy0">,</span><br />   ...
-  </div>
-</div>
+```
+<!-- monprojet/templates/hello.html -->
+<h1>Hello World ! </h1>
+```
 
-<p class="standard">
-  ... puis la fonction "hello" ...
-</p>
+Voilà, si vous rechargez la page dans votre navigateur, vous devriez voir apparaître la célèbre phrase connue de tous les développeurs de la planète. Pour finir, je vous propose quelques aménagements afin de permettre de passer un paramètre prénom à notre fonction, et afficher ensuite la valeur de cette variable dans la template.
 
-<div class="codecolorer-container python vibrant" style="overflow:auto;white-space:nowrap;width:100%;">
-  <div class="python codecolorer">
-      <span class="co1"># monprojet/hello/views.py</span><br />   ...<br />   <span class="kw1">def</span> hello<span class="br0">&#40;</span>request<span class="sy0">,</span> firstname<span class="br0">&#41;</span>:<br />     <span class="kw1">return</span> render_to_response<span class="br0">&#40;</span><span class="st0">'hello.html'</span><span class="sy0">,</span> <span class="br0">&#123;</span> <span class="st0">'firstname'</span> : firstname <span class="br0">&#125;</span><span class="br0">&#41;</span>
-  </div>
-</div>
+Commençons par modifier le pattern de la route ...
 
-<p class="standard">
-  ... et enfin, la template :
-</p>
+```
+# monprojet/urls.py
+...
+(r'^hello/(?P<firstname>[a-zA-Z]+)$', 'hello.views.hello'),
+...
+```
 
-<div class="codecolorer-container html4strict vibrant" style="overflow:auto;white-space:nowrap;width:100%;">
-  <div class="html4strict codecolorer">
-      <span class="sc-1"><!-- monprojet/templates/hello.html --></span><br />   <span class="sc2"><<a href="http://december.com/html/4/element/h1.html"><span class="kw2">h1</span></a>></span>Hello {{ firstname }} ! <span class="sc2"><<span class="sy0">/</span><a href="http://december.com/html/4/element/h1.html"><span class="kw2">h1</span></a>></span>
-  </div>
-</div>
+... puis la fonction "hello" ...
 
-<p class="standard">
-  Pour visualiser le résultat, rendez-vous à cette URL : <a href="http://localhost:8000/hello/Georges" target="_blank">http://localhost:8000/hello/Georges</a>
-</p>
+```
+# monprojet/hello/views.py
+...
+def hello(request, firstname):
+  return render_to_response('hello.html', { 'firstname' : firstname })
+```
 
-## Conclusion (plus que précaire ...)
+... et enfin, la template :
 
-<p class="standard">
-  Que venons-nous de faire ? Eh bien, nous venons tout simplement de développer un projet informatique, basé sur le Framework Django et reposant sur le paradigme MVC à trois couches. Nous sommes donc à présent en mesure d'honorer tous les besoins d'un client qui souhaiterait se doter d'une application basée sur le Framework Django, bâtie sur le paradigme MVC à trois couches, et destinée à ... afficher "Hello World".
-</p>
+```
+<!-- monprojet/templates/hello.html -->
+<h1>Hello {{ firstname }} ! </h1>
+```
 
-<p class="standard">
-  Bon, je vous le concède, les projets informatiques avec un cahier des charges aussi faméliques ne sont pas légion ... Il nous reste donc de nombreux aspects à aborder pour prétendre développer des applications un tant soit peu évoluées avec Django. Qu'à cela ne tienne, nous aurons sans doute l'occasion d'y revenir à l'occasion de prochains tutoriels ...
-</p>
+Pour visualiser le résultat, rendez-vous à cette URL : <a href="http://localhost:8000/hello/Georges" target="_blank">http://localhost:8000/hello/Georges</a>
+
+### Conclusion (plus que précaire ...)
+
+Que venons-nous de faire ? Eh bien, nous venons tout simplement de développer un projet informatique, basé sur le Framework Django et reposant sur le paradigme MVC à trois couches. Nous sommes donc à présent en mesure d'honorer tous les besoins d'un client qui souhaiterait se doter d'une application basée sur le Framework Django, bâtie sur le paradigme MVC à trois couches, et destinée à ... afficher "Hello World".
+
+Bon, je vous le concède, les projets informatiques avec un cahier des charges aussi faméliques ne sont pas légion ... Il nous reste donc de nombreux aspects à aborder pour prétendre développer des applications un tant soit peu évoluées avec Django. Qu'à cela ne tienne, nous aurons sans doute l'occasion d'y revenir à l'occasion de prochains tutoriels ...
