@@ -1,210 +1,277 @@
+Bonjour,
 
-<p style="font-family: georgia, palatino;">
-  Bonjour,
-</p>
+Nous allons voir aujourd'hui comment installer et utiliser le plugin <a href="http://www.symfony-project.org/plugins/sfImageTransformExtraPlugin" target="_blank">sfImageTransformExtraPlugin</a>.
 
-<p style="font-family: georgia, palatino; text-align: justify;">
-  Nous allons voir aujourd'hui comment installer et utiliser le plugin <a href="http://www.symfony-project.org/plugins/sfImageTransformExtraPlugin" target="_blank">sfImageTransformExtraPlugin</a>.
-</p>
+Il s'agit d'un plugin très puissant permettant d'appliquer des traitements à des images au moyen de fichiers de configuration, sans qu'il soit donc nécessaire de polluer le code métier. Par ailleurs, il permet d'appliquer plusieurs traitements successifs de manière très intuitive. Il gère lui-même l'emplacement des fichiers générés et propose un système de cache réduisant les délais de transmission des images déjà générées.
 
-<p style="font-family: georgia, palatino; text-align: justify;">
-  Il s'agit d'un plugin très puissant permettant d'appliquer des traitements à des images au moyen de fichiers de configuration, sans qu'il soit donc nécessaire de polluer le code métier. Par ailleurs, il permet d'appliquer plusieurs traitements successifs de manière très intuitive. Il gère lui-même l'emplacement des fichiers générés et propose un système de cache réduisant les délais de transmission des images déjà générées.
-</p>
+Le sfImageTransformExtraPlugin est dépendant du plugin <a href="http://www.symfony-project.org/plugins/sfImageTransformPlugin" target="_blank">sfImageTransformPlugin</a> mais ne l'installez pas avant d'avoir lu la suite ! Pour faciliter la lecture et éviter toute confusion (les noms des deux plugins sont très proches), dans la suite de l'article je ferai référence au "plugin de base" pour sfImageTransformPlugin et au "plugin Extra" pour sfImageTransformExtraPlugin.
 
-<p style="font-family: georgia, palatino; text-align: justify;">
-  Le sfImageTransformExtraPlugin est dépendant du plugin <a href="http://www.symfony-project.org/plugins/sfImageTransformPlugin" target="_blank">sfImageTransformPlugin</a> mais ne l'installez pas avant d'avoir lu la suite ! Pour faciliter la lecture et éviter toute confusion (les noms des deux plugins sont très proches), dans la suite de l'article je ferai référence au "plugin de base" pour sfImageTransformPlugin et au "plugin Extra" pour sfImageTransformExtraPlugin.
-</p>
+L'outil est donc très puissant mais sa documentation contient de nombreuses zones d'ombre qui ne facilitent absolument pas sa prise en main. Et les ennuis commencent dès l'installation ! D'où l'intérêt de cet article.
 
-<p style="font-family: georgia, palatino; text-align: justify;">
-  L'outil est donc très puissant mais sa documentation contient de nombreuses zones d'ombre qui ne facilitent absolument pas sa prise en main. Et les ennuis commencent dès l'installation ! D'où l'intérêt de cet article.
-</p>
+### L'installation des plugins ou le début <del>des emm...</del> de nos démarches
 
-## L'installation des plugins ou le début <del>des emm...</del> de nos démarches
+> Le plugin sfImageTransformPlugin nécessite que GD ou ImageMagick soit installé sur votre machine.
 
-<div style="background-color: lightyellow; border: 1px solid lightgrey; padding: 10px; text-align: center; margin-bottom: 15px;">
-  Le plugin sfImageTransformPlugin nécessite que GD ou ImageMagick soit installé sur votre machine.
+En effet, au moment de la rédaction de ce billet, la version courante du plugin "Extra" est la version 1.0.5 qui requiert la version 1.3.0 ou 1.3.1 du plugin sfImageTransformPlugin. Or, la version courante de ce dernier est 1.4.0, mais elle est incompatible avec la dernière version du plugin "Extra". Si bien que si vous essayez d'installer le plugin "Extra" via la ligne de commande **plugin:install**, l'opération échouera car elle installera préalablement la dernière version de sfImageTransformPlugin, donc une version incompatible ! Vous me suivez ? Oui, je sais que ces histoires de versions ne sont pas passionnantes mais si vous souhaitez utiliser sfImageTransformExtraPlugin (et nous le recommandons !), mieux vaut être au courant de ces incompatibilités. Voici donc la démarche que nous préconisons :
+
+Installer le plugin de base (sfImageTransformPlugin) en ligne de commande en prenant soin de préciser la version souhaitée :
+
+```
+./symfony plugin:install --release=1.3.1 sfImageTransformPlugin
+```
+
+Pour le plugin "Extra", il faut l'installer manuellement. Pour cela :
+
+- rendez-vous sur <a title="Télécharger le plugin sfImageTransformExtraPlugin" href="http://www.symfony-project.org/plugins/sfImageTransformExtraPlugin" target="_blank">la page dédiée au plugin</a> et cliquez sur le lien "Download Package"
+
+- décompressez le contenu de l'archive dans un répertoire temporaire
+
+- copiez le répertoire "sfImageTransformExtraPlugin-1.0.5&#8243; (la racine de l'archive est un répertoire qui s'appelle "sfImageTransformExtraPlugin-1.0.5&#8243;, et il contient lui-même un sous-répertoire qui porte également ce nom ; c'est le sous-répertoire qu'il faut copier et non pas la racine de l'archive) dans le répertoire "plugins" de votre projet Symfony
+
+- renommez ce répertoire en "plugins/sfImageTransformExtraPlugin" (**ie**, supprimer le tiret et le numéro de version)
+
+Enfin, un article consacré à Symfony qui ne contient pas une instruction **symfony cc** n'est pas digne de ce nom ! Donc :
+
+```
+./symfony cc
+```
+
+> A ce stade des opérations, nous n'activons pas encore le plugin "Extra". La configuration du plugin se fera plus tard car pour l'heure, nous allons tester le plugin sfImageTransformPlugin. Nous nous soucierons du plugin "Extra" plus tard.
+
+### A présent, essayons le plugin de base
+
+Nous allons nous assurer dans un premier temps que le plugin de base (sfImageTransformPlugin) est correctement installé et configuré. Pour cela, nous allons créer une page très simple, avec un bouton déclenchant un traitement sur une image de notre choix. Commençons par créer un module "image" dans l'application "Frontend".
+
+Si elle n'existe pas encore, on crée l'application "Frontend" ...
+
+```
+./symfony generate:app frontend
+```
+
+... puis le module :
+
+```
+./symfony generate:module frontend image
+```
+
+Pour notre démonstration, j'ai choisi cette image, partant du principe qu'un prosélytisme de bon aloi ne saurait nuire à la carrière d'un développeur :
+
+<img src="/blog/medias/installation-et-premiers-pas-avec-le-plugin-symfony-sfimagetransformextraplugin/zf.jpg" />
+
+J'ai nommé cette image zf.jpg et je l'ai placée dans le répertoire web/images de notre projet.
+
+Nous allons dans un premier temps écrire le code de notre template pour y insérer le formulaire par lequel nous allons appeler la transformation de notre image :
+
+```
+# apps/frontend/modules/image/templates/indexSuccess.php
+<h1>Image Transform & Extra plugin</h1>
+
+<div style="text-align:center; width: 400px; border: 1px solid lightgrey; padding:25px;">
+    <img src="/images/zf.jpg"></img><br/><br/>
+    <form method="post">
+        <input type="submit" value="Transform image !"></input>
+    </form>
 </div>
+```
 
-<p style="font-family: georgia, palatino; text-align: justify;">
-  En effet, au moment de la rédaction de ce billet, la version courante du plugin "Extra" est la version 1.0.5 qui requiert la version 1.3.0 ou 1.3.1 du plugin sfImageTransformPlugin. Or, la version courante de ce dernier est 1.4.0, mais elle est incompatible avec la dernière version du plugin "Extra". Si bien que si vous essayez d'installer le plugin "Extra" via la ligne de commande <em>plugin:install</em>, l'opération échouera car elle installera préalablement la dernière version de sfImageTransformPlugin, donc une version incompatible ! Vous me suivez ? Oui, je sais que ces histoires de versions ne sont pas passionnantes mais si vous souhaitez utiliser sfImageTransformExtraPlugin (et nous le recommandons !), mieux vaut être au courant de ces incompatibilités. Voici donc la démarche que nous préconisons :
-</p>
+Comme nous venons juste de créer le module, pensez à supprimer le code par défaut de la méthode executeIndex du fichier <span style="color: #3366ff;">apps/frontend/modules/actions/actions.class.php</span>. Affichons à présent la page dans notre navigateur : http://mon_hote_virtuel/frontend_dev.php/image. Le résultat est admirable ... je ne m'en lasse pas ...
 
-<p style="font-family: georgia, palatino; text-align: justify;">
-  Installer le plugin de base (sfImageTransformPlugin) en ligne de commande en prenant soin de préciser la version souhaitée :
-</p>
+<img src="/blog/medias/installation-et-premiers-pas-avec-le-plugin-symfony-sfimagetransformextraplugin/indexSuccess.php_.png" border="1" alt="indexSuccess.php  Installation et premiers pas avec le plugin Symfony sfImageTransformExtraPlugin"  title="Installation et premiers pas avec le plugin Symfony sfImageTransformExtraPlugin" />
 
-<div class="codecolorer-container php vibrant" style="overflow:auto;white-space:nowrap;width:100%;">
-  <div class="php codecolorer">
-        <span class="sy0">./</span>symfony plugin<span class="sy0">:</span>install <span class="sy0">--</span>release<span class="sy0">=</span>1<span class="sy0">.</span>3<span class="sy0">.</span>1 sfImageTransformPlugin
-  </div>
-</div>
+Cela étant, notre but étant d'utiliser dans un premier temps le plugin sfImageTransformPlugin, nous allons écrire une méthode sans prétention qui va appliquer un traitement à cette image lorsque nous soumettons le formulaire. Pour cela, nous allons modifier le fichier actions.class.php afin de mettre à jour la méthode executeIndex :
 
-<p style="font-family: georgia, palatino; text-align: justify;">
-  Pour le plugin "Extra", il faut l'installer manuellement. Pour cela :
-</p>
+```
+# apps/frontend/modules/image/actions/actions.class.php
+class imageActions extends sfActions
+{
+ /**
+  * Executes index action
+  *
+  * @param sfRequest $request A request object
+  */
+  public function executeIndex(sfWebRequest $request)
+  {
+    if(sfRequest::POST == $request->getMethod())
+    {
+      $file = sfConfig::get('sf_web_dir').DIRECTORY_SEPARATOR.'images'.DIRECTORY_SEPARATOR.'zf.jpg' ;
+      $img = new sfImage($file, 'image/jpg') ;
+      $response = $this->getResponse();
+      $response->setContentType($img->getMIMEType());
+      $img->resize(100,null) ;
+      $response->setContent($img);
 
-<p style="font-family: georgia, palatino; text-align: justify;">
-  - rendez-vous sur <a title="Télécharger le plugin sfImageTransformExtraPlugin" href="http://www.symfony-project.org/plugins/sfImageTransformExtraPlugin" target="_blank">la page dédiée au plugin</a> et cliquez sur le lien "Download Package"
-</p>
+      return sfView::NONE;
+    }
+  }
+}
+```
 
-<p style="font-family: georgia, palatino; text-align: justify;">
-  - décompressez le contenu de l'archive dans un répertoire temporaire
-</p>
+Rien de très compliqué, à la soumission du formulaire, nous créons une miniature de notre image d'origine (dimension 100 px) et nous l'affichons dans le navigateur. Cette méthode n'est pas d'un grand intérêt, je l'avoue ; elle a pour seule but de s'assurer que nous avons correctement configuré le plugin de base. A présent, attaquons-nous au plat de résistance :
 
-<p style="font-family: georgia, palatino; text-align: justify;">
-  - copiez le répertoire "sfImageTransformExtraPlugin-1.0.5&#8243; (la racine de l'archive est un répertoire qui s'appelle "sfImageTransformExtraPlugin-1.0.5&#8243;, et il contient lui-même un sous-répertoire qui porte également ce nom ; c'est le sous-répertoire qu'il faut copier et non pas la racine de l'archive) dans le répertoire "plugins" de votre projet Symfony
-</p>
+### La bête : le plugin "Extra"
 
-<p style="font-family: georgia, palatino; text-align: justify;">
-  - renommez ce répertoire en "plugins/sfImageTransformExtraPlugin" (<em>ie</em>, supprimer le tiret et le numéro de version)
-</p>
+Nous allons commencer par activer le plugin :
 
-<p style="font-family: georgia, palatino; text-align: justify;">
-  Enfin, un article consacré à Symfony qui ne contient pas une instruction <em>symfony cc</em> n'est pas digne de ce nom ! Donc :
-</p>
+```
+// ...
+class ProjectConfiguration extends sfProjectConfiguration
+{
+  public function setup()
+  {
+    $this->enablePlugins('sfDoctrinePlugin');
+    $this->enablePlugins('sfImageTransformPlugin');
+    $this->enablePlugins('sfImageTransformExtraPlugin');
+  }
+}
+```
 
-<div class="codecolorer-container php vibrant" style="overflow:auto;white-space:nowrap;width:100%;">
-  <div class="php codecolorer">
-        <span class="sy0">./</span>symfony cc
-  </div>
-</div>
+Le point d'entrée du plugin "Extra" se trouve dans un module que nous allons activer :
 
-<div style="background-color: lightyellow; border: 1px solid lightgrey; padding: 10px; text-align: center; margin-bottom: 15px;">
-  A ce stade des opérations, nous n'activons pas encore le plugin "Extra". La configuration du plugin se fera plus tard car pour l'heure, nous allons tester le plugin sfImageTransformPlugin. Nous nous soucierons du plugin "Extra" plus tard.
-</div>
+```
+# apps/frontend/config/settings.yml
+all:
+  .settings:
+    # ....
+   enabled_modules:        [ sfImageTransformator ]
+```
 
-## A présent, essayons le plugin de base
+Pour faire fonctionner le plugin, il est nécessaire d'activer la détection automatique du tyme MIME. Cela se fait dans le fichier app.yml de l'application :
 
-<p style="font-family: georgia, palatino; text-align: justify;">
-  Nous allons nous assurer dans un premier temps que le plugin de base (sfImageTransformPlugin) est correctement installé et configuré. Pour cela, nous allons créer une page très simple, avec un bouton déclenchant un traitement sur une image de notre choix. Commençons par créer un module "image" dans l'application "Frontend".
-</p>
+```
+# apps/frontend/config/app.yml
+all:
+  sfImageTransformPlugin:
+    mime_type:
+      auto_detect:  true
+      library:      gd_mime_type #  gd_mime_type (GD), Fileinfo (PECL), MIME_Type (PEAR)
+   font_dir:       %SF_PLUGINS_DIR%/sfImageTransformExtraPlugin/data/example-resources/fonts
+```
 
-<p style="font-family: georgia, palatino; text-align: justify;">
-  Si elle n'existe pas encore, on crée l'application "Frontend" ...
-</p>
+Les routes par défaut du plugin "Extra" sont configurées avec l'URL relative /thumbnails/.. pour générer et/ou afficher les miniatures générées. Pour qu'elles fonctionnent, nous devons créer un répertoire "thumbnails" dans le répertoire "web" et nous assurer que le serveur possède les droits en écriture sur ce répertoire. Dans la console, en nous plaçant sous la racine du projet, nous entrons donc les commandes suivantes :
 
-<div class="codecolorer-container php vibrant" style="overflow:auto;white-space:nowrap;width:100%;">
-  <div class="php codecolorer">
-        <span class="sy0">./</span>symfony generate<span class="sy0">:</span>app frontend
-  </div>
-</div>
+```
+mkdir web/thumbnails
+chmod 777 web/thumbnails
+```
 
-<p style="font-family: georgia, palatino; text-align: justify;">
-  ... puis le module :
-</p>
+Comme cela fait un long moment que nous n'avons pas tapé un **symfony cc**, il est temps d'y remédier :
 
-<div class="codecolorer-container php vibrant" style="overflow:auto;white-space:nowrap;width:100%;">
-  <div class="php codecolorer">
-        <span class="sy0">./</span>symfony generate<span class="sy0">:</span>module frontend image
-  </div>
-</div>
+```
+./symfony cc
+```
 
-<p style="font-family: georgia, palatino; text-align: justify;">
-  Pour notre démonstration, j'ai choisi cette image, partant du principe qu'un prosélytisme de bon aloi ne saurait nuire à la carrière d'un développeur :
-</p>
+Bon, nous avons passé un bon moment à préparer le terrain mais force est de constater que nous n'avons pas été très productifs jusqu'à présent. Il est donc temps d'exploiter ce plugin ! Mais avant toute chose, quelques remarques utiles. Je vous invite dans un premier temps à recharger la page où nous affichons le formulaire et à consulter les informations qui figurent dans la Web Debug Toolbar. Sélectionnez-y l'onglet "config" et affichez le contenu du sous-menu "Settings". Vous noterez tout en bas de la liste, après les constantes app_* et sf_*, la présence d'une constante nommée "thumbnailing_formats" :
 
-![zf Installation et premiers pas avec le plugin Symfony sfImageTransformExtraPlugin][1]
+```
+thumbnailing_formats:
+  default: { quality: 25, mime_type: image/gif, transformations: ... }
+  original: { quality: 100, mime_type: image/jpg, transformations: {  } }
+```
 
-<p style="font-family: georgia, palatino; text-align: justify;">
-  J'ai nommé cette image zf.jpg et je l'ai placée dans le répertoire web/images de notre projet.
-</p>
+Mais que sont ces "thumbnailing_formats" et où sont-ils définis exactement ? Pour répondre à la seconde question, ces formats sont définis dans le fichier plugins/sfImageTransformExtraPlugin/thumbnailing.yml et voici son contenu :
 
-<p style="font-family: georgia, palatino; text-align: justify;">
-  Nous allons dans un premier temps écrire le code de notre template pour y insérer le formulaire par lequel nous allons appeler la transformation de notre image :
-</p>
+```
+# plugins/sfImageTransformExtraPlugin/thumbnailing.yml
+all:
+  .settings:
+    formats:
+# -------------------------------------------------------------------------------
+# --- // 404 image
+     default:
+        quality:                    25
+        mime_type:                  image/gif
+        transformations:
+          - { adapter: GD, transformation: create, param: { x: 250, y: 200 } }}
+          - { adapter: GD, transformation: text,   param: { text: '404', x: 10, y:  50, size: 72, font: accid___, color: '#FF0000', angle: 0 } }}
+          - { adapter: GD, transformation: text,   param: { text: 'Image could not be found', x: 10, y:  120, size: 12, font: accid___, color: '#FF0000', angle: 0 } }}
+# -------------------------------------------------------------------------------
+# --- // original image. no transformation
+     original:
+        quality:                    100
+        mime_type:                  image/jpg
+        transformations:            []
+```
 
-<div class="codecolorer-container php vibrant" style="overflow:auto;white-space:nowrap;width:100%;">
-  <div class="php codecolorer">
-        <span class="co2"># apps/frontend/modules/image/templates/indexSuccess.php<br /> </span>   <span class="sy0"><</span>h1<span class="sy0">></span>Image Transform <span class="sy0">&</span> Extra plugin<span class="sy0"></</span>h1<span class="sy0">></span><br /> <br />    <span class="sy0"><</span>div style<span class="sy0">=</span><span class="st0">"text-align:center; width: 400px; border: 1px solid lightgrey; padding:25px;"</span><span class="sy0">></span><br />    <span class="sy0"><</span>img src<span class="sy0">=</span><span class="st0">"/images/zf.jpg"</span><span class="sy0">></</span>img<span class="sy0">><</span>br<span class="sy0">/><</span>br<span class="sy0">/></span><br />    <span class="sy0"><</span>form method<span class="sy0">=</span><span class="st0">"post"</span><span class="sy0">></span><br />    <span class="sy0"><</span>input type<span class="sy0">=</span><span class="st0">"submit"</span> value<span class="sy0">=</span><span class="st0">"Transform image !"</span><span class="sy0">></</span>input<span class="sy0">></span><br />    <span class="sy0"></</span>form<span class="sy0">></span><br />    <span class="sy0"></</span>div<span class="sy0">></span>
-  </div>
-</div>
+Comme je le disais en préambule, le plugin “Extra” va nous permettre d’appliquer plusieurs traitements successifs sur une image, sans que nous ayons à écrire du code PHP, grâce à des fichiers de configuration. Et c’est dans ce fichier qui occupe une place centrale dans le fonctionnement et l’exploitation du plugin que l’on détermine cette configuration. Noter au passage que la documentation du plugin y fait référence de manière extrêmement maladroite et ambigüe. Ainsi, en analysant ce fichier, nous constatons que le format “default” est prévu pour générer un format de sortie de type “image/gif” ; il crée (create) une nouvelle image de 250 * 200 pixels, lui ajoute le texte ‘404‘, puis le texte ‘Image could not be found‘. Ces transformations successives sont décrites dans l’entrée “transformations” du fichier yaml.
 
-<p style="font-family: georgia, palatino; text-align: justify;">
-  Comme nous venons juste de créer le module, pensez à supprimer le code par défaut de la méthode executeIndex du fichier <span style="color: #3366ff;">apps/frontend/modules/actions/actions.class.php</span>. Affichons à présent la page dans notre navigateur : http://mon_hote_virtuel/frontend_dev.php/image. Le résultat est admirable ... je ne m'en lasse pas ...
-</p>
+Nous allons à présent copier ce fichier dans le répertoire “config” de notre application et l’adapter pour créer nos propres formats :
 
-<img src="http://www.elao.org/wp-content/uploads/2010/07/indexSuccess.php_.png" border="1" alt="indexSuccess.php  Installation et premiers pas avec le plugin Symfony sfImageTransformExtraPlugin"  title="Installation et premiers pas avec le plugin Symfony sfImageTransformExtraPlugin" />
+```
+cp plugins/sfImageTransformExtraPlugin/thumbnailing.yml apps/frontend/config/thumbnailing.yml
+```
 
-<p style="font-family: georgia, palatino; text-align: justify;">
-  Cela étant, notre but étant d'utiliser dans un premier temps le plugin sfImageTransformPlugin, nous allons écrire une méthode sans prétention qui va appliquer un traitement à cette image lorsque nous soumettons le formulaire. Pour cela, nous allons modifier le fichier actions.class.php afin de mettre à jour la méthode executeIndex :
-</p>
+Modifions le fichier que nous venons de copier afin d’appliquer à une image originale des transformations plus visibles. Pour cela, remplaçons le contenu du fichier :
 
-<div class="codecolorer-container php vibrant" style="overflow:auto;white-space:nowrap;width:100%;">
-  <div class="php codecolorer">
-    <span class="co2"># apps/frontend/modules/image/actions/actions.class.php<br /> </span><span class="kw2">class</span> imageActions <span class="kw2">extends</span> sfActions<br /> <span class="br0">&#123;</span><br />  <span class="co4">/**<br />   * Executes index action<br />   *<br />   * @param sfRequest $request A request object<br />   */</span><br />   <span class="kw2">public</span> <span class="kw2">function</span> executeIndex<span class="br0">&#40;</span>sfWebRequest <span class="re0">$request</span><span class="br0">&#41;</span><br />   <span class="br0">&#123;</span><br />     <span class="kw1">if</span><span class="br0">&#40;</span>sfRequest<span class="sy0">::</span><span class="me2">POST</span> <span class="sy0">==</span> <span class="re0">$request</span><span class="sy0">-></span><span class="me1">getMethod</span><span class="br0">&#40;</span><span class="br0">&#41;</span><span class="br0">&#41;</span><br />     <span class="br0">&#123;</span><br />       <span class="re0">$file</span> <span class="sy0">=</span> sfConfig<span class="sy0">::</span><span class="me2">get</span><span class="br0">&#40;</span><span class="st_h">'sf_web_dir'</span><span class="br0">&#41;</span><span class="sy0">.</span><span class="kw4">DIRECTORY_SEPARATOR</span><span class="sy0">.</span><span class="st_h">'images'</span><span class="sy0">.</span><span class="kw4">DIRECTORY_SEPARATOR</span><span class="sy0">.</span><span class="st_h">'zf.jpg'</span> <span class="sy0">;</span><br />       <span class="re0">$img</span> <span class="sy0">=</span> <span class="kw2">new</span> sfImage<span class="br0">&#40;</span><span class="re0">$file</span><span class="sy0">,</span> <span class="st_h">'image/jpg'</span><span class="br0">&#41;</span> <span class="sy0">;</span><br />       <span class="re0">$response</span> <span class="sy0">=</span> <span class="re0">$this</span><span class="sy0">-></span><span class="me1">getResponse</span><span class="br0">&#40;</span><span class="br0">&#41;</span><span class="sy0">;</span><br />       <span class="re0">$response</span><span class="sy0">-></span><span class="me1">setContentType</span><span class="br0">&#40;</span><span class="re0">$img</span><span class="sy0">-></span><span class="me1">getMIMEType</span><span class="br0">&#40;</span><span class="br0">&#41;</span><span class="br0">&#41;</span><span class="sy0">;</span><br />       <span class="re0">$img</span><span class="sy0">-></span><span class="me1">resize</span><span class="br0">&#40;</span><span class="nu0">100</span><span class="sy0">,</span><span class="kw4">null</span><span class="br0">&#41;</span> <span class="sy0">;</span><br />       <span class="re0">$response</span><span class="sy0">-></span><span class="me1">setContent</span><span class="br0">&#40;</span><span class="re0">$img</span><span class="br0">&#41;</span><span class="sy0">;</span><br /> <br />       <span class="kw1">return</span> sfView<span class="sy0">::</span><span class="me2">NONE</span><span class="sy0">;</span><br />     <span class="br0">&#125;</span><br />   <span class="br0">&#125;</span><br /> <span class="br0">&#125;</span>
-  </div>
-</div>
+```
+# apps/frontend/config/thumbnailing.yml
+all:
+  .settings:
+    formats:
+# -------------------------------------------------------------------------------
 
-<p style="font-family: georgia, palatino; text-align: justify;">
-  Rien de très compliqué, à la soumission du formulaire, nous créons une miniature de notre image d'origine (dimension 100 px) et nous l'affichons dans le navigateur. Cette méthode n'est pas d'un grand intérêt, je l'avoue ; elle a pour seule but de s'assurer que nous avons correctement configuré le plugin de base. A présent, attaquons-nous au plat de résistance :
-</p>
+      mon_format_1:
+        quality:               25
+        mime_type:             image/png
+        transformations:
+          - { adapter: GD, transformation: crop, param: { left: 90, top: 72, width: 120, height: 120 }}
+          - { adapter: GD, transformation: rotate, param: { angle: 20, background: "#FFFFFF" }}
+          - { adapter: GD, transformation: crop, param: { left: 17, top: 17, width: 120, height: 120 }}
+```
 
-## La bête : le plugin "Extra"
+Si nous rechargeons notre page web et que nous consultons les “settings” de la Web Debug Toolbar, nous constatons que notre nouveau format est disponible. Nous allons donc appliquer ces transformations à notre image originale. Le plugin offre la possibilité de modifier une image située dans le répertoire public de l’application, une image distante disponible via le protocole http, ou bien une image située en base de données. Dans le cadre de notre exemple, nous allons transformer l’image de l’exemple précédent, que nous aurons placée dans le répertoire “web/uploads”.
 
-<p style="font-family: georgia, palatino; text-align: justify;">
-  Nous allons commencer par activer le plugin :
-</p>
+> La documentation du plugin est très floue quant à la manière d’indiquer l’emplacement d’une image dans le répertoire public de notre application. En fait, les images doivent être stockées dans le répertoire web/uploads ou un de ses sous-répertoires, mais la documentation n’est absolument pas claire sur ce point (et sur bien d’autres !).
 
-<div class="codecolorer-container php vibrant" style="overflow:auto;white-space:nowrap;width:100%;">
-  <div class="php codecolorer">
-    <span class="co1">// ...</span><br /> <span class="kw2">class</span> ProjectConfiguration <span class="kw2">extends</span> sfProjectConfiguration<br /> <span class="br0">&#123;</span><br />   <span class="kw2">public</span> <span class="kw2">function</span> setup<span class="br0">&#40;</span><span class="br0">&#41;</span><br />   <span class="br0">&#123;</span><br />     <span class="re0">$this</span><span class="sy0">-></span><span class="me1">enablePlugins</span><span class="br0">&#40;</span><span class="st_h">'sfDoctrinePlugin'</span><span class="br0">&#41;</span><span class="sy0">;</span><br />     <span class="re0">$this</span><span class="sy0">-></span><span class="me1">enablePlugins</span><span class="br0">&#40;</span><span class="st_h">'sfImageTransformPlugin'</span><span class="br0">&#41;</span><span class="sy0">;</span><br />     <span class="re0">$this</span><span class="sy0">-></span><span class="me1">enablePlugins</span><span class="br0">&#40;</span><span class="st_h">'sfImageTransformExtraPlugin'</span><span class="br0">&#41;</span><span class="sy0">;</span><br />   <span class="br0">&#125;</span><br /> <span class="br0">&#125;</span>
-  </div>
-</div>
+Copions l’image du logo ZF dans le répertoire public :
 
-<p style="font-family: georgia, palatino; text-align: justify;">
-  Le point d'entrée du plugin "Extra" se trouve dans un module que nous allons activer :
-</p>
+```
+cp web/images/zf.jpg web/uploads/zf.jpg
+```
 
-<div class="codecolorer-container php vibrant" style="overflow:auto;white-space:nowrap;width:100%;">
-  <div class="php codecolorer">
-    <span class="co2"># apps/frontend/config/settings.yml<br /> </span>all<span class="sy0">:</span><br />   <span class="sy0">.</span>settings<span class="sy0">:</span><br />     <span class="co2"># ....<br /> </span>    enabled_modules<span class="sy0">:</span>        <span class="br0">&#91;</span> sfImageTransformator <span class="br0">&#93;</span>
-  </div>
-</div>
+Nous devons à présent déclarer une route pointant sur le module sfImageTransformator, chargé de transformer les images. Comme nous souhaitons modifier une image du répertoire public de l’application, nous précisons dans l’entrée “options” que l’image source est de type “File” :
 
-<p style="font-family: georgia, palatino; text-align: justify;">
-  Pour faire fonctionner le plugin, il est nécessaire d'activer la détection automatique du tyme MIME. Cela se fait dans le fichier app.yml de l'application :
-</p>
+```
+# apps/frontend/config/routing.yml
+sf_image_file:
+  class: sfImageTransformRoute
+  url:  /thumbnails/:format/:filepath.:sf_format
+  param: { module: sfImageTransformator, action: index }
+  requirements:
+    format:   "[\w_-]+"
+    filepath: "[\w/_.]+"
+    sf_format: "gif|png|jpg"
+    sf_method: [ get ]
+  options:
+    image_source: File
+```
 
-<div class="codecolorer-container php vibrant" style="overflow:auto;white-space:nowrap;width:100%;">
-  <div class="php codecolorer">
-    <span class="co2"># apps/frontend/config/app.yml<br /> </span>all<span class="sy0">:</span><br />   sfImageTransformPlugin<span class="sy0">:</span><br />     mime_type<span class="sy0">:</span><br />       auto_detect<span class="sy0">:</span>  <span class="kw4">true</span><br />       library<span class="sy0">:</span>      gd_mime_type <span class="co2">#  gd_mime_type (GD), Fileinfo (PECL), MIME_Type (PEAR)<br /> </span>    font_dir<span class="sy0">:</span>       <span class="sy0">%</span>SF_PLUGINS_DIR<span class="sy0">%/</span>sfImageTransformExtraPlugin<span class="sy0">/</span>data<span class="sy0">/</span>example<span class="sy0">-</span>resources<span class="sy0">/</span>fonts
-  </div>
-</div>
+Et pour finir, nous allons ajouter dans la template indexSuccess.php le lien permettant d’invoquer la transformation de notre image et d’afficher le résultat.
 
-<p style="font-family: georgia, palatino; text-align: justify;">
-  Les routes par défaut du plugin "Extra" sont configurées avec l'URL relative /thumbnails/.. pour générer et/ou afficher les miniatures générées. Pour qu'elles fonctionnent, nous devons créer un répertoire "thumbnails" dans le répertoire "web" et nous assurer que le serveur possède les droits en écriture sur ce répertoire. Dans la console, en nous plaçant sous la racine du projet, nous entrons donc les commandes suivantes :
-</p>
+```
+# apps/frontend/modules/image/templates/indexSuccess.php
+// ..... affichage du formulaire -- aucun changement
+<?php echo image_tag(url_for("sf_image_file", array("format" => "mon_format_1", "filepath" => "zf.jpg")));
+```
 
-<div class="codecolorer-container php vibrant" style="overflow:auto;white-space:nowrap;width:100%;">
-  <div class="php codecolorer">
-      <a href="http://www.php.net/mkdir"><span class="kw3">mkdir</span></a> web<span class="sy0">/</span>thumbnails<br />   <a href="http://www.php.net/chmod"><span class="kw3">chmod</span></a> <span class="nu0">777</span> web<span class="sy0">/</span>thumbnails
-  </div>
-</div>
+> Le filepath est relatif au répertoire “uploads”. Ainsi, si l’image se trouvait par exemple dans le répertoire web/uploads/mes_fichiers, nous aurions indiqué le filepath de cette manière :
+> "filepath" => "mes_fichiers/zf.jpg"
 
-<p style="font-family: georgia, palatino; text-align: justify;">
-  Comme cela fait un long moment que nous n'avons pas tapé un <em>symfony cc</em>, il est temps d'y remédier :
-</p>
+Si l’on recharge notre page web, le résultat des transformations s’affiche alors sous notre formulaire. Voici le code HTML de la balise image générée par le plugin :
 
-<div class="codecolorer-container php vibrant" style="overflow:auto;white-space:nowrap;width:100%;">
-  <div class="php codecolorer">
-     <span class="sy0">./</span>symfony cc
-  </div>
-</div>
+```
+<img src="/frontend_dev.php/thumbnails/mon_format_1/zf.jpg.png"/>
+```
 
-<p style="font-family: georgia, palatino; text-align: justify;">
-  Bon, nous avons passé un bon moment à préparer le terrain mais force est de constater que nous n'avons pas été très productifs jusqu'à présent. Il est donc temps d'exploiter ce plugin ! Mais avant toute chose, quelques remarques utiles. Je vous invite dans un premier temps à recharger la page où nous affichons le formulaire et à consulter les informations qui figurent dans la Web Debug Toolbar. Sélectionnez-y l'onglet "config" et affichez le contenu du sous-menu "Settings". Vous noterez tout en bas de la liste, après les constantes app_* et sf_*, la présence d'une constante nommée "thumbnailing_formats" :
-</p>
+Cela correspond exactement au pattern de la route que nous avons déclarée précédemment.
 
-<div class="codecolorer-container php vibrant" style="overflow:auto;white-space:nowrap;width:100%;">
-  <div class="php codecolorer">
-    thumbnailing_formats<span class="sy0">:</span><br />   <span class="kw1">default</span><span class="sy0">:</span> <span class="br0">&#123;</span> quality<span class="sy0">:</span> <span class="nu0">25</span><span class="sy0">,</span> mime_type<span class="sy0">:</span> image<span class="sy0">/</span>gif<span class="sy0">,</span> transformations<span class="sy0">:</span> <span class="sy0">...</span> <span class="br0">&#125;</span><br />   original<span class="sy0">:</span> <span class="br0">&#123;</span> quality<span class="sy0">:</span> <span class="nu0">100</span><span class="sy0">,</span> mime_type<span class="sy0">:</span> image<span class="sy0">/</span>jpg<span class="sy0">,</span> transformations<span class="sy0">:</span> <span class="br0">&#123;</span>  <span class="br0">&#125;</span> <span class="br0">&#125;</span>
-  </div>
-</div>
+> Si l’image ne s’affiche pas, n’hésitez pas à consulter les logs de Symfony ou d’Apache. A titre d’exemple, à mesure que j’écrivais cet article, je développais l’exemple en parallèle sur un poste informatique plutôt “obsolète” et il s’est avéré que ma librairie graphique GD ne me permettait pas d’appliquer des rotations. Résultat sans appel dans le fichier de log de Symfony :
+>
+> [err] {sfImageTransformException} Cannot perform transform: sfImageRotateGD. Your install of GD does not support imagerotate
 
-<p style="font-family: georgia, palatino; text-align: justify;">
-  Mais que sont ces "thumbnailing_formats" et où sont-ils définis exactement ? Pour répondre à la seconde question, ces formats sont définis dans le fichier plugins/sfImageTransformExtraPlugin/thumbnailing.yml et voici son contenu :
-</p>
+### Conclusion (provisoire)
 
-<div class="codecolorer-container php vibrant" style="overflow:auto;white-space:nowrap;width:100%;">
-  <div class="php codecolorer">
-    <span class="co2"># plugins/sfImageTransformExtraPlugin/thumbnailing.yml<br /> </span>all<span class="sy0">:</span><br />   <span class="sy0">.</span>settings<span class="sy0">:</span><br />     formats<span class="sy0">:</span><br /> <span class="co2">#
+Cet article est beaucoup plus long que ce à quoi je m’attendais et pourtant nous n’avons fait qu’effleurer le sujet, tant sont vastes les possibilités offertes par le plugin. sfImageTransformExtraPlugin est indéniablement un outil qui mérite que l’on s’y intéresse mais sa prise en main est assez délicate, en raison notamment d’une documentation que je juge assez approximative (ce qui est tout de même compréhensible, c’est un peu le revers de la médaille : plus un outil est riche, plus la mise à jour de la documentation est problématique). Cet article n’avait donc pas d’autre prétention que de vous initier à ce plugin et vous mettre le pied à l’étrier en évitant les premiers écueils.
+
+### Remerciements
+
+Je tiens à remercier chaleureusement Yves Heitz sans qui la rédaction de ce billet n’aurait pas été possible. Il a essuyé les plâtres en mettant en oeuvre le plugin sur un projet réel et il a su contourner les nombreux écueils auxquels on se heurte lorsque l’on souhaite utiliser le plugin.
