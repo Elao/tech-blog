@@ -8,7 +8,6 @@ Avant de débuter ce tutoriel, assurez-vous que Python et Django sont installés
 
 Le projet qui va nous servir de fil rouge tout au long de cet article (et ceux qui suivront) consiste en un site de vente d'articles de sport. Nous allons donc dans un premier temps créer notre projet (je nommerai ce projet "elao", c'est un nom court, concis, idéal donc pour un nom de projet) et une application que je nommerai "shop". Allez, c'est parti !
 
-
 Nous ouvrons donc une ligne de commande, nous nous plaçons dans le répertoire qui contient nos projets Django ("workspace-django" en ce qui me concerne), et nous lançons les commandes nécessaires pour initialiser le projet et créer l'application "shop" :
 
 ```
@@ -21,6 +20,7 @@ python manage.py startapp shop
 Nous allons à présent configurer les accès à notre base de données et activer l'application que nous venons de créer. Pour cela, nous allons éditer le fichier *settings.py* qui se trouve à la racine de notre projet. Comme nous souhaitons nous initier à Django, nous opterons pour le moteur de base de données SQLite qui présente l'avantage d'être inclus dans les dernières distributions de Python et ne nécessite donc pas d'installation supplémentaire. Noter pour la petite histoire que les créateurs du Framework ne semblent pas être de fervents défenseurs de MySQL, auquel ils préfèrent Postgres ...
 
 > Si vous souhaitez utiliser MySQL à la place de SQLite, il vous faudra installer un driver Python permettant d'accéder aux bases de données MySQL, <a href="http://sourceforge.net/projects/mysql-python/" target="_blank">MySQL for Python</a>, par exemple. Sachez toutefois que ce driver nécessite la présence des headers de MySQL et que son installation requiert donc, si vous aviez installé une version binaire de MySQL, quelques compétences en administration que je ne possède hélas pas.
+
 > **Nota bene** : Si vous utilisez une distribution **Linux**, il est probable que votre gestionnaire de paquets vous permette d'installer le driver MySQL sans douleur. Par exemple, sous Ubuntu, recherchez un paquet nommé "python-mysqldb". En revanche, si vous utilisez **MacOS**, je vous invite à faire une recherche sur <a href="http://www.google.fr/search?hl=fr&#038;q=Python+MySQL+MacOS+trouble">Google</a> ; a priori, l'installation du driver sous cet OS ne relève pas de la sinécure, de nombreuses personnes s'y sont déjà cassé les dents. Pour les utilisateurs de **Windows**, il existe des exécutables permettant d'installer un driver MySQL, mais je n'ai pas pu les tester. Je vous renvoie donc à Google, mais a priori, veillez à télécharger un driver compatible avec votre version de Python.
 
 Dans le fichier *settings.py*, nous allons mentionner les chemins absolus de notre base de données, du répertoire hébergeant les templates, celui contenant les fichiers statiques ... Aussi, pour rendre notre projet portable, nous allons dans un premier temps créer une constante ROOT_DIR correspondant à la racine de notre projet, et par la suite, tous les chemins absolus se baseront sur cette constante. Pour cela, ajoutez les deux lignes suivantes au début du fichier de configuration du projet :
@@ -111,7 +111,8 @@ Corrigez si nécessaire le code de votre modèle, jusqu'à obtenir le message su
 0 errors found
 ```
 
-> Comme nous utilisons un champ de type *ImageField*, il est nécessaire que la librairie PIL (Python Image Library) soit installée sur votre ordinateur. Pour les utilisateurs de Linux, il est probable que votre distribution vous permette de l'installer à partir de votre gestionnaire de paquetages. Si vous utilisez MacOS ou Windows, téléchargez et installez PIL en suivant les instructions disponibles sur cette page consacrée à la <a href="http://www.pythonware.com/products/pil/" target="_blank">Bibliothèque PIL</a>.<br /><br /><br /> Si vous ne souhaitez pas installer PIL, il vous suffit de changer le type du champ *picture* en **CharField**.
+> Comme nous utilisons un champ de type *ImageField*, il est nécessaire que la librairie PIL (Python Image Library) soit installée sur votre ordinateur. Pour les utilisateurs de Linux, il est probable que votre distribution vous permette de l'installer à partir de votre gestionnaire de paquetages. Si vous utilisez MacOS ou Windows, téléchargez et installez PIL en suivant les instructions disponibles sur cette page consacrée à la <a href="http://www.pythonware.com/products/pil/" target="_blank">Bibliothèque PIL</a>.
+> Si vous ne souhaitez pas installer PIL, il vous suffit de changer le type du champ *picture* en **CharField**.
 
 La définition des classes de notre modèle appelle quelques remarques. Tout d'abord, notez que les objets du modèle destinés à être manipulées par l'ORM (<a href="http://en.wikipedia.org/wiki/Object-relational_mapping" target="_blank">*Object-Relational Mapping*</a>) de Django héritent de la classe *django.db.models.Model*. En Python, la syntaxe de l'héritage se présente donc sous la forme * class MaClasse(ClasseHéritée)*
 
