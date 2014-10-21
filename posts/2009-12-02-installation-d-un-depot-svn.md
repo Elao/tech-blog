@@ -1,14 +1,14 @@
-# **[EDIT]** Il est bien évidemment conseillé aujourd'hui d'utiliser GIT comme SCM ! Cet article est à considérer comme une archive et/ou comme support à ceux qui ont la malchance d' être coincé avec SVN.
+**[EDIT]** Il est bien évidemment conseillé aujourd'hui d'utiliser GIT comme SCM ! Cet article est à considérer comme une archive et/ou comme support à ceux qui ont la malchance d' être coincé avec SVN.
 
-<p>**Subversion** (en abrégé **svn**) est un <a class="mw-redirect" title="Système de gestion de versions" target="_blank" href="http://fr.wikipedia.org/wiki/Syst%C3%A8me_de_gestion_de_versions">système de gestion de versions</a>, il agit sur une arborescence de fichiers afin de conserver toutes les versions des fichiers, ainsi que les différences entre les fichiers. De ce fait, et pour résumer, il permet non seulement de pouvoir revenir à un état T d'une application dans le temps mais également de travailler à plusieurs sur un seul et même projet, les conflits pouvant être engendrés entre deux utilisateurs manipulant un même fichier étant gérés par le serveur subversion.</p>
+**Subversion** (en abrégé **svn**) est un <a title="Système de gestion de versions" target="_blank" href="http://fr.wikipedia.org/wiki/Syst%C3%A8me_de_gestion_de_versions">système de gestion de versions</a>, il agit sur une arborescence de fichiers afin de conserver toutes les versions des fichiers, ainsi que les différences entre les fichiers. De ce fait, et pour résumer, il permet non seulement de pouvoir revenir à un état T d'une application dans le temps mais également de travailler à plusieurs sur un seul et même projet, les conflits pouvant être engendrés entre deux utilisateurs manipulant un même fichier étant gérés par le serveur subversion.
 
-## Les paquets à installer:
+### Les paquets à installer:
 
 ```shell
 apt-get install subversion libapache2-svn
 ```
 
-## Déploiement du dépôt subversion:
+### Déploiement du dépôt subversion:
 
 Nous partirons du principe que vous avez décidé de déployer le repository (dépôt) de votre projet dans le répertoire /repositories/. Si ce n’est pas fait nous créons le répertoire:
 
@@ -34,7 +34,7 @@ Si vous disposez déjà d’un existant vous pouvez parfaitement l’importer da
 svn import -m "Initialisation du dépot" /elao/projects/mon_projet/ file:///repositories/mon_projet/trunk
 ```
 
-## Paramétrage du subversion et Apache
+### Paramétrage du subversion et Apache
 
 Afin “d’ouvrir” notre dépôt vers l’extérieur nous allons utiliser Apache, pour des raisons de sécurité, (libre à vous de l’utiliser ou non ) nous utiliserons SSL pour les transactions http. On active le module dav_svn avec la commande :
 
@@ -42,7 +42,7 @@ Afin “d’ouvrir” notre dépôt vers l’extérieur nous allons utiliser Apa
 a2enmod dav_svn
 ```
 
-## Paramétrer votre VHost (à adapter selon votre configuration Apache):
+### Paramétrer votre VHost (à adapter selon votre configuration Apache):
 
 Nous allons commencer par définir quels seront les utilisateurs qui auront accès à notre (nos) dépôt(s) Créons pour celà un répertoire pwd, qui, d’une manière générale contiendra nos fichiers d’accès.
 
@@ -82,7 +82,7 @@ AuthzSVNAccessFile /etc/apache2/pwd/perms.acl
 Require valid-user
 ```
 
-## La gestion des droits:
+### La gestion des droits:
 
 Les droits sur les différents dépôts svn seront gérés via le fichier perms.acl, l’utilisation d’ACL va nous autoriser à mettre en place des accès complexes basés sur le couple utilisateur/groupe. Il est cependant à noter que l’utilité d’une stratégie d’authentification complexe ne présente d’interet que si votre dépôt est publique ou nécéssite un contrôle strict des accès. Qui dit ACL dit utilisateurs, groupes et bien sur permissions ! Nous allons stocker cette configuration dans le fichier perms.acl. On va commencer par définir les groupes:
 
@@ -98,11 +98,11 @@ N’oubliez pas de définir les utilisateurs dans le fichier users.pwd ! Une foi
 
 ```
 [depex:/]
-@all = r</pre>
+@all = r
 
 [depex:/trunk]
 user2 = r
 @developpers = rw
 ```
 
-<strong>Attention à toujours préfixer le nom des groupes par un ‘@’</strong>
+Attention à toujours préfixer le nom des groupes par un ‘@’
