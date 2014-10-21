@@ -13,37 +13,48 @@ Voyons plus en détail comme ça fonctionne :
 
 Comme dans symfony, il faut au préalable déclarer nos routes ; ici, c'est dans notre fichier XXAppDelegate.m qu'on le fait :
 
-<div class="codecolorer-container objc vibrant" style="overflow:auto;white-space:nowrap;width:100%;">
-  <div class="objc codecolorer">
-    <span class="sy0">-</span> <span class="br0">&#40;</span><span class="kw4">void</span><span class="br0">&#41;</span>applicationDidFinishLaunching<span class="sy0">:</span><span class="br0">&#40;</span>UIApplication<span class="sy0">*</span><span class="br0">&#41;</span>application <span class="br0">&#123;</span><br />     TTNavigator<span class="sy0">*</span> navigator <span class="sy0">=</span> <span class="br0">&#91;</span>TTNavigator navigator<span class="br0">&#93;</span>;<br />     navigator.persistenceMode <span class="sy0">=</span> TTNavigatorPersistenceModeTop;<br />     navigator.window <span class="sy0">=</span> <span class="br0">&#91;</span><span class="br0">&#91;</span><span class="br0">&#91;</span>UIWindow alloc<span class="br0">&#93;</span> initWithFrame<span class="sy0">:</span>TTScreenBounds<span class="br0">&#40;</span><span class="br0">&#41;</span><span class="br0">&#93;</span> autorelease<span class="br0">&#93;</span>;<br />     TTURLMap<span class="sy0">*</span> map <span class="sy0">=</span> navigator.URLMap;<br />     <span class="br0">&#91;</span>map from<span class="sy0">:</span><span class="co3">@</span><span class="st0">"tt://pageReference"</span> toSharedViewController<span class="sy0">:</span><span class="br0">&#91;</span>ReferenceController class<span class="br0">&#93;</span><span class="br0">&#93;</span>;<br /> <span class="br0">&#125;</span>
-  </div>
-</div>
+```
+- (void)applicationDidFinishLaunching:(UIApplication*)application {
+    TTNavigator* navigator = [TTNavigator navigator];
+    navigator.persistenceMode = TTNavigatorPersistenceModeTop;
+    navigator.window = [[[UIWindow alloc] initWithFrame:TTScreenBounds()] autorelease];
+    TTURLMap* map = navigator.URLMap;
+    [map from:@"tt://pageReference" toSharedViewController:[ReferenceController class]];
+}
+```
 
 Noter que nous venons de remplacer l'écran principal de l'application par le navigateur de Three20 donc si on compile à ce moment précis, nous obtenons une page noire puisque nous n'avons lancé aucune URL comme première page.
 
 Pour lancer une URL, rien de plus simple. Il faut simplement appeler la méthode "openURLAction sur notre objet navigateur.
 
-<div class="codecolorer-container objc vibrant" style="overflow:auto;white-space:nowrap;width:100%;">
-  <div class="objc codecolorer">
-    <span class="kw1">if</span> <span class="br0">&#40;</span><span class="sy0">!</span><span class="br0">&#91;</span>navigator restoreViewControllers<span class="br0">&#93;</span><span class="br0">&#41;</span> <span class="br0">&#123;</span><br />     <span class="br0">&#91;</span>navigator openURLAction<span class="sy0">:</span><span class="br0">&#91;</span>TTURLAction actionWithURLPath<span class="sy0">:</span><span class="co3">@</span><span class="st0">"tt://pageReference"</span><span class="br0">&#93;</span><span class="br0">&#93;</span>;<br /> <span class="br0">&#125;</span>
-  </div>
-</div>
+```
+if (![navigator restoreViewControllers]) {
+    [navigator openURLAction:[TTURLAction actionWithURLPath:@"tt://pageReference"]];
+}
+```
 
 Cet objet étant un singleton, nous pouvons faire la même chose partout à travers l'application comme ceci :
 
-<div class="codecolorer-container objc vibrant" style="overflow:auto;white-space:nowrap;width:100%;">
-  <div class="objc codecolorer">
-    <span class="br0">&#91;</span><span class="br0">&#91;</span>TTNavigator  navigator<span class="br0">&#93;</span> openURLAction<span class="sy0">:</span><span class="br0">&#91;</span><span class="br0">&#91;</span>TTURLAction actionWithURLPath<span class="sy0">:</span><span class="co3">@</span><span class="st0">"tt://pageReference"</span><span class="br0">&#93;</span> applyAnimated<span class="sy0">:</span><span class="kw2">YES</span><span class="br0">&#93;</span><span class="br0">&#93;</span>;
-  </div>
-</div>
+```
+[[TTNavigator  navigator] openURLAction:[[TTURLAction actionWithURLPath:@"tt://pageReference"] applyAnimated:YES]];
+```
 
 On peut évidemment passer des paramètres à ces routes afin de définir le constructeur (appelé par défaut "init").Le plus fort, c'est que tout nos objets peuvent même être transformer/mapper en route très facilement ! Si on veut avoir une route unique pour accéder à la page de détail, nous définissons une route (1), on mappe l'objet sur la route (2) et lorsque l'on veut utiliser cette route ça devient encore plus simple (3).
 
-<div class="codecolorer-container objc vibrant" style="overflow:auto;white-space:nowrap;width:100%;">
-  <div class="objc codecolorer">
-    <span class="co2">// 1 : route principale</span><br /> <span class="br0">&#91;</span>map from<span class="sy0">:</span><span class="co3">@</span><span class="st0">"tt://reference-detail/(initWithObject:)"</span> toViewController<span class="sy0">:</span><span class="br0">&#91;</span>ReferenceDetailController class<span class="br0">&#93;</span><span class="br0">&#93;</span>;<br /> <br /> <span class="co2">// 2 : mappage de l'objet sur la route, ici (uid) est une propriété de notre objet.</span><br /> <span class="br0">&#91;</span>map from<span class="sy0">:</span><span class="br0">&#91;</span>WebObject class<span class="br0">&#93;</span> name<span class="sy0">:</span><span class="co3">@</span><span class="st0">"reference"</span> toURL<span class="sy0">:</span><span class="co3">@</span><span class="st0">"tt://reference-detail/(uid))"</span><span class="br0">&#93;</span>;<br /> <br /> <span class="co2">// 3 : utilisation</span><br /> WebObject <span class="sy0">*</span>t <span class="sy0">=</span> <span class="br0">&#91;</span><span class="br0">&#91;</span>WebObject alloc<span class="br0">&#93;</span> initWithUid<span class="sy0">:</span><span class="nu0">123</span><span class="br0">&#93;</span>;<br /> <a href="http://developer.apple.com/documentation/Cocoa/Reference/Foundation/Classes/NSString_Class/"><span class="kw5">NSString</span></a> <span class="sy0">*</span> url <span class="sy0">=</span> <span class="br0">&#91;</span>t URLValueWithName<span class="sy0">:</span><span class="co3">@</span><span class="st0">"detail"</span><span class="br0">&#93;</span>;<br /> <br /> NSLog<span class="br0">&#40;</span>t<span class="br0">&#41;</span>; <span class="co2">// affiche : tt://reference-detail/123</span><br /> <span class="br0">&#91;</span><span class="br0">&#91;</span>TTNavigator  navigator<span class="br0">&#93;</span> openURLAction<span class="sy0">:</span><span class="br0">&#91;</span><span class="br0">&#91;</span>TTURLAction actionWithURLPath<span class="sy0">:</span>url<span class="br0">&#93;</span> applyAnimated<span class="sy0">:</span><span class="kw2">YES</span><span class="br0">&#93;</span><span class="br0">&#93;</span>;
-  </div>
-</div>
+```
+// 1 : route principale
+[map from:@"tt://reference-detail/(initWithObject:)" toViewController:[ReferenceDetailController class]];
+
+// 2 : mappage de l'objet sur la route, ici (uid) est une propriété de notre objet.
+[map from:[WebObject class] name:@"reference" toURL:@"tt://reference-detail/(uid))"];
+
+// 3 : utilisation
+WebObject *t = [[WebObject alloc] initWithUid:123];
+NSString * url = [t URLValueWithName:@"detail"];
+
+NSLog(t); // affiche : tt://reference-detail/123
+[[TTNavigator  navigator] openURLAction:[[TTURLAction actionWithURLPath:url] applyAnimated:YES]];
+```
 
 Vous notez l'existence de la méthode URLValueWithName qui retourne la bonne url. En fait, nous n'avons pas eu à la créer vu qu'elle est ajouté automatiquement par Three20 sur tous nos objets grâce au merveilleux système de "catégorie". Les catégories en Objective C permettent d'ajouter dynamiquement des méthodes à n'importe quelle classe sans devoir l'étendre comme dans la plupart des langages ! Ici Three20 a du rajouter une catégorie sur NSObject.
 

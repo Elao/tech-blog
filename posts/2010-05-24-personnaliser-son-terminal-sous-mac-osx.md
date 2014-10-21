@@ -1,10 +1,9 @@
-
 Sommaire:
 
-1.  [Les fichiers bash utilisateur][1]
+1.  [Les fichiers bash utilisateur](/blog/les-fichiers-bash-utilisateur.html)
 2.  Personnaliser son terminal (Configuration simple)
-3.  [Personnaliser son terminal (Configuration avancée)][2]
-4.  [Gérer ses terminaux avec Visor][3]
+3.  [Personnaliser son terminal (Configuration avancée)](/blog/personnaliser-son-terminal-sous-mac-osx-configuration-avancee.html)
+4.  [Gérer ses terminaux avec Visor](/blog/gerer-ses-terminaux-avec-visor.html)
 
 Ceux qui ont déjà jeté un petit coup d'oeil au terminal mac OS X ont pu se rendre compte qu'il était loin d'être transcendant ... nous allons donc voir aujourd'hui comment le rendre un peu moins austère.
 Pour commencer nous allons créer dans notre répertoire utilisateur deux fichiers (s'ils n'existent pas déjà):
@@ -12,28 +11,46 @@ Pour commencer nous allons créer dans notre répertoire utilisateur deux fichie
 - Un fichier appelé **.profile**
 - Un fichier appelé **.bashrc**
 
-<div class="codecolorer-container bash vibrant" style="overflow:auto;white-space:nowrap;width:100%;">
-  <div class="bash codecolorer">
-    <span class="kw2">touch</span> .bashrc .profile
-  </div>
-</div>
+```
+touch .bashrc .profile
+```
 
 Copiez / collez ensuite dans le fichier **.profile** les lignes suivantes:
 
-<div class="codecolorer-container bash vibrant" style="overflow:auto;white-space:nowrap;width:100%;">
-  <div class="bash codecolorer">
-    <span class="kw1">if</span> <span class="br0">&#91;</span> <span class="re5">-n</span> <span class="st0">"<span class="es2">$BASH_VERSION</span>"</span> <span class="br0">&#93;</span>; <span class="kw1">then</span><br />   <span class="co0"># include .bashrc if it exists</span><br />   <span class="kw1">if</span> <span class="br0">&#91;</span> <span class="re5">-f</span> ~<span class="sy0">/</span>.bashrc <span class="br0">&#93;</span>; <span class="kw1">then</span><br />     . ~<span class="sy0">/</span>.bashrc<br />   <span class="kw1">fi</span><br /> <span class="kw1">fi</span><br /> <span class="co0"># set PATH so it includes user's private bin if it exists</div></span><br /> <span class="kw1">if</span> <span class="br0">&#91;</span> <span class="re5">-d</span> ~<span class="sy0">/</span>bin <span class="br0">&#93;</span> ; <span class="kw1">then</span><br />   <span class="re2">PATH</span>=~<span class="sy0">/</span>bin:<span class="st0">"<span class="es3">${PATH}</span>"</span><br /> <span class="kw1">fi</span>
-  </div>
-</div>
+```
+if [ -n "$BASH_VERSION" ]; then
+  # include .bashrc if it exists
+  if [ -f ~/.bashrc ]; then
+    . ~/.bashrc
+  fi
+fi
+# set PATH so it includes user's private bin if it exists</div>
+if [ -d ~/bin ] ; then
+  PATH=~/bin:"${PATH}"
+fi
+```
 
 Et dans le **.bashrc**:
 
-<div class="codecolorer-container bash vibrant" style="overflow:auto;white-space:nowrap;width:100%;">
-  <div class="bash codecolorer">
-    <span class="kw3">export</span> <span class="re2">PS1</span>=<span class="st_h">'\h:\w\$ '</span><br /> <span class="kw3">umask</span> 022<br /> <br /> <span class="kw3">export</span> <span class="re2">CLICOLOR</span>=<span class="nu0">1</span><br /> <br /> <span class="kw3">alias</span> <span class="re2">ll</span>=<span class="st_h">'ls -l'</span><br /> <span class="kw3">alias</span> <span class="re2">la</span>=<span class="st_h">'ls -A'</span><br /> <span class="kw3">alias</span> <span class="re2">l</span>=<span class="st_h">'ls -CF'</span><br /> <span class="kw3">alias</span> <span class="re2">vi</span>=<span class="st_h">'vim'</span><br /> <br /> <span class="kw1">function</span> cyan_red_prompt<br /> <span class="br0">&#123;</span><br />   <span class="kw3">local</span> <span class="re2">CYAN</span>=<span class="st0">"\[&#92;&#48;33[0;36m\]"</span><br />   <span class="kw3">local</span> <span class="re2">GRAY</span>=<span class="st0">"\[&#92;&#48;33[0;37m\]"</span><br />   <span class="kw3">local</span> <span class="re2">RED</span>=<span class="st0">"\[&#92;&#48;33[0;31m\]"</span><br /> <br />   <span class="re2">PS1</span>=<span class="st0">"<span class="es3">${CYAN}</span>[\u@\h <span class="es3">${RED}</span>\w<span class="es3">${CYAN}</span>]<span class="es3">${GRAY}</span> "</span><br /> <span class="br0">&#125;</span><br /> <br /> cyan_red_prompt
-  </div>
-</div>
+```
+export PS1='\h:\w\$ '
+umask 022
 
- [1]: http://www.elao.com/blog/mac-os/terminal/les-fichiers-bash-utilisateur.html "Les fichiers bash utilisateur"
- [2]: http://www.elao.com/blog/mac-os/terminal/personnaliser-son-terminal-sous-mac-osx-configuration-avancee.html "Personnaliser son terminal sous mac OSX"
- [3]: http://www.elao.com/blog/mac-os/terminal/gerer-ses-terminaux-avec-visor.html "Gérer ses terminaux avec Visor"
+export CLICOLOR=1
+
+alias ll='ls -l'
+alias la='ls -A'
+alias l='ls -CF'
+alias vi='vim'
+
+function cyan_red_prompt
+{
+  local CYAN="\[&#92;&#48;33[0;36m\]"
+  local GRAY="\[&#92;&#48;33[0;37m\]"
+  local RED="\[&#92;&#48;33[0;31m\]"
+
+  PS1="${CYAN}[\u@\h ${RED}\w${CYAN}]${GRAY} "
+}
+
+cyan_red_prompt
+```
