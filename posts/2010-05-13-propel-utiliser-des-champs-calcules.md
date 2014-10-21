@@ -1,42 +1,109 @@
-
-<img class="alignleft size-thumbnail wp-image-269" title="propel-logo" src="/blog/wp-content/uploads/2010/05/propel-logo-e1273745027780-150x40.png" alt="propel logo e1273745027780 150x40 Propel   Utiliser des champs calculés" width="150" height="40" />
+<img title="propel-logo" src="/blog/medias/propel-utiliser-des-champs-calcules/propel-logo-e1273745027780-150x40.png" alt="propel logo e1273745027780 150x40 Propel   Utiliser des champs calculés" width="150" height="40" />
 Il est parfois très utile de pouvoir récupérer directement des champs calculés depuis la base de données, soit parce que passer par un criteria s'avère très compliqué, voir impossible, soit pour confier les calculs à la base de données.
 
-Je vous propose donc aujourd'hui deux solutions pour le faire avec Propel:
+Je vous propose donc aujourd'hui deux solutions pour le faire avec Propel :
 
-**1ère solution, les résultats sont accédés via des index numériques**
+### 1ère solution, les résultats sont accédés via des index numériques
 
-<div class="codecolorer-container php vibrant" style="overflow:auto;white-space:nowrap;width:100%;">
-  <div class="php codecolorer">
-    <span class="co1">//QUERY</span><br /> <span class="re0">$query</span> <span class="sy0">=</span> SELECT DISTINCT<span class="br0">&#40;</span><span class="st_h">'.UserPeer::ID.'</span><span class="br0">&#41;</span><span class="sy0">,</span> <span class="st_h">'.UserPeer::FIRSTNAME.'</span><span class="sy0">,</span> <span class="st_h">'.UserPeer::LASTNAME.'</span><span class="sy0">,</span><br />                          <span class="st_h">'.UserPeer::NICKNAME.'</span><span class="sy0">,</span> <a href="http://www.php.net/count"><span class="kw3">COUNT</span></a><span class="br0">&#40;</span><span class="st_h">'.QuestionPeer::ID.'</span><span class="br0">&#41;</span> <span class="kw1">AS</span> NB_QUESTIONS<span class="sy0">,</span><br />                          <span class="st_h">'.QuestionPeer::LEVEL.'</span><br />          FROM <span class="st_h">'.UserPeer::TABLE_NAME.'</span><br />          INNER <a href="http://www.php.net/join"><span class="kw3">JOIN</span></a> <span class="st_h">'.QuestionPeer::TABLE_NAME.'</span><br />          ON <span class="st_h">'.QuestionPeer::USER_ID.'</span> <span class="sy0">=</span> <span class="st_h">'.UserPeer::ID.'</span><br />          WHERE <span class="st_h">'.QuestionPeer::IS_VALID.'</span> <span class="sy0">=</span> <span class="nu0">1</span><span class="st_h">'<br />          GROUP BY '</span><span class="sy0">.</span>UserPeer<span class="sy0">::</span><span class="me2">ID</span><span class="sy0">.</span><span class="st_h">', '</span><span class="sy0">.</span>QuestionPeer<span class="sy0">::</span><span class="me2">LEVEL</span><span class="sy0">.</span><span class="st_h">'<br />          ORDER BY '</span><span class="sy0">.</span>QuestionPeer<span class="sy0">::</span><span class="me2">LEVEL</span><span class="sy0">;</span><br /> <span class="re0">$stmt</span> <span class="sy0">=</span> <span class="re0">$con</span><span class="sy0">-></span><span class="me1">prepareStatement</span><span class="br0">&#40;</span><span class="re0">$query</span><span class="br0">&#41;</span><span class="sy0">;</span><br /> <span class="re0">$rs</span> <span class="sy0">=</span> <span class="re0">$stmt</span><span class="sy0">-></span><span class="me1">executeQuery</span><span class="br0">&#40;</span>ResultSet<span class="sy0">::</span><span class="me2">FETCHMODE_NUM</span><span class="br0">&#41;</span><span class="sy0">;</span><br /> <br /> <span class="co1">// PARSING RESULTS</span><br /> <span class="kw1">while</span> <span class="br0">&#40;</span><span class="re0">$rs</span><span class="sy0">-></span><a href="http://www.php.net/next"><span class="kw3">next</span></a><span class="br0">&#40;</span><span class="br0">&#41;</span><span class="br0">&#41;</span><br /> <span class="br0">&#123;</span><br />   <span class="re0">$users</span><span class="br0">&#91;</span><span class="re0">$rs</span><span class="sy0">-></span><span class="me1">getInt</span><span class="br0">&#40;</span><span class="nu0">1</span><span class="br0">&#41;</span><span class="br0">&#93;</span> <span class="sy0">=</span> <a href="http://www.php.net/array"><span class="kw3">array</span></a><span class="br0">&#40;</span><span class="st_h">'nickname'</span>  <span class="sy0">=></span> <span class="re0">$rs</span><span class="sy0">-></span><span class="me1">getString</span><span class="br0">&#40;</span><span class="nu0">4</span><span class="br0">&#41;</span><span class="sy0">,</span><br />                                  <span class="st_h">'firstname'</span> <span class="sy0">=></span> <span class="re0">$rs</span><span class="sy0">-></span><span class="me1">getString</span><span class="br0">&#40;</span><span class="nu0">2</span><span class="br0">&#41;</span><span class="sy0">,</span><br />                                  <span class="st_h">'lastname'</span>  <span class="sy0">=></span> <span class="re0">$rs</span><span class="sy0">-></span><span class="me1">getString</span><span class="br0">&#40;</span><span class="nu0">3</span><span class="br0">&#41;</span><span class="sy0">,</span><br />                            <span class="br0">&#41;</span><span class="sy0">;</span><br /> <br />   <span class="re0">$level</span> <span class="sy0">=</span> <span class="re0">$rs</span><span class="sy0">-></span><span class="me1">getInt</span><span class="br0">&#40;</span><span class="nu0">6</span><span class="br0">&#41;</span><span class="sy0">;</span><br />   <span class="re0">$questions</span><span class="br0">&#91;</span><span class="re0">$rs</span><span class="sy0">-></span><span class="me1">getInt</span><span class="br0">&#40;</span><span class="nu0">1</span><span class="br0">&#41;</span><span class="br0">&#93;</span><span class="br0">&#91;</span><span class="br0">&#40;</span><span class="br0">&#40;</span><span class="re0">$level</span> <span class="sy0"><</span> <span class="nu0">5</span><span class="br0">&#41;</span> ? <span class="re0">$level</span> <span class="sy0">:</span> <span class="nu0">5</span><span class="br0">&#41;</span><span class="br0">&#93;</span> <span class="sy0">=</span> <span class="re0">$rs</span><span class="sy0">-></span><span class="me1">getInt</span><span class="br0">&#40;</span><span class="nu0">5</span><span class="br0">&#41;</span><span class="sy0">;</span><br />   <span class="re0">$users</span><span class="br0">&#91;</span><span class="re0">$rs</span><span class="sy0">-></span><span class="me1">getInt</span><span class="br0">&#40;</span><span class="nu0">1</span><span class="br0">&#41;</span><span class="br0">&#93;</span><span class="br0">&#91;</span><span class="st_h">'questions'</span><span class="br0">&#93;</span>                     <span class="sy0">=</span> <span class="re0">$questions</span><span class="br0">&#91;</span><span class="re0">$rs</span><span class="sy0">-></span><span class="me1">getInt</span><span class="br0">&#40;</span><span class="nu0">1</span><span class="br0">&#41;</span><span class="br0">&#93;</span><span class="sy0">;</span><br /> <span class="br0">&#125;</span>
-  </div>
-</div>
+```
+//QUERY
+$query = SELECT DISTINCT('.UserPeer::ID.'), '.UserPeer::FIRSTNAME.', '.UserPeer::LASTNAME.',
+                         '.UserPeer::NICKNAME.', COUNT('.QuestionPeer::ID.') AS NB_QUESTIONS,
+                         '.QuestionPeer::LEVEL.'
+         FROM '.UserPeer::TABLE_NAME.'
+         INNER JOIN '.QuestionPeer::TABLE_NAME.'
+         ON '.QuestionPeer::USER_ID.' = '.UserPeer::ID.'
+         WHERE '.QuestionPeer::IS_VALID.' = 1'
+         GROUP BY '.UserPeer::ID.', '.QuestionPeer::LEVEL.'
+         ORDER BY '.QuestionPeer::LEVEL;
+$stmt = $con->prepareStatement($query);
+$rs = $stmt->executeQuery(ResultSet::FETCHMODE_NUM);
 
-**2ème solution, les résultats sont accédés via les noms de champs renvoyés par la requête**
+// PARSING RESULTS
+while ($rs->next())
+{
+  $users[$rs->getInt(1)] = array('nickname'  => $rs->getString(4),
+                                 'firstname' => $rs->getString(2),
+                                 'lastname'  => $rs->getString(3),
+                           );
+
+  $level = $rs->getInt(6);
+  $questions[$rs->getInt(1)][(($level < 5) ? $level : 5)] = $rs->getInt(5);
+  $users[$rs->getInt(1)]['questions']                     = $questions[$rs->getInt(1)];
+}
+```
+
+### 2ème solution, les résultats sont accédés via les noms de champs renvoyés par la requête
 
 Il suffit pour cela de remplacer la méthode de récupération de executeQuery en utilisant cette fois:
 
-<pre><strong>ResultSet::FETCHMODE_ASSOC</strong></pre>
+```
+ResultSet::FETCHMODE_ASSOC
+```
 
-<div class="codecolorer-container php vibrant" style="overflow:auto;white-space:nowrap;width:100%;">
-  <div class="php codecolorer">
-    <span class="re0">$rs</span> <span class="sy0">=</span> <span class="re0">$stmt</span><span class="sy0">-></span><span class="me1">executeQuery</span><span class="br0">&#40;</span>ResultSet<span class="sy0">::</span><span class="me2">FETCHMODE_ASSOC</span><span class="br0">&#41;</span><span class="sy0">;</span><br /> <span class="co1">// PARSING RESULTS</span><br /> <span class="kw1">while</span> <span class="br0">&#40;</span><span class="re0">$rs</span><span class="sy0">-></span><a href="http://www.php.net/next"><span class="kw3">next</span></a><span class="br0">&#40;</span><span class="br0">&#41;</span><span class="br0">&#41;</span><br /> <span class="br0">&#123;</span><br />   <span class="re0">$record</span> <span class="sy0">=</span> <span class="re0">$rs</span><span class="sy0">-></span><span class="me1">getRow</span><span class="br0">&#40;</span><span class="br0">&#41;</span><span class="sy0">;</span><br />   <span class="re0">$users</span><span class="br0">&#91;</span><span class="re0">$record</span><span class="br0">&#91;</span><span class="st_h">'ID'</span><span class="br0">&#93;</span> <span class="sy0">=</span> <a href="http://www.php.net/array"><span class="kw3">array</span></a><span class="br0">&#40;</span><span class="st_h">'nickname'</span>  <span class="sy0">=></span> <span class="re0">$record</span><span class="br0">&#91;</span><span class="st_h">'NICKNAME'</span><span class="br0">&#93;</span><span class="sy0">,</span><br />                                <span class="st_h">'firstname'</span> <span class="sy0">=></span> <span class="re0">$record</span><span class="br0">&#91;</span><span class="st_h">'FIRSTNAME'</span><span class="br0">&#93;</span><span class="sy0">,</span><br />                                <span class="st_h">'lastname'</span>  <span class="sy0">=></span> <span class="re0">$record</span><span class="br0">&#91;</span><span class="st_h">'LASTNAME'</span><span class="br0">&#93;</span><span class="sy0">,</span><br />                            <span class="br0">&#41;</span><span class="sy0">;</span><br /> <br />   <span class="re0">$level</span> <span class="sy0">=</span> <span class="re0">$records</span><span class="br0">&#91;</span><span class="st_h">'LEVEL'</span><span class="br0">&#93;</span><span class="sy0">;</span><br />   <span class="re0">$questions</span><span class="br0">&#91;</span><span class="re0">$record</span><span class="br0">&#91;</span><span class="st_h">'ID'</span><span class="br0">&#93;</span><span class="br0">&#93;</span><span class="br0">&#91;</span><span class="br0">&#40;</span><span class="br0">&#40;</span><span class="re0">$level</span> <span class="sy0"><</span> <span class="nu0">5</span><span class="br0">&#41;</span> ? <span class="re0">$level</span> <span class="sy0">:</span> <span class="nu0">5</span><span class="br0">&#41;</span><span class="br0">&#93;</span> <span class="sy0">=</span> <span class="re0">$record</span><span class="br0">&#91;</span><span class="st_h">'NB_QUESTIONS'</span><span class="br0">&#93;</span><span class="sy0">;</span><br />   <span class="re0">$users</span><span class="br0">&#91;</span>record<span class="br0">&#91;</span><span class="st_h">'ID'</span><span class="br0">&#93;</span><span class="br0">&#93;</span><span class="br0">&#91;</span><span class="st_h">'questions'</span><span class="br0">&#93;</span>                      <span class="sy0">=</span> <span class="re0">$questions</span><span class="br0">&#91;</span><span class="re0">$record</span><span class="br0">&#91;</span><span class="st_h">'ID'</span><span class="br0">&#93;</span><span class="br0">&#93;</span><span class="sy0">;</span><br /> <span class="br0">&#125;</span>
-  </div>
-</div>
+```
+$rs = $stmt->executeQuery(ResultSet::FETCHMODE_ASSOC);
+// PARSING RESULTS
+while ($rs->next())
+{
+  $record = $rs->getRow();
+  $users[$record['ID'] = array('nickname'  => $record['NICKNAME'],
+                               'firstname' => $record['FIRSTNAME'],
+                               'lastname'  => $record['LASTNAME'],
+                           );
 
-[<img class="alignleft size-full wp-image-145" title="messagebox_warning" src="http://www.elao.org/wp-content/uploads/2010/04/messagebox_warning.png" alt="messagebox warning Propel   Utiliser des champs calculés" width="46" height="46" />][1]Pour ceux qui souhaitent mixer les deux méthodes, il est tout à fait possible de demander à un Criteria, de renvoyer un tableau indexé à partir
+  $level = $records['LEVEL'];
+  $questions[$record['ID']][(($level < 5) ? $level : 5)] = $record['NB_QUESTIONS'];
+  $users[record['ID']]['questions']                      = $questions[$record['ID']];
+}
+```
+
+Pour ceux qui souhaitent mixer les deux méthodes, il est tout à fait possible de demander à un Criteria, de renvoyer un tableau indexé à partir
 des noms de champs, ou des index numériques d'ailleurs.
 Nous allons de la même façon que ci-dessus spécifier à Propel, la façon dont nous souhaitons récupérer nos résultats, pour le coup nous passerons
 par la méthode
 
-<pre><strong>doSelectRS()</strong></pre>
+```
+doSelectRS()
+```
 
 afin de récupérer des resultSet et non des objets.
 
-<div class="codecolorer-container php vibrant" style="overflow:auto;white-space:nowrap;width:100%;">
-  <div class="php codecolorer">
-    <span class="re0">$c</span> <span class="sy0">=</span> <span class="kw2">new</span> Criteria<span class="br0">&#40;</span><span class="br0">&#41;</span><span class="sy0">;</span><br /> <br /> <span class="re0">$c</span><span class="sy0">-></span><span class="me1">clearSelectColumns</span><span class="br0">&#40;</span><span class="br0">&#41;</span><span class="sy0">;</span><br /> <span class="re0">$c</span><span class="sy0">-></span><span class="me1">addSelectColumn</span><span class="br0">&#40;</span>UserPeer<span class="sy0">::</span><span class="me2">NICKNAME</span><span class="br0">&#41;</span><span class="sy0">;</span><br /> <span class="re0">$c</span><span class="sy0">-></span><span class="me1">addSelectColumn</span><span class="br0">&#40;</span>QuestionPeer<span class="sy0">::</span><span class="me2">ID</span><span class="br0">&#41;</span><span class="sy0">;</span><br /> <span class="re0">$c</span><span class="sy0">-></span><span class="me1">addSelectColumn</span><span class="br0">&#40;</span>QuestionPeer<span class="sy0">::</span><span class="me2">BODY</span><span class="br0">&#41;</span><span class="sy0">;</span><br /> <span class="re0">$c</span><span class="sy0">-></span><span class="me1">addSelectColumn</span><span class="br0">&#40;</span>QuestionPeer<span class="sy0">::</span><span class="me2">TITLE</span><span class="br0">&#41;</span><span class="sy0">;</span><br /> <span class="re0">$c</span><span class="sy0">-></span><span class="me1">addSelectColumn</span><span class="br0">&#40;</span>QuestionPeer<span class="sy0">::</span><span class="me2">CREATED_AT</span><span class="br0">&#41;</span><span class="sy0">;</span><br /> <span class="re0">$c</span><span class="sy0">-></span><span class="me1">addSelectColumn</span><span class="br0">&#40;</span>QuestionPeer<span class="sy0">::</span><span class="me2">LEVEL</span><span class="br0">&#41;</span><span class="sy0">;</span><br /> <span class="re0">$c</span><span class="sy0">-></span><span class="me1">addSelectColumn</span><span class="br0">&#40;</span>QuestionPeer<span class="sy0">::</span><span class="me2">INTERESTED_USERS</span><span class="br0">&#41;</span><span class="sy0">;</span><br /> <span class="re0">$c</span><span class="sy0">-></span><span class="me1">addSelectColumn</span><span class="br0">&#40;</span>QuestionPeer<span class="sy0">::</span><span class="me2">NB_ANSWERS</span><span class="br0">&#41;</span><span class="sy0">;</span><br /> <br /> <span class="re0">$c</span><span class="sy0">-></span><span class="me1">add</span><span class="br0">&#40;</span>QuestionPeer<span class="sy0">::</span><span class="me2">IS_VALID</span><span class="sy0">,</span> <span class="kw4">true</span><span class="br0">&#41;</span><span class="sy0">;</span><br /> <br /> <span class="kw1">if</span><span class="br0">&#40;</span><span class="sy0">!</span><a href="http://www.php.net/empty"><span class="kw3">empty</span></a><span class="br0">&#40;</span><span class="re0">$filterDateFrom</span><span class="br0">&#41;</span> <span class="sy0">&</span>amp<span class="sy0">;&</span>amp<span class="sy0">;</span> <span class="sy0">!</span><a href="http://www.php.net/empty"><span class="kw3">empty</span></a><span class="br0">&#40;</span><span class="re0">$filterDateTo</span><span class="br0">&#41;</span><span class="br0">&#41;</span><br /> <span class="br0">&#123;</span><br />   <span class="re0">$c</span><span class="sy0">-></span><span class="me1">add</span><span class="br0">&#40;</span>QuestionPeer<span class="sy0">::</span><span class="me2">CREATED_AT</span><span class="sy0">,</span> QuestionPeer<span class="sy0">::</span><span class="me2">CREATED_AT</span><span class="sy0">.</span><span class="st0">" BETWEEN '"</span><span class="sy0">.</span><span class="re0">$filterDateFrom</span><span class="sy0">.</span><span class="st0">"'AND '"</span><span class="sy0">.</span><span class="re0">$filterDateTo</span><span class="sy0">.</span><span class="st0">"'"</span><span class="sy0">,</span> Criteria<span class="sy0">::</span><span class="me2">CUSTOM</span><span class="br0">&#41;</span><span class="sy0">;</span><br /> <span class="br0">&#125;</span><br /> <br /> <span class="re0">$rs</span> <span class="sy0">=</span> UserPeer<span class="sy0">::</span><span class="me2">doSelectRs</span><span class="br0">&#40;</span><span class="re0">$c</span><span class="br0">&#41;</span><span class="sy0">;</span><br /> <span class="re0">$rs</span><span class="sy0">-></span><span class="me1">setFetchMode</span><span class="br0">&#40;</span>ResultSet<span class="sy0">::</span><span class="me2">FETCHMODE_ASSOC</span><span class="br0">&#41;</span><span class="sy0">;</span><br /> <br /> <span class="co1">// PARSING</span><br /> <span class="kw1">while</span> <span class="br0">&#40;</span><span class="re0">$rs</span><span class="sy0">-></span><a href="http://www.php.net/next"><span class="kw3">next</span></a><span class="br0">&#40;</span><span class="br0">&#41;</span><span class="br0">&#41;</span><br /> <span class="br0">&#123;</span><br />   <span class="re0">$records</span> <span class="sy0">=</span> <span class="re0">$rs</span><span class="sy0">-></span><span class="me1">getRow</span><span class="br0">&#40;</span><span class="br0">&#41;</span><span class="sy0">;</span><br />   <span class="re0">$results</span><span class="br0">&#91;</span><span class="re0">$records</span><span class="br0">&#91;</span><span class="st_h">'ID'</span><span class="br0">&#93;</span><span class="br0">&#93;</span> <span class="sy0">=</span><br />     <a href="http://www.php.net/array"><span class="kw3">array</span></a><span class="br0">&#40;</span><span class="st_h">'nickname'</span>            <span class="sy0">=></span> <span class="re0">$records</span><span class="br0">&#91;</span><span class="st_h">'NICKNAME'</span><span class="br0">&#93;</span><span class="sy0">,</span><br />           <span class="st_h">'body'</span>                <span class="sy0">=></span> <span class="re0">$records</span><span class="br0">&#91;</span><span class="st_h">'BODY'</span><span class="br0">&#93;</span><span class="sy0">,</span><br />           <span class="st_h">'title'</span>               <span class="sy0">=></span> <span class="re0">$records</span><span class="br0">&#91;</span><span class="st_h">'TITLE'</span><span class="br0">&#93;</span><span class="sy0">,</span><br />           <span class="st_h">'created_at'</span>          <span class="sy0">=></span> <span class="re0">$records</span><span class="br0">&#91;</span><span class="st_h">'CREATED_AT'</span><span class="br0">&#93;</span><span class="sy0">,</span><br />           <span class="st_h">'level'</span>               <span class="sy0">=></span> <span class="re0">$records</span><span class="br0">&#91;</span><span class="st_h">'LEVEL'</span><span class="br0">&#93;</span><span class="sy0">,</span><br />           <span class="st_h">'interested_users'</span>    <span class="sy0">=></span> <span class="re0">$records</span><span class="br0">&#91;</span><span class="st_h">'INTERESTED_USERS'</span><span class="br0">&#93;</span><span class="sy0">,</span><br />           <span class="st_h">'nb_answers'</span>          <span class="sy0">=></span> <span class="re0">$records</span><span class="br0">&#91;</span><span class="st_h">'NB_ANSWERS'</span><span class="br0">&#93;</span><span class="sy0">,</span><br />           <span class="br0">&#41;</span><span class="sy0">;</span><br /> <span class="br0">&#125;</span>
-  </div>
-</div>
+```
+$c = new Criteria();
 
- [1]: http://www.elao.org/wp-content/uploads/2010/04/messagebox_warning.png
+$c->clearSelectColumns();
+$c->addSelectColumn(UserPeer::NICKNAME);
+$c->addSelectColumn(QuestionPeer::ID);
+$c->addSelectColumn(QuestionPeer::BODY);
+$c->addSelectColumn(QuestionPeer::TITLE);
+$c->addSelectColumn(QuestionPeer::CREATED_AT);
+$c->addSelectColumn(QuestionPeer::LEVEL);
+$c->addSelectColumn(QuestionPeer::INTERESTED_USERS);
+$c->addSelectColumn(QuestionPeer::NB_ANSWERS);
+
+$c->add(QuestionPeer::IS_VALID, true);
+
+if(!empty($filterDateFrom) &amp;&amp; !empty($filterDateTo))
+{
+  $c->add(QuestionPeer::CREATED_AT, QuestionPeer::CREATED_AT." BETWEEN '".$filterDateFrom."'AND '".$filterDateTo."'", Criteria::CUSTOM);
+}
+
+$rs = UserPeer::doSelectRs($c);
+$rs->setFetchMode(ResultSet::FETCHMODE_ASSOC);
+
+// PARSING
+while ($rs->next())
+{
+  $records = $rs->getRow();
+  $results[$records['ID']] =
+    array('nickname'            => $records['NICKNAME'],
+          'body'                => $records['BODY'],
+          'title'               => $records['TITLE'],
+          'created_at'          => $records['CREATED_AT'],
+          'level'               => $records['LEVEL'],
+          'interested_users'    => $records['INTERESTED_USERS'],
+          'nb_answers'          => $records['NB_ANSWERS'],
+          );
+}
+```
