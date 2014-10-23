@@ -59,6 +59,6 @@
     {"label": "Aisance", "slug": "aisance"},
     {"label": "Oral", "slug": "oral"},
     {"label": "Conférence", "slug": "conference"},
-    {"label": "Préparation", "slug": "preparation"},
+    {"label": "Préparation", "slug": "preparation"}
 
 ]
