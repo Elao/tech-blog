@@ -1,6 +1,6 @@
 [
-    {"label": "Symfony", "slug": "symfony"},
-    {"label": "HTML/CSS", "slug": "html-css"},
+    {"label": "Symfony", "slug": "symfony", "sidebar": true},
+    {"label": "HTML/CSS", "slug": "html-css", "sidebar": true},
     {"label": "Webdesign", "slug": "webdesign"},
     {"label": "Framework", "slug": "framework"},
     {"label": "Translation", "slug": "translation"},
