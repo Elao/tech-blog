@@ -9,5 +9,5 @@
     {"label": "Linux", "slug": "linux"},
     {"label": "Tips", "slug": "tips"},
     {"label": "Talk", "slug": "talk"},
-    {"label": "PHP" "slug": "php"},
+    {"label": "PHP", "slug": "php"},
 ]
