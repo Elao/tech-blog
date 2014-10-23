@@ -45,12 +45,20 @@
     {"label": "Stats.d", "slug": "stat-d"},
     {"label": "Webperf", "slug": "webperf"},
     {"label": "Réseau", "slug": "reseau"},
-    {"label": "Vitualisation", "slug": "reseau"},
+    {"label": "Vitualisation", "slug": "virtualisation"},
     {"label": "Mailer transport", "slug": "mailer-transport"},
     {"label": "ErrorNotifierBundle", "slug": "error-notifier-bundle"},
-    {"label": "SwiftMailer", "slug": "swiftmailer"},
+    {"label": "SwiftMailer", "slug": "swift-mailer"},
     {"label": "Mailer", "slug": "mailer"},
     {"label": "Kernel", "slug": "kernel"},
-    {"label": "Browser", "slug": "browser"}
+    {"label": "Browser", "slug": "browser"},
+    {"label": "Mac OSX", "slug": "mac-osx"},
+    {"label": "BDD", "slug": "bdd"},
+    {"label": "Bundle", "slug": "bundle"},
+    {"label": "Proxmox", "slug": "proxmox"},
+    {"label": "Aisance", "slug": "aisance"},
+    {"label": "Oral", "slug": "oral"},
+    {"label": "Conférence", "slug": "conference"},
+    {"label": "Préparation", "slug": "preparation"},
 
 ]
