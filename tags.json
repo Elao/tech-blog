@@ -45,6 +45,12 @@
     {"label": "Stats.d", "slug": "stat-d"},
     {"label": "Webperf", "slug": "webperf"},
     {"label": "Réseau", "slug": "reseau"},
-    {"label": "Vitualisation", "slug": "reseau"}
-    
+    {"label": "Vitualisation", "slug": "reseau"},
+    {"label": "Mailer transport", "slug": "mailer-transport"},
+    {"label": "ErrorNotifierBundle", "slug": "error-notifier-bundle"},
+    {"label": "SwiftMailer", "slug": "swiftmailer"},
+    {"label": "Mailer", "slug": "mailer"},
+    {"label": "Kernel", "slug": "kernel"},
+    {"label": "Browser", "slug": "browser"}
+
 ]
