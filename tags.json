@@ -45,7 +45,7 @@
     {"label": "Stats.d", "slug": "stat-d"},
     {"label": "Webperf", "slug": "webperf"},
     {"label": "Réseau", "slug": "reseau"},
-    {"label": "Vitualisation", "slug": "virtualisation"},
+    {"label": "Virtualisation", "slug": "virtualisation"},
     {"label": "Mailer transport", "slug": "mailer-transport"},
     {"label": "ErrorNotifierBundle", "slug": "error-notifier-bundle"},
     {"label": "SwiftMailer", "slug": "swift-mailer"},
@@ -59,6 +59,9 @@
     {"label": "Aisance", "slug": "aisance"},
     {"label": "Oral", "slug": "oral"},
     {"label": "Conférence", "slug": "conference"},
-    {"label": "Préparation", "slug": "preparation"}
+    {"label": "Préparation", "slug": "preparation"},
+    {"label": "Translations", "slug": "translations"},
+    {"label": "Twig", "slug": "twig"},
+    {"label": "iOS", "slug": "ios"}
 
 ]
