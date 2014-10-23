@@ -35,6 +35,16 @@
     {"label": "Mink", "slug": "mink"},
     {"label": "PHPCS", "slug": "phpcs"},
     {"label": "Symfony Live", "slug": "symfony-live"},
-    {"label": "Apache", "slug": "apache"}
-
+    {"label": "Apache", "slug": "apache"},
+    {"label": "Sécurité", "slug": "securite"},
+    {"label": "Terminal", "slug": "terminal"},
+    {"label": "Python", "slug": "python"},
+    {"label": "Carbon", "slug": "carbon"},
+    {"label": "Graphite", "slug": "graphite"},
+    {"label": "Monitoring", "slug": "monitorin"},
+    {"label": "Stats.d", "slug": "stat-d"},
+    {"label": "Webperf", "slug": "webperf"},
+    {"label": "Réseau", "slug": "reseau"},
+    {"label": "Vitualisation", "slug": "reseau"}
+    
 ]

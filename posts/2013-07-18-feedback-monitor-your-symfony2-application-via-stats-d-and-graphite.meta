@@ -1,5 +1,5 @@
 {
-    "tags":                 ["Carbon", "Graphite", "Monitoring", "Stats.d", "Symfony", "Symfony2", "Webperf"],
+    "tags":                 ["Carbon", "Graphite", "Monitoring", "Stats.d", "Symfony", "Symfony 2", "Webperf"],
     "title":                "Feedback : Monitor your Symfony2 application via Stats.d and Graphite",
     "slug":                 "feedback-monitor-your-symfony2-application-via-stats-d-and-graphite",
     "status":               "published",
