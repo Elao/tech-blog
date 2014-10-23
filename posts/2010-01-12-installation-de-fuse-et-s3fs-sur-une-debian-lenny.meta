@@ -1,5 +1,5 @@
 {
-    "tags":                 ["S\u00e9curit\u00e9 des donn\u00e9es"],
+    "tags":                 ["Linux", "FUSE", "s3fs"],
     "title":                "Installation de FUSE et s3fs sur une Debian Lenny",
     "slug":                 "installation-de-fuse-et-s3fs-sur-une-debian-lenny",
     "status":               "published",

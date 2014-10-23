@@ -1,5 +1,5 @@
 {
-    "tags":                 ["bdd","behat","mink","PHP"],
+    "tags":                 ["bdd","behat","mink","PHP", "qualite"],
     "title":                "Présentation Behat / Mink : les tests fonctionnels sous PHP.",
     "slug":                 "presentation-behat-mink-les-tests-fonctionnels-sous-php",
     "status":               "published",

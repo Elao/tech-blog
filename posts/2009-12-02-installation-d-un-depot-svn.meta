@@ -5,7 +5,7 @@
     "status":               "published",
     "meta_title":           "Installation d’un dépôt SVN (Subversion)",
     "meta_description":     "Installation d'un dépôt SVN pour gérer et versioner le code source d'un projet",
-    "meta_keywords":        [],
+    "meta_keywords":        ["Linux", "SVN"],
     "thumbnail":            "/blog/medias/thumbnails/subversion.png",
     "publish_by":           "guewen-faivre",
     "publish_at":           "2009-12-02"

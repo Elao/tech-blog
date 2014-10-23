@@ -1,11 +1,11 @@
 {
-    "tags":                 ["PHP"],
+    "tags":                 ["PHP", "PHPCS", "qualite"],
     "title":                "Qualité du Code : PHPCS",
     "slug":                 "qualite-du-code-phpcs",
     "status":               "published",
     "meta_title":           "Qualité du Code : PHPCS",
     "meta_description":     "Qualité du Code : PHPCS",
-    "meta_keywords":        "",
+    "meta_keywords":        ["PHP", "PHPCS", "Qualité"],
     "thumbnail":            "/blog/medias/thumbnails/symfony.jpg",
     "publish_by":           "benjamin-leveque",
     "publish_at":           "2012-03-26"

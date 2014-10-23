@@ -1,11 +1,11 @@
 {
-    "tags":                 ["D\u00e9veloppement","PHP","Symfony"],
+    "tags":                 ["Développement","PHP","Symfony"],
     "title":                "Introduction à Capistrano",
     "slug":                 "introduction-a-capistrano",
     "status":               "published",
     "meta_title":           "Introduction à Capistrano",
     "meta_description":     "Introduction à Capistrano",
-    "meta_keywords":        ["capifony","capistrano","d\u00e9ploiement applicatif","PHP"],
+    "meta_keywords":        ["capifony","capistrano","déploiement applicatif","PHP"],
     "thumbnail":            "/blog/medias/thumbnails/mic.gif",
     "publish_by":           "guewen-faivre",
     "publish_at":           "2010-12-20"

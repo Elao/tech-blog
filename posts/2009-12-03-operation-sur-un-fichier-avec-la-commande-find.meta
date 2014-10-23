@@ -5,7 +5,7 @@
     "status":               "published",
     "meta_title":           "Opération sur un fichier avec la commande find",
     "meta_description":     "Installation d'un dépôt SVN pour gérer et versioner le code source d'un projet",
-    "meta_keywords":        [],
+    "meta_keywords":        ["Linux", "Tips"],
     "thumbnail":            "/blog/medias/thumbnails/shell.png",
     "publish_by":           "guewen-faivre",
     "publish_at":           "2009-12-03"

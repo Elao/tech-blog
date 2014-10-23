@@ -5,7 +5,7 @@
     "status":               "draft",
     "meta_title":           "Syntaxe des enregistrement SPF (Sender Privacy Framework)",
     "meta_description":     "Syntaxe des enregistrement SPF (Sender Privacy Framework)",
-    "meta_keywords":        [],
+    "meta_keywords":        ["Linux", "Tips"],
     "thumbnail":            "/blog/medias/thumbnails/config.jpg",
     "publish_by":           "guewen-faivre",
     "publish_at":           "2009-12-05"

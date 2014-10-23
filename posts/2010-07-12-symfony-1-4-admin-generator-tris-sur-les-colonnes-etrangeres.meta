@@ -1,11 +1,11 @@
 {
-    "tags":                 ["D\u00e9veloppement","Symfony"],
+    "tags":                 ["Développement","Symfony"],
     "title":                "Symfony 1.4 - Admin Generator - Tris sur les colonnes étrangères",
     "slug":                 "symfony-1-4-admin-generator-tris-sur-les-colonnes-etrangeres",
     "status":               "published",
     "meta_title":           "Symfony 1.4 - Admin Generator - Tris sur les colonnes étrangères",
     "meta_description":     "Symfony 1.4 - Admin Generator - Tris sur les colonnes étrangères",
-    "meta_keywords":        ["Admin Generator","Cl\u00e9s \u00e9trang\u00e8res","Foreign Key","PHP","sort","Symfony","tris"],
+    "meta_keywords":        ["Admin Generator","Clés étrangères","Foreign Key","PHP","sort","Symfony","tris"],
     "thumbnail":            "/blog/medias/thumbnails/mic.gif",
     "publish_by":           "xavier-roldo",
     "publish_at":           "2010-07-12"
