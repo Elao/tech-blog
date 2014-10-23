@@ -1,6 +1,6 @@
 Few times ago, I wrote two articles on how to monitor your Symfony2 application via Stats.d and Graphite (<a title="Install Stats.d / Graphite on a debian server in order to monitor a Symfony2 application (1/2)" href="/fr/blog/install-stats-d-graphite-on-a-debian-server-to-monitor-a-symfony2-application-12" target="_blank">part 1</a> / <a title="Monitor your Symfony2 application via Stats.d and Graphite (2/2)" href="/fr/blog/monitor-your-symfony2-application-via-stats-d-and-graphite-22" target="_blank">part 2</a>).
 
-Although I specifically said that you should be running your graphite environment on another server, I choose not to follow my own advise  ("do what I say not what I do").
+Although I specifically said that you should be running your graphite environment on another server, I choose not to follow my own advise  (« do what I say not what I do »).
 
 This mini article purpose is to give you some feedback about running your monitoring system on the same server that you monitor.
 Long story short : **DON'T**.

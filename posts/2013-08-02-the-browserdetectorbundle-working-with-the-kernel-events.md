@@ -1,6 +1,6 @@
 ## The needs:
 
-Working on our latest project, we had to deal with browser compatibility: there is some browsers the app doesn't support and some others that are only partially supported.
+Working on our latest project, we had to deal with browser compatibility: there is some browsers the app doesn’t support and some others that are only partially supported.
 
 *   From an incompatible browser, you can’t use the app at all. Instead you are required to download a more recent browser.
 *   From a partially compatible browser, the app informs you that you would have a better experience with a more recent browser.

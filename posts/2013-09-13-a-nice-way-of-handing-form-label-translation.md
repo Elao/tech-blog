@@ -106,7 +106,7 @@ register:
 
 We have some simple fields, a repeated password and an embedded Group form.
 
-**Problems:** it's kinda boring, you can easily make typos in the keys, every change you'll make will involve translations files and the form classes, ... It can become quite painful with the number of forms in you app increasing.
+**Problems:** it’s kinda boring, you can easily make typos in the keys, every change you’ll make will involve translations files and the form classes, ... It can become quite painful with the number of forms in you app increasing.
 
 *We'd rather have the label translation keys automatically generated, don't we?*
 
