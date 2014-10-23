@@ -1,5 +1,5 @@
 {
-    "tags":                 ["Mailer", "PHP", "Symfony", "ErrorNotifierBundle", "SwiftMailer", "Mailer transport"],
+    "tags":                 ["mailer", "PHP", "Symfony", "error-notifier-bundle", "swift-mailer", "Mailer transport"],
     "title":                "Plusieurs mailer dans une application Symfony 2",
     "slug":                 "plusieurs-mailer-dans-une-application-symfony-2",
     "status":               "published",
