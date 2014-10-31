@@ -63,5 +63,5 @@
     {"label": "Translations", "slug": "translations"},
     {"label": "Twig", "slug": "twig"},
     {"label": "iOS", "slug": "ios"},
-    {"label": "Bonnes pratiques", "slug": "bonnes-pratiques"},
+    {"label": "Bonnes pratiques", "slug": "bonnes-pratiques"}
 ]
