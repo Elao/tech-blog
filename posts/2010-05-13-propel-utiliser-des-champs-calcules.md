@@ -1,4 +1,4 @@
-<img title="propel-logo" src="/blog/medias/propel-utiliser-des-champs-calcules/propel-logo-e1273745027780-150x40.png" alt="propel logo e1273745027780 150x40 Propel   Utiliser des champs calculés" width="150" height="40" />
+<img title="propel-logo" src="/blog/medias/2010-05-13-propel-utiliser-des-champs-calcules/propel-logo-e1273745027780-150x40.png" alt="propel logo e1273745027780 150x40 Propel   Utiliser des champs calculés" width="150" height="40" />
 Il est parfois très utile de pouvoir récupérer directement des champs calculés depuis la base de données, soit parce que passer par un criteria s'avère très compliqué, voir impossible, soit pour confier les calculs à la base de données.
 
 Je vous propose donc aujourd'hui deux solutions pour le faire avec Propel :
