@@ -1,7 +1,7 @@
 Elao blog data
 ===========
 
-Blog posts and structure of the  [http://www.elao.com/blog](Elao's Blog) 
+Blog posts and structure of the  [Elao's Blog](http://www.elao.com/blog) 
 
 
 ##Users file:
