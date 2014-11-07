@@ -1,21 +1,21 @@
 Bonjour à tous, 
 
-Petit billet mémo aujourd'hui concernant le partitionnement d'un serveur Proxmox, rien de bien sorcier en soit mais il est toujours bon d'avoir un référentiel auquel se fier.
+Petit billet mémo aujourd'hui concernant le partitionnement d'un serveur Proxmox, rien de bien sorcier en soi mais il est toujours bon d'avoir un référentiel auquel se fier.
 
-Utilisant depuis un bon moment des solutions de virtualisation nous avons pour habitude chez ELAO d'utiliser des containers OpenVZ via la distribution [Proxmox](https://www.proxmox.com/).
+Utilisant depuis un bon moment des solutions de virtualisation, nous avons pour habitude chez ELAO d'utiliser des containers OpenVZ via la distribution [Proxmox](https://www.proxmox.com/).
 
-Nous prendrons pour l'exemple une machine OVH avec lesquelles nous avons l'habitude de travailler. Pour les moins exigeants le partitionnement par défaut proposé peut parfaitement faire l'affaire. 
+Nous prendrons pour l'exemple une des machines OVH, machines avec lesquelles nous avons l'habitude de travailler. Pour les moins exigeants le partitionnement par défaut proposé peut parfaitement faire l'affaire. 
 
 ![Partitionnement par défaut OVH](/blog/medias/2014-11-06-partitionnement-d-un-serveur-proxmox/proxmox_default_partition_700.png)
 
-Il présente cependant un gros défaut qui est celui de ne pas laissé d'espace non partitionné à disposition de Proxmox dans le groupe LV condition sine qua non pour pouvoir effectuer des sauvegardes de type "snapshot" de nos containers (ou de nos machines virtuelles).
+Il présente cependant un gros défaut qui est celui de ne pas laisser d'espace non partitionné à disposition de Proxmox dans le groupe LV, condition sine qua non pour pouvoir effectuer des sauvegardes de type "snapshot" de nos containers (ou de nos machines virtuelles).
 
 Pour rappel le backup "à chaud" sous Proxmox fonctionne de la façon suivante:
 
-- Proxmox créer une partition virtuelle à la volée.
+- Proxmox crée une partition virtuelle à la volée.
 - Il déclenche un premier rsync du container (ou de la VM) pour récupérer le "gros" des fichiers.
 - Il déclenche un deuxième rsync afin de mettre à jour les fichiers ayant été modifiés entre le début et la fin du premier.
-- Il créer une archive compressée qu'il stock dans ```/var/lib/vz/dump```
+- Il crée une archive compressée qu'il stocke dans ```/var/lib/vz/dump```
 - Il détruit la partition virtuelle initialement créée
 
 Nous préférerons donc définir un partitionnement comme ci-dessous:
