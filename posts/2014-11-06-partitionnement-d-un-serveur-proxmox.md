@@ -6,9 +6,11 @@ Utilisant depuis un bon moment des solutions de virtualisation, nous avons pour 
 
 Nous prendrons pour l'exemple une des machines OVH, machines avec lesquelles nous avons l'habitude de travailler. Pour les moins exigeants le partitionnement par défaut proposé peut parfaitement faire l'affaire. 
 
-![Partitionnement par défaut OVH](/blog/medias/2014-11-06-partitionnement-d-un-serveur-proxmox/proxmox_default_partition_700.png)
+<p class="text-center">
+![Partitionnement par défaut OVH](/blog/medias/2014-11-06-partitionnement-d-un-serveur-proxmox/proxmox_default_partition_1000.png)
+</p>
 
-Il présente cependant un gros défaut qui est celui de ne pas laisser d'espace non partitionné à disposition de Proxmox dans le groupe LV, condition sine qua non pour pouvoir effectuer des sauvegardes de type "snapshot" de nos containers (ou de nos machines virtuelles).
+Il présente cependant un gros défaut qui est celui de ne pas laisser d'espace non partitionné à disposition de Proxmox dans le groupe LV, condition <i>sine qua non</i> pour pouvoir effectuer des sauvegardes de type "snapshot" de nos containers (ou de nos machines virtuelles).
 
 Pour rappel le backup "à chaud" sous Proxmox fonctionne de la façon suivante:
 
@@ -18,19 +20,25 @@ Pour rappel le backup "à chaud" sous Proxmox fonctionne de la façon suivante:
 - Il crée une archive compressée qu'il stocke dans ```/var/lib/vz/dump```
 - Il détruit la partition virtuelle initialement créée
 
-Nous préférerons donc définir un partitionnement comme ci-dessous:
+Nous préférerons donc définir un partitionnement comme ci-dessous (La machine utilisée disposait d'un espace total de 3 To):
 
-- 500 Mo pour /boot (Devrait amplement suffire à couvrir les MAJ kernel)
-- 10 Go pour /
+<p class="text-center">
+![Partitionnement par défaut OVH](/blog/medias/2014-11-06-partitionnement-d-un-serveur-proxmox/proxmox_partition_elao_1000.png)
+</p>
+
+- 500 Mo pour ```/boot``` (Devrait amplement suffire à couvrir les MAJ kernel)
+- 10 Go pour ```/``
 - 2 * 1 Go pour le swap
 
 Le reste est partitionné avec du LVM ce qui nous laisse une grande souplesse pour éventuellement réallouer de l'espace disque.
 
 - 10 Go pour ```/tmp``` (Que l'on passe en tmpfs et pour laquelle on ajoute les options nodev, nosuid et noexec par sécurité)
-- 150 Go pour ```/var/lib/vz/dump``` (Dans la pratique je ne l'utilise pas et préfère utiliser les 500 Go de backup externe fourni avec OVH pour chaque serveur dédié monté en NFS)
 - 1 To pour ```/var/lib/vz``` qui va recevoir les VMs et Containers
+- 150 Go pour ```/var/lib/vz/dump``` (Dans la pratique je ne l'utilise pas et préfère utiliser les 500 Go de backup externe fourni avec OVH pour chaque serveur dédié monté en NFS)
 
 Attention toutefois à conserver au moins 50 Go d'espace non partitionné pour pouvoir effectuer des snapshots, veuillez à adapter cette espace à la taille de votre plus grosse VM.
 
-A cet espace nécessaire aux snapshots je garde le reste de l'espace disque non partitionné pour pouvoir le redistribuer si jamais je me rends compte qu'une partition est trop petite.
+A cet espace nécessaire aux snapshots on gardera le reste de l'espace disque non partitionné pour pouvoir le redistribuer si jamais on se rend compte qu'une partition est trop petite.
+
+Comme d'habitude, remarques et critiques de ce schéma sont plus que les bienvenues ;)
 

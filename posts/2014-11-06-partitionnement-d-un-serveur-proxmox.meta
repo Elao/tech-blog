@@ -2,11 +2,13 @@
     "tags":                 ["Infra", "Proxmox", "Linux"],
     "title":                "Partitionnement d'un serveur Proxmox",
     "slug":                 "partitionnement-d-un-serveur-proxmox",
-    "status":               "draft",
+    "status":               "published",
+    "meta_category":        "virtualisation",
     "meta_title":           "Partitionnement d'un serveur Proxmox",
     "meta_description":     "Le partitionnement d'un serveur Proxmox expliqué de A à Z, bonnes pratiques et pièges à éviter",
+    "meta_language":        "fr",
     "meta_keywords":        ["Proxmox", "Infra", "Linux", "OVH"],
-    "thumbnail":            "/blog/medias/2014-09-17-creer-une-cle-bootable-osx-10-10-yosemite/OS-X-Yosemite.jpg",
+    "thumbnail":            "/blog/medias/thumbnails/proxmox.png",
     "publish_by":           "guewen-faivre",
-    "publish_at":           "2014-11-06"
+    "publish_at":           "2014-11-13"
 }
