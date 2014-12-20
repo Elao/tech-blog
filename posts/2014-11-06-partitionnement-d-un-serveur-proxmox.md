@@ -27,7 +27,7 @@ Nous préférerons donc définir un partitionnement comme ci-dessous (La machine
 </p>
 
 - 500 Mo pour ```/boot``` (Devrait amplement suffire à couvrir les MAJ kernel)
-- 10 Go pour ```/``
+- 10 Go pour ```/```
 - 2 * 1 Go pour le swap
 
 Le reste est partitionné avec du LVM ce qui nous laisse une grande souplesse pour éventuellement réallouer de l'espace disque.

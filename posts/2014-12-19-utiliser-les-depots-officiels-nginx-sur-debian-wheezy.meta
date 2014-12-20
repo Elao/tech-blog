@@ -1,0 +1,14 @@
+{
+    "tags":                 ["Infra", "Linux", "Debian", "Nginx"],
+    "title":                "Utiliser les dépots officiels Nginx sur Debian Wheezy",
+    "slug":                 "utiliser-les-depots-officiels-nginx-sur-debian-wheezy",
+    "status":               "published",
+    "meta_category":        "Infra",
+    "meta_title":           "Utiliser les dépots officiels Nginx sur Debian Wheezy",
+    "meta_description":     "Comment configurer et utiliser les dépôts Nginx sur Debian Wheezy",
+    "meta_language":        "fr",
+    "meta_keywords":        ["Infra", "Linux", "Debian", "Nginx", "Wheezy"],
+    "thumbnail":            "/blog/medias/thumbnails/nginx.png",
+    "publish_by":           "guewen-faivre",
+    "publish_at":           "2014-12-19"
+}
