@@ -1,0 +1,14 @@
+{
+    "tags":                 ["Services", "Infra", "Linux", "Debian", "Supervisor"],
+    "title":                "Utiliser supervisor pour controler ses services applicatifs",
+    "slug":                 "utiliser-supervisor-pour-controler-ses-services-applicatifs",
+    "status":               "published",
+    "meta_category":        "Infra",
+    "meta_title":           "Utiliser supervisor pour controler ses services applicatifs",
+    "meta_description":     "Supervisor est un système de contrôle des processus/services applicatifs destiné aux systèmes de types UNIX.",
+    "meta_language":        "fr",
+    "meta_keywords":        ["Services", "Infra", "Linux", "Debian", "Supervisor"],
+    "thumbnail":            "/blog/medias/2014-12-22-utiliser-supervisor-pour-controler-ses-services-applicatifs/supervisor.jpg",
+    "publish_by":           "guewen-faivre",
+    "publish_at":           "2014-12-22"
+}
