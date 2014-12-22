@@ -27,7 +27,7 @@ Il est configurable via le fichier ```/etc/supervisor/supervisord.conf```
 
 ## Supervisorctl
 
-**Supervisorctl** est le client permettant d'administrer les services gérer par superviser, il est capable de se connecter à plusieurs démons **supervisord**  et permet de démarrer / arrêter des services. Il est possible de les faire fonctionner soit via une socket soit via TCP, il est également possible de gérer une authentification lors de la connexion au démon.
+**Supervisorctl** est le client permettant d'administrer les services gérés par supervisor, il est capable de se connecter à plusieurs démons **supervisord**  et permet de démarrer / arrêter des services. Il est possible de les faire fonctionner soit via une socket soit via TCP, il est également possible de gérer une authentification lors de la connexion au démon.
 
 # Utiliser supervisor
 
