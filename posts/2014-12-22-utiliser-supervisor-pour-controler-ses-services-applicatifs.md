@@ -1,18 +1,18 @@
 Bonjour à tous, 
 
-Aujourd'hui nous allons faire le tour d'un solution fort sympathique que nous utilisons @elao pour faire tourner certains services applicatifs. 
+Aujourd'hui nous allons faire le tour d'une solution fort sympathique que nous utilisons @elao pour faire tourner certains services applicatifs. 
 
 Son petit nom ? [**Supervisor**](http://supervisord.org/).
 
 # Introduction
 
-Supervisor est un petit outils codé en Python et permettant d'assurer le suivi et le contrôle de services/processus applicatifs sur des systèmes de type UNIX.
+Supervisor est un petit outil codé en Python et permettant d'assurer le suivi et le contrôle de services/processus applicatifs sur des systèmes de type UNIX.
 
-On peut le comparer à launchd (utilisé par OSX) ou [**runit**](http://smarden.org/runit/), attention toutefois il n'est pas destiné à remplacer le process init des systèmes UNIX, il est par contre le parfait allié pour lancer et suivre des services applicatifs liés à un projet et qui doivent être démarrés et disponibles en permanence.
+On peut le comparer à launchd (utilisé par OSX) ou [**runit**](http://smarden.org/runit/). Attention toutefois il n'est pas destiné à remplacer le process init des systèmes UNIX. Il est par contre le parfait allié pour lancer et suivre des services applicatifs liés à un projet et qui doivent être démarrés et disponibles en permanence.
 
 On peut notamment penser à des services NodeJS ou autres.
 
-Supervisor est disponible en paquet Debian en version 3.0, l'installation est donc très facile:
+Supervisor est disponible en paquet Debian en version 3.0, l'installation est donc très facile :
 
 ```
 apt-get install supervisor
@@ -27,7 +27,7 @@ Il est configurable via le fichier ```/etc/supervisor/supervisord.conf```
 
 ## Supervisorctl
 
-**Supervisorctl** est le client permettant d'administrer les services gérés par supervisor, il est capable de se connecter à plusieurs démons **supervisord**  et permet de démarrer / arrêter des services. Il est possible de les faire fonctionner soit via une socket soit via TCP, il est également possible de gérer une authentification lors de la connexion au démon.
+**Supervisorctl** est le client permettant d'administrer les services gérés par supervisor. Il est capable de se connecter à plusieurs démons **supervisord**  et permet de démarrer / arrêter des services. Il est possible de les faire fonctionner soit via une socket soit via TCP. Il est également possible de gérer une authentification lors de la connexion au démon.
 
 # Utiliser supervisor
 
@@ -50,7 +50,7 @@ numprocs=1
 stdout_logfile=/var/log/blogd.log
 redirect_stderr=true
 ```
-Après redémarrage de supervisor (```/etc/init.d/supervisor restart```) nous pouvons ensuite vérifier le bon fonctionnement du/des service(s) via le client:
+Après redémarrage de supervisor (```/etc/init.d/supervisor restart```) nous pouvons ensuite vérifier le bon fonctionnement du/des service(s) via le client :
 
 ```
 elao@bismuth:/etc/supervisor/conf.d|
@@ -103,7 +103,7 @@ Pour finir supervisor fournit également une interface web qui est activable via
 ![Interface web supervisor](/blog/medias/2014-12-22-utiliser-supervisor-pour-controler-ses-services-applicatifs/supervisor_web.png)
 </p>
 
-Il suffit de créer un nouveau fichier dans ```/etc/supervisor/conf.d``` s'appelant par exemple ```inet_http_server.conf``` et d'y recopier le contenu suivant:
+Il suffit de créer un nouveau fichier dans ```/etc/supervisor/conf.d``` s'appelant par exemple ```inet_http_server.conf``` et d'y recopier le contenu suivant :
 
 ```
 [inet_http_server]
