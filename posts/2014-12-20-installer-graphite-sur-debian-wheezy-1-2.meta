@@ -1,0 +1,14 @@
+{
+    "tags":                 ["Monitoring", "Infra", "Linux", "Debian", "Nginx"],
+    "title":                "Installer graphite sur Debian Wheezy 1/2",
+    "slug":                 "installer-graphite-sur-debian-wheezy-1-2",
+    "status":               "draft",
+    "meta_category":        "Infra",
+    "meta_title":           "Installer graphite sur Debian Wheezy 1/2",
+    "meta_description":     "Installation de graphite avec Gunicorn et Nginx sur debian Wheezy, partie 1 sur 2.",
+    "meta_language":        "fr",
+    "meta_keywords":        ["Monitoring", "Graphite", "Infra", "Linux", "Debian", "Gunicorn", "supervisord"],
+    "thumbnail":            "/blog/medias/2014-12-20-installer-graphite-sur-debian-wheezy/dashboard.jpg",
+    "publish_by":           "guewen-faivre",
+    "publish_at":           "2014-12-20"
+}
