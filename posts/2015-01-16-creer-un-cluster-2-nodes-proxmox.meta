@@ -1,0 +1,14 @@
+{
+    "tags":                 ["Infra", "Proxmox", "Linux", "Cluster"],
+    "title":                "Créer un cluster 2 nodes proxmox",
+    "slug":                 "creer-un-cluster-2-nodes-proxmox",
+    "status":               "published",
+    "meta_category":        "Infra",
+    "meta_title":           "Créer un cluster 2 nodes proxmox",
+    "meta_description":     "Comment créer un cluster de 2 machines avec proxmox et le vRack OVH, gérer le multicast, les différents noeuds, les pièges à éviter.",
+    "meta_language":        "fr",
+    "meta_keywords":        ["Infra", "Proxmox", "Linux", "Cluster"],
+    "thumbnail":            "/blog/medias/thumbnails/proxmox.png",
+    "publish_by":           "guewen-faivre",
+    "publish_at":           "2015-01-16"
+}
