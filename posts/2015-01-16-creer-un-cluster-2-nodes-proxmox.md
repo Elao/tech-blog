@@ -182,4 +182,4 @@ Starting pve cluster filesystem : pve-clusterfuse: failed to access mountpoint /
 
 Ce petit soucis peut être rapidement résolu grâce à la commande ``` umount -f /etc/pve```, redémarrez ensuite votre cluster ```/etc/init.d/pve-cluster start``` et tout devrait rentrer dans l'ordre.
 
-Comme à l'accoutumé cet article est ouvert à toutes les critiques, suggestions et corrections.
+Comme à l'accoutumé cet article est ouvert à toutes critiques, suggestions et corrections.
