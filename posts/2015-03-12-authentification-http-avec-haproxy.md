@@ -7,7 +7,7 @@ Sa mise en place est assez simple et repose sur la notion de "**userlist**", qui
 ```
 userlist ELAO
   group infra users guewen,flo
-  group  dev users xavier,vincent
+  group dev users xavier,vincent
 
   user guewen password 84375611a53741f7e94b09eb49127f41
   user flo insecure-password ela0pAssWd
