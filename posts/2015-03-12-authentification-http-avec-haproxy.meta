@@ -1,0 +1,14 @@
+{
+    "tags":                 ["Infra", "HA Proxy", "Linux", "Network"],
+    "title":                "Authentification HTTP avec HA Proxy",
+    "slug":                 "authentification-http-avec-haproxy",
+    "status":               "published",
+    "meta_category":        "Infra",
+    "meta_title":           "Authentification HTTP avec HA Proxy",
+    "meta_description":     "Comment gérer une authentification HTTP basique avec HA Proxy, définir des utilisateurs, des groupes et le type d'authentification souhaitée.",
+    "meta_language":        "fr",
+    "meta_keywords":        ["Infra", "HA Proxy", "Linux", "Network"],
+    "thumbnail":            "/blog/medias/thumbnails/haproxy.jpg",
+    "publish_by":           "guewen-faivre",
+    "publish_at":           "2015-03-10"
+}
