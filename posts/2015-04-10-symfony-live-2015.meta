@@ -1,0 +1,13 @@
+{
+    "tags":                 ["Conférence", "Symfony Live"],
+    "title":                "Retour sur la Symfony Live 2015",
+    "slug":                 "symfony-live-2015",
+    "status":               "published",
+    "meta_title":           "Retour sur la Symfony Live 2015",
+    "meta_description":     "La septième édition du SymfonyLive Paris s'est tenue le jeudi 9 avril à la Cité Internationale Universitaire de Paris. Retour sur cet évènement.",
+    "meta_language":        "fr",
+    "meta_keywords":        ["Symfony Live", "Talk", "Conférence"],
+    "thumbnail":            "/blog/medias/thumbnails/sflive2015.jpg",
+    "publish_by":           "richard-hanna",
+    "publish_at":           "2015-04-10"
+}
