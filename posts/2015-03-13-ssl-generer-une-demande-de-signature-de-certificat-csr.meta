@@ -1,0 +1,14 @@
+{
+    "tags":                 ["Infra", "Linux", "SSL", "Certicats", "Sécurité"],
+    "title":                "SSL - Générer une demande de signature de certificat",
+    "slug":                 "ssl-generer-une-demande-de-signature-de-certificat-csr",
+    "status":               "published",
+    "meta_category":        "Infra",
+    "meta_title":           "SSL - Générer une demande de signature de certificat",
+    "meta_description":     "Comment générer une demande de signature d'un certificat SSL (CSR) à destination d'une autorité de certification.",
+    "meta_language":        "fr",
+    "meta_keywords":        ["CSR", "CA", "Infra", "Linux", "SSL", "Certicats", "Sécurité"],
+    "thumbnail":            "/blog/medias/thumbnails/security.jpg",
+    "publish_by":           "guewen-faivre",
+    "publish_at":           "2015-03-13"
+}
