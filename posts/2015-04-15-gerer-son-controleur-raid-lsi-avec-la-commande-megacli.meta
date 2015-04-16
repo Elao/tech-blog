@@ -1,0 +1,14 @@
+{
+    "tags":                 ["Infra", "Linux", "RAID"],
+    "title":                "Gérer son contrôleur RAID LSI avec la commande MegaCli",
+    "slug":                 "gerer-son-controleur-raid-lsi-avec-la-commande-megacli",
+    "status":               "published",
+    "meta_category":        "Infra",
+    "meta_title":           "RAID - Gérer son contrôleur RAID LSI avec la commande MegaCli",
+    "meta_description":     "Piloter son contrôleur RAID LSI à l'aide de la commande MegaCli.",
+    "meta_language":        "fr",
+    "meta_keywords":        ["Infra", "RAID", "SysAdmin", "Linux"],
+    "thumbnail":            "/blog/medias/thumbnails/replication.jpg",
+    "publish_by":           "guewen-faivre",
+    "publish_at":           "2015-04-15"
+}
