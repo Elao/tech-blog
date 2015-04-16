@@ -1,12 +1,12 @@
 # Introduction
 
-La génération d'une requête de signature de certificat, appelée comme ceci car elle est normalement transmise à une autorité de certification (Certificate Authority ou CA) pour ... signature est faite lorsque l'on souhaite exploiter un certificat SSL délivré par une autorité de certification (reconnue ou non).
+La génération d'une requête de signature de certificat, appelée comme ceci car elle est normalement transmise à une autorité de certification (Certificate Authority ou CA) pour ... signature, est faite lorsque l'on souhaite exploiter un certificat SSL délivré par une autorité de certification (reconnue ou non).
 
 Un certificat n’est ni plus, ni moins qu’une clé qui a été signée par une autorité autorisée garantissant ainsi que celle-ci est valide est correspond bien à la bonne entité.
 
 La "Certificate Signin Request", souvent abrégée en CSR peut être assimilée à une clé publique contenant quelques informations supplémentaires. Celles-ci et la fameuse clé sont insérées dans le certificat une fois celui-ci signé.
 
-A la génération de cette requête, un certain nombre d'informations vous serons donc demandées, celles-ci sont appelées "Distinguished Name" (DN). La plupart des informations à renseigner sont triviales hormis le "Common Name" (CN) qui doit exactement correspondre au FQDN (Fully Qualified Domain Name) de la machine à laquelle est destiné le certificat.
+A la génération de cette requête, un certain nombre d'informations vous seront donc demandées, celles-ci sont appelées "Distinguished Name" (DN). La plupart des informations à renseigner sont triviales hormis le "Common Name" (CN) qui doit exactement correspondre au FQDN (Fully Qualified Domain Name) de la machine à laquelle est destiné le certificat.
 
 Bien que l'importance de celles-ci soit toute relative, elles devraient néanmoins, refléter au maximum la réalité lorsque vous achetez un certificat SSL auprès d'une autorité de certification.
 
@@ -14,7 +14,7 @@ Il est bien entendu possible de passer l'ensemble de ces informations via la lig
 
 # Générer des CSRs
 
-A présent que nous savons à quoi servent ces fameuses requêtes nous listerons ci-dessous les différents cas de figure qui pourrait nous conduire à en avoir besoin et comment les générer.
+A présent que nous savons à quoi servent ces fameuses requêtes nous listerons ci-dessous les différents cas de figure qui pourraient nous conduire à en avoir besoin et comment les générer.
 
 ## Générer une clé privée et une CSR
 
@@ -64,7 +64,7 @@ An optional company name []:
 
 ## Générer une CSR à partir d'une clé privée 
 
-Dans le cas ou vous disposez déjà d'une clé privée et que vous souhaitez l'utiliser pour la délivrance d'un certificat à partir d'une CA, il nous faudra utiliser la commande suivante:
+Dans le cas où vous disposez déjà d'une clé privée et que vous souhaitez l'utiliser pour la délivrance d'un certificat à partir d'une CA, il nous faudra utiliser la commande suivante:
 
 `openssl req -key bismuth-elao.key -new -out bismuth-elao.csr`
 
@@ -75,7 +75,7 @@ Il suffit ensuite de renseigner les différentes informations demandées pour la
 
 ## Générer une CSR à partir d'une clé privée et d'un certificat
 
-Ce cas de figure peut se présenter dans le cas ou vous avez perdu la CSR originale, rien de bien critique pour le coup, cette manipulation épargne juste de perdre du temps à ressaisir les informations de la CSR, celles-ci sont dans ce cas là, extraites du certificat.
+Ce cas de figure peut se présenter dans le cas où vous avez perdu la CSR originale, rien de bien critique pour le coup, cette manipulation épargne juste de perdre du temps à ressaisir les informations de la CSR, celles-ci sont dans ce cas là, extraites du certificat.
 
 ```
 openssl x509
