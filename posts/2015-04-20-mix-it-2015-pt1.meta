@@ -1,0 +1,13 @@
+{
+    "tags":                 ["Conférence", "Mix-IT 2015"],
+    "title":                "Retour sur le Mix-IT 2015 (Lyon) - Première partie",
+    "slug":                 "mix-it-2015-pt1",
+    "status":               "published",
+    "meta_title":           "Retour sur le Mix-IT 2015 (Lyon) - Première partie",
+    "meta_description":     "L'édition 2015 du Mix-IT s'est tenue les 16 et 17 avril au CPE de Lyon. Retour sur cet événement.",
+    "meta_language":        "fr",
+    "meta_keywords":        ["Mix-IT", "Talk", "Conférence"],
+    "thumbnail":            "/blog/medias/thumbnails/mix-it-2015.jpg",
+    "publish_by":           "xavier-roldo",
+    "publish_at":           "2015-04-20"
+}
