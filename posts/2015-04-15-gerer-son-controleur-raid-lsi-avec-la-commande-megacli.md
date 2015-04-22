@@ -391,7 +391,7 @@ MegaCli -PDHSP -Rmv -PhysDrv [E:S] -aN
 
 ### Créer un volume logique
 
-Les instructions ci dessous exploite les informations :
+Les instructions ci dessous exploitent les informations :
 
 - Enclosure ID appelé E 
 - Numéro de Slot S
