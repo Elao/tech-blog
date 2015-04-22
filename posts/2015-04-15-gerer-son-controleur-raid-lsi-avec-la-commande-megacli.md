@@ -214,7 +214,9 @@ Inquiry Data: BTWL332507LC120LGN  INTEL SSDSC2BB120G4                     D20103
 
 ### Afficher les informations d'un disque physique
 
-Les disques physiques sont identifiés à l'aide de deux informations le "[Enclosure Device ID](#enclosure-device-id)" et le numéro de l'emplacement (Slot) occupé par le disque.
+Les disques physiques sont identifiés à l'aide de deux informations : 
+    - le "[Enclosure Device ID](#enclosure-device-id)" 
+    - et le numéro de l'emplacement (Slot) occupé par le disque.
 Ainsi pour consulter les informations du disque de l'emplacement numéro 5 de notre premier conteneur (Ayant donc l'identifiant 8) nous exécuterons la commande suivante :
 
 ```bash
@@ -365,9 +367,9 @@ Pour certaines configurations (je pense notamment au RAID 5), nous aurons à gé
 
 __Les commandes ci-dessous permettent leur gestion, à noter:__
 
-E: Enclosure ID
-S: Numéro de Slot du disque
-N: Identifiant du contrôleur
+    E: Enclosure ID
+    S: Numéro de Slot du disque
+    N: Identifiant du contrôleur
 
 #### Configurer un Hot spare global
 
