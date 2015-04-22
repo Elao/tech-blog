@@ -176,7 +176,7 @@ Drive has flagged a S.M.A.R.T alert : No
 ```bash
 MegaCli -PDList -aALL | egrep "Adapter|Drive's position|Enclosure position|Slot|Raw Size|Inquiry|Enclosure Device ID"
 ```
-Cette commande devrait donner en sortie quelque chose ressemblant à ça:
+Cette commande devrait donner en sortie quelque chose ressemblant à ça :
 
 ```
 Adapter #0
@@ -215,7 +215,7 @@ Inquiry Data: BTWL332507LC120LGN  INTEL SSDSC2BB120G4                     D20103
 ### Afficher les informations d'un disque physique
 
 Les disques physiques sont identifiés à l'aide de deux informations le "[Enclosure Device ID](#enclosure-device-id)" et le numéro de l'emplacement (Slot) occupé par le disque.
-Ainsi pour consulter les informations du disque de l'emplacement numéro 5 de notre premier conteneur (Ayant donc l'identifiant 8) nous exécuterons la commande suivante:
+Ainsi pour consulter les informations du disque de l'emplacement numéro 5 de notre premier conteneur (Ayant donc l'identifiant 8) nous exécuterons la commande suivante :
 
 ```bash
 root@rescue:~# MegaCli -pdinfo -PhysDrv[8:5] -a0
@@ -276,7 +276,7 @@ Drive has flagged a S.M.A.R.T alert : No
 
 ### Compter le nombre de disques virtuels (VD) du controleur
 
-Pour compter le nombre de VD nous utilisons la commande suivante:
+Pour compter le nombre de VD nous utilisons la commande suivante :
 
 ```
 root@rescue:~# MegaCli -LdGetNum -aAll
@@ -389,7 +389,7 @@ MegaCli -PDHSP -Rmv -PhysDrv [E:S] -aN
 
 ### Créer un volume logique
 
-Les instructions ci dessous exploite les informations:
+Les instructions ci dessous exploite les informations :
 
 - Enclosure ID appelé E 
 - Numéro de Slot S
