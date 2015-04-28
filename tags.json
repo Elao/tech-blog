@@ -70,5 +70,6 @@
     {"label": "Bonnes pratiques", "slug": "bonnes-pratiques"},
     {"label": "Javascript", "slug": "javascript"},
     {"label": "Node.js", "slug": "node-js"},
-    {"label": "Web", "slug": "web"}
+    {"label": "Web", "slug": "web"},
+    {"label": "Meteor", "slug": "meteor"}
 ]
