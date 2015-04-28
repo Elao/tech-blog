@@ -67,5 +67,6 @@
     {"label": "iOS", "slug": "ios"},
     {"label": "Network", "slug": "network"},
     {"label": "HA Proxy", "slug": "network"},
-    {"label": "Bonnes pratiques", "slug": "bonnes-pratiques"}
+    {"label": "Bonnes pratiques", "slug": "bonnes-pratiques"},
+    {"label": "Meteor", "slug": "meteor"}
 ]
