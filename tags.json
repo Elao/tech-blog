@@ -69,5 +69,6 @@
     {"label": "HA Proxy", "slug": "network"},
     {"label": "Bonnes pratiques", "slug": "bonnes-pratiques"},
     {"label": "Javascript", "slug": "javascript"},
-    {"label": "Node.js", "slug": "node-js"}
+    {"label": "Node.js", "slug": "node-js"},
+    {"label": "Meteor", "slug": "meteor"}
 ]
