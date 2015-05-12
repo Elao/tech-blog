@@ -4,7 +4,7 @@
     "slug":                 "meteor-multi-apps-architecture",
     "status":               "published",
     "meta_title":           "Meteor - Architecture multi-applicatives connectées sur une seule base mongo",
-    "meta_description":     "Architecture d'une application Meteor décomposée en plusieurs sous-applications connectées à la même base de données Mongo",
+    "meta_description":     "Architecture d'une application Meteor décomposée en plusieurs sous-applications connectées à la même base de données MongoDb",
     "meta_language":        "fr",
     "meta_keywords":        ["Meteor", "Mongo", "Architecture"],
     "thumbnail":            "/blog/medias/thumbnails/meteor.png",
