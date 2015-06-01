@@ -6,7 +6,7 @@ Cet évènement a lieu à l'occasion du International NodeSchool Day, en même t
 Le principe est de venir avec son ordinateur portable et pratiquer les [ateliers interactifs de nodeschool.io](http://nodeschool.io/fr-fr/index.html#workshopper-list).
 Vous choisissez le ou les ateliers que vous souhaitez pratiquer.
 Puis les organisateurs rassemblent les personnes par atelier.
-Vous pouvez alors échanger et vous entr-aider avec vos voisins de table.
+Vous pouvez alors échanger et vous entraider avec vos voisins de table.
 Vous pouvez aussi vous faire aider par les mentors ; ils sont disponibles et compétents ! 
 
 Les ateliers NodeSchool.io, ce sont des outils interactifs en ligne de commande pour apprendre aussi bien les bases de Javascript que des aspects plus avancés (prototypes, promesses, ES6…), des libs comme Async.js ou Lo-Dash/Underscore, des frameworks comme Express ou encore du WebGL !
