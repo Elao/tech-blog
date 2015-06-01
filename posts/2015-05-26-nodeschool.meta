@@ -1,0 +1,13 @@
+{
+    "tags":                 ["Javascript", "Node.js"],
+    "title":                "Retour sur la NodeSchool Paris",
+    "slug":                 "nodeschool-paris",
+    "status":               "published",
+    "meta_title":           "Retour sur la NodeSchool Paris",
+    "meta_description":     "La NodeSchool permet de pratiquer Javascript et Node.js grâce à des ateliers interactifs.",
+    "meta_language":        "fr",
+    "meta_keywords":        ["NodeSchool", "Javascript", "Node.js"],
+    "thumbnail":            "/blog/medias/thumbnails/nodeschool-paris.jpg",
+    "publish_by":           "richard-hanna",
+    "publish_at":           "2015-05-27"
+}
