@@ -1,0 +1,13 @@
+{
+    "tags":                 ["Javascript", "Web","Conférence"],
+    "title":                "Retour sur le Best Of Web 2015",
+    "slug":                 "best-of-web-2015",
+    "status":               "published",
+    "meta_title":           "Retour sur le Best Of Web 2015",
+    "meta_description":     "La première édition du Best Of Web s'est tenue le Vendredi 5 Juin 2015 à Paris, et à rassembler le meilleurs des meetups de l'année. Retour sur cet évènement.",
+    "meta_language":        "fr",
+    "meta_keywords":        ["Web", "Javascript", "Best Of Web"],
+    "thumbnail":            "/blog/medias/thumbnails/best-of-web-2105.png",
+    "publish_by":           "nicolas-dievart",
+    "publish_at":           "2015-06-12"
+}
